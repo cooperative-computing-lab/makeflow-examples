@@ -1,0 +1,105 @@
+SAMTOOLS=samtools
+PYTHON=python
+JARFILE=GenomeAnalysisTK.jar
+CONFIG=2847.config
+CLASSPATH=Aligner.jar:AnalyzeCovariates.jar:CGUtilities.jar:CreateSequenceDictionary.jar:GenomeAnalysisTK.jar:Jama-1.0.2.jar:MarkAllAlignmentsAsPrimary.jar:RepairSeattleBAM.jar:StingUtils.jar:VCFTool.jar:bcel-5.2.jar:colt-1.2.0.jar:commons-io-1.3.2.jar:commons-jexl-2.0.jar:commons-logging-1.1.1.jar:dom4j-1.6.jar:google-collections-1.0.jar:javassist-3.7.ga.jar:javassist-3.8.0.GA.jar:jgrapht-jdk1.5-0.7.3.jar:junit-4.4.jar:log4j-1.2.15.jar:tribble-88.jar:logback-classic-0.9.9.jar:logback-core-0.9.9.jar:picard-1.19.430-sharding.jar:picard-private-parts-1409-sharding.jar:reflections-0.9.5-svnversion79M_mod2.jar:sam-1.19.430-sharding.jar:simple-xml-2.0.4.jar:slf4j-api-1.5.6.jar:xml-apis-1.0.b2.jar
+#CLASSFILES=Aligner.jar AnalyzeCovariates.jar CGUtilities.jar CreateSequenceDictionary.jar GenomeAnalysisTK.jar Jama-1.0.2.jar MarkAllAlignmentsAsPrimary.jar RepairSeattleBAM.jar StingUtils.jar VCFTool.jar bcel-5.2.jar colt-1.2.0.jar commons-io-1.3.2.jar commons-jexl-2.0.jar commons-logging-1.1.1.jar dom4j-1.6.jar google-collections-1.0.jar javassist-3.7.ga.jar javassist-3.8.0.GA.jar jgrapht-jdk1.5-0.7.3.jar junit-4.4.jar log4j-1.2.15.jar tribble-88.jar logback-classic-0.9.9.jar logback-core-0.9.9.jar picard-1.19.430-sharding.jar picard-private-parts-1409-sharding.jar reflections-0.9.5-svnversion79M_mod2.jar sam-1.19.430-sharding.jar simple-xml-2.0.4.jar slf4j-api-1.5.6.jar xml-apis-1.0.b2.jar
+CLASSFILES=Aligner.jar
+
+2847.fa.fai: 2847.fa $SAMTOOLS 
+	LOCAL $SAMTOOLS faidx 2847.fa
+
+PESTReads_PESTchrom_ssaha.bam.sorted.bam.bai: PESTReads_PESTchrom_ssaha.bam.sorted.bam $SAMTOOLS 
+	LOCAL $SAMTOOLS index PESTReads_PESTchrom_ssaha.bam.sorted.bam PESTReads_PESTchrom_ssaha.bam.sorted.bam.bai
+
+config.2L: $CONFIG
+	LOCAL sed 's/PESTReads_PESTchrom_ssaha.bam.sorted.bam/PESTReads_PESTchrom_ssaha.bam.sorted.bam.2L.bam/' < 2847.config > 2847.config.2L.temp.1;mv 2847.config.2L.temp.1 config.2L; rm -f 2847.config.2L.temp.*
+
+PESTReads_PESTchrom_ssaha.bam.sorted.bam.2L.bam: PESTReads_PESTchrom_ssaha.bam.sorted.bam PESTReads_PESTchrom_ssaha.bam.sorted.bam.bai $SAMTOOLS
+	LOCAL $SAMTOOLS view -b -o PESTReads_PESTchrom_ssaha.bam.sorted.bam.2L.bam PESTReads_PESTchrom_ssaha.bam.sorted.bam 2L
+
+PESTReads_PESTchrom_ssaha.bam.sorted.bam.2L.bam.bai: PESTReads_PESTchrom_ssaha.bam.sorted.bam.2L.bam $SAMTOOLS
+	LOCAL $SAMTOOLS index PESTReads_PESTchrom_ssaha.bam.sorted.bam.2L.bam
+
+out.2L: jexec.py 2847.fa 2847.fa.fai 2847.dict config.2L PESTReads_PESTchrom_ssaha.bam.sorted.bam.2L.bam PESTReads_PESTchrom_ssaha.bam.sorted.bam.2L.bam.bai $CLASSFILES
+	 ./jexec.py -classpath $CLASSPATH -jar $JARFILE -T Rule -R 2847.fa -I PESTReads_PESTchrom_ssaha.bam.sorted.bam.2L.bam -U ALLOW_UNSET_BAM_SORT_ORDER --configFile config.2L >& out.2L
+
+config.2R: $CONFIG
+	LOCAL sed 's/PESTReads_PESTchrom_ssaha.bam.sorted.bam/PESTReads_PESTchrom_ssaha.bam.sorted.bam.2R.bam/' < 2847.config > 2847.config.2R.temp.1;mv 2847.config.2R.temp.1 config.2R; rm -f 2847.config.2R.temp.*
+
+PESTReads_PESTchrom_ssaha.bam.sorted.bam.2R.bam: PESTReads_PESTchrom_ssaha.bam.sorted.bam PESTReads_PESTchrom_ssaha.bam.sorted.bam.bai $SAMTOOLS
+	LOCAL $SAMTOOLS view -b -o PESTReads_PESTchrom_ssaha.bam.sorted.bam.2R.bam PESTReads_PESTchrom_ssaha.bam.sorted.bam 2R
+
+PESTReads_PESTchrom_ssaha.bam.sorted.bam.2R.bam.bai: PESTReads_PESTchrom_ssaha.bam.sorted.bam.2R.bam $SAMTOOLS
+	LOCAL $SAMTOOLS index PESTReads_PESTchrom_ssaha.bam.sorted.bam.2R.bam
+
+out.2R: jexec.py 2847.fa 2847.fa.fai 2847.dict config.2R PESTReads_PESTchrom_ssaha.bam.sorted.bam.2R.bam PESTReads_PESTchrom_ssaha.bam.sorted.bam.2R.bam.bai $CLASSFILES
+	
+	 ./jexec.py -classpath $CLASSPATH -jar $JARFILE -T Rule -R 2847.fa -I PESTReads_PESTchrom_ssaha.bam.sorted.bam.2R.bam -U ALLOW_UNSET_BAM_SORT_ORDER --configFile config.2R >& out.2R
+
+config.3L: $CONFIG
+	LOCAL sed 's/PESTReads_PESTchrom_ssaha.bam.sorted.bam/PESTReads_PESTchrom_ssaha.bam.sorted.bam.3L.bam/' < 2847.config > 2847.config.3L.temp.1;mv 2847.config.3L.temp.1 config.3L; rm -f 2847.config.3L.temp.*
+
+PESTReads_PESTchrom_ssaha.bam.sorted.bam.3L.bam: PESTReads_PESTchrom_ssaha.bam.sorted.bam PESTReads_PESTchrom_ssaha.bam.sorted.bam.bai $SAMTOOLS
+	LOCAL $SAMTOOLS view -b -o PESTReads_PESTchrom_ssaha.bam.sorted.bam.3L.bam PESTReads_PESTchrom_ssaha.bam.sorted.bam 3L
+
+PESTReads_PESTchrom_ssaha.bam.sorted.bam.3L.bam.bai: PESTReads_PESTchrom_ssaha.bam.sorted.bam.3L.bam $SAMTOOLS
+	LOCAL $SAMTOOLS index PESTReads_PESTchrom_ssaha.bam.sorted.bam.3L.bam
+
+out.3L: jexec.py 2847.fa 2847.fa.fai 2847.dict config.3L PESTReads_PESTchrom_ssaha.bam.sorted.bam.3L.bam PESTReads_PESTchrom_ssaha.bam.sorted.bam.3L.bam.bai $CLASSFILES
+	 ./jexec.py -classpath $CLASSPATH -jar $JARFILE -T Rule -R 2847.fa -I PESTReads_PESTchrom_ssaha.bam.sorted.bam.3L.bam -U ALLOW_UNSET_BAM_SORT_ORDER --configFile config.3L >& out.3L
+
+config.3R: $CONFIG
+	LOCAL sed 's/PESTReads_PESTchrom_ssaha.bam.sorted.bam/PESTReads_PESTchrom_ssaha.bam.sorted.bam.3R.bam/' < 2847.config > 2847.config.3R.temp.1;mv 2847.config.3R.temp.1 config.3R; rm -f 2847.config.3R.temp.*
+
+PESTReads_PESTchrom_ssaha.bam.sorted.bam.3R.bam: PESTReads_PESTchrom_ssaha.bam.sorted.bam PESTReads_PESTchrom_ssaha.bam.sorted.bam.bai $SAMTOOLS
+	LOCAL $SAMTOOLS view -b -o PESTReads_PESTchrom_ssaha.bam.sorted.bam.3R.bam PESTReads_PESTchrom_ssaha.bam.sorted.bam 3R
+
+PESTReads_PESTchrom_ssaha.bam.sorted.bam.3R.bam.bai: PESTReads_PESTchrom_ssaha.bam.sorted.bam.3R.bam $SAMTOOLS
+	LOCAL $SAMTOOLS index PESTReads_PESTchrom_ssaha.bam.sorted.bam.3R.bam
+
+out.3R: jexec.py 2847.fa 2847.fa.fai 2847.dict config.3R PESTReads_PESTchrom_ssaha.bam.sorted.bam.3R.bam PESTReads_PESTchrom_ssaha.bam.sorted.bam.3R.bam.bai $CLASSFILES
+	 ./jexec.py -classpath $CLASSPATH -jar $JARFILE -T Rule -R 2847.fa -I PESTReads_PESTchrom_ssaha.bam.sorted.bam.3R.bam -U ALLOW_UNSET_BAM_SORT_ORDER --configFile config.3R >& out.3R
+
+config.X: $CONFIG
+	LOCAL sed 's/PESTReads_PESTchrom_ssaha.bam.sorted.bam/PESTReads_PESTchrom_ssaha.bam.sorted.bam.X.bam/' < 2847.config > 2847.config.X.temp.1;mv 2847.config.X.temp.1 config.X; rm -f 2847.config.X.temp.*
+
+PESTReads_PESTchrom_ssaha.bam.sorted.bam.X.bam: PESTReads_PESTchrom_ssaha.bam.sorted.bam PESTReads_PESTchrom_ssaha.bam.sorted.bam.bai $SAMTOOLS
+	LOCAL $SAMTOOLS view -b -o PESTReads_PESTchrom_ssaha.bam.sorted.bam.X.bam PESTReads_PESTchrom_ssaha.bam.sorted.bam X
+
+PESTReads_PESTchrom_ssaha.bam.sorted.bam.X.bam.bai: PESTReads_PESTchrom_ssaha.bam.sorted.bam.X.bam $SAMTOOLS
+	LOCAL $SAMTOOLS index PESTReads_PESTchrom_ssaha.bam.sorted.bam.X.bam
+
+out.X: jexec.py 2847.fa 2847.fa.fai 2847.dict config.X PESTReads_PESTchrom_ssaha.bam.sorted.bam.X.bam PESTReads_PESTchrom_ssaha.bam.sorted.bam.X.bam.bai $CLASSFILES
+	 ./jexec.py -classpath $CLASSPATH -jar $JARFILE -T Rule -R 2847.fa -I PESTReads_PESTchrom_ssaha.bam.sorted.bam.X.bam -U ALLOW_UNSET_BAM_SORT_ORDER --configFile config.X >& out.X
+
+config.UNKN: $CONFIG
+	LOCAL sed 's/PESTReads_PESTchrom_ssaha.bam.sorted.bam/PESTReads_PESTchrom_ssaha.bam.sorted.bam.UNKN.bam/' < 2847.config > 2847.config.UNKN.temp.1;mv 2847.config.UNKN.temp.1 config.UNKN; rm -f 2847.config.UNKN.temp.*
+
+PESTReads_PESTchrom_ssaha.bam.sorted.bam.UNKN.bam: PESTReads_PESTchrom_ssaha.bam.sorted.bam PESTReads_PESTchrom_ssaha.bam.sorted.bam.bai $SAMTOOLS
+	LOCAL $SAMTOOLS view -b -o PESTReads_PESTchrom_ssaha.bam.sorted.bam.UNKN.bam PESTReads_PESTchrom_ssaha.bam.sorted.bam UNKN
+
+PESTReads_PESTchrom_ssaha.bam.sorted.bam.UNKN.bam.bai: PESTReads_PESTchrom_ssaha.bam.sorted.bam.UNKN.bam $SAMTOOLS
+	LOCAL $SAMTOOLS index PESTReads_PESTchrom_ssaha.bam.sorted.bam.UNKN.bam
+
+out.UNKN: jexec.py 2847.fa 2847.fa.fai 2847.dict config.UNKN PESTReads_PESTchrom_ssaha.bam.sorted.bam.UNKN.bam PESTReads_PESTchrom_ssaha.bam.sorted.bam.UNKN.bam.bai $CLASSFILES	
+	 ./jexec.py -classpath $CLASSPATH -jar $JARFILE -T Rule -R 2847.fa -I PESTReads_PESTchrom_ssaha.bam.sorted.bam.UNKN.bam -U ALLOW_UNSET_BAM_SORT_ORDER --configFile config.UNKN >& out.UNKN
+
+config.Y: $CONFIG
+	LOCAL sed 's/PESTReads_PESTchrom_ssaha.bam.sorted.bam/PESTReads_PESTchrom_ssaha.bam.sorted.bam.Y.bam/' < 2847.config > 2847.config.Y.temp.1;mv 2847.config.Y.temp.1 config.Y; rm -f 2847.config.Y.temp.*
+
+PESTReads_PESTchrom_ssaha.bam.sorted.bam.Y.bam: PESTReads_PESTchrom_ssaha.bam.sorted.bam PESTReads_PESTchrom_ssaha.bam.sorted.bam.bai $SAMTOOLS
+	LOCAL $SAMTOOLS view -b -o PESTReads_PESTchrom_ssaha.bam.sorted.bam.Y.bam PESTReads_PESTchrom_ssaha.bam.sorted.bam Y
+
+PESTReads_PESTchrom_ssaha.bam.sorted.bam.Y.bam.bai: PESTReads_PESTchrom_ssaha.bam.sorted.bam.Y.bam $SAMTOOLS
+	LOCAL $SAMTOOLS index PESTReads_PESTchrom_ssaha.bam.sorted.bam.Y.bam
+
+out.Y: jexec.py 2847.fa 2847.fa.fai 2847.dict config.Y PESTReads_PESTchrom_ssaha.bam.sorted.bam.Y.bam PESTReads_PESTchrom_ssaha.bam.sorted.bam.Y.bam.bai $CLASSFILES
+	 ./jexec.py -classpath $CLASSPATH -jar $JARFILE -T Rule -R 2847.fa -I PESTReads_PESTchrom_ssaha.bam.sorted.bam.Y.bam -U ALLOW_UNSET_BAM_SORT_ORDER --configFile config.Y >& out.Y
+
+2847.output: out.2L out.2R out.3L out.3R out.X out.UNKN out.Y 
+	LOCAL cat out.2L out.2R out.3L out.3R out.X out.UNKN out.Y  > 2847.output; head -n 1 2847.output > temp1; grep -v "Pos" 2847.output > temp2; cat temp1 temp2 > 2847.output
+
+2847.complete: 2847.output 2847.total finishjob.sh
+	LOCAL ./finishjob.sh 2847
+
