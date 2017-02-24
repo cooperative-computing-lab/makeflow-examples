@@ -1,0 +1,70 @@
+
+
+input.fasta.0 input.fasta.1 input.fasta.2 input.fasta.3 input.fasta.4 input.fasta.5 input.fasta.6 input.fasta.7 input.fasta.8 input.fasta.9 input.fasta.10 input.fasta.11 input.fasta.12 input.fasta.13 input.fasta.14 input.fasta.15 input.fasta.16 input.fasta.17 input.fasta.18 input.fasta.19 : input.fasta split_fasta
+	LOCAL ./split_fasta 10 input.fasta
+
+input.fasta.0.out input.fasta.0.err : blastall input.fasta.0 nt
+	./blastall -p blastn -d nt/nt -i input.fasta.0 -o input.fasta.0.out 2> input.fasta.0.err
+
+input.fasta.1.out input.fasta.1.err : blastall input.fasta.1 nt
+	./blastall -p blastn -d nt/nt -i input.fasta.1 -o input.fasta.1.out 2> input.fasta.1.err
+
+input.fasta.2.out input.fasta.2.err : blastall input.fasta.2 nt
+	./blastall -p blastn -d nt/nt -i input.fasta.2 -o input.fasta.2.out 2> input.fasta.2.err
+
+input.fasta.3.out input.fasta.3.err : blastall input.fasta.3 nt
+	./blastall -p blastn -d nt/nt -i input.fasta.3 -o input.fasta.3.out 2> input.fasta.3.err
+
+input.fasta.4.out input.fasta.4.err : blastall input.fasta.4 nt
+	./blastall -p blastn -d nt/nt -i input.fasta.4 -o input.fasta.4.out 2> input.fasta.4.err
+
+input.fasta.5.out input.fasta.5.err : blastall input.fasta.5 nt
+	./blastall -p blastn -d nt/nt -i input.fasta.5 -o input.fasta.5.out 2> input.fasta.5.err
+
+input.fasta.6.out input.fasta.6.err : blastall input.fasta.6 nt
+	./blastall -p blastn -d nt/nt -i input.fasta.6 -o input.fasta.6.out 2> input.fasta.6.err
+
+input.fasta.7.out input.fasta.7.err : blastall input.fasta.7 nt
+	./blastall -p blastn -d nt/nt -i input.fasta.7 -o input.fasta.7.out 2> input.fasta.7.err
+
+input.fasta.8.out input.fasta.8.err : blastall input.fasta.8 nt
+	./blastall -p blastn -d nt/nt -i input.fasta.8 -o input.fasta.8.out 2> input.fasta.8.err
+
+input.fasta.9.out input.fasta.9.err : blastall input.fasta.9 nt
+	./blastall -p blastn -d nt/nt -i input.fasta.9 -o input.fasta.9.out 2> input.fasta.9.err
+
+input.fasta.10.out input.fasta.10.err : blastall input.fasta.10 nt
+	./blastall -p blastn -d nt/nt -i input.fasta.10 -o input.fasta.10.out 2> input.fasta.10.err
+
+input.fasta.11.out input.fasta.11.err : blastall input.fasta.11 nt
+	./blastall -p blastn -d nt/nt -i input.fasta.11 -o input.fasta.11.out 2> input.fasta.11.err
+
+input.fasta.12.out input.fasta.12.err : blastall input.fasta.12 nt
+	./blastall -p blastn -d nt/nt -i input.fasta.12 -o input.fasta.12.out 2> input.fasta.12.err
+
+input.fasta.13.out input.fasta.13.err : blastall input.fasta.13 nt
+	./blastall -p blastn -d nt/nt -i input.fasta.13 -o input.fasta.13.out 2> input.fasta.13.err
+
+input.fasta.14.out input.fasta.14.err : blastall input.fasta.14 nt
+	./blastall -p blastn -d nt/nt -i input.fasta.14 -o input.fasta.14.out 2> input.fasta.14.err
+
+input.fasta.15.out input.fasta.15.err : blastall input.fasta.15 nt
+	./blastall -p blastn -d nt/nt -i input.fasta.15 -o input.fasta.15.out 2> input.fasta.15.err
+
+input.fasta.16.out input.fasta.16.err : blastall input.fasta.16 nt
+	./blastall -p blastn -d nt/nt -i input.fasta.16 -o input.fasta.16.out 2> input.fasta.16.err
+
+input.fasta.17.out input.fasta.17.err : blastall input.fasta.17 nt
+	./blastall -p blastn -d nt/nt -i input.fasta.17 -o input.fasta.17.out 2> input.fasta.17.err
+
+input.fasta.18.out input.fasta.18.err : blastall input.fasta.18 nt
+	./blastall -p blastn -d nt/nt -i input.fasta.18 -o input.fasta.18.out 2> input.fasta.18.err
+
+input.fasta.19.out input.fasta.19.err : blastall input.fasta.19 nt
+	./blastall -p blastn -d nt/nt -i input.fasta.19 -o input.fasta.19.out 2> input.fasta.19.err
+
+output.fasta : cat_blast input.fasta.0.out input.fasta.1.out input.fasta.2.out input.fasta.3.out input.fasta.4.out input.fasta.5.out input.fasta.6.out input.fasta.7.out input.fasta.8.out input.fasta.9.out input.fasta.10.out input.fasta.11.out input.fasta.12.out input.fasta.13.out input.fasta.14.out input.fasta.15.out input.fasta.16.out input.fasta.17.out input.fasta.18.out input.fasta.19.out
+	LOCAL ./cat_blast output.fasta input.fasta.0.out input.fasta.1.out input.fasta.2.out input.fasta.3.out input.fasta.4.out input.fasta.5.out input.fasta.6.out input.fasta.7.out input.fasta.8.out input.fasta.9.out input.fasta.10.out input.fasta.11.out input.fasta.12.out input.fasta.13.out input.fasta.14.out input.fasta.15.out input.fasta.16.out input.fasta.17.out input.fasta.18.out input.fasta.19.out
+
+output.fasta.err : input.fasta.0.err input.fasta.1.err input.fasta.2.err input.fasta.3.err input.fasta.4.err input.fasta.5.err input.fasta.6.err input.fasta.7.err input.fasta.8.err input.fasta.9.err input.fasta.10.err input.fasta.11.err input.fasta.12.err input.fasta.13.err input.fasta.14.err input.fasta.15.err input.fasta.16.err input.fasta.17.err input.fasta.18.err input.fasta.19.err
+	LOCAL cat input.fasta.0.err input.fasta.1.err input.fasta.2.err input.fasta.3.err input.fasta.4.err input.fasta.5.err input.fasta.6.err input.fasta.7.err input.fasta.8.err input.fasta.9.err input.fasta.10.err input.fasta.11.err input.fasta.12.err input.fasta.13.err input.fasta.14.err input.fasta.15.err input.fasta.16.err input.fasta.17.err input.fasta.18.err input.fasta.19.err > output.fasta.err
