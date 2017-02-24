@@ -56,15 +56,17 @@ For example, to run it all locally:
 makeflow blast.mf
 ```
 
-To run it using HTCondor:
-
+Or to run it using HTCondor or Work Queue or SGE:
 ```
 makeflow -T condor blast.mf
-```
-
-To run it using SGE:
-
-```
+makeflow -T wq blast.mf
 makeflow -T sge blast.mf
+```
+
+To visualize the workflow that was generated:
+```
+makeflow_viz blast.mf --dot-no-labels > blast.dot
+dot -Tpng blast.dot > blast.png
+display blast.png
 ```
 
