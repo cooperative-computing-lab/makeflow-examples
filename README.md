@@ -12,4 +12,5 @@ Each example has one or more of the following pieces:
 <tr><td><img width=128 src=ssaha/ssaha.png><td>SSAHA Genomics analysis workflow, courtesy of Scott Emrich and Notre Dame Bioinformatics Laboratory.  (Shown at scale of 25 splits.)
 <tr><td><img width=128 src=snpexp/snpexp.png><td>SNPEXP Genomics analysis workflow courtesy of Scott Emrich and Notre Dame Bioinformatics Laboratory.
 <tr><td><img width=128 src=bwa-gatk/bwa-gatk.png><td>BWA-GATK genomics workflow by Nick Hazekamp and Olivia Choudhury.
+<tr><td><img width=128 src=blast/blast.png><td>BLAST workflow adapted from the Biocompute web portal.
 </table>
