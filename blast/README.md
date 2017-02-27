@@ -72,13 +72,29 @@ display blast.png
 
 Additionally, you can generate random data to adjust the total runtime:
 ```
-./blast_data_gen 100 500 > test.fasta
+./fasta_generator 200 1000 > test.fasta
 ./makeflow_blast -d nt -i test.fasta -p blastn --num_seq 5 --makeflow blast_test.mf
 makeflow blast_test.mf
 ```
 
 The number and length of sequences can be adjusted for your needs, with the first number 
 adjusting the number of contigs and the second adjusting the length of these contigs.
-`blast_data_gen.pl` produces contigs containing random AGCT sequences.
+`fasta_generator` produces contigs containing random AGCT sequences.
 
-The provided values produces a workflow that runs in ~5 minutes.
+The provided values produces a workflow that runs in ~5 minutes on a local single core machine.
+
+To produce a workflow that runs ~20 minutes on a 20 single core machines:
+```
+./fasta_generator 30000 2000 > test.fasta
+./makeflow_blast -d nt -i test.fasta -p blastn --num_seq 100 --makeflow blast_test.mf
+```
+
+To produce a workflow that runs ~30 minutes on a 75 single core machines:
+```
+./fasta_generator 100000 2000 > test.fasta
+./makeflow_blast -d nt -i test.fasta -p blastn --num_seq 1000 --makeflow blast_test.mf
+```
+
+
+
+

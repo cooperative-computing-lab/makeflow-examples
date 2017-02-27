@@ -1,8 +1,10 @@
 #!/usr/bin/perl
 
+print rand;
+
 $num_args = $#ARGV + 1;
 if ($num_args != 2) {
-    print "Usage: blast_data_gen number_contigs length_of_contigs\n";
+    print "Usage: fasta_generator number_contigs length_of_contigs\n";
     exit;
 }
 
