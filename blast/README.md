@@ -10,14 +10,14 @@ tar xvzf blast-2.2.26-x64-linux.tar.gz
 
 Next, copy the main executable into the working directory.
 ```
-cp blast-2.2.6/bin/blastall .
+cp blast-2.2.26/bin/blastall .
 ```
 
 Obtain a nucleotide database suitable for searching. (about 400MB)
 ```
 wget ftp://ftp.ncbi.nlm.nih.gov/blast/db/nt.44.tar.gz
 mkdir nt
-tar -C nt xvzf nt..44.tar.gz
+tar -C nt -xvzf nt.44.tar.gz
 ```
 
 Now, test to make sure that blast works locally:
@@ -70,3 +70,15 @@ dot -Tpng blast.dot > blast.png
 display blast.png
 ```
 
+Additionally, you can generate random data to adjust the total runtime:
+```
+./blast_data_gen 100 500 > test.fasta
+./makeflow_blast -d nt -i test.fasta -p blastn --num_seq 5 --makeflow blast_test.mf
+makeflow blast_test.mf
+```
+
+The number and length of sequences can be adjusted for your needs, with the first number 
+adjusting the number of contigs and the second adjusting the length of these contigs.
+`blast_data_gen.pl` produces contigs containing random AGCT sequences.
+
+The provided values produces a workflow that runs in ~5 minutes.
