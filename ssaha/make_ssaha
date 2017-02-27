@@ -2,28 +2,35 @@
 
 use POSIX;
 
-my $db = "ref.db";
-my $splits = 25;
+my $db = "db.fastq";
 my $infile = "input.fastq";
 my $outfile = "output.fastq";
+my $seqs_per_file = 10000;
+
+$nseqs = `./fastq_count.pl $infile`;
+chomp $nseqs;
+
+$nfiles = 1 + int($nseqs / $seqs_per_file);
+
+print "# $nseqs $nfiles $seqs_per_file\n";
 
 my $inputlist;
 my $outputlist;
 
-for (my $i = 0; $i < $splits; $i++) {
-	$inputlist .= "input.$i ";
-	$outputlist .= "output.$i ";
+for (my $i = 0; $i < $nfiles; $i++) {
+	$inputlist .= "$infile.$i ";
+	$outputlist .= "$outfile.$i ";
 }
 
 print "OPTIONS=-tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2\n";
 
-print "$inputlist: $infile split.pl\n";
-print "\tLOCAL ./split.pl input.fastq $splits\n\n";
+print "$inputlist: $infile fastq_split.pl\n";
+print "\tLOCAL ./fastq_split.pl $infile $seqs_per_file\n\n";
 
-for (my $n = 0; $n < $splits; $n++){
-	print "output.$n: input.$n $db ssaha2\n";
-	print "\t./ssaha2 \$OPTIONS $db input.$n > output.$n\n\n";
+for (my $i = 0; $i < $nfiles; $i++){
+	print "$outfile.$i: $infile.$i $db ssaha2\n";
+	print "\t./ssaha2 \$OPTIONS $db $infile.$i > $outfile.$i\n\n";
 }
 
-print "$outfile: combine.pl $outputlist\n";
-print "\tLOCAL ./combine.pl output.fastq $splits\n";
+print "$outfile: $outputlist\n";
+print "\tLOCAL cat $outputlist > $outfile\n\n";

@@ -1,81 +1,17 @@
+# 272 3 100
 OPTIONS=-tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2
-input.0 input.1 input.2 input.3 input.4 input.5 input.6 input.7 input.8 input.9 input.10 input.11 input.12 input.13 input.14 input.15 input.16 input.17 input.18 input.19 input.20 input.21 input.22 input.23 input.24 : input.fastq split.pl
-	LOCAL ./split.pl input.fastq 25
+input.fastq.0 input.fastq.1 input.fastq.2 : input.fastq fastq_split.pl
+	LOCAL ./fastq_split.pl input.fastq 100
 
-output.0: input.0 ref.db ssaha2
-	./ssaha2 $OPTIONS ref.db input.0 > output.0
+output.fastq.0: input.fastq.0 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq input.fastq.0 > output.fastq.0
 
-output.1: input.1 ref.db ssaha2
-	./ssaha2 $OPTIONS ref.db input.1 > output.1
+output.fastq.1: input.fastq.1 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq input.fastq.1 > output.fastq.1
 
-output.2: input.2 ref.db ssaha2
-	./ssaha2 $OPTIONS ref.db input.2 > output.2
+output.fastq.2: input.fastq.2 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq input.fastq.2 > output.fastq.2
 
-output.3: input.3 ref.db ssaha2
-	./ssaha2 $OPTIONS ref.db input.3 > output.3
+output.fastq: output.fastq.0 output.fastq.1 output.fastq.2 
+	LOCAL cat output.fastq.0 output.fastq.1 output.fastq.2  > output.fastq
 
-output.4: input.4 ref.db ssaha2
-	./ssaha2 $OPTIONS ref.db input.4 > output.4
-
-output.5: input.5 ref.db ssaha2
-	./ssaha2 $OPTIONS ref.db input.5 > output.5
-
-output.6: input.6 ref.db ssaha2
-	./ssaha2 $OPTIONS ref.db input.6 > output.6
-
-output.7: input.7 ref.db ssaha2
-	./ssaha2 $OPTIONS ref.db input.7 > output.7
-
-output.8: input.8 ref.db ssaha2
-	./ssaha2 $OPTIONS ref.db input.8 > output.8
-
-output.9: input.9 ref.db ssaha2
-	./ssaha2 $OPTIONS ref.db input.9 > output.9
-
-output.10: input.10 ref.db ssaha2
-	./ssaha2 $OPTIONS ref.db input.10 > output.10
-
-output.11: input.11 ref.db ssaha2
-	./ssaha2 $OPTIONS ref.db input.11 > output.11
-
-output.12: input.12 ref.db ssaha2
-	./ssaha2 $OPTIONS ref.db input.12 > output.12
-
-output.13: input.13 ref.db ssaha2
-	./ssaha2 $OPTIONS ref.db input.13 > output.13
-
-output.14: input.14 ref.db ssaha2
-	./ssaha2 $OPTIONS ref.db input.14 > output.14
-
-output.15: input.15 ref.db ssaha2
-	./ssaha2 $OPTIONS ref.db input.15 > output.15
-
-output.16: input.16 ref.db ssaha2
-	./ssaha2 $OPTIONS ref.db input.16 > output.16
-
-output.17: input.17 ref.db ssaha2
-	./ssaha2 $OPTIONS ref.db input.17 > output.17
-
-output.18: input.18 ref.db ssaha2
-	./ssaha2 $OPTIONS ref.db input.18 > output.18
-
-output.19: input.19 ref.db ssaha2
-	./ssaha2 $OPTIONS ref.db input.19 > output.19
-
-output.20: input.20 ref.db ssaha2
-	./ssaha2 $OPTIONS ref.db input.20 > output.20
-
-output.21: input.21 ref.db ssaha2
-	./ssaha2 $OPTIONS ref.db input.21 > output.21
-
-output.22: input.22 ref.db ssaha2
-	./ssaha2 $OPTIONS ref.db input.22 > output.22
-
-output.23: input.23 ref.db ssaha2
-	./ssaha2 $OPTIONS ref.db input.23 > output.23
-
-output.24: input.24 ref.db ssaha2
-	./ssaha2 $OPTIONS ref.db input.24 > output.24
-
-output.fastq: combine.pl output.0 output.1 output.2 output.3 output.4 output.5 output.6 output.7 output.8 output.9 output.10 output.11 output.12 output.13 output.14 output.15 output.16 output.17 output.18 output.19 output.20 output.21 output.22 output.23 output.24 
-	LOCAL ./combine.pl output.fastq 25
