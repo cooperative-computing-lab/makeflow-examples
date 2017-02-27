@@ -1,0 +1,37 @@
+#!/usr/bin/perl -w
+
+if($#ARGV!=3) {
+    print "$0 <database.fastq> <query.fastq> <output.fastq> <num-seqs-per-split>\n";
+    exit;
+}
+
+my $db = $ARGV[0];
+my $infile = $ARGV[1];
+my $outfile = $ARGV[2];
+my $seqs_per_file = int($ARGV[3]);
+
+$nseqs = `./fastq_count.pl $infile`;
+chomp $nseqs;
+
+$nfiles = 1 + int($nseqs / $seqs_per_file);
+
+my $inputlist;
+my $outputlist;
+
+for (my $i = 0; $i < $nfiles; $i++) {
+	$inputlist .= "$infile.$i ";
+	$outputlist .= "$outfile.$i ";
+}
+
+print "OPTIONS=-tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2\n";
+
+print "$inputlist: $infile fastq_split.pl\n";
+print "\tLOCAL ./fastq_split.pl $infile $seqs_per_file\n\n";
+
+for (my $i = 0; $i < $nfiles; $i++){
+	print "$outfile.$i: $infile.$i $db ssaha2\n";
+	print "\t./ssaha2 \$OPTIONS $db $infile.$i > $outfile.$i\n\n";
+}
+
+print "$outfile: $outputlist\n";
+print "\tLOCAL cat $outputlist > $outfile\n\n";
