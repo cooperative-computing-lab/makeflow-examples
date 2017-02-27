@@ -1,18 +1,19 @@
 #!/usr/bin/perl -w
 
-use POSIX;
+if($#ARGV!=3) {
+    print "$0 <database.fastq> <query.fastq> <output.fastq> <num-seqs-per-split>\n";
+    exit;
+}
 
-my $db = "db.fastq";
-my $infile = "input.fastq";
-my $outfile = "output.fastq";
-my $seqs_per_file = 10000;
+my $db = $ARGV[0];
+my $infile = $ARGV[1];
+my $outfile = $ARGV[2];
+my $seqs_per_file = int($ARGV[3]);
 
 $nseqs = `./fastq_count.pl $infile`;
 chomp $nseqs;
 
 $nfiles = 1 + int($nseqs / $seqs_per_file);
-
-print "# $nseqs $nfiles $seqs_per_file\n";
 
 my $inputlist;
 my $outputlist;

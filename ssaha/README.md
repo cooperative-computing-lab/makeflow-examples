@@ -12,11 +12,13 @@ cp ${SSAHA_BINARY}/ssaha2 .
 ```
 
 If you do not have any data of your own, you can generate some random
-data for testing purposes in FASTQ format:
+data for testing purposes in FASTQ format.  The first argument to
+fastq generate is the number of sequences, and the second is the
+length of sequences.
 
 ```
-./fastq_generate 1000 100 > query.fastq
-./fastq_generate 100000 1000 > db.fastq
+./fastq_generate.pl 100000 100 > query.fastq
+./fastq_generate.pl 100000 1000 > db.fastq
 ```
 
 Make sure that the sequential ssaha executable works.
@@ -28,10 +30,10 @@ satisfied it is working.
 ```
 
 Then, generate a workflow to parallelize the job into
-sub-jobs of 100 sequences each:
+sub-jobs of 1000 sequences each:
 
 ```
-./make_ssaha_workflow ssaha.mf 100
+./make_ssaha_workflow db.fastq query.fastq output.fastq 1000
 ```
 
 Finally, run the workflow using makeflow locally, or using
@@ -43,3 +45,4 @@ makeflow -T condor ssaha.mf
 makeflow -T sge ssaha.mf
 makeflow -T wq.ssaha.mf
 ```
+
