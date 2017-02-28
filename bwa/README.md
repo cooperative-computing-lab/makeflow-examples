@@ -15,18 +15,17 @@ cd ..
 ```
 
 If you do not have real data to work with, then generate
-some simulated data:
+some simulated data (~10 second workflow):
 
 ```
-./fastq_generate 100000 1000 > ref.fastq
-./fastq_generate 10000 1000 > query.fastq
-./fastq_generate 10000 1000 > rquery.fastq
+./fastq_generate.pl 10000 1000 > ref.fastq
+./fastq_generate.pl 1000 100 ref.fastq > query.fastq
 ```
 
 Then, generate a workflow to process the data:
 
 ```
-./make_bwa_workflow --ref ref.fastq --query query.fastq --rquery rquery.fastq > bwa.mf
+./make_bwa_workflow --ref ref.fastq --query query.fastq --num_seq 100 > bwa.mf
 ```
 
 Finally, execute the workflow using makeflow locally,
@@ -38,4 +37,12 @@ makeflow -T condor bwa.mf
 makeflow -T sge bwa.mf
 makeflow -T wq bwa.mf
 ```
+
+Workflow ~2 mins on 20 workers:
+
+```
+./fastq_generate.pl 100000 1000 > ref.fastq
+./fastq_generate.pl 10000 1000 ref.fastq > query.fastq
+```
+
 
