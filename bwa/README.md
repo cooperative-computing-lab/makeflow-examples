@@ -54,3 +54,5 @@ Workflow ~6 mins on 20 workers:
 ./make_bwa_workflow --ref ref.fastq --query query.fastq --num_seq 1000 --algo backtrack > bwa.mf
 ```
 
+Note: when using generated data we did not use the paired-end functionality of BWA
+as we do not guarantee both query and rquery are matched as a pair would be in real data.
