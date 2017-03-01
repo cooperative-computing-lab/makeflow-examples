@@ -86,7 +86,7 @@ The provided values produces a workflow that runs in ~5 minutes on a local singl
 <table cellpadding=20>
 <tr><td>Workflow Size<td>Reference Size<td>Query Size(Number x Length)<td>Number of seq per split<td> Approx Time with Machine
 <tr><td>Small<td>NT (Fixed 565MB)<td>200x1000 (198K)<td>5 <td> ~5 min : 1 machine
-<tr><td>Medium<td><td>NT (Fixed 565MB)<td>30000x2000 (58M)<td>100 <td> ~20 min : 20 machines
-<tr><td>Large<td><td>NT (Fixed 565MB)<td>100000x2000 (193M)<td>1000 <td> ~30 min : 75 machines
+<tr><td>Medium<td>NT (Fixed 565MB)<td>30000x2000 (58M)<td>100 <td> ~20 min : 20 machines
+<tr><td>Large<td>NT (Fixed 565MB)<td>100000x2000 (193M)<td>1000 <td> ~30 min : 75 machines
 </table>
 

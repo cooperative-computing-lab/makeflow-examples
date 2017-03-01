@@ -49,8 +49,8 @@ makeflow -T wq.ssaha.mf
 <table cellpadding=20>
 <tr><td>Workflow Size<td>Reference Size(Number x Length)<td>Query Size(Number x Length)<td>Number of seq per split<td> Approx Time with Machine
 <tr><td>Small<td>10000x2000 (Fixed 20M)<td>100000x100 (237K)<td>100 <td> ~5 min : 1 machine
-<tr><td>Medium<td><td>10000x2000 (Fixed 1000M)<td>1000000x100 (237M)<td>1000 <td> ~3 : 20 machines
-<tr><td>Large<td><td>100000x2000 (Fixed 4.0G)<td>1000000x500 (386M)<td>1000 <td> ~15 min : 20 machines
+<tr><td>Medium<td>10000x2000 (Fixed 1000M)<td>1000000x100 (237M)<td>1000 <td> ~3 : 20 machines
+<tr><td>Large<td>100000x2000 (Fixed 4.0G)<td>1000000x500 (386M)<td>1000 <td> ~15 min : 20 machines
 </table>
 
 
