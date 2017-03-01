@@ -11,6 +11,11 @@ files in each directory:
 - BLAST, SSAHA, and BWA contain complete instructions for downloading software,
 generating sample data, and creating and running complete workflows from scratch.
 
+- It should be noted that the sample data that is generated in these is complelely
+random and has no value other than for showing these workflows in action. As a result
+some generated behavior may appear to cause issues when programs expect some format 
+or quality guarantee.
+
 - The other examples are static snapshots of workflows for display
 or analysis, but do not contain the actual applications necessary to run them.
 
