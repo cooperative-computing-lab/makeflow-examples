@@ -83,18 +83,10 @@ adjusting the number of contigs and the second adjusting the length of these con
 
 The provided values produces a workflow that runs in ~5 minutes on a local single core machine.
 
-To produce a workflow that runs ~20 minutes on a 20 single core machines:
-```
-./fasta_generator 30000 2000 > test.fasta
-./makeflow_blast -d nt -i test.fasta -p blastn --num_seq 100 --makeflow blast_test.mf
-```
-
-To produce a workflow that runs ~30 minutes on a 75 single core machines:
-```
-./fasta_generator 100000 2000 > test.fasta
-./makeflow_blast -d nt -i test.fasta -p blastn --num_seq 1000 --makeflow blast_test.mf
-```
-
-
-
+<table cellpadding=20>
+<tr><td>Workflow Size<td>Reference Size<td>Query Size(Number x Length)<td>Number of seq per split<td> Approx Time with Machine
+<tr><td>Small<td>NT (Fixed 565MB)<td>200x1000 (198K)<td>5 <td> ~5 min : 1 machine
+<tr><td>Medium<td><td>NT (Fixed 565MB)<td>30000x2000 (58M)<td>100 <td> ~20 min : 20 machines
+<tr><td>Large<td><td>NT (Fixed 565MB)<td>100000x2000 (193M)<td>1000 <td> ~30 min : 75 machines
+</table>
 
