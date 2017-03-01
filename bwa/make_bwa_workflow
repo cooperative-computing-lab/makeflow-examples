@@ -316,7 +316,7 @@ def write_makeflow(destination, configuration, num_reads_per_split, fastq_name, 
 					if bwa_args["samse"]:
 						se_a = ' '.join(bwa_args["samse"])
 
-					makeflow.write("\n\n {0} {1} : bwa {2} {3} {4}".format(output, error, index, query1, sai1))
+					makeflow.write("\n\n{0} {1} : bwa {2} {3} {4}".format(output, error, index, query1, sai1))
 					makeflow.write("\n\t./bwa samse {0} {1} {2} {3} > {4} 2> {5}".format(se_a, ref, sai1, query1, output, error))
 
 			else:

@@ -43,6 +43,14 @@ Workflow ~2 mins on 20 workers:
 ```
 ./fastq_generate.pl 100000 1000 > ref.fastq
 ./fastq_generate.pl 10000 1000 ref.fastq > query.fastq
+./make_bwa_workflow --ref ref.fastq --query query.fastq --num_seq 1000 > bwa.mf
 ```
 
+Workflow ~6 mins on 20 workers:
+
+```
+./fastq_generate.pl 100000 1000 > ref.fastq
+./fastq_generate.pl 1000000 100 ref.fastq > query.fastq
+./make_bwa_workflow --ref ref.fastq --query query.fastq --num_seq 1000 --algo backtrack > bwa.mf
+```
 
