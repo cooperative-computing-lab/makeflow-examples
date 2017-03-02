@@ -1,6 +1,8 @@
 Makeflow Examples Repository
 ----------------------------
 
+<img src=banner.png>
+
 This is an repository of sample workflows for use with the <a href=http://ccl.cse.nd.edu/software/makeflow>Makeflow</a> workflow system.
 You can use as examples of how to use Makeflow, or to benchmark the performance of your system.
 If you have an interesting workflow, we would be happy to add it here; please make a pull request.
