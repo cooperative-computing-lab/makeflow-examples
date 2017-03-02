@@ -1,17 +1,91 @@
-# 272 3 100
 OPTIONS=-tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2
-input.fastq.0 input.fastq.1 input.fastq.2 : input.fastq fastq_split.pl
-	LOCAL ./fastq_split.pl input.fastq 100
+query.fastq.0 query.fastq.1 query.fastq.2 query.fastq.3 query.fastq.4 query.fastq.5 query.fastq.6 query.fastq.7 query.fastq.8 query.fastq.9 query.fastq.10 query.fastq.11 query.fastq.12 query.fastq.13 query.fastq.14 query.fastq.15 query.fastq.16 query.fastq.17 query.fastq.18 query.fastq.19 query.fastq.20 query.fastq.21 query.fastq.22 query.fastq.23 query.fastq.24 query.fastq.25 query.fastq.26 query.fastq.27 : query.fastq fastq_split.pl
+	LOCAL ./fastq_split.pl query.fastq 10
 
-output.fastq.0: input.fastq.0 db.fastq ssaha2
-	./ssaha2 $OPTIONS db.fastq input.fastq.0 > output.fastq.0
+output.fastq.0: query.fastq.0 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.0 > output.fastq.0
 
-output.fastq.1: input.fastq.1 db.fastq ssaha2
-	./ssaha2 $OPTIONS db.fastq input.fastq.1 > output.fastq.1
+output.fastq.1: query.fastq.1 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.1 > output.fastq.1
 
-output.fastq.2: input.fastq.2 db.fastq ssaha2
-	./ssaha2 $OPTIONS db.fastq input.fastq.2 > output.fastq.2
+output.fastq.2: query.fastq.2 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.2 > output.fastq.2
 
-output.fastq: output.fastq.0 output.fastq.1 output.fastq.2 
-	LOCAL cat output.fastq.0 output.fastq.1 output.fastq.2  > output.fastq
+output.fastq.3: query.fastq.3 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.3 > output.fastq.3
+
+output.fastq.4: query.fastq.4 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.4 > output.fastq.4
+
+output.fastq.5: query.fastq.5 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.5 > output.fastq.5
+
+output.fastq.6: query.fastq.6 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.6 > output.fastq.6
+
+output.fastq.7: query.fastq.7 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.7 > output.fastq.7
+
+output.fastq.8: query.fastq.8 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.8 > output.fastq.8
+
+output.fastq.9: query.fastq.9 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.9 > output.fastq.9
+
+output.fastq.10: query.fastq.10 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.10 > output.fastq.10
+
+output.fastq.11: query.fastq.11 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.11 > output.fastq.11
+
+output.fastq.12: query.fastq.12 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.12 > output.fastq.12
+
+output.fastq.13: query.fastq.13 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.13 > output.fastq.13
+
+output.fastq.14: query.fastq.14 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.14 > output.fastq.14
+
+output.fastq.15: query.fastq.15 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.15 > output.fastq.15
+
+output.fastq.16: query.fastq.16 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.16 > output.fastq.16
+
+output.fastq.17: query.fastq.17 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.17 > output.fastq.17
+
+output.fastq.18: query.fastq.18 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.18 > output.fastq.18
+
+output.fastq.19: query.fastq.19 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.19 > output.fastq.19
+
+output.fastq.20: query.fastq.20 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.20 > output.fastq.20
+
+output.fastq.21: query.fastq.21 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.21 > output.fastq.21
+
+output.fastq.22: query.fastq.22 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.22 > output.fastq.22
+
+output.fastq.23: query.fastq.23 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.23 > output.fastq.23
+
+output.fastq.24: query.fastq.24 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.24 > output.fastq.24
+
+output.fastq.25: query.fastq.25 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.25 > output.fastq.25
+
+output.fastq.26: query.fastq.26 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.26 > output.fastq.26
+
+output.fastq.27: query.fastq.27 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.27 > output.fastq.27
+
+output.fastq: output.fastq.0 output.fastq.1 output.fastq.2 output.fastq.3 output.fastq.4 output.fastq.5 output.fastq.6 output.fastq.7 output.fastq.8 output.fastq.9 output.fastq.10 output.fastq.11 output.fastq.12 output.fastq.13 output.fastq.14 output.fastq.15 output.fastq.16 output.fastq.17 output.fastq.18 output.fastq.19 output.fastq.20 output.fastq.21 output.fastq.22 output.fastq.23 output.fastq.24 output.fastq.25 output.fastq.26 output.fastq.27 
+	LOCAL cat output.fastq.0 output.fastq.1 output.fastq.2 output.fastq.3 output.fastq.4 output.fastq.5 output.fastq.6 output.fastq.7 output.fastq.8 output.fastq.9 output.fastq.10 output.fastq.11 output.fastq.12 output.fastq.13 output.fastq.14 output.fastq.15 output.fastq.16 output.fastq.17 output.fastq.18 output.fastq.19 output.fastq.20 output.fastq.21 output.fastq.22 output.fastq.23 output.fastq.24 output.fastq.25 output.fastq.26 output.fastq.27  > output.fastq
 
