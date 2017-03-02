@@ -13,7 +13,7 @@ We recommend the following citation for this data:
 Some of these examples are more complete than others, as described in the README.md
 files in each directory:
 
-- BLAST, SSAHA, and BWA contain complete instructions for downloading software,
+- BLAST, SSAHA, BWA, and SHRIMP contain complete instructions for downloading software,
 generating sample data, and creating and running complete workflows from scratch.
 The other examples are static snapshots of workflows for display
 or analysis, but do not contain the actual applications necessary to run them.
@@ -27,6 +27,7 @@ or quality guarantee.
 <tr><td><img width=128 src=blast/blast.png><td>BLAST workflow adapted from the Biocompute web portal.  (Shown at a scale of 10 splits.)
 <tr><td><img width=128 src=ssaha/ssaha.png><td>SSAHA genomics analysis workflow, courtesy of Scott Emrich and Notre Dame Bioinformatics Laboratory.  (Shown at scale of 25 splits.)
 <tr><td><img width=128 src=bwa/bwa.png><td>BWA genomics analysis workflow, courtesy of Scott Emrich and Notre Dame Bioinformatics Laboratory.  (Shown at scale of 20 splits.)
+<tr><td><img width=128 src=shrimp/shrimp.png><td>SHRIMP genomics analysis workflow adapted from the Biocompute web portal.  (Shown at a scale of 100 splits.)
 <tr><td><img width=128 src=lifemapper/lifemapper.png><td>Lifemapper Species Distribution Modeling (SDM) workflow, courtesy of C.J. Grady.  (Shown at scale of 10 species and 5 random trials.)
 <tr><td><img width=128 src=snpexp/snpexp.png><td>SNPEXP Genomics analysis workflow courtesy of Scott Emrich and Notre Dame Bioinformatics Laboratory.
 <tr><td><img width=128 src=bwa-gatk/bwa-gatk.png><td>BWA-GATK genomics workflow by Nick Hazekamp and Olivia Choudhury.
