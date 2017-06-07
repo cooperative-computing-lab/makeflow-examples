@@ -82,7 +82,7 @@ def count_splits( fastq , num_reads ):
 		if (re.search('^[@]', line) and line_count % 4 ==0):
 			if (read_count == num_reads):
 				num_outputs += 1
-				read_count = 0
+				read_count = 1
 				if ( num_outputs % 10 == 0):
 					log.info("Current Number of Partitions : {0}".format(num_outputs))
 			else:
@@ -142,7 +142,7 @@ while (my $line = <INPUT>) {
 			print OUTPUT $line;
 			print OUTPUT \"\\n\";
 			$num_outputs++;
-			$read_count = 0;
+			$read_count = 1;
 		}
 		else{
 			print OUTPUT $line;
