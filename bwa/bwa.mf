@@ -1,76 +1,43 @@
 
 
-input.1.0 input.1.1 input.1.2 input.1.3 input.1.4 input.1.5 input.1.6 input.1.7 input.1.8 input.1.9 input.1.10 input.1.11 input.1.12 input.1.13 input.1.14 input.1.15 input.1.16 input.1.17 input.1.18 input.1.19 : fastq_reduce input.1
-	LOCAL perl fastq_reduce input.1 1000
+query.fastq.0 query.fastq.1 query.fastq.2 query.fastq.3 query.fastq.4 query.fastq.5 query.fastq.6 query.fastq.7 query.fastq.8 query.fastq.9 : fastq_reduce query.fastq
+	LOCAL perl fastq_reduce query.fastq 100
 
-input.2.0 input.2.1 input.2.2 input.2.3 input.2.4 input.2.5 input.2.6 input.2.7 input.2.8 input.2.9 input.2.10 input.2.11 input.2.12 input.2.13 input.2.14 input.2.15 input.2.16 input.2.17 input.2.18 input.2.19 : fastq_reduce input.2
-	LOCAL perl fastq_reduce input.2 1000
+ref.fastq.bwt ref.fastq.pac ref.fastq.amb ref.fastq.ann ref.fastq.sa : bwa ref.fastq
+	LOCAL ./bwa index  ref.fastq
 
-input.0.bwt input.0.pac input.0.amb input.0.ann input.0.sa : bwa input.0
-	LOCAL ./bwa index  input.0
+query.fastq.0.sam query.fastq.0.err : bwa ref.fastq ref.fastq.bwt ref.fastq.pac ref.fastq.amb ref.fastq.ann ref.fastq.sa query.fastq.0 
+	./bwa mem   -v 0  ref.fastq query.fastq.0  > query.fastq.0.sam 2> query.fastq.0.err 
 
-input.1.0.sam input.1.0.err : bwa input.0 input.0.bwt input.0.pac input.0.amb input.0.ann input.0.sa input.1.0 input.2.0
-	./bwa mem  -v 0  input.0 input.1.0 input.2.0 > input.1.0.sam 2> input.1.0.err
+query.fastq.1.sam query.fastq.1.err : bwa ref.fastq ref.fastq.bwt ref.fastq.pac ref.fastq.amb ref.fastq.ann ref.fastq.sa query.fastq.1 
+	./bwa mem   -v 0  ref.fastq query.fastq.1  > query.fastq.1.sam 2> query.fastq.1.err 
 
-input.1.1.sam input.1.1.err : bwa input.0 input.0.bwt input.0.pac input.0.amb input.0.ann input.0.sa input.1.1 input.2.1
-	./bwa mem  -v 0  input.0 input.1.1 input.2.1 > input.1.1.sam 2> input.1.1.err
+query.fastq.2.sam query.fastq.2.err : bwa ref.fastq ref.fastq.bwt ref.fastq.pac ref.fastq.amb ref.fastq.ann ref.fastq.sa query.fastq.2 
+	./bwa mem   -v 0  ref.fastq query.fastq.2  > query.fastq.2.sam 2> query.fastq.2.err 
 
-input.1.2.sam input.1.2.err : bwa input.0 input.0.bwt input.0.pac input.0.amb input.0.ann input.0.sa input.1.2 input.2.2
-	./bwa mem  -v 0  input.0 input.1.2 input.2.2 > input.1.2.sam 2> input.1.2.err
+query.fastq.3.sam query.fastq.3.err : bwa ref.fastq ref.fastq.bwt ref.fastq.pac ref.fastq.amb ref.fastq.ann ref.fastq.sa query.fastq.3 
+	./bwa mem   -v 0  ref.fastq query.fastq.3  > query.fastq.3.sam 2> query.fastq.3.err 
 
-input.1.3.sam input.1.3.err : bwa input.0 input.0.bwt input.0.pac input.0.amb input.0.ann input.0.sa input.1.3 input.2.3
-	./bwa mem  -v 0  input.0 input.1.3 input.2.3 > input.1.3.sam 2> input.1.3.err
+query.fastq.4.sam query.fastq.4.err : bwa ref.fastq ref.fastq.bwt ref.fastq.pac ref.fastq.amb ref.fastq.ann ref.fastq.sa query.fastq.4 
+	./bwa mem   -v 0  ref.fastq query.fastq.4  > query.fastq.4.sam 2> query.fastq.4.err 
 
-input.1.4.sam input.1.4.err : bwa input.0 input.0.bwt input.0.pac input.0.amb input.0.ann input.0.sa input.1.4 input.2.4
-	./bwa mem  -v 0  input.0 input.1.4 input.2.4 > input.1.4.sam 2> input.1.4.err
+query.fastq.5.sam query.fastq.5.err : bwa ref.fastq ref.fastq.bwt ref.fastq.pac ref.fastq.amb ref.fastq.ann ref.fastq.sa query.fastq.5 
+	./bwa mem   -v 0  ref.fastq query.fastq.5  > query.fastq.5.sam 2> query.fastq.5.err 
 
-input.1.5.sam input.1.5.err : bwa input.0 input.0.bwt input.0.pac input.0.amb input.0.ann input.0.sa input.1.5 input.2.5
-	./bwa mem  -v 0  input.0 input.1.5 input.2.5 > input.1.5.sam 2> input.1.5.err
+query.fastq.6.sam query.fastq.6.err : bwa ref.fastq ref.fastq.bwt ref.fastq.pac ref.fastq.amb ref.fastq.ann ref.fastq.sa query.fastq.6 
+	./bwa mem   -v 0  ref.fastq query.fastq.6  > query.fastq.6.sam 2> query.fastq.6.err 
 
-input.1.6.sam input.1.6.err : bwa input.0 input.0.bwt input.0.pac input.0.amb input.0.ann input.0.sa input.1.6 input.2.6
-	./bwa mem  -v 0  input.0 input.1.6 input.2.6 > input.1.6.sam 2> input.1.6.err
+query.fastq.7.sam query.fastq.7.err : bwa ref.fastq ref.fastq.bwt ref.fastq.pac ref.fastq.amb ref.fastq.ann ref.fastq.sa query.fastq.7 
+	./bwa mem   -v 0  ref.fastq query.fastq.7  > query.fastq.7.sam 2> query.fastq.7.err 
 
-input.1.7.sam input.1.7.err : bwa input.0 input.0.bwt input.0.pac input.0.amb input.0.ann input.0.sa input.1.7 input.2.7
-	./bwa mem  -v 0  input.0 input.1.7 input.2.7 > input.1.7.sam 2> input.1.7.err
+query.fastq.8.sam query.fastq.8.err : bwa ref.fastq ref.fastq.bwt ref.fastq.pac ref.fastq.amb ref.fastq.ann ref.fastq.sa query.fastq.8 
+	./bwa mem   -v 0  ref.fastq query.fastq.8  > query.fastq.8.sam 2> query.fastq.8.err 
 
-input.1.8.sam input.1.8.err : bwa input.0 input.0.bwt input.0.pac input.0.amb input.0.ann input.0.sa input.1.8 input.2.8
-	./bwa mem  -v 0  input.0 input.1.8 input.2.8 > input.1.8.sam 2> input.1.8.err
+query.fastq.9.sam query.fastq.9.err : bwa ref.fastq ref.fastq.bwt ref.fastq.pac ref.fastq.amb ref.fastq.ann ref.fastq.sa query.fastq.9 
+	./bwa mem   -v 0  ref.fastq query.fastq.9  > query.fastq.9.sam 2> query.fastq.9.err 
 
-input.1.9.sam input.1.9.err : bwa input.0 input.0.bwt input.0.pac input.0.amb input.0.ann input.0.sa input.1.9 input.2.9
-	./bwa mem  -v 0  input.0 input.1.9 input.2.9 > input.1.9.sam 2> input.1.9.err
+query.sam : cat_bwa query.fastq.0.sam query.fastq.1.sam query.fastq.2.sam query.fastq.3.sam query.fastq.4.sam query.fastq.5.sam query.fastq.6.sam query.fastq.7.sam query.fastq.8.sam query.fastq.9.sam
+	LOCAL perl cat_bwa query.sam query.fastq.*.sam
 
-input.1.10.sam input.1.10.err : bwa input.0 input.0.bwt input.0.pac input.0.amb input.0.ann input.0.sa input.1.10 input.2.10
-	./bwa mem  -v 0  input.0 input.1.10 input.2.10 > input.1.10.sam 2> input.1.10.err
-
-input.1.11.sam input.1.11.err : bwa input.0 input.0.bwt input.0.pac input.0.amb input.0.ann input.0.sa input.1.11 input.2.11
-	./bwa mem  -v 0  input.0 input.1.11 input.2.11 > input.1.11.sam 2> input.1.11.err
-
-input.1.12.sam input.1.12.err : bwa input.0 input.0.bwt input.0.pac input.0.amb input.0.ann input.0.sa input.1.12 input.2.12
-	./bwa mem  -v 0  input.0 input.1.12 input.2.12 > input.1.12.sam 2> input.1.12.err
-
-input.1.13.sam input.1.13.err : bwa input.0 input.0.bwt input.0.pac input.0.amb input.0.ann input.0.sa input.1.13 input.2.13
-	./bwa mem  -v 0  input.0 input.1.13 input.2.13 > input.1.13.sam 2> input.1.13.err
-
-input.1.14.sam input.1.14.err : bwa input.0 input.0.bwt input.0.pac input.0.amb input.0.ann input.0.sa input.1.14 input.2.14
-	./bwa mem  -v 0  input.0 input.1.14 input.2.14 > input.1.14.sam 2> input.1.14.err
-
-input.1.15.sam input.1.15.err : bwa input.0 input.0.bwt input.0.pac input.0.amb input.0.ann input.0.sa input.1.15 input.2.15
-	./bwa mem  -v 0  input.0 input.1.15 input.2.15 > input.1.15.sam 2> input.1.15.err
-
-input.1.16.sam input.1.16.err : bwa input.0 input.0.bwt input.0.pac input.0.amb input.0.ann input.0.sa input.1.16 input.2.16
-	./bwa mem  -v 0  input.0 input.1.16 input.2.16 > input.1.16.sam 2> input.1.16.err
-
-input.1.17.sam input.1.17.err : bwa input.0 input.0.bwt input.0.pac input.0.amb input.0.ann input.0.sa input.1.17 input.2.17
-	./bwa mem  -v 0  input.0 input.1.17 input.2.17 > input.1.17.sam 2> input.1.17.err
-
-input.1.18.sam input.1.18.err : bwa input.0 input.0.bwt input.0.pac input.0.amb input.0.ann input.0.sa input.1.18 input.2.18
-	./bwa mem  -v 0  input.0 input.1.18 input.2.18 > input.1.18.sam 2> input.1.18.err
-
-input.1.19.sam input.1.19.err : bwa input.0 input.0.bwt input.0.pac input.0.amb input.0.ann input.0.sa input.1.19 input.2.19
-	./bwa mem  -v 0  input.0 input.1.19 input.2.19 > input.1.19.sam 2> input.1.19.err
-
-input.1.sam : cat_bwa input.1.0.sam input.1.1.sam input.1.2.sam input.1.3.sam input.1.4.sam input.1.5.sam input.1.6.sam input.1.7.sam input.1.8.sam input.1.9.sam input.1.10.sam input.1.11.sam input.1.12.sam input.1.13.sam input.1.14.sam input.1.15.sam input.1.16.sam input.1.17.sam input.1.18.sam input.1.19.sam
-	LOCAL perl cat_bwa input.1.sam input.1.0.sam input.1.1.sam input.1.2.sam input.1.3.sam input.1.4.sam input.1.5.sam input.1.6.sam input.1.7.sam input.1.8.sam input.1.9.sam input.1.10.sam input.1.11.sam input.1.12.sam input.1.13.sam input.1.14.sam input.1.15.sam input.1.16.sam input.1.17.sam input.1.18.sam input.1.19.sam
-
-input.1.err : input.1.0.err input.1.1.err input.1.2.err input.1.3.err input.1.4.err input.1.5.err input.1.6.err input.1.7.err input.1.8.err input.1.9.err input.1.10.err input.1.11.err input.1.12.err input.1.13.err input.1.14.err input.1.15.err input.1.16.err input.1.17.err input.1.18.err input.1.19.err
-	LOCAL cat input.1.0.err input.1.1.err input.1.2.err input.1.3.err input.1.4.err input.1.5.err input.1.6.err input.1.7.err input.1.8.err input.1.9.err input.1.10.err input.1.11.err input.1.12.err input.1.13.err input.1.14.err input.1.15.err input.1.16.err input.1.17.err input.1.18.err input.1.19.err > input.1.err
+query.err : query.fastq.0.err query.fastq.1.err query.fastq.2.err query.fastq.3.err query.fastq.4.err query.fastq.5.err query.fastq.6.err query.fastq.7.err query.fastq.8.err query.fastq.9.err
+	LOCAL cat query.fastq.*.err > query.err
