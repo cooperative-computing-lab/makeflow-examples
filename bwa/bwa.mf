@@ -7,34 +7,34 @@ ref.fastq.bwt ref.fastq.pac ref.fastq.amb ref.fastq.ann ref.fastq.sa : bwa ref.f
 	LOCAL ./bwa index  ref.fastq
 
 query.fastq.0.sam query.fastq.0.err : bwa ref.fastq ref.fastq.bwt ref.fastq.pac ref.fastq.amb ref.fastq.ann ref.fastq.sa query.fastq.0 
-	./bwa mem   -v 0  ref.fastq query.fastq.0  > query.fastq.0.sam 2> query.fastq.0.err 
+	./bwa mem   -v 0  ref.fastq query.fastq.0  > query.fastq.0.sam 2> query.fastq.0.err
 
 query.fastq.1.sam query.fastq.1.err : bwa ref.fastq ref.fastq.bwt ref.fastq.pac ref.fastq.amb ref.fastq.ann ref.fastq.sa query.fastq.1 
-	./bwa mem   -v 0  ref.fastq query.fastq.1  > query.fastq.1.sam 2> query.fastq.1.err 
+	./bwa mem   -v 0  ref.fastq query.fastq.1  > query.fastq.1.sam 2> query.fastq.1.err
 
 query.fastq.2.sam query.fastq.2.err : bwa ref.fastq ref.fastq.bwt ref.fastq.pac ref.fastq.amb ref.fastq.ann ref.fastq.sa query.fastq.2 
-	./bwa mem   -v 0  ref.fastq query.fastq.2  > query.fastq.2.sam 2> query.fastq.2.err 
+	./bwa mem   -v 0  ref.fastq query.fastq.2  > query.fastq.2.sam 2> query.fastq.2.err
 
 query.fastq.3.sam query.fastq.3.err : bwa ref.fastq ref.fastq.bwt ref.fastq.pac ref.fastq.amb ref.fastq.ann ref.fastq.sa query.fastq.3 
-	./bwa mem   -v 0  ref.fastq query.fastq.3  > query.fastq.3.sam 2> query.fastq.3.err 
+	./bwa mem   -v 0  ref.fastq query.fastq.3  > query.fastq.3.sam 2> query.fastq.3.err
 
 query.fastq.4.sam query.fastq.4.err : bwa ref.fastq ref.fastq.bwt ref.fastq.pac ref.fastq.amb ref.fastq.ann ref.fastq.sa query.fastq.4 
-	./bwa mem   -v 0  ref.fastq query.fastq.4  > query.fastq.4.sam 2> query.fastq.4.err 
+	./bwa mem   -v 0  ref.fastq query.fastq.4  > query.fastq.4.sam 2> query.fastq.4.err
 
 query.fastq.5.sam query.fastq.5.err : bwa ref.fastq ref.fastq.bwt ref.fastq.pac ref.fastq.amb ref.fastq.ann ref.fastq.sa query.fastq.5 
-	./bwa mem   -v 0  ref.fastq query.fastq.5  > query.fastq.5.sam 2> query.fastq.5.err 
+	./bwa mem   -v 0  ref.fastq query.fastq.5  > query.fastq.5.sam 2> query.fastq.5.err
 
 query.fastq.6.sam query.fastq.6.err : bwa ref.fastq ref.fastq.bwt ref.fastq.pac ref.fastq.amb ref.fastq.ann ref.fastq.sa query.fastq.6 
-	./bwa mem   -v 0  ref.fastq query.fastq.6  > query.fastq.6.sam 2> query.fastq.6.err 
+	./bwa mem   -v 0  ref.fastq query.fastq.6  > query.fastq.6.sam 2> query.fastq.6.err
 
 query.fastq.7.sam query.fastq.7.err : bwa ref.fastq ref.fastq.bwt ref.fastq.pac ref.fastq.amb ref.fastq.ann ref.fastq.sa query.fastq.7 
-	./bwa mem   -v 0  ref.fastq query.fastq.7  > query.fastq.7.sam 2> query.fastq.7.err 
+	./bwa mem   -v 0  ref.fastq query.fastq.7  > query.fastq.7.sam 2> query.fastq.7.err
 
 query.fastq.8.sam query.fastq.8.err : bwa ref.fastq ref.fastq.bwt ref.fastq.pac ref.fastq.amb ref.fastq.ann ref.fastq.sa query.fastq.8 
-	./bwa mem   -v 0  ref.fastq query.fastq.8  > query.fastq.8.sam 2> query.fastq.8.err 
+	./bwa mem   -v 0  ref.fastq query.fastq.8  > query.fastq.8.sam 2> query.fastq.8.err
 
 query.fastq.9.sam query.fastq.9.err : bwa ref.fastq ref.fastq.bwt ref.fastq.pac ref.fastq.amb ref.fastq.ann ref.fastq.sa query.fastq.9 
-	./bwa mem   -v 0  ref.fastq query.fastq.9  > query.fastq.9.sam 2> query.fastq.9.err 
+	./bwa mem   -v 0  ref.fastq query.fastq.9  > query.fastq.9.sam 2> query.fastq.9.err
 
 query.sam : cat_bwa query.fastq.0.sam query.fastq.1.sam query.fastq.2.sam query.fastq.3.sam query.fastq.4.sam query.fastq.5.sam query.fastq.6.sam query.fastq.7.sam query.fastq.8.sam query.fastq.9.sam
 	LOCAL perl cat_bwa query.sam query.fastq.*.sam

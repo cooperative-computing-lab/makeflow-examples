@@ -361,8 +361,7 @@ def write_makeflow(destination, configuration, num_reads_per_split, fastq_name, 
 					args = args + ' '.join(bwa_args[algo])
 
 				makeflow.write("\n\n{0} {1} : bwa {2} {3} {4}".format(output, error, index, query1, query2))
-				makeflow.write("\n\t./bwa {0} {1} {2} {3} {4} {5} > {6} 2> {7} ".format(algo, cores, args, ref, query1, query2, output, error))
-				
+				makeflow.write("\n\t./bwa {0} {1} {2} {3} {4} {5} > {6} 2> {7}".format(algo, cores, args, ref, query1, query2, output, error))
 		log.info("Writing Joining Rules")
 
 		(base, sep, file_ext) = options.fastq.rpartition(".")
@@ -377,14 +376,8 @@ def write_makeflow(destination, configuration, num_reads_per_split, fastq_name, 
 		if options.output_err:
 			error = options.output_err
 		
-		count=0
-		name = ""
-		for x in (options.ref):
-			if count >=4:
-				name= name+x
-			count+=1
-		output_blob="query." + name  + ".*.sam"
-		output_blob_err="query." + name  + ".*.err"
+		output_blob=(options.fastq) + ".*.sam"
+		output_blob_err=(options.fastq) + ".*.err"
 
 		if num_reads_per_split > 0:
 			makeflow.write("\n\n{0} : {1} {2}".format(output, cat_name,' '.join(results_to_cat)))			
@@ -395,8 +388,8 @@ def write_makeflow(destination, configuration, num_reads_per_split, fastq_name, 
 		
 		else:
 			if output != results_to_cat[0]:
-                                makeflow.write("\n\n{0} : {1}".format(output, results_to_cat[0]))
-                                makeflow.write("\n\tLOCAL mv {1} {0}".format(output, results_to_cat[0]))	
+				makeflow.write("\n\n{0} : {1}".format(output, results_to_cat[0]))
+				makeflow.write("\n\tLOCAL mv {1} {0}".format(output, results_to_cat[0]))	
  			
 			if error != errors_to_cat[0]:
 				makeflow.write("\n\n{0} : {1}".format(error, errors_to_cat[0]))
