@@ -2,7 +2,9 @@ BWA Workflow Example
 --------------------
 
 This workflow gives an example of using Makeflow to parallelize
-the Burroughs-Wheeler Alignment (BWA) tool.
+the Burroughs-Wheeler Alignment and Genome Analysis Toolkit (BWA-GATK) tool.
+
+NOTE: This implementation requires Java version 1.7, please make sure you are using the correct Java version.
 
 First, build the bwa binary for your architecture:
 
