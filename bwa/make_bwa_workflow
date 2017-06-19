@@ -10,6 +10,8 @@
 # Author: Nick Hazekamp
 # Date: 09/03/2013
 
+# Revised: Caitlin Guccione
+# Date: 06/14/2017
 
 import optparse, subprocess, os, sys, re, string, logging as log, stat
 from collections import defaultdict
@@ -50,6 +52,10 @@ def parse_bwa_options(parser):
 	group.add_option('--output_SAM', dest='output_SAM', help='The file to save the output (SAM format) [FASTQ.sam]')
 	group.add_option('--output_err', dest='output_err', help='The file to save the output (SAM format) [FASTQ.err]')
 	group.add_option('--algo', dest='algo', help='The type of Alignment Algorithm (backtrack, bwasw, mem) [mem]')
+	group.add_option('--cores', dest='cores', help='Specifies the minimun amount of cores needed for each job, adds -t for each job')
+	group.add_option('--disk', dest='disk', help='Specifies the minimum amount of disk space needed for each job')
+	group.add_option('--category', dest='category', help='Specifies the category needed for each job')
+	group.add_option('--memory', dest='memory', help='Specifies the minimim amount of memory needed for each job')
 	parser.add_option_group(group)
 
 def parse_makeflow_options(parser):
@@ -82,7 +88,7 @@ def count_splits( fastq , num_reads ):
 		if (re.search('^[@]', line) and line_count % 4 ==0):
 			if (read_count == num_reads):
 				num_outputs += 1
-				read_count = 0
+				read_count = 1
 				if ( num_outputs % 10 == 0):
 					log.info("Current Number of Partitions : {0}".format(num_outputs))
 			else:
@@ -142,7 +148,7 @@ while (my $line = <INPUT>) {
 			print OUTPUT $line;
 			print OUTPUT \"\\n\";
 			$num_outputs++;
-			$read_count = 0;
+			$read_count = 1;
 		}
 		else{
 			print OUTPUT $line;
@@ -170,7 +176,7 @@ def write_cat_bwa(destination):
 	cat_bwa = open(destination, 'w')
 	try:
 		cat_bwa.write('''#!/usr/bin/perl
-#
+
 #Copyright (C) 2013- The University of Notre Dame
 #This software is distributed under the GNU General Public License.
 #See the file COPYING for details.
@@ -183,31 +189,38 @@ def write_cat_bwa(destination):
 # Author: Nick Hazekamp
 # Date: 11/01/2013
 #
+# Revised: Caitlin Guccione
+# Date: 06/14/2017
+#
 
 my $output = shift;
 if (-e $output) {
-	unlink($output) || die \"Could not delete $output\";
+	unlink($output) || die "Could not delete $output";
 }
 
-open $OUT,'>>',$output or die(\"Could not open \" + $output + \" file.\");
+open $OUT,'>>',$output or die("Could not open " + $output + " file.");
 
-$file = 0;
+my $num_files = 0;
 
 while ($in = shift) {
-	++$file;
 
-	open(IN,$in) or die(\"Could not open \" + $in + \" file.\");
-	$print = 0;
-	while(my $line = <IN>) {
-		if (($line =~ /^@/) and ($file ne 1)) { $print = 0;}
-		elsif (($line =~ /main/)) { $print = 0; }
-		elsif (($line =~ /M::/)) { $print = 0; }
-		else { $print = 1; }
-		if ($print gt 0){
-			print { $OUT } $line;
+	my @files = glob($in);
+	
+	for my $file (@files){
+		++$num_files;
+		open(IN,$file) or die("Could not open " + $file + " file.");
+		$print = 0;
+		while(my $line = <IN>) {
+			if (($line =~ /^@/) and ($num_files ne 1)) { $print = 0;}
+			elsif (($line =~ /main/)) { $print = 0; }
+			elsif (($line =~ /M::/)) { $print = 0; }
+			else { $print = 1; }
+			if ($print gt 0){
+				print { $OUT } $line;
+			}
 		}
+		close (IN);
 	}
-	close (IN);
 }
 close (OUT);
 ''')
@@ -226,7 +239,16 @@ def write_makeflow(destination, configuration, num_reads_per_split, fastq_name, 
 		if options.config:
 			log.info("Reading Configuration from : {0}".format(configuration))
 			config = open(configuration, 'r')
-			makeflow.write(config.read())
+			makeflow.write(config.read())	
+		if (options.category) :
+			makeflow.write("\nCATEGORY={0}".format('"' + options.category)+'"')
+		if (options.cores) :
+			makeflow.write("\nCORES={0}".format(options.cores))	
+		if (options.memory) : 
+                        makeflow.write("\nMEMORY={0} ".format(options.memory))
+		if (options.disk) :
+                        makeflow.write("\nDISK={0} ".format(options.disk)) 
+				
 
 		if num_reads_per_split > 0:
 			splits = count_splits(options.fastq, num_reads_per_split)
@@ -264,6 +286,11 @@ def write_makeflow(destination, configuration, num_reads_per_split, fastq_name, 
 
 		log.info("Writing Indexing Rules")
 
+
+		cores= ""
+		if(options.cores and (options.cores > 1)):
+			cores= " -t {0} ".format(options.cores);
+
 		index_a = ""
 		if bwa_args["index"]:
 			index_a = ' '.join(bwa_args["index"])
@@ -287,8 +314,13 @@ def write_makeflow(destination, configuration, num_reads_per_split, fastq_name, 
 				sai2 = query2+".sai"
 
 			output = query1+".sam"
-			results_to_cat.append(output)
 
+
+
+
+
+			results_to_cat.append(output)
+			
 			error = query1+".err"
 			errors_to_cat.append(error)
 
@@ -329,8 +361,7 @@ def write_makeflow(destination, configuration, num_reads_per_split, fastq_name, 
 					args = args + ' '.join(bwa_args[algo])
 
 				makeflow.write("\n\n{0} {1} : bwa {2} {3} {4}".format(output, error, index, query1, query2))
-				makeflow.write("\n\t./bwa {0} {1} {2} {3} {4} > {5} 2> {6}".format(algo, args, ref, query1, query2, output, error))
-
+				makeflow.write("\n\t./bwa {0} {1} {2} {3} {4} {5} > {6} 2> {7}".format(algo, cores, args, ref, query1, query2, output, error))
 		log.info("Writing Joining Rules")
 
 		(base, sep, file_ext) = options.fastq.rpartition(".")
@@ -344,18 +375,22 @@ def write_makeflow(destination, configuration, num_reads_per_split, fastq_name, 
 		error = "{0}.err".format(base)
 		if options.output_err:
 			error = options.output_err
+		
+		output_blob=(options.fastq) + ".*.sam"
+		output_blob_err=(options.fastq) + ".*.err"
 
 		if num_reads_per_split > 0:
-			makeflow.write("\n\n{0} : {1} {2}".format(output, cat_name, ' '.join(results_to_cat)))
-			makeflow.write("\n\tLOCAL perl {0} {1} {2}".format(cat_name, output, ' '.join(results_to_cat)))
+			makeflow.write("\n\n{0} : {1} {2}".format(output, cat_name,' '.join(results_to_cat)))			
+			makeflow.write("\n\tLOCAL perl {0} {1} {2}".format(cat_name, output, output_blob))	
 
 			makeflow.write("\n\n{0} : {1}".format(error, ' '.join(errors_to_cat)))
-			makeflow.write("\n\tLOCAL cat {0} > {1}".format(' '.join(errors_to_cat), error))
+			makeflow.write("\n\tLOCAL cat {0} > {1}".format(output_blob_err , error))	
+		
 		else:
 			if output != results_to_cat[0]:
 				makeflow.write("\n\n{0} : {1}".format(output, results_to_cat[0]))
-				makeflow.write("\n\tLOCAL mv {1} {0}".format(output, results_to_cat[0]))
-
+				makeflow.write("\n\tLOCAL mv {1} {0}".format(output, results_to_cat[0]))	
+ 			
 			if error != errors_to_cat[0]:
 				makeflow.write("\n\n{0} : {1}".format(error, errors_to_cat[0]))
 				makeflow.write("\n\tLOCAL mv {0} {1}".format(errors_to_cat[0], error))
