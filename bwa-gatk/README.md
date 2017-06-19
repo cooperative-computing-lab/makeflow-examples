@@ -50,10 +50,11 @@ However, the data we use is private.
 Please contact the Cooperative Computing Lab if you do not have
 your own dataset to test with.
 
-Then, generate a workflow to process the data detailed in the barcode file on 100 splits:
+Then, generate a workflow to process.
+In this example we use the data detailed in a barcode file on 10 splits:
 
 ```
-./make_bwa_gatk_workflow barcode_file.txt 100 > bwa_gatk.mf
+./make_bwa_gatk_workflow barcode_file.txt 10 > bwa_gatk.mf
 ```
 
 Finally, execute the workflow using makeflow locally,
