@@ -1,0 +1,124 @@
+#!/usr/bin/perl
+#Programmer: Nicholas Hazekamp
+#Date: 6/10/2014
+
+use strict;
+use integer;
+use Symbol;
+
+my $numargs = $#ARGV + 1;
+
+if ($numargs != 3) {
+	print STDERR "Usage: perl gran_split_align <number of reads> <reference file> <sam file>\n";
+	exit 1;
+}
+
+my $num_reads = shift;
+my $ref_file = shift;
+my $sam_file = shift;
+my $ref = substr $ref_file, 0, -3;
+my $sam = substr $sam_file, 0, -4;
+
+my @ref_limits;
+my @files;
+
+my $i = 0;
+my $position = 0;
+my $read_count = 0;
+my $num_outputs = 0;
+
+#Open input file
+open(INPUT, $ref_file);
+
+open (OUTPUT,">$ref.$num_outputs.fa");
+push @ref_limits, 0;
+
+my $file = gensym;
+open($file, ">$sam.$num_outputs.sam");
+push @files, $file; 
+
+my $last_loc;
+while (my $line = <INPUT>) {
+	chomp $line;
+#FASTQ files begin sequence with '@' character
+#If line begins with '@' then it is a new sequence
+	if ($line =~ /^>/){
+		(my $loc) = $line =~ m/loc(\d+)/;
+#Check if the new sequence should be placed in a new file, otherwise place it in same file
+		if ($read_count == $num_reads){
+			close(OUTPUT);
+			$num_outputs++;
+			$read_count = 1;
+
+			open(OUTPUT, ">$ref.$num_outputs.fa");
+			push @ref_limits, $loc;
+
+			$file = gensym;
+			open($file, ">$sam.$num_outputs.sam");
+			push @files, $file;
+
+			print OUTPUT "$line\n";
+			print "HELP $num_outputs\n";
+		}
+		else{
+			$last_loc = $loc;
+			print OUTPUT "$line\n";
+			$read_count++;
+		}
+	}
+#place all other lines in FASTQ file under same sequence
+	else {
+		print OUTPUT "$line\n";
+	}
+}
+push @ref_limits, $last_loc+1;
+close(OUTPUT);
+close(INPUT);
+
+my $output;
+
+print "START SAM\n";
+
+#Open input file
+open(INPUT, $sam_file);
+
+my $in_header = 1;
+
+while (my $line = <INPUT>) {
+	chomp $line;
+
+	(my $loc) = $line =~ /loc(\d+)/;
+	for( $i = 0; $i <= $num_outputs; $i++ ){
+		if($loc >= $ref_limits[$i]){
+			$position = $i;
+		}
+	}
+	if($loc eq ""){
+		if(not $line =~ /index/){
+			foreach $output (@files) {
+				print $output "$line\n";
+			}
+		}
+	}
+	elsif ($line =~ /^\@SQ/){
+		if($in_header eq 0){
+			print "\@SQ found after end of header.\n";
+			exit;
+		}
+		$output = $files[$position];
+		print $output "$line\n";
+	}
+	#place all other lines in FASTQ file under same sequence
+	else {
+		if($in_header == 1){
+			$in_header == 0;
+		}
+		$output = $files[$position];
+		print $output "$line\n";
+	}
+}
+close(INPUT);
+
+foreach $output (@files) {
+	close($output);
+}
