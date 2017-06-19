@@ -1,0 +1,83 @@
+#!/usr/bin/perl -w
+
+if( $#ARGV!=1) {
+    print "$0: <barcode_file> <nsplits>\n";
+    exit 1;
+}
+
+$barcode_file = $ARGV[0];
+$nsplits = $ARGV[1];
+$nslices = 10;
+@organisms = ();
+
+open(my $barcode, '<', $barcode_file)
+	or die "Could not open file '$barcode_file' $!";
+ 
+$loc = 0;
+while (defined($barcode) and (my $row = <$barcode>)) {
+	chomp $row;
+	@items = split(" ", $row);
+	$org_num = substr($items[1], 2); 
+	if($loc < $nsplits){
+		push @organisms, $org_num;
+	}
+	$loc++;
+}
+
+@slices=(0 .. ($nslices-1) );
+
+foreach my $x (@organisms)
+{
+    print "SM$x.sai: bwa oak2.fa oak2.fa.amb oak2.fa.ann oak2.fa.bwt oak2.fa.sa oak2.fa.pac SM$x.fq\n";
+    print "\t./bwa aln oak2.fa SM$x.fq > SM$x.sai\n\n";
+
+    print "SM$x.sam: bwa oak2.fa oak2.fa.amb oak2.fa.ann oak2.fa.bwt oak2.fa.sa oak2.fa.pac SM$x.fq SM$x.sai\n";
+    print "\t./bwa samse oak2.fa SM$x.sai SM$x.fq > SM$x.sam\n\n";
+
+    foreach my $n(@slices)
+    {
+	print "SM$x.$n.sam ";
+    }
+    print ": gatk_split_align SM$x.sam oak2.fa\n";
+    print "\tperl gatk_split_align 40000 oak2.fa SM$x.sam\n\n";
+
+    foreach my $n (@slices)
+    {
+	print "SM$x.$n.bam: samtools SM$x.$n.sam\n";
+	print "\t./samtools view -bS SM$x.$n.sam > SM$x.$n.bam\n\n";
+
+	print "SM$x.$n.sort.bam: picard.jar SM$x.$n.bam\n";
+	print "\tjava -Xmx8g jvm-args -jar picard.jar SortSam INPUT=SM$x.$n.bam OUTPUT=SM$x.$n.sort.bam SORT_ORDER=coordinate VALIDATION_STRINGENCY=LENIENT\n\n";
+
+	print "SM$x.${n}_RG.sort.bam: picard.jar SM$x.$n.sort.bam\n";
+	print "\tjava -Xmx8g jvm-args -jar picard.jar AddOrReplaceReadGroups INPUT=SM$x.$n.sort.bam OUTPUT=SM$x.${n}_RG.sort.bam RGID=RG1 RGLB=lib1 RGPL=illumina RGPU=unit1 RGSM=SM$x VALIDATION_STRINGENCY=LENIENT\n\n";
+
+	print "SM$x.${n}_RG.sort.bai: picard.jar SM$x.${n}_RG.sort.bam\n";
+	print "\tjava -Xmx8g jvm-args -jar picard.jar BuildBamIndex INPUT=SM$x.${n}_RG.sort.bam VALIDATION_STRINGENCY=LENIENT\n\n";
+    }
+
+}
+
+foreach my $n (@slices)
+{
+print <<EOF
+oak2.$n.dict: picard.jar oak2.$n.fa
+	java jvm-args -jar picard.jar CreateSequenceDictionary R=oak2.$n.fa O=oak2.$n.dict
+
+oak2.$n.fa.fai: samtools oak2.$n.fa
+	./samtools faidx oak2.$n.fa
+
+EOF
+}
+
+foreach my $x (@organisms) {
+foreach my $n (@slices) {
+print <<EOF
+SM$x.$n.vcf: GenomeAnalysisTK.jar oak2.$n.fa oak2.$n.fa.fai oak2.$n.dict SM$x.${n}_RG.sort.bai SM$x.${n}_RG.sort.bam
+	/afs/crc.nd.edu/user/o/ochoudhu/Public/jre1.6.0_45/bin/java -Xmx8g -jar GenomeAnalysisTK.jar -T HaplotypeCaller -R oak2.$n.fa -I SM$x.${n}_RG.sort.bam -o SM$x.$n.vcf --fix_misencoded_quality_scores
+
+EOF
+}
+}
+
+exit 0;
