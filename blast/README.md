@@ -2,6 +2,12 @@ This directory contains the materials needed to construct a blast workflow.
 However, you will first need to install the blast software and a suitable
 database before you can run the makeflow.
 
+If you have not done so already, please clone this example repository like so:
+```
+git clone https://github.com/cooperative-computing-lab/makeflow-examples.git
+cd ./makeflow-examples/blast
+```
+
 First, obtain a blast binary suitable for your architecture. (about 30MB)
 ```
 wget ftp://ftp.ncbi.nlm.nih.gov/blast/executables/legacy/2.2.26/blast-2.2.26-x64-linux.tar.gz
