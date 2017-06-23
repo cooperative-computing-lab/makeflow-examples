@@ -4,6 +4,12 @@ BWA Workflow Example
 This workflow gives an example of using Makeflow to parallelize
 the Burroughs-Wheeler Alignment (BWA) tool.
 
+If you have not done so already, please clone this example repository like so:
+```
+git clone https://github.com/cooperative-computing-lab/makeflow-examples.git
+cd ./makeflow-examples/bwa
+```
+
 First, build the bwa binary for your architecture:
 
 ```

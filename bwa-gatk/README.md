@@ -6,6 +6,12 @@ the Burroughs-Wheeler Alignment and Genome Analysis Toolkit (BWA-GATK) tool.
 
 NOTE: This implementation requires Java version 1.7, please make sure you are using the correct Java version.
 
+If you have not done so already, please clone this example repository like so:
+```
+git clone https://github.com/cooperative-computing-lab/makeflow-examples.git
+cd ./makeflow-examples/bwa-gatk
+```
+
 First, build the bwa binary for your architecture:
 
 ```
