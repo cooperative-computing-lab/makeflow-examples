@@ -1,0 +1,86 @@
+MAKEFLOW_INPUTS=bwa Correction.py Create_Corrected_AllLRReads.py fastq_reduce LongRead.fa sam_cat.sh samtools ShortRead.fq
+MAKEFLOW_OUTPUTS=corr.out corr.err Corrected_LongRead.fa index.err LowConf.txt LongRead.fa.fai mem.err pileup.err sort.err create.err
+
+CATEGORY=simulation
+CORES=4
+MEMORY=5000
+DISK=20000
+
+index.err LongRead.fa.sa LongRead.fa.pac LongRead.fa.bwt LongRead.fa.ann LongRead.fa.amb : bwa LongRead.fa
+	LOCAL ./bwa index LongRead.fa 2> index.err
+
+ShortRead.fq.0 ShortRead.fq.1 ShortRead.fq.2 ShortRead.fq.3 ShortRead.fq.4 ShortRead.fq.5 : fastq_reduce ShortRead.fq
+	LOCAL perl fastq_reduce ShortRead.fq 2
+
+Out.0.sam mem.0.err : bwa LongRead.fa LongRead.fa.bwt LongRead.fa.pac LongRead.fa.amb LongRead.fa.ann LongRead.fa.sa ShortRead.fq.0
+	./bwa mem -t 4 LongRead.fa ShortRead.fq.0 > Out.0.sam 2> mem.0.err
+
+Out.1.sam mem.1.err : bwa LongRead.fa LongRead.fa.bwt LongRead.fa.pac LongRead.fa.amb LongRead.fa.ann LongRead.fa.sa ShortRead.fq.1
+	./bwa mem -t 4 LongRead.fa ShortRead.fq.1 > Out.1.sam 2> mem.1.err
+
+Out.2.sam mem.2.err : bwa LongRead.fa LongRead.fa.bwt LongRead.fa.pac LongRead.fa.amb LongRead.fa.ann LongRead.fa.sa ShortRead.fq.2
+	./bwa mem -t 4 LongRead.fa ShortRead.fq.2 > Out.2.sam 2> mem.2.err
+
+Out.3.sam mem.3.err : bwa LongRead.fa LongRead.fa.bwt LongRead.fa.pac LongRead.fa.amb LongRead.fa.ann LongRead.fa.sa ShortRead.fq.3
+	./bwa mem -t 4 LongRead.fa ShortRead.fq.3 > Out.3.sam 2> mem.3.err
+
+Out.4.sam mem.4.err : bwa LongRead.fa LongRead.fa.bwt LongRead.fa.pac LongRead.fa.amb LongRead.fa.ann LongRead.fa.sa ShortRead.fq.4
+	./bwa mem -t 4 LongRead.fa ShortRead.fq.4 > Out.4.sam 2> mem.4.err
+
+Out.5.sam mem.5.err : bwa LongRead.fa LongRead.fa.bwt LongRead.fa.pac LongRead.fa.amb LongRead.fa.ann LongRead.fa.sa ShortRead.fq.5
+	./bwa mem -t 4 LongRead.fa ShortRead.fq.5 > Out.5.sam 2> mem.5.err
+
+Out.sam : sam_cat.sh Out.0.sam Out.1.sam Out.2.sam Out.3.sam Out.4.sam Out.5.sam
+	LOCAL ./sam_cat.sh Out.*.sam > Out.sam
+
+mem.err : mem.0.err mem.1.err mem.2.err mem.3.err mem.4.err mem.5.err
+	LOCAL cat mem.*.err > mem.err
+
+Out.bam sort.err : samtools Out.sam
+	./samtools view -bS Out.sam | ./samtools sort - Out 2> sort.err
+
+pileup.txt LongRead.fa.fai pileup.err : samtools LongRead.fa Out.bam
+	./samtools mpileup -s -f LongRead.fa Out.bam > pileup.txt 2> pileup.err
+
+List_RefHeader.txt Pileup_Set1.txt Pileup_Set2.txt Pileup_Set3.txt : Split_Pileup.sh Create_SubsetPileup.sh pileup.txt
+	LOCAL ./Split_Pileup.sh pileup.txt 3 2> Split_Pileup.err
+
+corr.0.out lc.0.out corr.0.err : Correction.py Pileup_Set1.txt LongRead.fa Out.sam
+	LOCAL python Correction.py Pileup_Set1.txt LongRead.fa lc.0.out Out.sam 202 > corr.0.out 2> corr.0.err ; echo "" >> lc.0.out ; echo "" >> corr.0.err
+
+corr.1.out lc.1.out corr.1.err : Correction.py Pileup_Set2.txt LongRead.fa Out.sam
+	LOCAL python Correction.py Pileup_Set2.txt LongRead.fa lc.1.out Out.sam 202 > corr.1.out 2> corr.1.err ; echo "" >> lc.1.out ; echo "" >> corr.1.err
+
+corr.2.out lc.2.out corr.2.err : Correction.py Pileup_Set3.txt LongRead.fa Out.sam
+	LOCAL python Correction.py Pileup_Set3.txt LongRead.fa lc.2.out Out.sam 202 > corr.2.out 2> corr.2.err ; echo "" >> lc.2.out ; echo "" >> corr.2.err
+
+corr.out : corr.0.out corr.1.out corr.2.out
+	LOCAL cat corr.*.out  > corr.out
+
+corr.err : corr.0.err corr.1.err corr.2.err
+	LOCAL cat corr.*.err > corr.err
+
+LowConf.txt : lc.0.out lc.1.out lc.2.out
+	LOCAL cat lc.*.out > LowConf.txt
+
+LongRead.fa.0 LongRead.fa.1 LongRead.fa.2 LongRead.fa.3 LongRead.fa.4 : fasta_reduce LongRead.fa
+	LOCAL ./fasta_reduce LongRead.fa 5
+
+Corrected_LongRead.fa.0 create.err.0 : Create_Corrected_AllLRReads.py LongRead.fa.0 corr.out
+	python Create_Corrected_AllLRReads.py LongRead.fa.0 corr.out 2> create.err.0
+
+Corrected_LongRead.fa.1 create.err.1 : Create_Corrected_AllLRReads.py LongRead.fa.1 corr.out
+	python Create_Corrected_AllLRReads.py LongRead.fa.1 corr.out 2> create.err.1
+
+Corrected_LongRead.fa.2 create.err.2 : Create_Corrected_AllLRReads.py LongRead.fa.2 corr.out
+	python Create_Corrected_AllLRReads.py LongRead.fa.2 corr.out 2> create.err.2
+
+Corrected_LongRead.fa.3 create.err.3 : Create_Corrected_AllLRReads.py LongRead.fa.3 corr.out
+	python Create_Corrected_AllLRReads.py LongRead.fa.3 corr.out 2> create.err.3
+
+Corrected_LongRead.fa.4 create.err.4 : Create_Corrected_AllLRReads.py LongRead.fa.4 corr.out
+	python Create_Corrected_AllLRReads.py LongRead.fa.4 corr.out 2> create.err.4
+
+Corrected_LongRead.fa : Corrected_LongRead.fa.0 Corrected_LongRead.fa.1 Corrected_LongRead.fa.2 Corrected_LongRead.fa.3 Corrected_LongRead.fa.4
+	LOCAL cat Corrected_LongRead.fa.* > Corrected_LongRead.fa
+

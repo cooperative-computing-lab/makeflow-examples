@@ -1,0 +1,38 @@
+#!/usr/bin/python
+
+###############################################################
+#
+# fasta_reduce.py
+#
+# Splits a fasta file into a number
+# of smaller files
+#
+# Author: Connor Howington
+# Date: 7/7/17
+#
+# Usage: ./fasta_reduce.sh input.fasta sequences_per_file
+#
+###############################################################
+
+import sys
+
+fasta_path = sys.argv[1]
+fasta_file = open(fasta_path, 'r')
+seq_per_file = int(sys.argv[2])
+
+seq_count = 0
+file_suffix = 0
+output_file = open('{0}.{1}'.format(fasta_path, file_suffix), 'w')
+
+for line in fasta_file:
+	if line[0] == '>':
+		seq_count += 1
+	
+	if seq_count > seq_per_file:
+		file_suffix += 1
+		output_file.close()	
+		output_file = open('{0}.{1}'.format(fasta_path, file_suffix), 'w') 
+		seq_count = 1
+
+	output_file.write(line)
+
