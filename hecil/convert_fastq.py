@@ -4,7 +4,7 @@
 #
 # convert_fastq.py
 #
-# Converts FASTQ files to FASTA format
+# Converts a FASTQ file to FASTA format
 #
 # Author: Connor Howington
 # Date: 7/19/17
@@ -16,7 +16,7 @@
 import argparse
 
 def parse_args():
-	parser = argparse.ArgumentParser(description='Converts FASTQ files to FASTA format')
+	parser = argparse.ArgumentParser(description='Converts a FASTQ file to FASTA format.  Sends to stdout.')
 	parser.add_argument('fastq')
 	
 	return parser.parse_args()
