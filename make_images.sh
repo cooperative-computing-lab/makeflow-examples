@@ -8,4 +8,4 @@ do
 	dot -Tpdf -Gsize=10,10\! -Gdpi=100 -Gratio=fill $name/$name.dot > $name/$name.pdf
 done
 
-montage -geometry 1024x1024 -tile 8x1 */*.png banner.png
+montage -geometry 256x256 -tile 8x1 */*.png banner.png
