@@ -4,6 +4,18 @@ HECIL Workflow Example
 This workflow gives an example of using Makeflow to parallelize
 the Hybrid Error Correction with Iterative Learning (HECIL) tool.
 
+Citation:
+"HECIL: A Hybrid Error Correction Algorithm for Long Reads with Iterative Learning",
+Olivia Choudhury, Ankush Chakrabarty, and Scott Emrich
+bioRxiv preprint, 2017.
+https://doi.org/10.1101/162917
+
+The conversion of HECIL into a workflow was accomplished
+by Connor Howington as part of a summer REU project at Notre Dame.
+
+Installation and Use
+--------------------
+
 First, build the bwa binary for your architecture:
 
 ```
