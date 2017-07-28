@@ -2,6 +2,12 @@ This example workflow demonstrates how to parallelize the
 SSAHA2 (Sequence Search and Alignment by Hasing Algorithm)
 tool published by the Sanger institute.
 
+If you have not done so already, please clone this example repository like so:
+```
+git clone https://github.com/cooperative-computing-lab/makeflow-examples.git
+cd ./makeflow-examples/ssaha
+```
+
 First, download and install a suitable binary for SSAHA2:
 
 ```

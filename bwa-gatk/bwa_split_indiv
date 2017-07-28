@@ -1,0 +1,66 @@
+#!/usr/bin/perl
+#
+#Copyright (C) 2013- The University of Notre Dame
+#This software is distributed under the GNU General Public License.
+#See the file COPYING for details.
+#
+#Revised: Nick Hazekamp
+#Date: 12/02/2013
+#
+#Purpose: Split a FASTQ file into smaller files determined by the number of sequences input
+
+use strict;
+use Symbol;
+
+if ($#ARGV != 1) {
+	print "Usage: perl bwa_split_indiv <barcode->individual file> <fastq file>\n";
+	exit 1;
+}
+
+my $prog_file = shift;
+my $file = shift;
+
+my %progs = ();
+my $output;
+
+my $numargs = $#ARGV + 1;
+
+open(PROG, $prog_file);
+while (my $line = <PROG>) {
+	my @line_array = split(' ',$line);
+	my $file = $line_array[1];
+	my $name = gensym;
+	open( $name, ">$file.fq");
+	$progs{ $line_array[0] } = $name;
+	$output = $file;
+}
+close(PROG);
+
+#Open input file
+open(INPUT, $file);
+
+while (my $line = <INPUT>) {
+	chomp $line;
+	#FASTQ files begin sequence with '@' character
+	#If line begins with '@' then it is a new sequence and has 3 lines in between
+	if ($line =~ /^[@]/){
+		my @matches = ($line =~ /(index_[^_]+_[^_]+)/);
+		$output = $progs{ $matches[0] };
+		if ($output){
+			print $output $line;
+			print $output "\n";
+		}
+	}
+	#place all other lines in FASTQ file under same sequence
+	else {
+		if ($output){
+			print $output $line;
+			print $output "\n";
+		}
+	}
+}
+close(INPUT);
+
+while ( my ($key, $value) = each(%progs) ) {
+	close($value);
+}

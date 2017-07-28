@@ -4,6 +4,12 @@ Shrimp Workflow Examples
 This directory contains the materials needed to construct a working
 Shrimp workflow, with some example data.
 
+If you have not done so already, please clone this example repository like so:
+```
+git clone https://github.com/cooperative-computing-lab/makeflow-examples.git
+cd ./makeflow-examples/shrimp
+```
+
 First, obtain a `rmapper-cs` binary suitable for your architecture
 from `compbio.cs.toronto.edu/shrimp`.  (At the time of writing,
 this website was offline, so a `rmapper-cs` binary for Linux-x86
