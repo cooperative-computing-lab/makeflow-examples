@@ -1,0 +1,211 @@
+#!/usr/bin/python
+
+# -----------------------------------
+# Creates a Makeflow file for HECIL
+#
+# Author: Connor Howington
+# 6/16/17
+# -----------------------------------
+
+# TODO:
+# (Re)factor
+# Implement cutoff and confidence threshold options
+# Add value checking for seq_per_split and num_split args
+# Rethink seq_per_split handling
+
+import sys, argparse, string, math, os
+
+parser = argparse.ArgumentParser(description="Creates a Makeflow file for HECIL")
+
+# Required arguments
+requiredNamed = parser.add_argument_group('Required arguments')
+requiredNamed.add_argument('-l','--long_reads', help='Erroneous long reads',required=True)
+requiredNamed.add_argument('-s','--short_reads', help='Accurate short reads',required=True)
+requiredNamed.add_argument('-len','--length_SR', help='length of short reads', required=True)
+
+# Optional arguments
+options = parser.add_argument_group('Optional arguments')
+options.add_argument('-o','--output', help='Output file in FASTA format containing corrected long reads', default='corr.out')
+options.add_argument('-mf', '--makeflow_file', help='Sets the name of the makeflow file that will be created.  Default is HECIL.mf', default='HECIL.mf')
+options.add_argument('-lc','--low_confidence', help='Output file containing low-confidence corrections in pileup format', default='LowConf.txt')
+options.add_argument('-t', '--bwa_threads', type=int, help='Sets the number of threads that BWA can use for each split.  If -c has not been passed, this also sets the Makeflow CORES variable to this number, equivalent to "-c BWA_THREADS"')
+options.add_argument('-ps', '--pileup_splits', type=int, help='Divides the pileup file into PILEUP_SPLITS chunks, which each get consumed by a separate Correction.py split', default=1)
+options.add_argument('-rs', '--replacement_sps', type=int, help='Divides the fasta file into chunks, each containing REPLACEMENT_SPS number of sequences, for the Create_Corrected_AllLRReads.py steps')
+options.add_argument('-c', '--cores', type=int, help='Specifies the minimum amount of cores needed for each job')
+options.add_argument('-d', '--disk', type=int, help='Specifies the minimum amount of disk space needed for each job')
+options.add_argument('-cat', '--category', help='Specifies the category needed for each job')
+options.add_argument('-m', '--memory', type=int, help='Specifies the minimum amount of memory needed for each job')
+#options.add_argument('-cut','--cutoff_QC', help='Cutoff value (between 0 and 1) for quick correction', default='0.85')
+#options.add_argument('-conf','--confidence_threshold', help='Confidence threshold (between 0 ans 2) to categorize low and high confidence corrections', default='1.2'
+
+# Mutually exclusive arguments
+split_group = options.add_mutually_exclusive_group()
+split_group.add_argument('-p', '--seq_per_split', type=int, help='Divides the workflow into a number of concurrent splits, each taking SEQ_PER_SPLIT number of short read sequences')
+split_group.add_argument('-n', '--num_splits', type=int, help='Divides the workflow into NUM_SPLITS concurrent splits, sharing the short read sequences equally between them.  If NUM_SPLITS is not a factor of the number of short reads, then the nearest factor greater than NUM_SPLITS will be used', default=1)
+
+# Parse arguments
+args = parser.parse_args()
+
+# Check file paths
+if not os.path.isfile(args.long_reads):
+	parser.error('File {0} cannot be found'.format(args.long_reads))
+if not os.path.isfile(args.short_reads):
+	parser.error('File {0} cannot be found'.format(args.short_reads))
+
+# Count the number of long reads
+num_long_reads = 0
+long_reads_file = open(args.long_reads)
+for line in long_reads_file:
+	if line[0] == '>':
+		num_long_reads += 1
+long_reads_file.close()
+
+# Check args.pileup_splits
+if args.pileup_splits > num_long_reads:
+	print('Error: The number of pileup splits ({0}) must not be larger than the number of long reads ({1})'.format(args.pileup_splits, num_long_reads))
+	sys.exit(1)
+
+# Count the number of short reads
+num_short_reads = 0.0
+short_reads_file = open(args.short_reads)
+for line in short_reads_file:
+	num_short_reads += 0.25
+short_reads_file.close()
+num_short_reads = int(num_short_reads)	
+
+# If seq_per_split is not set, determine it from num_splits.  Then use num_splits to recalculate seq_per_split.
+# This redundancy is to handle when num_splits is not a factor of num_short_reads.  In this case, num_splits
+# will become the nearst factor greater than the number requested.
+seq_per_split = args.seq_per_split
+if seq_per_split is None:
+	seq_per_split = int(num_short_reads / args.num_splits)
+num_splits = int(math.ceil(float(num_short_reads) / seq_per_split))
+
+# Print information to terminal
+print('Long read sequences: {0}\nShort read sequences: {1}\nSplits: {2}\nSequences per split: {3}'.format(num_long_reads, num_short_reads, num_splits, seq_per_split))
+
+def write_makeflow(path):
+	# Open the output file
+	makeflow = open(path, 'w')
+
+	# Write the input/output variable assignments
+	makeflow.write('MAKEFLOW_INPUTS=bwa Correction.py Create_Corrected_AllLRReads.py fastq_reduce {0} sam_cat.sh samtools {1}\n'.format(args.long_reads, args.short_reads))
+	makeflow.write('MAKEFLOW_OUTPUTS={0} corr.err Corrected_{1} index.err {2} {1}.fai mem.err pileup.err sort.err create.err\n\n'.format(args.output, args.long_reads, args.low_confidence))
+
+	# Write any resource specification variables requested
+	if args.category is not None:
+		makeflow.write('CATEGORY={0}\n'.format(args.category))
+	if args.cores is None and args.bwa_threads is not None:
+		args.cores = args.bwa_threads
+	if args.cores is not None:
+		makeflow.write('CORES={0}\n'.format(args.cores))
+	if args.memory is not None:
+		makeflow.write('MEMORY={0}\n'.format(args.memory))
+	if args.disk is not None:
+		makeflow.write('DISK={0}\n'.format(args.disk))
+
+	# Write the indexing rule
+	makeflow.write('\nindex.err {0}.sa {0}.pac {0}.bwt {0}.ann {0}.amb : bwa {0}\n'.format(args.long_reads))
+	makeflow.write('\tLOCAL ./bwa index {0} 2> index.err\n\n'.format(args.long_reads))
+
+	# Write the fastq_reduce rule
+	iterated_string = ''
+	for i in range(num_splits):
+		iterated_string += '{0}.{1} '.format(args.short_reads, i)
+	makeflow.write('{0}: fastq_reduce {1}\n'.format(iterated_string, args.short_reads))
+	makeflow.write('\tLOCAL perl fastq_reduce {0} {1}\n\n'.format(args.short_reads, seq_per_split))
+
+	# Write the bwa mem rules
+	for i in range(num_splits):
+		makeflow.write('Out.{0}.sam mem.{0}.err : bwa {1} {1}.bwt {1}.pac {1}.amb {1}.ann {1}.sa {2}.{0}\n'.format(i, args.long_reads, args.short_reads))
+
+		arg_string = ''
+		if args.bwa_threads is not None:
+			arg_string = ' -t ' + str(args.bwa_threads)
+		makeflow.write('\t./bwa mem{0} {1} {2}.{3} > Out.{3}.sam 2> mem.{3}.err\n\n'.format(arg_string, args.long_reads, args.short_reads, i))
+
+	# Write the sam_cat.sh rule
+	iterated_string = ''
+	for i in range(num_splits):
+		iterated_string += ' Out.{0}.sam'.format(i)
+	makeflow.write('Out.sam : sam_cat.sh{0}\n'.format(iterated_string))
+	makeflow.write('\tLOCAL ./sam_cat.sh Out.*.sam > Out.sam\n\n')
+
+	# Write the mem.err cat rule
+	iterated_string = ''
+	for i in range(num_splits):
+		iterated_string += ' mem.{0}.err'.format(i)
+	makeflow.write('mem.err :{0}\n'.format(iterated_string))
+	makeflow.write('\tLOCAL cat mem.*.err > mem.err\n\n')
+
+	# Write the samtools view and sort rule
+	makeflow.write('Out.bam sort.err : samtools Out.sam\n')
+	makeflow.write('\t./samtools view -bS Out.sam | ./samtools sort - Out 2> sort.err\n\n')
+
+	# Write the samtools mpileup rule
+	makeflow.write('pileup.txt {0}.fai pileup.err : samtools {0} Out.bam\n'.format(args.long_reads))	
+	makeflow.write('\t./samtools mpileup -s -f {0} Out.bam > pileup.txt 2> pileup.err\n\n'.format(args.long_reads))
+
+	# Write the Split_Pileup.sh rule
+	iterated_string = ''
+	for i in range(args.pileup_splits):
+		iterated_string += ' Pileup_Set{0}.txt'.format(i+1)
+	makeflow.write('List_RefHeader.txt{0} : Split_Pileup.sh Create_SubsetPileup.sh pileup.txt\n'.format(iterated_string))
+	makeflow.write('\tLOCAL ./Split_Pileup.sh pileup.txt {0} 2> Split_Pileup.err\n\n'.format(args.pileup_splits))
+
+	# Write the Correction.py rules
+	for i in range(args.pileup_splits):
+		makeflow.write('corr.{0}.out lc.{0}.out corr.{0}.err : Correction.py Pileup_Set{1}.txt {2} Out.sam\n'.format(i, i+1, args.long_reads))
+		makeflow.write('\tLOCAL python Correction.py Pileup_Set{0}.txt {2} lc.{1}.out Out.sam {3} > corr.{1}.out 2> corr.{1}.err ; echo "" >> lc.{1}.out ; echo "" >> corr.{1}.err\n\n'.format(i+1, i, args.long_reads, args.length_SR, args.output))
+
+	# Write the corr.out cat rule
+	iterated_string = ''
+	for i in range(args.pileup_splits):
+		iterated_string += ' corr.{0}.out'.format(i)
+	makeflow.write('{0} :{1}\n'.format(args.output, iterated_string))
+	makeflow.write('\tLOCAL cat corr.*.out  > {0}\n\n'.format(args.output))
+
+	# Write the corr.err cat rule
+	iterated_string = ''
+	for i in range(args.pileup_splits):
+		iterated_string += ' corr.{0}.err'.format(i)
+	makeflow.write('corr.err :{0}\n'.format(iterated_string))
+	makeflow.write('\tLOCAL cat corr.*.err > corr.err\n\n')
+
+	# Write the lc.out cat rule
+	iterated_string = ''
+	for i in range(args.pileup_splits):
+		iterated_string += ' lc.{0}.out'.format(i)
+	makeflow.write('{0} :{1}\n'.format(args.low_confidence, iterated_string))
+	makeflow.write('\tLOCAL cat lc.*.out > {0}\n\n'.format(args.low_confidence))
+
+	# Determine number of replacement splits
+	replacement_sps = args.replacement_sps
+	if replacement_sps is None:
+		replacement_sps = num_long_reads
+	replacement_splits = int(math.ceil(float(num_long_reads) / replacement_sps))
+
+	# Write the fasta_reduce rule
+	iterated_string = ''
+	for i in range(replacement_splits):
+		iterated_string += '{0}.{1} '.format(args.long_reads, i)
+	makeflow.write('{0}: fasta_reduce {1}\n'.format(iterated_string, args.long_reads))
+	makeflow.write('\tLOCAL ./fasta_reduce {0} {1}\n\n'.format(args.long_reads, replacement_sps))
+
+	# Write the Create_Corrected_AllLRReads.py rules
+	for i in range(replacement_splits):
+		makeflow.write('Corrected_{0}.{2} create.err.{2} : Create_Corrected_AllLRReads.py {0}.{2} {1}\n'.format(args.long_reads, args.output, i))
+		makeflow.write('\tpython Create_Corrected_AllLRReads.py {0}.{2} {1} 2> create.err.{2}\n\n'.format(args.long_reads, args.output, i))
+
+	# Write the Corrected_long_reads cat rule
+	iterated_string = ''
+	for i in range(replacement_splits):
+		iterated_string += ' Corrected_{0}.{1}'.format(args.long_reads, i)
+	makeflow.write('Corrected_{0} :{1}\n'.format(args.long_reads, iterated_string))
+	makeflow.write('\tLOCAL cat Corrected_{0}.* > Corrected_{0}\n\n'.format(args.long_reads))
+
+	# Close the makeflow file
+	makeflow.close()
+
+write_makeflow(args.makeflow_file)
+
