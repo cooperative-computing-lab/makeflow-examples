@@ -31,17 +31,18 @@ The long read file needs to be in fasta format, so you'll need to convert it:
 Then, generate a workflow to process the data:
 
 ```
-./make_HECIL_workflow -l ref.fasta -s query.fastq -len 100 -p 100 -ps 2 -rs 1000
+./make_hecil_workflow -l ref.fasta -s query.fastq -len 100 -p 100 -ps 2 -rs 1000
 ```
 
 Finally, execute the workflow using makeflow locally
 or using a batch system like Condor, SGE, or Work Queue:
 
 ```
-makeflow bwa.mf
-makeflow -T condor bwa.mf
-makeflow -T sge bwa.mf
-makeflow -T wq bwa.mf
+makeflow hecil.mf
+makeflow -T condor hecil.mf
+makeflow -T sge hecil.mf
+makeflow -T wq hecil.mf
 ```
 
 corr.out (default) contains only the corrected long reads.  Corrected_ref.fasta contains all reads, with the corrected reads replacing the old reads (order is not conserved from input fasta file).
+
