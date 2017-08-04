@@ -15,7 +15,7 @@ We recommend the following citation for this data:
 Some of these examples are more complete than others, as described in the README.md
 files in each directory:
 
-- BLAST, SSAHA, BWA, and SHRIMP contain complete instructions for downloading software,
+- BLAST, SSAHA, BWA, HECIL, BWA-GATK, and SHRIMP contain complete instructions for downloading software,
 generating sample data, and creating and running complete workflows from scratch.
 The other examples are static snapshots of workflows for display
 or analysis, but do not contain the actual applications necessary to run them.
