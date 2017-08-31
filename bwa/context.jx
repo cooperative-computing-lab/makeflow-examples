@@ -1,0 +1,14 @@
+{
+  "BWA": "./bwa",
+  "ARGS": "mem",
+
+  "SPLIT": "./fastq_reduce",
+  "CONCAT": "./cat_bwa",
+  
+  "REF": "ref.fastq",
+  "REF_INDEX": ["ref.fastq." + x for x in ["amb", "ann", "bwt", "pac", "sa"]],
+
+  "INPUT_PRE": "query.fastq",
+  "SPLITS": 1000,
+  "SPLIT_SIZE": 1000,
+}
