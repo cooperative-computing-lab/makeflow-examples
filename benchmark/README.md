@@ -1,4 +1,4 @@
-#Makeflow Benchmarking Tool
+# Makeflow Benchmarking Tool
 The Makeflow Benchmarking Tool is a tool designed to help developers and researchers test the viability of different platforms to run workflows. The tool enables control over 5 factors: execution time of worker, having the worker produce output, the size of the common input file, the size of the unique input files, and the number of jobs in the DAG.
 
 The DAG itself is extremely flat, with no jobs dependant on one another.
