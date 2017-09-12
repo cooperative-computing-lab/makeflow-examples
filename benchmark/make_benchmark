@@ -1,3 +1,4 @@
+#!/usr/bin/python
 import sys
 import getopt
 
@@ -13,7 +14,6 @@ def get_size(n):#in KB sizes....
 		return front*1024*1024
 
 def print_help():
-	print "Hello"
 	print "-s,--unique-size    The size for each unique file"
 	print "-c,--common-size    The size for the common file"
 	print "-t,--run-time       The processing time for the program"
