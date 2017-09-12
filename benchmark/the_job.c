@@ -108,6 +108,9 @@ int main(int argc, char** argv){
 	
 	copy_out(output, uin ,zero_output);
 	
+	fclose(uin);
+	fclose(cin);
+	
 	compute_time(seconds);
 		
 	return 0;
