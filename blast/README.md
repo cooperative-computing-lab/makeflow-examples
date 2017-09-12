@@ -1,3 +1,8 @@
+<img align=right src=blast.png width=256>
+
+BLAST Workflow Example
+----------------------
+
 This directory contains the materials needed to construct a blast workflow.
 However, you will first need to install the blast software and a suitable
 database before you can run the makeflow.

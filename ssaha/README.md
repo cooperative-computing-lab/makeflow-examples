@@ -1,3 +1,8 @@
+<img align=right src=ssaha.png width=256></img>
+
+SSAHA Workflow Example
+----------------------
+
 This example workflow demonstrates how to parallelize the
 SSAHA2 (Sequence Search and Alignment by Hasing Algorithm)
 tool published by the Sanger institute.

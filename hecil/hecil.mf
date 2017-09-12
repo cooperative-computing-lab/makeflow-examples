@@ -5,7 +5,7 @@ MAKEFLOW_OUTPUTS=corr.out corr.err Corrected_ref.fasta index.err LowConf.txt ref
 index.err ref.fasta.sa ref.fasta.pac ref.fasta.bwt ref.fasta.ann ref.fasta.amb : bwa ref.fasta
 	LOCAL ./bwa index ref.fasta 2> index.err
 
-query.fastq.0 query.fastq.1 query.fastq.2 query.fastq.3 query.fastq.4 query.fastq.5 query.fastq.6 query.fastq.7 query.fastq.8 query.fastq.9 : fastq_reduce query.fastq
+query.fastq.0 query.fastq.1 query.fastq.2 query.fastq.3 query.fastq.4 query.fastq.5 query.fastq.6 query.fastq.7 query.fastq.8 query.fastq.9 query.fastq.10 query.fastq.11 query.fastq.12 query.fastq.13 query.fastq.14 query.fastq.15 query.fastq.16 query.fastq.17 query.fastq.18 query.fastq.19 query.fastq.20 query.fastq.21 query.fastq.22 query.fastq.23 query.fastq.24 query.fastq.25 query.fastq.26 query.fastq.27 query.fastq.28 query.fastq.29 query.fastq.30 query.fastq.31 query.fastq.32 query.fastq.33 query.fastq.34 query.fastq.35 query.fastq.36 query.fastq.37 query.fastq.38 query.fastq.39 query.fastq.40 query.fastq.41 query.fastq.42 query.fastq.43 query.fastq.44 query.fastq.45 query.fastq.46 query.fastq.47 query.fastq.48 query.fastq.49 query.fastq.50 query.fastq.51 query.fastq.52 query.fastq.53 query.fastq.54 query.fastq.55 query.fastq.56 query.fastq.57 query.fastq.58 query.fastq.59 query.fastq.60 query.fastq.61 query.fastq.62 query.fastq.63 query.fastq.64 query.fastq.65 query.fastq.66 query.fastq.67 query.fastq.68 query.fastq.69 query.fastq.70 query.fastq.71 query.fastq.72 query.fastq.73 query.fastq.74 query.fastq.75 query.fastq.76 query.fastq.77 query.fastq.78 query.fastq.79 query.fastq.80 query.fastq.81 query.fastq.82 query.fastq.83 query.fastq.84 query.fastq.85 query.fastq.86 query.fastq.87 query.fastq.88 query.fastq.89 query.fastq.90 query.fastq.91 query.fastq.92 query.fastq.93 query.fastq.94 query.fastq.95 query.fastq.96 query.fastq.97 query.fastq.98 query.fastq.99 : fastq_reduce query.fastq
 	LOCAL perl fastq_reduce query.fastq 100
 
 Out.0.sam mem.0.err : bwa ref.fasta ref.fasta.bwt ref.fasta.pac ref.fasta.amb ref.fasta.ann ref.fasta.sa query.fastq.0
@@ -38,10 +38,280 @@ Out.8.sam mem.8.err : bwa ref.fasta ref.fasta.bwt ref.fasta.pac ref.fasta.amb re
 Out.9.sam mem.9.err : bwa ref.fasta ref.fasta.bwt ref.fasta.pac ref.fasta.amb ref.fasta.ann ref.fasta.sa query.fastq.9
 	./bwa mem ref.fasta query.fastq.9 > Out.9.sam 2> mem.9.err
 
-Out.sam : sam_cat.sh Out.0.sam Out.1.sam Out.2.sam Out.3.sam Out.4.sam Out.5.sam Out.6.sam Out.7.sam Out.8.sam Out.9.sam
+Out.10.sam mem.10.err : bwa ref.fasta ref.fasta.bwt ref.fasta.pac ref.fasta.amb ref.fasta.ann ref.fasta.sa query.fastq.10
+	./bwa mem ref.fasta query.fastq.10 > Out.10.sam 2> mem.10.err
+
+Out.11.sam mem.11.err : bwa ref.fasta ref.fasta.bwt ref.fasta.pac ref.fasta.amb ref.fasta.ann ref.fasta.sa query.fastq.11
+	./bwa mem ref.fasta query.fastq.11 > Out.11.sam 2> mem.11.err
+
+Out.12.sam mem.12.err : bwa ref.fasta ref.fasta.bwt ref.fasta.pac ref.fasta.amb ref.fasta.ann ref.fasta.sa query.fastq.12
+	./bwa mem ref.fasta query.fastq.12 > Out.12.sam 2> mem.12.err
+
+Out.13.sam mem.13.err : bwa ref.fasta ref.fasta.bwt ref.fasta.pac ref.fasta.amb ref.fasta.ann ref.fasta.sa query.fastq.13
+	./bwa mem ref.fasta query.fastq.13 > Out.13.sam 2> mem.13.err
+
+Out.14.sam mem.14.err : bwa ref.fasta ref.fasta.bwt ref.fasta.pac ref.fasta.amb ref.fasta.ann ref.fasta.sa query.fastq.14
+	./bwa mem ref.fasta query.fastq.14 > Out.14.sam 2> mem.14.err
+
+Out.15.sam mem.15.err : bwa ref.fasta ref.fasta.bwt ref.fasta.pac ref.fasta.amb ref.fasta.ann ref.fasta.sa query.fastq.15
+	./bwa mem ref.fasta query.fastq.15 > Out.15.sam 2> mem.15.err
+
+Out.16.sam mem.16.err : bwa ref.fasta ref.fasta.bwt ref.fasta.pac ref.fasta.amb ref.fasta.ann ref.fasta.sa query.fastq.16
+	./bwa mem ref.fasta query.fastq.16 > Out.16.sam 2> mem.16.err
+
+Out.17.sam mem.17.err : bwa ref.fasta ref.fasta.bwt ref.fasta.pac ref.fasta.amb ref.fasta.ann ref.fasta.sa query.fastq.17
+	./bwa mem ref.fasta query.fastq.17 > Out.17.sam 2> mem.17.err
+
+Out.18.sam mem.18.err : bwa ref.fasta ref.fasta.bwt ref.fasta.pac ref.fasta.amb ref.fasta.ann ref.fasta.sa query.fastq.18
+	./bwa mem ref.fasta query.fastq.18 > Out.18.sam 2> mem.18.err
+
+Out.19.sam mem.19.err : bwa ref.fasta ref.fasta.bwt ref.fasta.pac ref.fasta.amb ref.fasta.ann ref.fasta.sa query.fastq.19
+	./bwa mem ref.fasta query.fastq.19 > Out.19.sam 2> mem.19.err
+
+Out.20.sam mem.20.err : bwa ref.fasta ref.fasta.bwt ref.fasta.pac ref.fasta.amb ref.fasta.ann ref.fasta.sa query.fastq.20
+	./bwa mem ref.fasta query.fastq.20 > Out.20.sam 2> mem.20.err
+
+Out.21.sam mem.21.err : bwa ref.fasta ref.fasta.bwt ref.fasta.pac ref.fasta.amb ref.fasta.ann ref.fasta.sa query.fastq.21
+	./bwa mem ref.fasta query.fastq.21 > Out.21.sam 2> mem.21.err
+
+Out.22.sam mem.22.err : bwa ref.fasta ref.fasta.bwt ref.fasta.pac ref.fasta.amb ref.fasta.ann ref.fasta.sa query.fastq.22
+	./bwa mem ref.fasta query.fastq.22 > Out.22.sam 2> mem.22.err
+
+Out.23.sam mem.23.err : bwa ref.fasta ref.fasta.bwt ref.fasta.pac ref.fasta.amb ref.fasta.ann ref.fasta.sa query.fastq.23
+	./bwa mem ref.fasta query.fastq.23 > Out.23.sam 2> mem.23.err
+
+Out.24.sam mem.24.err : bwa ref.fasta ref.fasta.bwt ref.fasta.pac ref.fasta.amb ref.fasta.ann ref.fasta.sa query.fastq.24
+	./bwa mem ref.fasta query.fastq.24 > Out.24.sam 2> mem.24.err
+
+Out.25.sam mem.25.err : bwa ref.fasta ref.fasta.bwt ref.fasta.pac ref.fasta.amb ref.fasta.ann ref.fasta.sa query.fastq.25
+	./bwa mem ref.fasta query.fastq.25 > Out.25.sam 2> mem.25.err
+
+Out.26.sam mem.26.err : bwa ref.fasta ref.fasta.bwt ref.fasta.pac ref.fasta.amb ref.fasta.ann ref.fasta.sa query.fastq.26
+	./bwa mem ref.fasta query.fastq.26 > Out.26.sam 2> mem.26.err
+
+Out.27.sam mem.27.err : bwa ref.fasta ref.fasta.bwt ref.fasta.pac ref.fasta.amb ref.fasta.ann ref.fasta.sa query.fastq.27
+	./bwa mem ref.fasta query.fastq.27 > Out.27.sam 2> mem.27.err
+
+Out.28.sam mem.28.err : bwa ref.fasta ref.fasta.bwt ref.fasta.pac ref.fasta.amb ref.fasta.ann ref.fasta.sa query.fastq.28
+	./bwa mem ref.fasta query.fastq.28 > Out.28.sam 2> mem.28.err
+
+Out.29.sam mem.29.err : bwa ref.fasta ref.fasta.bwt ref.fasta.pac ref.fasta.amb ref.fasta.ann ref.fasta.sa query.fastq.29
+	./bwa mem ref.fasta query.fastq.29 > Out.29.sam 2> mem.29.err
+
+Out.30.sam mem.30.err : bwa ref.fasta ref.fasta.bwt ref.fasta.pac ref.fasta.amb ref.fasta.ann ref.fasta.sa query.fastq.30
+	./bwa mem ref.fasta query.fastq.30 > Out.30.sam 2> mem.30.err
+
+Out.31.sam mem.31.err : bwa ref.fasta ref.fasta.bwt ref.fasta.pac ref.fasta.amb ref.fasta.ann ref.fasta.sa query.fastq.31
+	./bwa mem ref.fasta query.fastq.31 > Out.31.sam 2> mem.31.err
+
+Out.32.sam mem.32.err : bwa ref.fasta ref.fasta.bwt ref.fasta.pac ref.fasta.amb ref.fasta.ann ref.fasta.sa query.fastq.32
+	./bwa mem ref.fasta query.fastq.32 > Out.32.sam 2> mem.32.err
+
+Out.33.sam mem.33.err : bwa ref.fasta ref.fasta.bwt ref.fasta.pac ref.fasta.amb ref.fasta.ann ref.fasta.sa query.fastq.33
+	./bwa mem ref.fasta query.fastq.33 > Out.33.sam 2> mem.33.err
+
+Out.34.sam mem.34.err : bwa ref.fasta ref.fasta.bwt ref.fasta.pac ref.fasta.amb ref.fasta.ann ref.fasta.sa query.fastq.34
+	./bwa mem ref.fasta query.fastq.34 > Out.34.sam 2> mem.34.err
+
+Out.35.sam mem.35.err : bwa ref.fasta ref.fasta.bwt ref.fasta.pac ref.fasta.amb ref.fasta.ann ref.fasta.sa query.fastq.35
+	./bwa mem ref.fasta query.fastq.35 > Out.35.sam 2> mem.35.err
+
+Out.36.sam mem.36.err : bwa ref.fasta ref.fasta.bwt ref.fasta.pac ref.fasta.amb ref.fasta.ann ref.fasta.sa query.fastq.36
+	./bwa mem ref.fasta query.fastq.36 > Out.36.sam 2> mem.36.err
+
+Out.37.sam mem.37.err : bwa ref.fasta ref.fasta.bwt ref.fasta.pac ref.fasta.amb ref.fasta.ann ref.fasta.sa query.fastq.37
+	./bwa mem ref.fasta query.fastq.37 > Out.37.sam 2> mem.37.err
+
+Out.38.sam mem.38.err : bwa ref.fasta ref.fasta.bwt ref.fasta.pac ref.fasta.amb ref.fasta.ann ref.fasta.sa query.fastq.38
+	./bwa mem ref.fasta query.fastq.38 > Out.38.sam 2> mem.38.err
+
+Out.39.sam mem.39.err : bwa ref.fasta ref.fasta.bwt ref.fasta.pac ref.fasta.amb ref.fasta.ann ref.fasta.sa query.fastq.39
+	./bwa mem ref.fasta query.fastq.39 > Out.39.sam 2> mem.39.err
+
+Out.40.sam mem.40.err : bwa ref.fasta ref.fasta.bwt ref.fasta.pac ref.fasta.amb ref.fasta.ann ref.fasta.sa query.fastq.40
+	./bwa mem ref.fasta query.fastq.40 > Out.40.sam 2> mem.40.err
+
+Out.41.sam mem.41.err : bwa ref.fasta ref.fasta.bwt ref.fasta.pac ref.fasta.amb ref.fasta.ann ref.fasta.sa query.fastq.41
+	./bwa mem ref.fasta query.fastq.41 > Out.41.sam 2> mem.41.err
+
+Out.42.sam mem.42.err : bwa ref.fasta ref.fasta.bwt ref.fasta.pac ref.fasta.amb ref.fasta.ann ref.fasta.sa query.fastq.42
+	./bwa mem ref.fasta query.fastq.42 > Out.42.sam 2> mem.42.err
+
+Out.43.sam mem.43.err : bwa ref.fasta ref.fasta.bwt ref.fasta.pac ref.fasta.amb ref.fasta.ann ref.fasta.sa query.fastq.43
+	./bwa mem ref.fasta query.fastq.43 > Out.43.sam 2> mem.43.err
+
+Out.44.sam mem.44.err : bwa ref.fasta ref.fasta.bwt ref.fasta.pac ref.fasta.amb ref.fasta.ann ref.fasta.sa query.fastq.44
+	./bwa mem ref.fasta query.fastq.44 > Out.44.sam 2> mem.44.err
+
+Out.45.sam mem.45.err : bwa ref.fasta ref.fasta.bwt ref.fasta.pac ref.fasta.amb ref.fasta.ann ref.fasta.sa query.fastq.45
+	./bwa mem ref.fasta query.fastq.45 > Out.45.sam 2> mem.45.err
+
+Out.46.sam mem.46.err : bwa ref.fasta ref.fasta.bwt ref.fasta.pac ref.fasta.amb ref.fasta.ann ref.fasta.sa query.fastq.46
+	./bwa mem ref.fasta query.fastq.46 > Out.46.sam 2> mem.46.err
+
+Out.47.sam mem.47.err : bwa ref.fasta ref.fasta.bwt ref.fasta.pac ref.fasta.amb ref.fasta.ann ref.fasta.sa query.fastq.47
+	./bwa mem ref.fasta query.fastq.47 > Out.47.sam 2> mem.47.err
+
+Out.48.sam mem.48.err : bwa ref.fasta ref.fasta.bwt ref.fasta.pac ref.fasta.amb ref.fasta.ann ref.fasta.sa query.fastq.48
+	./bwa mem ref.fasta query.fastq.48 > Out.48.sam 2> mem.48.err
+
+Out.49.sam mem.49.err : bwa ref.fasta ref.fasta.bwt ref.fasta.pac ref.fasta.amb ref.fasta.ann ref.fasta.sa query.fastq.49
+	./bwa mem ref.fasta query.fastq.49 > Out.49.sam 2> mem.49.err
+
+Out.50.sam mem.50.err : bwa ref.fasta ref.fasta.bwt ref.fasta.pac ref.fasta.amb ref.fasta.ann ref.fasta.sa query.fastq.50
+	./bwa mem ref.fasta query.fastq.50 > Out.50.sam 2> mem.50.err
+
+Out.51.sam mem.51.err : bwa ref.fasta ref.fasta.bwt ref.fasta.pac ref.fasta.amb ref.fasta.ann ref.fasta.sa query.fastq.51
+	./bwa mem ref.fasta query.fastq.51 > Out.51.sam 2> mem.51.err
+
+Out.52.sam mem.52.err : bwa ref.fasta ref.fasta.bwt ref.fasta.pac ref.fasta.amb ref.fasta.ann ref.fasta.sa query.fastq.52
+	./bwa mem ref.fasta query.fastq.52 > Out.52.sam 2> mem.52.err
+
+Out.53.sam mem.53.err : bwa ref.fasta ref.fasta.bwt ref.fasta.pac ref.fasta.amb ref.fasta.ann ref.fasta.sa query.fastq.53
+	./bwa mem ref.fasta query.fastq.53 > Out.53.sam 2> mem.53.err
+
+Out.54.sam mem.54.err : bwa ref.fasta ref.fasta.bwt ref.fasta.pac ref.fasta.amb ref.fasta.ann ref.fasta.sa query.fastq.54
+	./bwa mem ref.fasta query.fastq.54 > Out.54.sam 2> mem.54.err
+
+Out.55.sam mem.55.err : bwa ref.fasta ref.fasta.bwt ref.fasta.pac ref.fasta.amb ref.fasta.ann ref.fasta.sa query.fastq.55
+	./bwa mem ref.fasta query.fastq.55 > Out.55.sam 2> mem.55.err
+
+Out.56.sam mem.56.err : bwa ref.fasta ref.fasta.bwt ref.fasta.pac ref.fasta.amb ref.fasta.ann ref.fasta.sa query.fastq.56
+	./bwa mem ref.fasta query.fastq.56 > Out.56.sam 2> mem.56.err
+
+Out.57.sam mem.57.err : bwa ref.fasta ref.fasta.bwt ref.fasta.pac ref.fasta.amb ref.fasta.ann ref.fasta.sa query.fastq.57
+	./bwa mem ref.fasta query.fastq.57 > Out.57.sam 2> mem.57.err
+
+Out.58.sam mem.58.err : bwa ref.fasta ref.fasta.bwt ref.fasta.pac ref.fasta.amb ref.fasta.ann ref.fasta.sa query.fastq.58
+	./bwa mem ref.fasta query.fastq.58 > Out.58.sam 2> mem.58.err
+
+Out.59.sam mem.59.err : bwa ref.fasta ref.fasta.bwt ref.fasta.pac ref.fasta.amb ref.fasta.ann ref.fasta.sa query.fastq.59
+	./bwa mem ref.fasta query.fastq.59 > Out.59.sam 2> mem.59.err
+
+Out.60.sam mem.60.err : bwa ref.fasta ref.fasta.bwt ref.fasta.pac ref.fasta.amb ref.fasta.ann ref.fasta.sa query.fastq.60
+	./bwa mem ref.fasta query.fastq.60 > Out.60.sam 2> mem.60.err
+
+Out.61.sam mem.61.err : bwa ref.fasta ref.fasta.bwt ref.fasta.pac ref.fasta.amb ref.fasta.ann ref.fasta.sa query.fastq.61
+	./bwa mem ref.fasta query.fastq.61 > Out.61.sam 2> mem.61.err
+
+Out.62.sam mem.62.err : bwa ref.fasta ref.fasta.bwt ref.fasta.pac ref.fasta.amb ref.fasta.ann ref.fasta.sa query.fastq.62
+	./bwa mem ref.fasta query.fastq.62 > Out.62.sam 2> mem.62.err
+
+Out.63.sam mem.63.err : bwa ref.fasta ref.fasta.bwt ref.fasta.pac ref.fasta.amb ref.fasta.ann ref.fasta.sa query.fastq.63
+	./bwa mem ref.fasta query.fastq.63 > Out.63.sam 2> mem.63.err
+
+Out.64.sam mem.64.err : bwa ref.fasta ref.fasta.bwt ref.fasta.pac ref.fasta.amb ref.fasta.ann ref.fasta.sa query.fastq.64
+	./bwa mem ref.fasta query.fastq.64 > Out.64.sam 2> mem.64.err
+
+Out.65.sam mem.65.err : bwa ref.fasta ref.fasta.bwt ref.fasta.pac ref.fasta.amb ref.fasta.ann ref.fasta.sa query.fastq.65
+	./bwa mem ref.fasta query.fastq.65 > Out.65.sam 2> mem.65.err
+
+Out.66.sam mem.66.err : bwa ref.fasta ref.fasta.bwt ref.fasta.pac ref.fasta.amb ref.fasta.ann ref.fasta.sa query.fastq.66
+	./bwa mem ref.fasta query.fastq.66 > Out.66.sam 2> mem.66.err
+
+Out.67.sam mem.67.err : bwa ref.fasta ref.fasta.bwt ref.fasta.pac ref.fasta.amb ref.fasta.ann ref.fasta.sa query.fastq.67
+	./bwa mem ref.fasta query.fastq.67 > Out.67.sam 2> mem.67.err
+
+Out.68.sam mem.68.err : bwa ref.fasta ref.fasta.bwt ref.fasta.pac ref.fasta.amb ref.fasta.ann ref.fasta.sa query.fastq.68
+	./bwa mem ref.fasta query.fastq.68 > Out.68.sam 2> mem.68.err
+
+Out.69.sam mem.69.err : bwa ref.fasta ref.fasta.bwt ref.fasta.pac ref.fasta.amb ref.fasta.ann ref.fasta.sa query.fastq.69
+	./bwa mem ref.fasta query.fastq.69 > Out.69.sam 2> mem.69.err
+
+Out.70.sam mem.70.err : bwa ref.fasta ref.fasta.bwt ref.fasta.pac ref.fasta.amb ref.fasta.ann ref.fasta.sa query.fastq.70
+	./bwa mem ref.fasta query.fastq.70 > Out.70.sam 2> mem.70.err
+
+Out.71.sam mem.71.err : bwa ref.fasta ref.fasta.bwt ref.fasta.pac ref.fasta.amb ref.fasta.ann ref.fasta.sa query.fastq.71
+	./bwa mem ref.fasta query.fastq.71 > Out.71.sam 2> mem.71.err
+
+Out.72.sam mem.72.err : bwa ref.fasta ref.fasta.bwt ref.fasta.pac ref.fasta.amb ref.fasta.ann ref.fasta.sa query.fastq.72
+	./bwa mem ref.fasta query.fastq.72 > Out.72.sam 2> mem.72.err
+
+Out.73.sam mem.73.err : bwa ref.fasta ref.fasta.bwt ref.fasta.pac ref.fasta.amb ref.fasta.ann ref.fasta.sa query.fastq.73
+	./bwa mem ref.fasta query.fastq.73 > Out.73.sam 2> mem.73.err
+
+Out.74.sam mem.74.err : bwa ref.fasta ref.fasta.bwt ref.fasta.pac ref.fasta.amb ref.fasta.ann ref.fasta.sa query.fastq.74
+	./bwa mem ref.fasta query.fastq.74 > Out.74.sam 2> mem.74.err
+
+Out.75.sam mem.75.err : bwa ref.fasta ref.fasta.bwt ref.fasta.pac ref.fasta.amb ref.fasta.ann ref.fasta.sa query.fastq.75
+	./bwa mem ref.fasta query.fastq.75 > Out.75.sam 2> mem.75.err
+
+Out.76.sam mem.76.err : bwa ref.fasta ref.fasta.bwt ref.fasta.pac ref.fasta.amb ref.fasta.ann ref.fasta.sa query.fastq.76
+	./bwa mem ref.fasta query.fastq.76 > Out.76.sam 2> mem.76.err
+
+Out.77.sam mem.77.err : bwa ref.fasta ref.fasta.bwt ref.fasta.pac ref.fasta.amb ref.fasta.ann ref.fasta.sa query.fastq.77
+	./bwa mem ref.fasta query.fastq.77 > Out.77.sam 2> mem.77.err
+
+Out.78.sam mem.78.err : bwa ref.fasta ref.fasta.bwt ref.fasta.pac ref.fasta.amb ref.fasta.ann ref.fasta.sa query.fastq.78
+	./bwa mem ref.fasta query.fastq.78 > Out.78.sam 2> mem.78.err
+
+Out.79.sam mem.79.err : bwa ref.fasta ref.fasta.bwt ref.fasta.pac ref.fasta.amb ref.fasta.ann ref.fasta.sa query.fastq.79
+	./bwa mem ref.fasta query.fastq.79 > Out.79.sam 2> mem.79.err
+
+Out.80.sam mem.80.err : bwa ref.fasta ref.fasta.bwt ref.fasta.pac ref.fasta.amb ref.fasta.ann ref.fasta.sa query.fastq.80
+	./bwa mem ref.fasta query.fastq.80 > Out.80.sam 2> mem.80.err
+
+Out.81.sam mem.81.err : bwa ref.fasta ref.fasta.bwt ref.fasta.pac ref.fasta.amb ref.fasta.ann ref.fasta.sa query.fastq.81
+	./bwa mem ref.fasta query.fastq.81 > Out.81.sam 2> mem.81.err
+
+Out.82.sam mem.82.err : bwa ref.fasta ref.fasta.bwt ref.fasta.pac ref.fasta.amb ref.fasta.ann ref.fasta.sa query.fastq.82
+	./bwa mem ref.fasta query.fastq.82 > Out.82.sam 2> mem.82.err
+
+Out.83.sam mem.83.err : bwa ref.fasta ref.fasta.bwt ref.fasta.pac ref.fasta.amb ref.fasta.ann ref.fasta.sa query.fastq.83
+	./bwa mem ref.fasta query.fastq.83 > Out.83.sam 2> mem.83.err
+
+Out.84.sam mem.84.err : bwa ref.fasta ref.fasta.bwt ref.fasta.pac ref.fasta.amb ref.fasta.ann ref.fasta.sa query.fastq.84
+	./bwa mem ref.fasta query.fastq.84 > Out.84.sam 2> mem.84.err
+
+Out.85.sam mem.85.err : bwa ref.fasta ref.fasta.bwt ref.fasta.pac ref.fasta.amb ref.fasta.ann ref.fasta.sa query.fastq.85
+	./bwa mem ref.fasta query.fastq.85 > Out.85.sam 2> mem.85.err
+
+Out.86.sam mem.86.err : bwa ref.fasta ref.fasta.bwt ref.fasta.pac ref.fasta.amb ref.fasta.ann ref.fasta.sa query.fastq.86
+	./bwa mem ref.fasta query.fastq.86 > Out.86.sam 2> mem.86.err
+
+Out.87.sam mem.87.err : bwa ref.fasta ref.fasta.bwt ref.fasta.pac ref.fasta.amb ref.fasta.ann ref.fasta.sa query.fastq.87
+	./bwa mem ref.fasta query.fastq.87 > Out.87.sam 2> mem.87.err
+
+Out.88.sam mem.88.err : bwa ref.fasta ref.fasta.bwt ref.fasta.pac ref.fasta.amb ref.fasta.ann ref.fasta.sa query.fastq.88
+	./bwa mem ref.fasta query.fastq.88 > Out.88.sam 2> mem.88.err
+
+Out.89.sam mem.89.err : bwa ref.fasta ref.fasta.bwt ref.fasta.pac ref.fasta.amb ref.fasta.ann ref.fasta.sa query.fastq.89
+	./bwa mem ref.fasta query.fastq.89 > Out.89.sam 2> mem.89.err
+
+Out.90.sam mem.90.err : bwa ref.fasta ref.fasta.bwt ref.fasta.pac ref.fasta.amb ref.fasta.ann ref.fasta.sa query.fastq.90
+	./bwa mem ref.fasta query.fastq.90 > Out.90.sam 2> mem.90.err
+
+Out.91.sam mem.91.err : bwa ref.fasta ref.fasta.bwt ref.fasta.pac ref.fasta.amb ref.fasta.ann ref.fasta.sa query.fastq.91
+	./bwa mem ref.fasta query.fastq.91 > Out.91.sam 2> mem.91.err
+
+Out.92.sam mem.92.err : bwa ref.fasta ref.fasta.bwt ref.fasta.pac ref.fasta.amb ref.fasta.ann ref.fasta.sa query.fastq.92
+	./bwa mem ref.fasta query.fastq.92 > Out.92.sam 2> mem.92.err
+
+Out.93.sam mem.93.err : bwa ref.fasta ref.fasta.bwt ref.fasta.pac ref.fasta.amb ref.fasta.ann ref.fasta.sa query.fastq.93
+	./bwa mem ref.fasta query.fastq.93 > Out.93.sam 2> mem.93.err
+
+Out.94.sam mem.94.err : bwa ref.fasta ref.fasta.bwt ref.fasta.pac ref.fasta.amb ref.fasta.ann ref.fasta.sa query.fastq.94
+	./bwa mem ref.fasta query.fastq.94 > Out.94.sam 2> mem.94.err
+
+Out.95.sam mem.95.err : bwa ref.fasta ref.fasta.bwt ref.fasta.pac ref.fasta.amb ref.fasta.ann ref.fasta.sa query.fastq.95
+	./bwa mem ref.fasta query.fastq.95 > Out.95.sam 2> mem.95.err
+
+Out.96.sam mem.96.err : bwa ref.fasta ref.fasta.bwt ref.fasta.pac ref.fasta.amb ref.fasta.ann ref.fasta.sa query.fastq.96
+	./bwa mem ref.fasta query.fastq.96 > Out.96.sam 2> mem.96.err
+
+Out.97.sam mem.97.err : bwa ref.fasta ref.fasta.bwt ref.fasta.pac ref.fasta.amb ref.fasta.ann ref.fasta.sa query.fastq.97
+	./bwa mem ref.fasta query.fastq.97 > Out.97.sam 2> mem.97.err
+
+Out.98.sam mem.98.err : bwa ref.fasta ref.fasta.bwt ref.fasta.pac ref.fasta.amb ref.fasta.ann ref.fasta.sa query.fastq.98
+	./bwa mem ref.fasta query.fastq.98 > Out.98.sam 2> mem.98.err
+
+Out.99.sam mem.99.err : bwa ref.fasta ref.fasta.bwt ref.fasta.pac ref.fasta.amb ref.fasta.ann ref.fasta.sa query.fastq.99
+	./bwa mem ref.fasta query.fastq.99 > Out.99.sam 2> mem.99.err
+
+Out.sam : sam_cat.sh Out.0.sam Out.1.sam Out.2.sam Out.3.sam Out.4.sam Out.5.sam Out.6.sam Out.7.sam Out.8.sam Out.9.sam Out.10.sam Out.11.sam Out.12.sam Out.13.sam Out.14.sam Out.15.sam Out.16.sam Out.17.sam Out.18.sam Out.19.sam Out.20.sam Out.21.sam Out.22.sam Out.23.sam Out.24.sam Out.25.sam Out.26.sam Out.27.sam Out.28.sam Out.29.sam Out.30.sam Out.31.sam Out.32.sam Out.33.sam Out.34.sam Out.35.sam Out.36.sam Out.37.sam Out.38.sam Out.39.sam Out.40.sam Out.41.sam Out.42.sam Out.43.sam Out.44.sam Out.45.sam Out.46.sam Out.47.sam Out.48.sam Out.49.sam Out.50.sam Out.51.sam Out.52.sam Out.53.sam Out.54.sam Out.55.sam Out.56.sam Out.57.sam Out.58.sam Out.59.sam Out.60.sam Out.61.sam Out.62.sam Out.63.sam Out.64.sam Out.65.sam Out.66.sam Out.67.sam Out.68.sam Out.69.sam Out.70.sam Out.71.sam Out.72.sam Out.73.sam Out.74.sam Out.75.sam Out.76.sam Out.77.sam Out.78.sam Out.79.sam Out.80.sam Out.81.sam Out.82.sam Out.83.sam Out.84.sam Out.85.sam Out.86.sam Out.87.sam Out.88.sam Out.89.sam Out.90.sam Out.91.sam Out.92.sam Out.93.sam Out.94.sam Out.95.sam Out.96.sam Out.97.sam Out.98.sam Out.99.sam
 	LOCAL ./sam_cat.sh Out.*.sam > Out.sam
 
-mem.err : mem.0.err mem.1.err mem.2.err mem.3.err mem.4.err mem.5.err mem.6.err mem.7.err mem.8.err mem.9.err
+mem.err : mem.0.err mem.1.err mem.2.err mem.3.err mem.4.err mem.5.err mem.6.err mem.7.err mem.8.err mem.9.err mem.10.err mem.11.err mem.12.err mem.13.err mem.14.err mem.15.err mem.16.err mem.17.err mem.18.err mem.19.err mem.20.err mem.21.err mem.22.err mem.23.err mem.24.err mem.25.err mem.26.err mem.27.err mem.28.err mem.29.err mem.30.err mem.31.err mem.32.err mem.33.err mem.34.err mem.35.err mem.36.err mem.37.err mem.38.err mem.39.err mem.40.err mem.41.err mem.42.err mem.43.err mem.44.err mem.45.err mem.46.err mem.47.err mem.48.err mem.49.err mem.50.err mem.51.err mem.52.err mem.53.err mem.54.err mem.55.err mem.56.err mem.57.err mem.58.err mem.59.err mem.60.err mem.61.err mem.62.err mem.63.err mem.64.err mem.65.err mem.66.err mem.67.err mem.68.err mem.69.err mem.70.err mem.71.err mem.72.err mem.73.err mem.74.err mem.75.err mem.76.err mem.77.err mem.78.err mem.79.err mem.80.err mem.81.err mem.82.err mem.83.err mem.84.err mem.85.err mem.86.err mem.87.err mem.88.err mem.89.err mem.90.err mem.91.err mem.92.err mem.93.err mem.94.err mem.95.err mem.96.err mem.97.err mem.98.err mem.99.err
 	LOCAL cat mem.*.err > mem.err
 
 Out.bam sort.err : samtools Out.sam
@@ -68,7 +338,7 @@ corr.err : corr.0.err corr.1.err
 LowConf.txt : lc.0.out lc.1.out
 	LOCAL cat lc.*.out > LowConf.txt
 
-ref.fasta.0 ref.fasta.1 ref.fasta.2 ref.fasta.3 ref.fasta.4 ref.fasta.5 ref.fasta.6 ref.fasta.7 ref.fasta.8 ref.fasta.9 : fasta_reduce ref.fasta
+ref.fasta.0 ref.fasta.1 ref.fasta.2 ref.fasta.3 ref.fasta.4 ref.fasta.5 ref.fasta.6 ref.fasta.7 ref.fasta.8 ref.fasta.9 ref.fasta.10 ref.fasta.11 ref.fasta.12 ref.fasta.13 ref.fasta.14 ref.fasta.15 ref.fasta.16 ref.fasta.17 ref.fasta.18 ref.fasta.19 ref.fasta.20 ref.fasta.21 ref.fasta.22 ref.fasta.23 ref.fasta.24 ref.fasta.25 ref.fasta.26 ref.fasta.27 ref.fasta.28 ref.fasta.29 ref.fasta.30 ref.fasta.31 ref.fasta.32 ref.fasta.33 ref.fasta.34 ref.fasta.35 ref.fasta.36 ref.fasta.37 ref.fasta.38 ref.fasta.39 ref.fasta.40 ref.fasta.41 ref.fasta.42 ref.fasta.43 ref.fasta.44 ref.fasta.45 ref.fasta.46 ref.fasta.47 ref.fasta.48 ref.fasta.49 ref.fasta.50 ref.fasta.51 ref.fasta.52 ref.fasta.53 ref.fasta.54 ref.fasta.55 ref.fasta.56 ref.fasta.57 ref.fasta.58 ref.fasta.59 ref.fasta.60 ref.fasta.61 ref.fasta.62 ref.fasta.63 ref.fasta.64 ref.fasta.65 ref.fasta.66 ref.fasta.67 ref.fasta.68 ref.fasta.69 ref.fasta.70 ref.fasta.71 ref.fasta.72 ref.fasta.73 ref.fasta.74 ref.fasta.75 ref.fasta.76 ref.fasta.77 ref.fasta.78 ref.fasta.79 ref.fasta.80 ref.fasta.81 ref.fasta.82 ref.fasta.83 ref.fasta.84 ref.fasta.85 ref.fasta.86 ref.fasta.87 ref.fasta.88 ref.fasta.89 ref.fasta.90 ref.fasta.91 ref.fasta.92 ref.fasta.93 ref.fasta.94 ref.fasta.95 ref.fasta.96 ref.fasta.97 ref.fasta.98 ref.fasta.99 : fasta_reduce ref.fasta
 	LOCAL ./fasta_reduce ref.fasta 1000
 
 Corrected_ref.fasta.0 create.err.0 : Create_Corrected_AllLRReads.py ref.fasta.0 corr.out
@@ -101,6 +371,276 @@ Corrected_ref.fasta.8 create.err.8 : Create_Corrected_AllLRReads.py ref.fasta.8 
 Corrected_ref.fasta.9 create.err.9 : Create_Corrected_AllLRReads.py ref.fasta.9 corr.out
 	python Create_Corrected_AllLRReads.py ref.fasta.9 corr.out 2> create.err.9
 
-Corrected_ref.fasta : Corrected_ref.fasta.0 Corrected_ref.fasta.1 Corrected_ref.fasta.2 Corrected_ref.fasta.3 Corrected_ref.fasta.4 Corrected_ref.fasta.5 Corrected_ref.fasta.6 Corrected_ref.fasta.7 Corrected_ref.fasta.8 Corrected_ref.fasta.9
+Corrected_ref.fasta.10 create.err.10 : Create_Corrected_AllLRReads.py ref.fasta.10 corr.out
+	python Create_Corrected_AllLRReads.py ref.fasta.10 corr.out 2> create.err.10
+
+Corrected_ref.fasta.11 create.err.11 : Create_Corrected_AllLRReads.py ref.fasta.11 corr.out
+	python Create_Corrected_AllLRReads.py ref.fasta.11 corr.out 2> create.err.11
+
+Corrected_ref.fasta.12 create.err.12 : Create_Corrected_AllLRReads.py ref.fasta.12 corr.out
+	python Create_Corrected_AllLRReads.py ref.fasta.12 corr.out 2> create.err.12
+
+Corrected_ref.fasta.13 create.err.13 : Create_Corrected_AllLRReads.py ref.fasta.13 corr.out
+	python Create_Corrected_AllLRReads.py ref.fasta.13 corr.out 2> create.err.13
+
+Corrected_ref.fasta.14 create.err.14 : Create_Corrected_AllLRReads.py ref.fasta.14 corr.out
+	python Create_Corrected_AllLRReads.py ref.fasta.14 corr.out 2> create.err.14
+
+Corrected_ref.fasta.15 create.err.15 : Create_Corrected_AllLRReads.py ref.fasta.15 corr.out
+	python Create_Corrected_AllLRReads.py ref.fasta.15 corr.out 2> create.err.15
+
+Corrected_ref.fasta.16 create.err.16 : Create_Corrected_AllLRReads.py ref.fasta.16 corr.out
+	python Create_Corrected_AllLRReads.py ref.fasta.16 corr.out 2> create.err.16
+
+Corrected_ref.fasta.17 create.err.17 : Create_Corrected_AllLRReads.py ref.fasta.17 corr.out
+	python Create_Corrected_AllLRReads.py ref.fasta.17 corr.out 2> create.err.17
+
+Corrected_ref.fasta.18 create.err.18 : Create_Corrected_AllLRReads.py ref.fasta.18 corr.out
+	python Create_Corrected_AllLRReads.py ref.fasta.18 corr.out 2> create.err.18
+
+Corrected_ref.fasta.19 create.err.19 : Create_Corrected_AllLRReads.py ref.fasta.19 corr.out
+	python Create_Corrected_AllLRReads.py ref.fasta.19 corr.out 2> create.err.19
+
+Corrected_ref.fasta.20 create.err.20 : Create_Corrected_AllLRReads.py ref.fasta.20 corr.out
+	python Create_Corrected_AllLRReads.py ref.fasta.20 corr.out 2> create.err.20
+
+Corrected_ref.fasta.21 create.err.21 : Create_Corrected_AllLRReads.py ref.fasta.21 corr.out
+	python Create_Corrected_AllLRReads.py ref.fasta.21 corr.out 2> create.err.21
+
+Corrected_ref.fasta.22 create.err.22 : Create_Corrected_AllLRReads.py ref.fasta.22 corr.out
+	python Create_Corrected_AllLRReads.py ref.fasta.22 corr.out 2> create.err.22
+
+Corrected_ref.fasta.23 create.err.23 : Create_Corrected_AllLRReads.py ref.fasta.23 corr.out
+	python Create_Corrected_AllLRReads.py ref.fasta.23 corr.out 2> create.err.23
+
+Corrected_ref.fasta.24 create.err.24 : Create_Corrected_AllLRReads.py ref.fasta.24 corr.out
+	python Create_Corrected_AllLRReads.py ref.fasta.24 corr.out 2> create.err.24
+
+Corrected_ref.fasta.25 create.err.25 : Create_Corrected_AllLRReads.py ref.fasta.25 corr.out
+	python Create_Corrected_AllLRReads.py ref.fasta.25 corr.out 2> create.err.25
+
+Corrected_ref.fasta.26 create.err.26 : Create_Corrected_AllLRReads.py ref.fasta.26 corr.out
+	python Create_Corrected_AllLRReads.py ref.fasta.26 corr.out 2> create.err.26
+
+Corrected_ref.fasta.27 create.err.27 : Create_Corrected_AllLRReads.py ref.fasta.27 corr.out
+	python Create_Corrected_AllLRReads.py ref.fasta.27 corr.out 2> create.err.27
+
+Corrected_ref.fasta.28 create.err.28 : Create_Corrected_AllLRReads.py ref.fasta.28 corr.out
+	python Create_Corrected_AllLRReads.py ref.fasta.28 corr.out 2> create.err.28
+
+Corrected_ref.fasta.29 create.err.29 : Create_Corrected_AllLRReads.py ref.fasta.29 corr.out
+	python Create_Corrected_AllLRReads.py ref.fasta.29 corr.out 2> create.err.29
+
+Corrected_ref.fasta.30 create.err.30 : Create_Corrected_AllLRReads.py ref.fasta.30 corr.out
+	python Create_Corrected_AllLRReads.py ref.fasta.30 corr.out 2> create.err.30
+
+Corrected_ref.fasta.31 create.err.31 : Create_Corrected_AllLRReads.py ref.fasta.31 corr.out
+	python Create_Corrected_AllLRReads.py ref.fasta.31 corr.out 2> create.err.31
+
+Corrected_ref.fasta.32 create.err.32 : Create_Corrected_AllLRReads.py ref.fasta.32 corr.out
+	python Create_Corrected_AllLRReads.py ref.fasta.32 corr.out 2> create.err.32
+
+Corrected_ref.fasta.33 create.err.33 : Create_Corrected_AllLRReads.py ref.fasta.33 corr.out
+	python Create_Corrected_AllLRReads.py ref.fasta.33 corr.out 2> create.err.33
+
+Corrected_ref.fasta.34 create.err.34 : Create_Corrected_AllLRReads.py ref.fasta.34 corr.out
+	python Create_Corrected_AllLRReads.py ref.fasta.34 corr.out 2> create.err.34
+
+Corrected_ref.fasta.35 create.err.35 : Create_Corrected_AllLRReads.py ref.fasta.35 corr.out
+	python Create_Corrected_AllLRReads.py ref.fasta.35 corr.out 2> create.err.35
+
+Corrected_ref.fasta.36 create.err.36 : Create_Corrected_AllLRReads.py ref.fasta.36 corr.out
+	python Create_Corrected_AllLRReads.py ref.fasta.36 corr.out 2> create.err.36
+
+Corrected_ref.fasta.37 create.err.37 : Create_Corrected_AllLRReads.py ref.fasta.37 corr.out
+	python Create_Corrected_AllLRReads.py ref.fasta.37 corr.out 2> create.err.37
+
+Corrected_ref.fasta.38 create.err.38 : Create_Corrected_AllLRReads.py ref.fasta.38 corr.out
+	python Create_Corrected_AllLRReads.py ref.fasta.38 corr.out 2> create.err.38
+
+Corrected_ref.fasta.39 create.err.39 : Create_Corrected_AllLRReads.py ref.fasta.39 corr.out
+	python Create_Corrected_AllLRReads.py ref.fasta.39 corr.out 2> create.err.39
+
+Corrected_ref.fasta.40 create.err.40 : Create_Corrected_AllLRReads.py ref.fasta.40 corr.out
+	python Create_Corrected_AllLRReads.py ref.fasta.40 corr.out 2> create.err.40
+
+Corrected_ref.fasta.41 create.err.41 : Create_Corrected_AllLRReads.py ref.fasta.41 corr.out
+	python Create_Corrected_AllLRReads.py ref.fasta.41 corr.out 2> create.err.41
+
+Corrected_ref.fasta.42 create.err.42 : Create_Corrected_AllLRReads.py ref.fasta.42 corr.out
+	python Create_Corrected_AllLRReads.py ref.fasta.42 corr.out 2> create.err.42
+
+Corrected_ref.fasta.43 create.err.43 : Create_Corrected_AllLRReads.py ref.fasta.43 corr.out
+	python Create_Corrected_AllLRReads.py ref.fasta.43 corr.out 2> create.err.43
+
+Corrected_ref.fasta.44 create.err.44 : Create_Corrected_AllLRReads.py ref.fasta.44 corr.out
+	python Create_Corrected_AllLRReads.py ref.fasta.44 corr.out 2> create.err.44
+
+Corrected_ref.fasta.45 create.err.45 : Create_Corrected_AllLRReads.py ref.fasta.45 corr.out
+	python Create_Corrected_AllLRReads.py ref.fasta.45 corr.out 2> create.err.45
+
+Corrected_ref.fasta.46 create.err.46 : Create_Corrected_AllLRReads.py ref.fasta.46 corr.out
+	python Create_Corrected_AllLRReads.py ref.fasta.46 corr.out 2> create.err.46
+
+Corrected_ref.fasta.47 create.err.47 : Create_Corrected_AllLRReads.py ref.fasta.47 corr.out
+	python Create_Corrected_AllLRReads.py ref.fasta.47 corr.out 2> create.err.47
+
+Corrected_ref.fasta.48 create.err.48 : Create_Corrected_AllLRReads.py ref.fasta.48 corr.out
+	python Create_Corrected_AllLRReads.py ref.fasta.48 corr.out 2> create.err.48
+
+Corrected_ref.fasta.49 create.err.49 : Create_Corrected_AllLRReads.py ref.fasta.49 corr.out
+	python Create_Corrected_AllLRReads.py ref.fasta.49 corr.out 2> create.err.49
+
+Corrected_ref.fasta.50 create.err.50 : Create_Corrected_AllLRReads.py ref.fasta.50 corr.out
+	python Create_Corrected_AllLRReads.py ref.fasta.50 corr.out 2> create.err.50
+
+Corrected_ref.fasta.51 create.err.51 : Create_Corrected_AllLRReads.py ref.fasta.51 corr.out
+	python Create_Corrected_AllLRReads.py ref.fasta.51 corr.out 2> create.err.51
+
+Corrected_ref.fasta.52 create.err.52 : Create_Corrected_AllLRReads.py ref.fasta.52 corr.out
+	python Create_Corrected_AllLRReads.py ref.fasta.52 corr.out 2> create.err.52
+
+Corrected_ref.fasta.53 create.err.53 : Create_Corrected_AllLRReads.py ref.fasta.53 corr.out
+	python Create_Corrected_AllLRReads.py ref.fasta.53 corr.out 2> create.err.53
+
+Corrected_ref.fasta.54 create.err.54 : Create_Corrected_AllLRReads.py ref.fasta.54 corr.out
+	python Create_Corrected_AllLRReads.py ref.fasta.54 corr.out 2> create.err.54
+
+Corrected_ref.fasta.55 create.err.55 : Create_Corrected_AllLRReads.py ref.fasta.55 corr.out
+	python Create_Corrected_AllLRReads.py ref.fasta.55 corr.out 2> create.err.55
+
+Corrected_ref.fasta.56 create.err.56 : Create_Corrected_AllLRReads.py ref.fasta.56 corr.out
+	python Create_Corrected_AllLRReads.py ref.fasta.56 corr.out 2> create.err.56
+
+Corrected_ref.fasta.57 create.err.57 : Create_Corrected_AllLRReads.py ref.fasta.57 corr.out
+	python Create_Corrected_AllLRReads.py ref.fasta.57 corr.out 2> create.err.57
+
+Corrected_ref.fasta.58 create.err.58 : Create_Corrected_AllLRReads.py ref.fasta.58 corr.out
+	python Create_Corrected_AllLRReads.py ref.fasta.58 corr.out 2> create.err.58
+
+Corrected_ref.fasta.59 create.err.59 : Create_Corrected_AllLRReads.py ref.fasta.59 corr.out
+	python Create_Corrected_AllLRReads.py ref.fasta.59 corr.out 2> create.err.59
+
+Corrected_ref.fasta.60 create.err.60 : Create_Corrected_AllLRReads.py ref.fasta.60 corr.out
+	python Create_Corrected_AllLRReads.py ref.fasta.60 corr.out 2> create.err.60
+
+Corrected_ref.fasta.61 create.err.61 : Create_Corrected_AllLRReads.py ref.fasta.61 corr.out
+	python Create_Corrected_AllLRReads.py ref.fasta.61 corr.out 2> create.err.61
+
+Corrected_ref.fasta.62 create.err.62 : Create_Corrected_AllLRReads.py ref.fasta.62 corr.out
+	python Create_Corrected_AllLRReads.py ref.fasta.62 corr.out 2> create.err.62
+
+Corrected_ref.fasta.63 create.err.63 : Create_Corrected_AllLRReads.py ref.fasta.63 corr.out
+	python Create_Corrected_AllLRReads.py ref.fasta.63 corr.out 2> create.err.63
+
+Corrected_ref.fasta.64 create.err.64 : Create_Corrected_AllLRReads.py ref.fasta.64 corr.out
+	python Create_Corrected_AllLRReads.py ref.fasta.64 corr.out 2> create.err.64
+
+Corrected_ref.fasta.65 create.err.65 : Create_Corrected_AllLRReads.py ref.fasta.65 corr.out
+	python Create_Corrected_AllLRReads.py ref.fasta.65 corr.out 2> create.err.65
+
+Corrected_ref.fasta.66 create.err.66 : Create_Corrected_AllLRReads.py ref.fasta.66 corr.out
+	python Create_Corrected_AllLRReads.py ref.fasta.66 corr.out 2> create.err.66
+
+Corrected_ref.fasta.67 create.err.67 : Create_Corrected_AllLRReads.py ref.fasta.67 corr.out
+	python Create_Corrected_AllLRReads.py ref.fasta.67 corr.out 2> create.err.67
+
+Corrected_ref.fasta.68 create.err.68 : Create_Corrected_AllLRReads.py ref.fasta.68 corr.out
+	python Create_Corrected_AllLRReads.py ref.fasta.68 corr.out 2> create.err.68
+
+Corrected_ref.fasta.69 create.err.69 : Create_Corrected_AllLRReads.py ref.fasta.69 corr.out
+	python Create_Corrected_AllLRReads.py ref.fasta.69 corr.out 2> create.err.69
+
+Corrected_ref.fasta.70 create.err.70 : Create_Corrected_AllLRReads.py ref.fasta.70 corr.out
+	python Create_Corrected_AllLRReads.py ref.fasta.70 corr.out 2> create.err.70
+
+Corrected_ref.fasta.71 create.err.71 : Create_Corrected_AllLRReads.py ref.fasta.71 corr.out
+	python Create_Corrected_AllLRReads.py ref.fasta.71 corr.out 2> create.err.71
+
+Corrected_ref.fasta.72 create.err.72 : Create_Corrected_AllLRReads.py ref.fasta.72 corr.out
+	python Create_Corrected_AllLRReads.py ref.fasta.72 corr.out 2> create.err.72
+
+Corrected_ref.fasta.73 create.err.73 : Create_Corrected_AllLRReads.py ref.fasta.73 corr.out
+	python Create_Corrected_AllLRReads.py ref.fasta.73 corr.out 2> create.err.73
+
+Corrected_ref.fasta.74 create.err.74 : Create_Corrected_AllLRReads.py ref.fasta.74 corr.out
+	python Create_Corrected_AllLRReads.py ref.fasta.74 corr.out 2> create.err.74
+
+Corrected_ref.fasta.75 create.err.75 : Create_Corrected_AllLRReads.py ref.fasta.75 corr.out
+	python Create_Corrected_AllLRReads.py ref.fasta.75 corr.out 2> create.err.75
+
+Corrected_ref.fasta.76 create.err.76 : Create_Corrected_AllLRReads.py ref.fasta.76 corr.out
+	python Create_Corrected_AllLRReads.py ref.fasta.76 corr.out 2> create.err.76
+
+Corrected_ref.fasta.77 create.err.77 : Create_Corrected_AllLRReads.py ref.fasta.77 corr.out
+	python Create_Corrected_AllLRReads.py ref.fasta.77 corr.out 2> create.err.77
+
+Corrected_ref.fasta.78 create.err.78 : Create_Corrected_AllLRReads.py ref.fasta.78 corr.out
+	python Create_Corrected_AllLRReads.py ref.fasta.78 corr.out 2> create.err.78
+
+Corrected_ref.fasta.79 create.err.79 : Create_Corrected_AllLRReads.py ref.fasta.79 corr.out
+	python Create_Corrected_AllLRReads.py ref.fasta.79 corr.out 2> create.err.79
+
+Corrected_ref.fasta.80 create.err.80 : Create_Corrected_AllLRReads.py ref.fasta.80 corr.out
+	python Create_Corrected_AllLRReads.py ref.fasta.80 corr.out 2> create.err.80
+
+Corrected_ref.fasta.81 create.err.81 : Create_Corrected_AllLRReads.py ref.fasta.81 corr.out
+	python Create_Corrected_AllLRReads.py ref.fasta.81 corr.out 2> create.err.81
+
+Corrected_ref.fasta.82 create.err.82 : Create_Corrected_AllLRReads.py ref.fasta.82 corr.out
+	python Create_Corrected_AllLRReads.py ref.fasta.82 corr.out 2> create.err.82
+
+Corrected_ref.fasta.83 create.err.83 : Create_Corrected_AllLRReads.py ref.fasta.83 corr.out
+	python Create_Corrected_AllLRReads.py ref.fasta.83 corr.out 2> create.err.83
+
+Corrected_ref.fasta.84 create.err.84 : Create_Corrected_AllLRReads.py ref.fasta.84 corr.out
+	python Create_Corrected_AllLRReads.py ref.fasta.84 corr.out 2> create.err.84
+
+Corrected_ref.fasta.85 create.err.85 : Create_Corrected_AllLRReads.py ref.fasta.85 corr.out
+	python Create_Corrected_AllLRReads.py ref.fasta.85 corr.out 2> create.err.85
+
+Corrected_ref.fasta.86 create.err.86 : Create_Corrected_AllLRReads.py ref.fasta.86 corr.out
+	python Create_Corrected_AllLRReads.py ref.fasta.86 corr.out 2> create.err.86
+
+Corrected_ref.fasta.87 create.err.87 : Create_Corrected_AllLRReads.py ref.fasta.87 corr.out
+	python Create_Corrected_AllLRReads.py ref.fasta.87 corr.out 2> create.err.87
+
+Corrected_ref.fasta.88 create.err.88 : Create_Corrected_AllLRReads.py ref.fasta.88 corr.out
+	python Create_Corrected_AllLRReads.py ref.fasta.88 corr.out 2> create.err.88
+
+Corrected_ref.fasta.89 create.err.89 : Create_Corrected_AllLRReads.py ref.fasta.89 corr.out
+	python Create_Corrected_AllLRReads.py ref.fasta.89 corr.out 2> create.err.89
+
+Corrected_ref.fasta.90 create.err.90 : Create_Corrected_AllLRReads.py ref.fasta.90 corr.out
+	python Create_Corrected_AllLRReads.py ref.fasta.90 corr.out 2> create.err.90
+
+Corrected_ref.fasta.91 create.err.91 : Create_Corrected_AllLRReads.py ref.fasta.91 corr.out
+	python Create_Corrected_AllLRReads.py ref.fasta.91 corr.out 2> create.err.91
+
+Corrected_ref.fasta.92 create.err.92 : Create_Corrected_AllLRReads.py ref.fasta.92 corr.out
+	python Create_Corrected_AllLRReads.py ref.fasta.92 corr.out 2> create.err.92
+
+Corrected_ref.fasta.93 create.err.93 : Create_Corrected_AllLRReads.py ref.fasta.93 corr.out
+	python Create_Corrected_AllLRReads.py ref.fasta.93 corr.out 2> create.err.93
+
+Corrected_ref.fasta.94 create.err.94 : Create_Corrected_AllLRReads.py ref.fasta.94 corr.out
+	python Create_Corrected_AllLRReads.py ref.fasta.94 corr.out 2> create.err.94
+
+Corrected_ref.fasta.95 create.err.95 : Create_Corrected_AllLRReads.py ref.fasta.95 corr.out
+	python Create_Corrected_AllLRReads.py ref.fasta.95 corr.out 2> create.err.95
+
+Corrected_ref.fasta.96 create.err.96 : Create_Corrected_AllLRReads.py ref.fasta.96 corr.out
+	python Create_Corrected_AllLRReads.py ref.fasta.96 corr.out 2> create.err.96
+
+Corrected_ref.fasta.97 create.err.97 : Create_Corrected_AllLRReads.py ref.fasta.97 corr.out
+	python Create_Corrected_AllLRReads.py ref.fasta.97 corr.out 2> create.err.97
+
+Corrected_ref.fasta.98 create.err.98 : Create_Corrected_AllLRReads.py ref.fasta.98 corr.out
+	python Create_Corrected_AllLRReads.py ref.fasta.98 corr.out 2> create.err.98
+
+Corrected_ref.fasta.99 create.err.99 : Create_Corrected_AllLRReads.py ref.fasta.99 corr.out
+	python Create_Corrected_AllLRReads.py ref.fasta.99 corr.out 2> create.err.99
+
+Corrected_ref.fasta : Corrected_ref.fasta.0 Corrected_ref.fasta.1 Corrected_ref.fasta.2 Corrected_ref.fasta.3 Corrected_ref.fasta.4 Corrected_ref.fasta.5 Corrected_ref.fasta.6 Corrected_ref.fasta.7 Corrected_ref.fasta.8 Corrected_ref.fasta.9 Corrected_ref.fasta.10 Corrected_ref.fasta.11 Corrected_ref.fasta.12 Corrected_ref.fasta.13 Corrected_ref.fasta.14 Corrected_ref.fasta.15 Corrected_ref.fasta.16 Corrected_ref.fasta.17 Corrected_ref.fasta.18 Corrected_ref.fasta.19 Corrected_ref.fasta.20 Corrected_ref.fasta.21 Corrected_ref.fasta.22 Corrected_ref.fasta.23 Corrected_ref.fasta.24 Corrected_ref.fasta.25 Corrected_ref.fasta.26 Corrected_ref.fasta.27 Corrected_ref.fasta.28 Corrected_ref.fasta.29 Corrected_ref.fasta.30 Corrected_ref.fasta.31 Corrected_ref.fasta.32 Corrected_ref.fasta.33 Corrected_ref.fasta.34 Corrected_ref.fasta.35 Corrected_ref.fasta.36 Corrected_ref.fasta.37 Corrected_ref.fasta.38 Corrected_ref.fasta.39 Corrected_ref.fasta.40 Corrected_ref.fasta.41 Corrected_ref.fasta.42 Corrected_ref.fasta.43 Corrected_ref.fasta.44 Corrected_ref.fasta.45 Corrected_ref.fasta.46 Corrected_ref.fasta.47 Corrected_ref.fasta.48 Corrected_ref.fasta.49 Corrected_ref.fasta.50 Corrected_ref.fasta.51 Corrected_ref.fasta.52 Corrected_ref.fasta.53 Corrected_ref.fasta.54 Corrected_ref.fasta.55 Corrected_ref.fasta.56 Corrected_ref.fasta.57 Corrected_ref.fasta.58 Corrected_ref.fasta.59 Corrected_ref.fasta.60 Corrected_ref.fasta.61 Corrected_ref.fasta.62 Corrected_ref.fasta.63 Corrected_ref.fasta.64 Corrected_ref.fasta.65 Corrected_ref.fasta.66 Corrected_ref.fasta.67 Corrected_ref.fasta.68 Corrected_ref.fasta.69 Corrected_ref.fasta.70 Corrected_ref.fasta.71 Corrected_ref.fasta.72 Corrected_ref.fasta.73 Corrected_ref.fasta.74 Corrected_ref.fasta.75 Corrected_ref.fasta.76 Corrected_ref.fasta.77 Corrected_ref.fasta.78 Corrected_ref.fasta.79 Corrected_ref.fasta.80 Corrected_ref.fasta.81 Corrected_ref.fasta.82 Corrected_ref.fasta.83 Corrected_ref.fasta.84 Corrected_ref.fasta.85 Corrected_ref.fasta.86 Corrected_ref.fasta.87 Corrected_ref.fasta.88 Corrected_ref.fasta.89 Corrected_ref.fasta.90 Corrected_ref.fasta.91 Corrected_ref.fasta.92 Corrected_ref.fasta.93 Corrected_ref.fasta.94 Corrected_ref.fasta.95 Corrected_ref.fasta.96 Corrected_ref.fasta.97 Corrected_ref.fasta.98 Corrected_ref.fasta.99
 	LOCAL cat Corrected_ref.fasta.* > Corrected_ref.fasta
 

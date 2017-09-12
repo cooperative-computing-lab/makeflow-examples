@@ -1,3 +1,5 @@
+<img align=right src=bwa.png width=256></img>
+
 BWA Workflow Example
 --------------------
 
