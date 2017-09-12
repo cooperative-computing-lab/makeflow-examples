@@ -1,0 +1,95 @@
+import sys
+import getopt
+
+def get_size(n):#in KB sizes....
+	pos = n.index("B")
+	size = n[pos-1:]
+	front = int(n[:pos-1])
+	if size == "KB":
+		return front
+	if size == "MB":
+		return front*1024
+	if size == "GB":
+		return front*1024*1024
+
+def print_help():
+	print "Hello"
+	print "-s,--unique-size    The size for each unique file"
+	print "-c,--common-size    The size for the common file"
+	print "-t,--run-time       The processing time for the program"
+	print "-n,--number         How many jobs to make"
+	print "-P,--pass-common    Require the common input file to be an input file, but do not have the program read it"
+	print "-P,--pass-unique    Require the unique input file to be an input file, but do not have the program read it"
+	print "-O,--no-output      Tells the program to make empty output file"
+	print "-z,--null-output    Tells the program to send all output to /dev/null"
+	print "-h,--help           Prints this out"
+
+if __name__ == '__main__':
+	num = "0"
+	uniq = "0KB"
+	com = "0KB"
+	runtime = "0"
+	
+	pass_common = False
+	pass_unique = False
+	no_output = False
+	null_output = False
+	
+	opts, args = getopt.getopt(sys.argv[1:], "hs:c:t:n:PpOz",["help","unique-size=","common-size=","run-time=","number=","pass-unique","pass-common","no-output","null-output"])
+	for o,a in opts:
+		if o in ("-h","--help"):
+			print_help()
+			sys.exit(0)
+		elif o in ("-s","--unique-size"):
+			uniq = a
+		elif o in ("-c","--common-size"):
+			com = a
+		elif o in ("-t","--run-time"):
+			runtime = a
+		elif o in ("-n","--number"):
+			num = a
+		elif o in ("-P","--pass-unique"):
+			pass_unique = True
+		elif o in ("-p","--pass-common"):
+			pass_common = True
+		elif o in ("-O","--no-output"):
+			no_output = True
+		elif o in ("-z","--null-output"):
+			null_output = True
+	f = open("Makeflow","w+")
+	for x in xrange(0,int(num)):
+		outfile = ""
+		in_files = []
+		arguments = []
+		if uniq != "0KB":
+			arguments.append("--unique-input=custom_input_%i.in"%x)
+			in_files.append("custom_input_%i.in"%x)
+		if com != "0KB":
+			arguments.append("--common-input=common_input.dat")
+			in_files.append("common_input.dat")
+		if pass_unique and ("--unique-input=custom_input_%i.in"%x) in arguments:
+			arguments.remove("--unique-input=custom_input_%i.in"%x)
+		if pass_common and "--comon-input=common_input.dat" in arguments:
+			arguments.remove("--common-input=common_input.dat")
+		if no_output:
+			arguments.append("--zero-output")
+		if not null_output:
+			outfile = "workflow_%i.out"%x
+			arguments.append("--output=workflow_%i.out"%x)
+		arguments_string = " ".join(arguments)
+		in_files_string = " ".join(in_files)
+		f.write("\n%s: the_job %s\n\t./the_job --seconds=%s %s\n"%(outfile,in_files_string,runtime,arguments_string))
+	f.close()
+	frand = open('/dev/urandom',"r")
+	if(get_size(com) > 0):
+		f = open("common_input.dat",'w+')
+		for x in xrange(0,get_size(com)):
+			f.write(frand.read(1024))
+		f.close()
+	if(get_size(uniq) > 0):
+		for x in xrange(0,int(num)):
+			f = open("custom_input_%i.in"%x,"w+")
+			for y in xrange(0,get_size(uniq)):
+				f.write(frand.read(1024))
+			f.close()
+	frand.close()
