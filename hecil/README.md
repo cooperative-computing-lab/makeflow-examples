@@ -1,5 +1,6 @@
+<img align=left src=hecil.png width=256></img>
 HECIL Workflow Example
---------------------
+----------------------
 
 This workflow gives an example of using Makeflow to parallelize
 the Hybrid Error Correction with Iterative Learning (HECIL) tool.
@@ -30,8 +31,8 @@ If you do not have real data to work with, then generate
 some simulated data (~10 second workflow):
 
 ```
-./fastq_generate.pl 10000 1000 > ref.fastq
-./fastq_generate.pl 1000 100 ref.fastq > query.fastq
+./fastq_generate.pl 100000 1000 > ref.fastq
+./fastq_generate.pl 10000 100 ref.fastq > query.fastq
 ```
 
 The long read file needs to be in fasta format, so you'll need to convert it:

@@ -1,5 +1,7 @@
-BWA Workflow Example
---------------------
+<img align=right src=bwa-gatk.png width=256></img>
+
+BWA-GATK Workflow Example
+-------------------------
 
 This workflow gives an example of using Makeflow to parallelize
 the Burroughs-Wheeler Alignment and Genome Analysis Toolkit (BWA-GATK) tool.
