@@ -6,21 +6,6 @@
             "inputs": [SPLIT, INPUT_PRE],
             "local_job": true,
         },
-		{
-			"command": format(
-				"%s index %s",
-				BWA,
-				REF
-			),
-			"inputs": [
-				BWA,
-				REF
-			],
-			"outputs": [
-				x for x in REF_INDEX,
-			],
-			"local job": true
-		},
         {
             "command": format(
                 "%s %s %s %s.%d > %s.%d.sam 2> %s.%d.err",
@@ -39,7 +24,7 @@
                 BWA,
                 REF,
                 x for x in REF_INDEX,
-				format("%s.%d", INPUT_PRE, i)
+                format("%s.%d", INPUT_PRE, i)
             ],
         } for i in range(SPLITS),
         {
