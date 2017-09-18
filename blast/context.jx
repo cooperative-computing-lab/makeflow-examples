@@ -1,0 +1,7 @@
+{
+	"BLAST" : "./blastall",
+	"BLASTN":  "blastn",
+	"NT":	"nt",
+	"CAT_BLAST": "./cat_blast",
+	"SLICES": 20
+}

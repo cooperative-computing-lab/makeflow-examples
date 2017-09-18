@@ -1,4 +1,3 @@
-
 #!/bin/bash
 
 #USAGE: ./Split_Pileup.sh Pileup.txt 20

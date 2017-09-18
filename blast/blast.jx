@@ -1,0 +1,60 @@
+{"rules": [
+	{
+		"command": format(
+			"./split_fasta 10 small.fasta"
+		),
+		"inputs": [
+			"small.fasta",
+			"split_fasta"
+		],
+		"outputs": [format("small.fasta.%d", x) for x in range(SLICES)],
+		"local_job": true,
+	},
+	{
+		"command": format(
+			"%s -p %s -d %s/nt -i small.fasta.%d -o small.fasta.%d.out 2> small.fasta.%d.err",
+			BLAST,
+			BLASTN,
+			NT,
+			x,
+			x,
+			x,
+		),
+		"inputs": [
+			BLAST,
+			NT,
+			format("small.fasta.%d", x)
+		],
+		"outputs": [
+			format("small.fasta.%d.out", x),
+			format("small.fasta.%d.err", x),
+		]
+	} for x in range(SLICES),
+	{
+		"command": format(
+			"%s output.fasta small.fasta.0.out small.fasta.1.out small.fasta.2.out small.fasta.3.out small.fasta.4.out small.fasta.5.out small.fasta.6.out small.fasta.7.out small.fasta.8.out small.fasta.9.out small.fasta.10.out small.fasta.11.out small.fasta.12.out small.fasta.13.out small.fasta.14.out small.fasta.15.out small.fasta.16.out small.fasta.17.out small.fasta.18.out small.fasta.19.out",
+			CAT_BLAST
+		),	
+		"inputs": [
+			CAT_BLAST,
+			format("small.fasta.%d.out", x) for x in range(20),
+		],
+		"output": [
+			"output.fasta"
+		],
+		"local_job": true,
+	},
+	{
+		"command": format(
+			"cat small.fasta.0.err small.fasta.1.err small.fasta.2.err small.fasta.3.err small.fasta.4.err small.fasta.5.err small.fasta.6.err small.fasta.7.err small.fasta.8.err small.fasta.9.err small.fasta.10.err small.fasta.11.err small.fasta.12.err small.fasta.13.err small.fasta.14.err small.fasta.15.err small.fasta.16.err small.fasta.17.err small.fasta.18.err small.fasta.19.err > small.fasta.err"
+		),	
+		"inputs": [
+			format("small.fasta.%d.err", x) for x in range(20),
+		],
+		"output": [
+			"output.fasta.err"
+		],
+		"local_job": true,
+	},
+],
+}
