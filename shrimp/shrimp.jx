@@ -1,0 +1,46 @@
+{"rules": [
+	{
+		"command": format(
+			"%s %d %s",
+			SPLIT,
+			SPLITS,
+			QUERY,
+		),
+		"inputs": [
+			QUERY,
+			SPLIT,
+		],
+		"outputs": [
+			format("%s.%d", QUERY, x) for x in range(SPLIT_SIZE),
+		],
+		"local_job": true,
+	},
+	{
+		"command": format(
+			"%s %s %s.%d %s > output.%d",
+			MAPPER,
+			MOPTIONS,
+			QUERY,
+			x,
+			GENOME,
+			x,
+		),
+		"inputs": [
+			MAPPER,
+			GENOME,
+			format("%s.%d", QUERY, x),
+		],
+		"outputs": [ format("output.%d", x) ],
+	} for x in range(SPLIT_SIZE),
+	{
+		"command": format("cat output.* > output.txt"),
+		"inputs": [
+			format("output.%d", x) for x in range(762),	
+		],
+		"outputs": [
+			"output.txt",
+		],
+		"local_job": true,
+	},
+],
+}

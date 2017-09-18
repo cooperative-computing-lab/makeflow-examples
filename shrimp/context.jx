@@ -1,0 +1,11 @@
+{
+	"QUERY": "query.csfasta",
+	"GENOME": "genome.fasta",
+
+	"MAPPER": "./rmapper-cs",
+	"MOPTIONS": "-M fast -M 50bp",
+	
+	"SPLIT": "./split_fasta",
+	"SPLITS": 10000,
+	"SPLIT_SIZE": 762,
+}
