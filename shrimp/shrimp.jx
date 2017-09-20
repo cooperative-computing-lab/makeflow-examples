@@ -33,7 +33,9 @@
 		"outputs": [ format("output.%d", x) ],
 	} for x in range(SPLIT_SIZE),
 	{
-		"command": format("cat output.* > output.txt"),
+		"command": format("cat %s > output.txt",
+			join([format("output.%d", x) for x in range(762)])
+		),
 		"inputs": [
 			format("output.%d", x) for x in range(762),	
 		],

@@ -33,7 +33,8 @@
 	} for x in range(SPLIT_SIZE),	
 	{
 		"command": format(
-			"cat output.fastq.* > output.fastq"
+			"cat %s > output.fastq",
+			join([format("output.fastq.%d", x) for x in range(SPLIT_SIZE)]),
 		),
 		"inputs": [
 			format("output.fastq.%d", x) for x in range(SPLIT_SIZE),

@@ -51,8 +51,9 @@
 	} for i in range(SPLIT_SIZE),
 	{
 		"command": format(
-			"%s Out.*.sam > Out.sam",
+			"%s %s > Out.sam",
 			CONCAT,
+			join([format("Out.%d.sam", x) for x in range(SPLIT_SIZE)])
 		),
 		"inputs": [
 			CONCAT,
@@ -152,7 +153,8 @@
 	} for x in range(2),
 	{
 		"command": format(
-			"cat corr.*.out > corr.out"
+			"cat %s > corr.out",
+			join([format("corr.%d.out", x) for x in range(2)])
 		),
 		"inputs": [
 			format("corr.%d.out", x) for x in range(2),
@@ -164,7 +166,8 @@
 	},
 	{
 		"command": format(
-			"cat corr.*.err > corr.err"
+			"cat %s > corr.err",
+			join([format("corr.%d.err", x) for x in range(2)])
 		),
 		"inputs": [
 			format("corr.%d.err", x) for x in range(2),
@@ -176,7 +179,8 @@
 	},
 	{
 		"command": format(
-			"cat lc.*.out > LowConf.txt"
+			"cat %s > LowConf.txt",
+			join([format("lc.%d.out", x) for x in range(2)])
 		),
 		"inputs": [
 			format("lc.%d.out", x) for x in range(2),

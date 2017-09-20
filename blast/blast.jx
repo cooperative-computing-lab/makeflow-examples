@@ -34,11 +34,11 @@
 		"command": format(
 			"%s output.fasta %s",
 			CAT_BLAST,
-			join([format("small.fasta.%d.out", x) for x in range(20)]),
+			join([format("small.fasta.%d.out", x) for x in range(SLICES)]),
 		),	
 		"inputs": [
 			CAT_BLAST,
-			format("small.fasta.%d.out", x) for x in range(20),
+			format("small.fasta.%d.out", x) for x in range(SLICES),
 		],
 		"output": [
 			"output.fasta"
@@ -48,10 +48,10 @@
 	{
 		"command": format(
 			"cat %s > output.fasta.err",
-			join([format("small.fasta.%d.err", x) for x in range(20)]),
+			join([format("small.fasta.%d.err", x) for x in range(SLICES)]),
 		),	
 		"inputs": [
-			format("small.fasta.%d.err", x) for x in range(20),
+			format("small.fasta.%d.err", x) for x in range(SLICES),
 		],
 		"output": [
 			"output.fasta.err"
