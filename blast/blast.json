@@ -1,0 +1,333 @@
+{
+    "rules": [
+        {
+            "command": "./split_fasta 10 small.fasta",
+            "inputs": [
+                "small.fasta",
+                "split_fasta"
+            ],
+            "outputs": [
+                "small.fasta.0",
+                "small.fasta.1",
+                "small.fasta.2",
+                "small.fasta.3",
+                "small.fasta.4",
+                "small.fasta.5",
+                "small.fasta.6",
+                "small.fasta.7",
+                "small.fasta.8",
+                "small.fasta.9",
+                "small.fasta.10",
+                "small.fasta.11",
+                "small.fasta.12",
+                "small.fasta.13",
+                "small.fasta.14",
+                "small.fasta.15",
+                "small.fasta.16",
+                "small.fasta.17",
+                "small.fasta.18",
+                "small.fasta.19"
+            ],
+            "local_job": true
+        },
+        {
+            "command": "./blastall -p blastn -d nt/nt -i small.fasta.0 -o small.fasta.0.out 2> small.fasta.0.err",
+            "inputs": [
+                "./blastall",
+                "nt",
+                "small.fasta.0"
+            ],
+            "outputs": [
+                "small.fasta.0.out",
+                "small.fasta.0.err"
+            ]
+        },
+        {
+            "command": "./blastall -p blastn -d nt/nt -i small.fasta.1 -o small.fasta.1.out 2> small.fasta.1.err",
+            "inputs": [
+                "./blastall",
+                "nt",
+                "small.fasta.1"
+            ],
+            "outputs": [
+                "small.fasta.1.out",
+                "small.fasta.1.err"
+            ]
+        },
+        {
+            "command": "./blastall -p blastn -d nt/nt -i small.fasta.2 -o small.fasta.2.out 2> small.fasta.2.err",
+            "inputs": [
+                "./blastall",
+                "nt",
+                "small.fasta.2"
+            ],
+            "outputs": [
+                "small.fasta.2.out",
+                "small.fasta.2.err"
+            ]
+        },
+        {
+            "command": "./blastall -p blastn -d nt/nt -i small.fasta.3 -o small.fasta.3.out 2> small.fasta.3.err",
+            "inputs": [
+                "./blastall",
+                "nt",
+                "small.fasta.3"
+            ],
+            "outputs": [
+                "small.fasta.3.out",
+                "small.fasta.3.err"
+            ]
+        },
+        {
+            "command": "./blastall -p blastn -d nt/nt -i small.fasta.4 -o small.fasta.4.out 2> small.fasta.4.err",
+            "inputs": [
+                "./blastall",
+                "nt",
+                "small.fasta.4"
+            ],
+            "outputs": [
+                "small.fasta.4.out",
+                "small.fasta.4.err"
+            ]
+        },
+        {
+            "command": "./blastall -p blastn -d nt/nt -i small.fasta.5 -o small.fasta.5.out 2> small.fasta.5.err",
+            "inputs": [
+                "./blastall",
+                "nt",
+                "small.fasta.5"
+            ],
+            "outputs": [
+                "small.fasta.5.out",
+                "small.fasta.5.err"
+            ]
+        },
+        {
+            "command": "./blastall -p blastn -d nt/nt -i small.fasta.6 -o small.fasta.6.out 2> small.fasta.6.err",
+            "inputs": [
+                "./blastall",
+                "nt",
+                "small.fasta.6"
+            ],
+            "outputs": [
+                "small.fasta.6.out",
+                "small.fasta.6.err"
+            ]
+        },
+        {
+            "command": "./blastall -p blastn -d nt/nt -i small.fasta.7 -o small.fasta.7.out 2> small.fasta.7.err",
+            "inputs": [
+                "./blastall",
+                "nt",
+                "small.fasta.7"
+            ],
+            "outputs": [
+                "small.fasta.7.out",
+                "small.fasta.7.err"
+            ]
+        },
+        {
+            "command": "./blastall -p blastn -d nt/nt -i small.fasta.8 -o small.fasta.8.out 2> small.fasta.8.err",
+            "inputs": [
+                "./blastall",
+                "nt",
+                "small.fasta.8"
+            ],
+            "outputs": [
+                "small.fasta.8.out",
+                "small.fasta.8.err"
+            ]
+        },
+        {
+            "command": "./blastall -p blastn -d nt/nt -i small.fasta.9 -o small.fasta.9.out 2> small.fasta.9.err",
+            "inputs": [
+                "./blastall",
+                "nt",
+                "small.fasta.9"
+            ],
+            "outputs": [
+                "small.fasta.9.out",
+                "small.fasta.9.err"
+            ]
+        },
+        {
+            "command": "./blastall -p blastn -d nt/nt -i small.fasta.10 -o small.fasta.10.out 2> small.fasta.10.err",
+            "inputs": [
+                "./blastall",
+                "nt",
+                "small.fasta.10"
+            ],
+            "outputs": [
+                "small.fasta.10.out",
+                "small.fasta.10.err"
+            ]
+        },
+        {
+            "command": "./blastall -p blastn -d nt/nt -i small.fasta.11 -o small.fasta.11.out 2> small.fasta.11.err",
+            "inputs": [
+                "./blastall",
+                "nt",
+                "small.fasta.11"
+            ],
+            "outputs": [
+                "small.fasta.11.out",
+                "small.fasta.11.err"
+            ]
+        },
+        {
+            "command": "./blastall -p blastn -d nt/nt -i small.fasta.12 -o small.fasta.12.out 2> small.fasta.12.err",
+            "inputs": [
+                "./blastall",
+                "nt",
+                "small.fasta.12"
+            ],
+            "outputs": [
+                "small.fasta.12.out",
+                "small.fasta.12.err"
+            ]
+        },
+        {
+            "command": "./blastall -p blastn -d nt/nt -i small.fasta.13 -o small.fasta.13.out 2> small.fasta.13.err",
+            "inputs": [
+                "./blastall",
+                "nt",
+                "small.fasta.13"
+            ],
+            "outputs": [
+                "small.fasta.13.out",
+                "small.fasta.13.err"
+            ]
+        },
+        {
+            "command": "./blastall -p blastn -d nt/nt -i small.fasta.14 -o small.fasta.14.out 2> small.fasta.14.err",
+            "inputs": [
+                "./blastall",
+                "nt",
+                "small.fasta.14"
+            ],
+            "outputs": [
+                "small.fasta.14.out",
+                "small.fasta.14.err"
+            ]
+        },
+        {
+            "command": "./blastall -p blastn -d nt/nt -i small.fasta.15 -o small.fasta.15.out 2> small.fasta.15.err",
+            "inputs": [
+                "./blastall",
+                "nt",
+                "small.fasta.15"
+            ],
+            "outputs": [
+                "small.fasta.15.out",
+                "small.fasta.15.err"
+            ]
+        },
+        {
+            "command": "./blastall -p blastn -d nt/nt -i small.fasta.16 -o small.fasta.16.out 2> small.fasta.16.err",
+            "inputs": [
+                "./blastall",
+                "nt",
+                "small.fasta.16"
+            ],
+            "outputs": [
+                "small.fasta.16.out",
+                "small.fasta.16.err"
+            ]
+        },
+        {
+            "command": "./blastall -p blastn -d nt/nt -i small.fasta.17 -o small.fasta.17.out 2> small.fasta.17.err",
+            "inputs": [
+                "./blastall",
+                "nt",
+                "small.fasta.17"
+            ],
+            "outputs": [
+                "small.fasta.17.out",
+                "small.fasta.17.err"
+            ]
+        },
+        {
+            "command": "./blastall -p blastn -d nt/nt -i small.fasta.18 -o small.fasta.18.out 2> small.fasta.18.err",
+            "inputs": [
+                "./blastall",
+                "nt",
+                "small.fasta.18"
+            ],
+            "outputs": [
+                "small.fasta.18.out",
+                "small.fasta.18.err"
+            ]
+        },
+        {
+            "command": "./blastall -p blastn -d nt/nt -i small.fasta.19 -o small.fasta.19.out 2> small.fasta.19.err",
+            "inputs": [
+                "./blastall",
+                "nt",
+                "small.fasta.19"
+            ],
+            "outputs": [
+                "small.fasta.19.out",
+                "small.fasta.19.err"
+            ]
+        },
+        {
+            "command": "./cat_blast output.fasta small.fasta.0.out small.fasta.1.out small.fasta.2.out small.fasta.3.out small.fasta.4.out small.fasta.5.out small.fasta.6.out small.fasta.7.out small.fasta.8.out small.fasta.9.out small.fasta.10.out small.fasta.11.out small.fasta.12.out small.fasta.13.out small.fasta.14.out small.fasta.15.out small.fasta.16.out small.fasta.17.out small.fasta.18.out small.fasta.19.out",
+            "inputs": [
+                "./cat_blast",
+                "small.fasta.0.out",
+                "small.fasta.1.out",
+                "small.fasta.2.out",
+                "small.fasta.3.out",
+                "small.fasta.4.out",
+                "small.fasta.5.out",
+                "small.fasta.6.out",
+                "small.fasta.7.out",
+                "small.fasta.8.out",
+                "small.fasta.9.out",
+                "small.fasta.10.out",
+                "small.fasta.11.out",
+                "small.fasta.12.out",
+                "small.fasta.13.out",
+                "small.fasta.14.out",
+                "small.fasta.15.out",
+                "small.fasta.16.out",
+                "small.fasta.17.out",
+                "small.fasta.18.out",
+                "small.fasta.19.out"
+            ],
+            "output": [
+                "output.fasta"
+            ],
+            "local_job": true
+        },
+        {
+            "command": "cat small.fasta.0.err small.fasta.1.err small.fasta.2.err small.fasta.3.err small.fasta.4.err small.fasta.5.err small.fasta.6.err small.fasta.7.err small.fasta.8.err small.fasta.9.err small.fasta.10.err small.fasta.11.err small.fasta.12.err small.fasta.13.err small.fasta.14.err small.fasta.15.err small.fasta.16.err small.fasta.17.err small.fasta.18.err small.fasta.19.err > output.fasta.err",
+            "inputs": [
+                "small.fasta.0.err",
+                "small.fasta.1.err",
+                "small.fasta.2.err",
+                "small.fasta.3.err",
+                "small.fasta.4.err",
+                "small.fasta.5.err",
+                "small.fasta.6.err",
+                "small.fasta.7.err",
+                "small.fasta.8.err",
+                "small.fasta.9.err",
+                "small.fasta.10.err",
+                "small.fasta.11.err",
+                "small.fasta.12.err",
+                "small.fasta.13.err",
+                "small.fasta.14.err",
+                "small.fasta.15.err",
+                "small.fasta.16.err",
+                "small.fasta.17.err",
+                "small.fasta.18.err",
+                "small.fasta.19.err"
+            ],
+            "output": [
+                "output.fasta.err"
+            ],
+            "local_job": true
+        }
+    ]
+}

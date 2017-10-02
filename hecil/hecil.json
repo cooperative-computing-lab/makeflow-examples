@@ -1,0 +1,509 @@
+{
+    "rules": [
+        {
+            "command": "./bwa index ref.fasta 2> index.err",
+            "inputs": [
+                "./bwa",
+                "ref.fasta"
+            ],
+            "outputs": [
+                "index.err",
+                "ref.fasta.amb",
+                "ref.fasta.ann",
+                "ref.fasta.bwt",
+                "ref.fasta.pac",
+                "ref.fasta.sa"
+            ],
+            "local_job": true
+        },
+        {
+            "command": "./fastq_reduce query.fastq 100",
+            "inputs": [
+                "./fastq_reduce",
+                "query.fastq"
+            ],
+            "outputs": [
+                "query.fastq.0",
+                "query.fastq.1",
+                "query.fastq.2",
+                "query.fastq.3",
+                "query.fastq.4",
+                "query.fastq.5",
+                "query.fastq.6",
+                "query.fastq.7",
+                "query.fastq.8",
+                "query.fastq.9"
+            ],
+            "local_job": true
+        },
+        {
+            "command": "./bwa mem ref.fasta query.fastq.0 > Out.0.sam 2> mem.0.err",
+            "inputs": [
+                "./bwa",
+                [
+                    "ref.fasta.amb",
+                    "ref.fasta.ann",
+                    "ref.fasta.bwt",
+                    "ref.fasta.pac",
+                    "ref.fasta.sa"
+                ],
+                "query.fastq.0"
+            ],
+            "outputs": [
+                "Out.0.sam",
+                "mem.0.err"
+            ]
+        },
+        {
+            "command": "./bwa mem ref.fasta query.fastq.1 > Out.1.sam 2> mem.1.err",
+            "inputs": [
+                "./bwa",
+                [
+                    "ref.fasta.amb",
+                    "ref.fasta.ann",
+                    "ref.fasta.bwt",
+                    "ref.fasta.pac",
+                    "ref.fasta.sa"
+                ],
+                "query.fastq.1"
+            ],
+            "outputs": [
+                "Out.1.sam",
+                "mem.1.err"
+            ]
+        },
+        {
+            "command": "./bwa mem ref.fasta query.fastq.2 > Out.2.sam 2> mem.2.err",
+            "inputs": [
+                "./bwa",
+                [
+                    "ref.fasta.amb",
+                    "ref.fasta.ann",
+                    "ref.fasta.bwt",
+                    "ref.fasta.pac",
+                    "ref.fasta.sa"
+                ],
+                "query.fastq.2"
+            ],
+            "outputs": [
+                "Out.2.sam",
+                "mem.2.err"
+            ]
+        },
+        {
+            "command": "./bwa mem ref.fasta query.fastq.3 > Out.3.sam 2> mem.3.err",
+            "inputs": [
+                "./bwa",
+                [
+                    "ref.fasta.amb",
+                    "ref.fasta.ann",
+                    "ref.fasta.bwt",
+                    "ref.fasta.pac",
+                    "ref.fasta.sa"
+                ],
+                "query.fastq.3"
+            ],
+            "outputs": [
+                "Out.3.sam",
+                "mem.3.err"
+            ]
+        },
+        {
+            "command": "./bwa mem ref.fasta query.fastq.4 > Out.4.sam 2> mem.4.err",
+            "inputs": [
+                "./bwa",
+                [
+                    "ref.fasta.amb",
+                    "ref.fasta.ann",
+                    "ref.fasta.bwt",
+                    "ref.fasta.pac",
+                    "ref.fasta.sa"
+                ],
+                "query.fastq.4"
+            ],
+            "outputs": [
+                "Out.4.sam",
+                "mem.4.err"
+            ]
+        },
+        {
+            "command": "./bwa mem ref.fasta query.fastq.5 > Out.5.sam 2> mem.5.err",
+            "inputs": [
+                "./bwa",
+                [
+                    "ref.fasta.amb",
+                    "ref.fasta.ann",
+                    "ref.fasta.bwt",
+                    "ref.fasta.pac",
+                    "ref.fasta.sa"
+                ],
+                "query.fastq.5"
+            ],
+            "outputs": [
+                "Out.5.sam",
+                "mem.5.err"
+            ]
+        },
+        {
+            "command": "./bwa mem ref.fasta query.fastq.6 > Out.6.sam 2> mem.6.err",
+            "inputs": [
+                "./bwa",
+                [
+                    "ref.fasta.amb",
+                    "ref.fasta.ann",
+                    "ref.fasta.bwt",
+                    "ref.fasta.pac",
+                    "ref.fasta.sa"
+                ],
+                "query.fastq.6"
+            ],
+            "outputs": [
+                "Out.6.sam",
+                "mem.6.err"
+            ]
+        },
+        {
+            "command": "./bwa mem ref.fasta query.fastq.7 > Out.7.sam 2> mem.7.err",
+            "inputs": [
+                "./bwa",
+                [
+                    "ref.fasta.amb",
+                    "ref.fasta.ann",
+                    "ref.fasta.bwt",
+                    "ref.fasta.pac",
+                    "ref.fasta.sa"
+                ],
+                "query.fastq.7"
+            ],
+            "outputs": [
+                "Out.7.sam",
+                "mem.7.err"
+            ]
+        },
+        {
+            "command": "./bwa mem ref.fasta query.fastq.8 > Out.8.sam 2> mem.8.err",
+            "inputs": [
+                "./bwa",
+                [
+                    "ref.fasta.amb",
+                    "ref.fasta.ann",
+                    "ref.fasta.bwt",
+                    "ref.fasta.pac",
+                    "ref.fasta.sa"
+                ],
+                "query.fastq.8"
+            ],
+            "outputs": [
+                "Out.8.sam",
+                "mem.8.err"
+            ]
+        },
+        {
+            "command": "./bwa mem ref.fasta query.fastq.9 > Out.9.sam 2> mem.9.err",
+            "inputs": [
+                "./bwa",
+                [
+                    "ref.fasta.amb",
+                    "ref.fasta.ann",
+                    "ref.fasta.bwt",
+                    "ref.fasta.pac",
+                    "ref.fasta.sa"
+                ],
+                "query.fastq.9"
+            ],
+            "outputs": [
+                "Out.9.sam",
+                "mem.9.err"
+            ]
+        },
+        {
+            "command": "./sam_cat.sh Out.0.sam Out.1.sam Out.2.sam Out.3.sam Out.4.sam Out.5.sam Out.6.sam Out.7.sam Out.8.sam Out.9.sam > Out.sam",
+            "inputs": [
+                "./sam_cat.sh",
+                "Out.0.sam",
+                "Out.1.sam",
+                "Out.2.sam",
+                "Out.3.sam",
+                "Out.4.sam",
+                "Out.5.sam",
+                "Out.6.sam",
+                "Out.7.sam",
+                "Out.8.sam",
+                "Out.9.sam"
+            ],
+            "outputs": [
+                "Out.sam"
+            ],
+            "local_job": true
+        },
+        {
+            "command": "cat mem.*.err > mem.err",
+            "inputs": [
+                "mem.0.err",
+                "mem.1.err",
+                "mem.2.err",
+                "mem.3.err",
+                "mem.4.err",
+                "mem.5.err",
+                "mem.6.err",
+                "mem.7.err",
+                "mem.8.err",
+                "mem.9.err"
+            ],
+            "outputs": [
+                "mem.err"
+            ],
+            "local_job": true
+        },
+        {
+            "command": "./samtools view -bS Out.sam | ./samtools sort - Out 2> sort.err",
+            "inputs": [
+                "./samtools",
+                "Out.sam"
+            ],
+            "outputs": [
+                "Out.bam",
+                "sort.err"
+            ]
+        },
+        {
+            "command": "./samtools mpileup -s -f ref.fasta Out.bam > pileup.txt 2> pileup.err",
+            "inputs": [
+                "./samtools",
+                "ref.fasta",
+                "Out.bam"
+            ],
+            "outputs": [
+                "pileup.txt",
+                "ref.fasta.fai",
+                "pileup.err"
+            ]
+        },
+        {
+            "command": "./Split_Pileup.sh pileup.txt 2 2> Split_Pileup.err",
+            "inputs": [
+                "./Split_Pileup.sh",
+                "Create_SubsetPileup.sh",
+                "pileup.txt"
+            ],
+            "outputs": [
+                "Pileup_Set1.txt",
+                "Pileup_Set2.txt",
+                "List_RefHeader.txt"
+            ],
+            "local_job": true
+        },
+        {
+            "command": "python Correction.py Pileup_Set0.txt ref.fasta lc.0.out Out.sam 100 > corr.0.out 2> corr.0.err ; echo \"\" >> lc.0.out ; echo \"\" >> corr.0.out",
+            "inputs": [
+                "Correction.py",
+                "Pileup_Set1.txt",
+                "ref.fasta",
+                "Out.sam"
+            ],
+            "outputs": [
+                "corr.0.out",
+                "lc.0.out",
+                "corr.0.err"
+            ],
+            "local_job": true
+        },
+        {
+            "command": "python Correction.py Pileup_Set1.txt ref.fasta lc.1.out Out.sam 100 > corr.1.out 2> corr.1.err ; echo \"\" >> lc.1.out ; echo \"\" >> corr.1.out",
+            "inputs": [
+                "Correction.py",
+                "Pileup_Set2.txt",
+                "ref.fasta",
+                "Out.sam"
+            ],
+            "outputs": [
+                "corr.1.out",
+                "lc.1.out",
+                "corr.1.err"
+            ],
+            "local_job": true
+        },
+        {
+            "command": "cat corr.0.out corr.1.out > corr.out",
+            "inputs": [
+                "corr.0.out",
+                "corr.1.out"
+            ],
+            "outputs": [
+                "corr.out"
+            ],
+            "local_job": true
+        },
+        {
+            "command": "cat corr.0.err corr.1.err > corr.err",
+            "inputs": [
+                "corr.0.err",
+                "corr.1.err"
+            ],
+            "outputs": [
+                "corr.err"
+            ],
+            "local_job": true
+        },
+        {
+            "command": "cat lc.0.out lc.1.out > LowConf.txt",
+            "inputs": [
+                "lc.0.out",
+                "lc.1.out"
+            ],
+            "outputs": [
+                "LowConf.txt"
+            ],
+            "local_job": true
+        },
+        {
+            "command": "./fasta_reduce ref.fasta 1000",
+            "inputs": [
+                "./fasta_reduce",
+                "ref.fasta"
+            ],
+            "outputs": [
+                "ref.fasta.0",
+                "ref.fasta.1",
+                "ref.fasta.2",
+                "ref.fasta.3",
+                "ref.fasta.4",
+                "ref.fasta.5",
+                "ref.fasta.6",
+                "ref.fasta.7",
+                "ref.fasta.8",
+                "ref.fasta.9"
+            ],
+            "local_job": true
+        },
+        {
+            "command": "python Create_Corrected_AllLRReads.py ref.fasta.0 corr.out 2> create.err.0",
+            "inputs": [
+                "Create_Corrected_AllLRReads.py",
+                "corr.out",
+                "ref.fasta.0"
+            ],
+            "outputs": [
+                "Corrected_ref.fasta.0"
+            ]
+        },
+        {
+            "command": "python Create_Corrected_AllLRReads.py ref.fasta.1 corr.out 2> create.err.1",
+            "inputs": [
+                "Create_Corrected_AllLRReads.py",
+                "corr.out",
+                "ref.fasta.1"
+            ],
+            "outputs": [
+                "Corrected_ref.fasta.1"
+            ]
+        },
+        {
+            "command": "python Create_Corrected_AllLRReads.py ref.fasta.2 corr.out 2> create.err.2",
+            "inputs": [
+                "Create_Corrected_AllLRReads.py",
+                "corr.out",
+                "ref.fasta.2"
+            ],
+            "outputs": [
+                "Corrected_ref.fasta.2"
+            ]
+        },
+        {
+            "command": "python Create_Corrected_AllLRReads.py ref.fasta.3 corr.out 2> create.err.3",
+            "inputs": [
+                "Create_Corrected_AllLRReads.py",
+                "corr.out",
+                "ref.fasta.3"
+            ],
+            "outputs": [
+                "Corrected_ref.fasta.3"
+            ]
+        },
+        {
+            "command": "python Create_Corrected_AllLRReads.py ref.fasta.4 corr.out 2> create.err.4",
+            "inputs": [
+                "Create_Corrected_AllLRReads.py",
+                "corr.out",
+                "ref.fasta.4"
+            ],
+            "outputs": [
+                "Corrected_ref.fasta.4"
+            ]
+        },
+        {
+            "command": "python Create_Corrected_AllLRReads.py ref.fasta.5 corr.out 2> create.err.5",
+            "inputs": [
+                "Create_Corrected_AllLRReads.py",
+                "corr.out",
+                "ref.fasta.5"
+            ],
+            "outputs": [
+                "Corrected_ref.fasta.5"
+            ]
+        },
+        {
+            "command": "python Create_Corrected_AllLRReads.py ref.fasta.6 corr.out 2> create.err.6",
+            "inputs": [
+                "Create_Corrected_AllLRReads.py",
+                "corr.out",
+                "ref.fasta.6"
+            ],
+            "outputs": [
+                "Corrected_ref.fasta.6"
+            ]
+        },
+        {
+            "command": "python Create_Corrected_AllLRReads.py ref.fasta.7 corr.out 2> create.err.7",
+            "inputs": [
+                "Create_Corrected_AllLRReads.py",
+                "corr.out",
+                "ref.fasta.7"
+            ],
+            "outputs": [
+                "Corrected_ref.fasta.7"
+            ]
+        },
+        {
+            "command": "python Create_Corrected_AllLRReads.py ref.fasta.8 corr.out 2> create.err.8",
+            "inputs": [
+                "Create_Corrected_AllLRReads.py",
+                "corr.out",
+                "ref.fasta.8"
+            ],
+            "outputs": [
+                "Corrected_ref.fasta.8"
+            ]
+        },
+        {
+            "command": "python Create_Corrected_AllLRReads.py ref.fasta.9 corr.out 2> create.err.9",
+            "inputs": [
+                "Create_Corrected_AllLRReads.py",
+                "corr.out",
+                "ref.fasta.9"
+            ],
+            "outputs": [
+                "Corrected_ref.fasta.9"
+            ]
+        },
+        {
+            "command": "cat Corrected_ref.fasta.0 Corrected_ref.fasta.1 Corrected_ref.fasta.2 Corrected_ref.fasta.3 Corrected_ref.fasta.4 Corrected_ref.fasta.5 Corrected_ref.fasta.6 Corrected_ref.fasta.7 Corrected_ref.fasta.8 Corrected_ref.fasta.9 > Corrected_ref.fasta",
+            "inputs": [
+                "Corrected_ref.fasta.0",
+                "Corrected_ref.fasta.1",
+                "Corrected_ref.fasta.2",
+                "Corrected_ref.fasta.3",
+                "Corrected_ref.fasta.4",
+                "Corrected_ref.fasta.5",
+                "Corrected_ref.fasta.6",
+                "Corrected_ref.fasta.7",
+                "Corrected_ref.fasta.8",
+                "Corrected_ref.fasta.9"
+            ],
+            "outputs": [
+                "Corrected_ref.fasta"
+            ],
+            "local_job": true
+        }
+    ]
+}

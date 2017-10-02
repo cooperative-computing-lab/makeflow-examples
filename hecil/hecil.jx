@@ -41,7 +41,7 @@
 		),
 		"inputs": [
 			BWA,
-			x for x in REF_INDEX,
+			[x for x in REF_INDEX],
 			format("%s.%d", INPUT_PRE, i),
 		],
 		"outputs": [
@@ -222,13 +222,14 @@
 		"outputs": [
 			format("Corrected_ref.fasta.%d", x),
 		],
-	} for x in range(10),
+	} for x in range(SPLIT_SIZE),
 	{
 		"command": format(
-			"cat Corrected_ref.fasta.* > Corrected_ref.fasta",
+			"cat %s > Corrected_ref.fasta",
+			join([format("Corrected_ref.fasta.%d", x) for x in range(SPLIT_SIZE)])
 		),
 		"inputs": [
-			format("Corrected_ref.fasta.%d", x) for x in range(10),
+			format("Corrected_ref.fasta.%d", x) for x in range(SPLIT_SIZE),
 		],
 		"outputs": [
 			"Corrected_ref.fasta",
