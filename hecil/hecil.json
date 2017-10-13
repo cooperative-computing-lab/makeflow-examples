@@ -294,7 +294,7 @@
             "local_job": true
         },
         {
-            "command": "python Correction.py Pileup_Set0.txt ref.fasta lc.0.out Out.sam 100 > corr.0.out 2> corr.0.err ; echo \"\" >> lc.0.out ; echo \"\" >> corr.0.out",
+            "command": "python Correction.py Pileup_Set0.txt ref.fasta lc.0.out Out.sam 10 > corr.0.out 2> corr.0.err ; echo \"\" >> lc.0.out ; echo \"\" >> corr.0.out",
             "inputs": [
                 "Correction.py",
                 "Pileup_Set1.txt",
@@ -309,7 +309,7 @@
             "local_job": true
         },
         {
-            "command": "python Correction.py Pileup_Set1.txt ref.fasta lc.1.out Out.sam 100 > corr.1.out 2> corr.1.err ; echo \"\" >> lc.1.out ; echo \"\" >> corr.1.out",
+            "command": "python Correction.py Pileup_Set1.txt ref.fasta lc.1.out Out.sam 10 > corr.1.out 2> corr.1.err ; echo \"\" >> lc.1.out ; echo \"\" >> corr.1.out",
             "inputs": [
                 "Correction.py",
                 "Pileup_Set2.txt",

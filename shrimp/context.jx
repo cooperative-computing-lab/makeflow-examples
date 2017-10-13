@@ -6,6 +6,6 @@
 	"MOPTIONS": "-M fast -M 50bp",
 	
 	"SPLIT": "./split_fasta",
-	"SPLITS": 10000,
-	"SPLIT_SIZE": 762,
+	"TOTAL_SEQ": 10000,
+	"SPLITS": 762,
 }

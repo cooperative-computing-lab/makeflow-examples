@@ -10,5 +10,5 @@
 
   "INPUT_PRE": "query.fastq",
   "SPLITS": 100,
-  "SPLIT_SIZE": 10,
+  "TOTAL_SEQ": 10,
 }

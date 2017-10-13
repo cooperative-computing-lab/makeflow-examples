@@ -1,7 +1,7 @@
 {
     "rules": [
         {
-            "command": format("%s %s %d", SPLIT, INPUT_PRE, SPLIT_SIZE),
+            "command": format("%s %s %d", SPLIT, INPUT_PRE, TOTAL_SEQ),
             "outputs": [format("%s.%d", INPUT_PRE, i) for i in range(SPLITS)],
             "inputs": [SPLIT, INPUT_PRE],
             "local_job": true,

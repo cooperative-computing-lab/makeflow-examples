@@ -83,6 +83,12 @@ Additionally, you can generate random data to adjust the total runtime:
 makeflow blast_test.mf
 ```
 
+Alternatively, the makeflow can be run using `JX` or `JSON` formats using one of the following commands:
+```
+makeflow --jx blast.jx --jx-context="context.jx"
+makeflow --json blast.json
+```
+
 The number and length of sequences can be adjusted for your needs, with the first number 
 adjusting the number of contigs and the second adjusting the length of these contigs.
 `fasta_generator` produces contigs containing random AGCT sequences.

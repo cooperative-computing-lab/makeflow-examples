@@ -1,44 +1,46 @@
 {"rules": [
 	{
 		"command": format(
-			"./split_fasta 10 small.fasta"
+			"%s %d small.fasta",
+			SPLIT_BLAST,
+			TOTAL_SEQ
 		),
 		"inputs": [
 			"small.fasta",
-			"split_fasta"
+			SPLIT_BLAST
 		],
-		"outputs": [format("small.fasta.%d", x) for x in range(SLICES)],
+		"outputs": [format("small.fasta.%d", x) for x in range(SPLITS)],
 		"local_job": true,
 	},
 	{
 		"command": format(
 			"%s -p %s -d %s/nt -i small.fasta.%d -o small.fasta.%d.out 2> small.fasta.%d.err",
-			BLAST,
-			BLASTN,
-			NT,
+			BLAST_EXE,
+			BLAST_ALGO,
+			BLAST_DB,
 			x,
 			x,
 			x,
 		),
 		"inputs": [
-			BLAST,
-			NT,
+			BLAST_EXE,
+			BLAST_DB,
 			format("small.fasta.%d", x)
 		],
 		"outputs": [
 			format("small.fasta.%d.out", x),
 			format("small.fasta.%d.err", x),
 		]
-	} for x in range(SLICES),
+	} for x in range(SPLITS),
 	{
 		"command": format(
 			"%s output.fasta %s",
 			CAT_BLAST,
-			join([format("small.fasta.%d.out", x) for x in range(SLICES)]),
+			join([format("small.fasta.%d.out", x) for x in range(SPLITS)]),
 		),	
 		"inputs": [
 			CAT_BLAST,
-			format("small.fasta.%d.out", x) for x in range(SLICES),
+			format("small.fasta.%d.out", x) for x in range(SPLITS),
 		],
 		"output": [
 			"output.fasta"
@@ -48,10 +50,10 @@
 	{
 		"command": format(
 			"cat %s > output.fasta.err",
-			join([format("small.fasta.%d.err", x) for x in range(SLICES)]),
+			join([format("small.fasta.%d.err", x) for x in range(SPLITS)]),
 		),	
 		"inputs": [
-			format("small.fasta.%d.err", x) for x in range(SLICES),
+			format("small.fasta.%d.err", x) for x in range(SPLITS),
 		],
 		"output": [
 			"output.fasta.err"

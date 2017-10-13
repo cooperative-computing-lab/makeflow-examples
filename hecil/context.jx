@@ -14,8 +14,8 @@
   "CREATE_PILEUP": "Create_SubsetPileup.sh",
   
   "INPUT_PRE": "query.fastq",
-  "SPLITS": 100,
-  "SPLIT_SIZE": 10,
+  "TOTAL_SEQ": 100,
+  "SPLITS": 10,
 
   "PYTHON": "python",
   "CORRECTION": "Correction.py",

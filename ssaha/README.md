@@ -51,6 +51,11 @@ makeflow -T condor ssaha.mf
 makeflow -T sge ssaha.mf
 makeflow -T wq.ssaha.mf
 ```
+Alternatively, the makeflow can be run using the `JX` or `JSON` implementation
+```
+makeflow --jx ssaha.jx --jx-context="context.jx"
+makeflow --json ssaha.json
+```
 
 <table cellpadding=20>
 <tr><td>Workflow Size<td>Reference Size(Number x Length)<td>Query Size(Number x Length)<td>Number of seq per split<td> Approx Time with Machine

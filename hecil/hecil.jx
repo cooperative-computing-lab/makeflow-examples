@@ -20,14 +20,14 @@
 			"%s %s %d",
 			SPLIT,
 			INPUT_PRE,
-			SPLITS,
+			TOTAL_SEQ,
 		),
 		"inputs": [
 			SPLIT,
 			INPUT_PRE,
 		],
 		"outputs":[
-			format("%s.%d", INPUT_PRE, x) for x in range(SPLIT_SIZE),
+			format("%s.%d", INPUT_PRE, x) for x in range(SPLITS),
 		],
 		"local_job": true,
 	},
@@ -48,16 +48,16 @@
 			format("Out.%d.sam", i),
 			format("mem.%d.err", i),
 		]
-	} for i in range(SPLIT_SIZE),
+	} for i in range(SPLITS),
 	{
 		"command": format(
 			"%s %s > Out.sam",
 			CONCAT,
-			join([format("Out.%d.sam", x) for x in range(SPLIT_SIZE)])
+			join([format("Out.%d.sam", x) for x in range(SPLITS)])
 		),
 		"inputs": [
 			CONCAT,
-			format("Out.%d.sam", x) for x in range(SPLIT_SIZE),
+			format("Out.%d.sam", x) for x in range(SPLITS),
 		],
 		"outputs": [
 			"Out.sam"
@@ -69,7 +69,7 @@
 			"cat mem.*.err > mem.err"
 		),
 		"inputs": [
-			format("mem.%d.err", x) for x in range(SPLIT_SIZE),
+			format("mem.%d.err", x) for x in range(SPLITS),
 		],
 		"outputs": [
 			"mem.err",
@@ -201,7 +201,7 @@
 			REF,
 		],
 		"outputs": [
-			format("%s.%d", REF, x) for x in range(SPLIT_SIZE),
+			format("%s.%d", REF, x) for x in range(SPLITS),
 		],
 		"local_job": true,
 	},
@@ -222,14 +222,14 @@
 		"outputs": [
 			format("Corrected_ref.fasta.%d", x),
 		],
-	} for x in range(SPLIT_SIZE),
+	} for x in range(SPLITS),
 	{
 		"command": format(
 			"cat %s > Corrected_ref.fasta",
-			join([format("Corrected_ref.fasta.%d", x) for x in range(SPLIT_SIZE)])
+			join([format("Corrected_ref.fasta.%d", x) for x in range(SPLITS)])
 		),
 		"inputs": [
-			format("Corrected_ref.fasta.%d", x) for x in range(SPLIT_SIZE),
+			format("Corrected_ref.fasta.%d", x) for x in range(SPLITS),
 		],
 		"outputs": [
 			"Corrected_ref.fasta",
