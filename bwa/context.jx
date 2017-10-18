@@ -9,6 +9,6 @@
   "REF_INDEX": ["ref.fastq." + x for x in ["amb", "ann", "bwt", "pac", "sa"]],
 
   "INPUT_PRE": "query.fastq",
-  "SPLITS": 1000,
-  "SPLIT_SIZE": 1000,
+  "SPLITS": 100,
+  "TOTAL_SEQ": 10,
 }

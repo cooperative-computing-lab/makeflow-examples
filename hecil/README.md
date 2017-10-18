@@ -56,6 +56,11 @@ makeflow -T condor hecil.mf
 makeflow -T sge hecil.mf
 makeflow -T wq hecil.mf
 ```
+Alternatively, it can be run using the `JX` or `JSON` representation
+```
+makeflow --jx hecil.jx --jx-context="contex.jx"
+makeflow --json hecil.json
+```
 
 corr.out (default) contains only the corrected long reads.  Corrected_ref.fasta contains all reads, with the corrected reads replacing the old reads (order is not conserved from input fasta file).
 

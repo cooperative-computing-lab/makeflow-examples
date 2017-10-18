@@ -1,0 +1,48 @@
+{"rules": [
+	{
+		"command": format(
+			"%s %s %d",
+			SPLIT,
+			QUERY,
+			TOTAL_SEQ,
+		),
+		"inputs": [SPLIT, QUERY],
+		"outputs": [
+			format("%s.%d", QUERY, x) for x in range(SPLITS),	
+		],
+		"local_job": true,
+	},
+	{
+		"command": format(
+			"%s %s %s %s.%d > output.fastq.%d",
+			SSAHA,
+			OPTIONS,
+			DB,
+			QUERY,
+			x,
+			x,
+		),
+		"inputs": [
+			SSAHA,
+			DB,
+			format("%s.%d", QUERY, x),
+		],
+		"outputs": [
+			format("output.fastq.%d", x),
+		],
+	} for x in range(SPLITS),	
+	{
+		"command": format(
+			"cat %s > output.fastq",
+			join([format("output.fastq.%d", x) for x in range(SPLITS)]),
+		),
+		"inputs": [
+			format("output.fastq.%d", x) for x in range(SPLITS),
+		],
+		"outputs": [
+			"output.fastq",
+		],
+		"local_job": true,
+	},
+],
+}

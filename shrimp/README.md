@@ -49,6 +49,11 @@ makeflow -T wq shrimp.mf
 makeflow -T sge shrimp.mf
 ```
 
+Alternatively, it can be run using the `JX` or `JSON` format
+```
+makeflow --jx shrimp.jx --jx-context="context.jx"
+makeflow --json shrimp.json
+```
 To visualize the workflow that was generated:
 ```
 makeflow_viz shrimp.mf --dot-no-labels > shrimp.dot
