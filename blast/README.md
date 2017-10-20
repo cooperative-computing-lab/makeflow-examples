@@ -90,7 +90,7 @@ makeflow blast_test.mf
 
 Alternatively, the makeflow can be run using `JX` or `JSON` formats using one of the following commands:
 ```
-makeflow --jx blast.jx --jx-context="context.jx"
+makeflow --jx blast.jx --jx-args="args.jx"
 makeflow --json blast.json
 ```
 

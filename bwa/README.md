@@ -47,7 +47,7 @@ makeflow -T wq bwa.mf
 ```
 Alternatively, the makeflow can be run using the `JX` or `JSON` format
 ```
-makeflow --jx bwa.jx --jx-context="context.jx"
+makeflow --jx bwa.jx --jx-args="args.jx"
 makeflow --json bwa.json"
 ```
 <table cellpadding=20>

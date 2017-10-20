@@ -51,7 +51,7 @@ makeflow -T sge shrimp.mf
 
 Alternatively, it can be run using the `JX` or `JSON` format
 ```
-makeflow --jx shrimp.jx --jx-context="context.jx"
+makeflow --jx shrimp.jx --jx-args="args.jx"
 makeflow --json shrimp.json
 ```
 To visualize the workflow that was generated:
