@@ -28,5 +28,5 @@ makeflow -T wq shakespeare.makeflow
 ```
 Alternatively, the makeflow can be run using the `JX` format:
 ```
-makeflow --jx shakespeare.jx --jx-context="context.jx"
+makeflow --jx shakespeare.jx --jx-args="args.jx"
 ```
