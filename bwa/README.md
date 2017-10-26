@@ -50,6 +50,9 @@ Alternatively, the makeflow can be run using the `JX` or `JSON` format
 makeflow --jx bwa.jx --jx-args="args.jx"
 makeflow --json bwa.json"
 ```
+NOTE: both the `JX` and `JSON` formats utilize fastq_reduce and cat_bwa 
+which are created using the `make_bwa_workflow` script.
+
 <table cellpadding=20>
 <tr><td>Workflow Size<td>Reference Size(Number x Length)<td>Query Size(Number x Length)<td>Number of seq per split<td> Approx Time with Machine
 <tr><td>Small<td>10000x1000 (Fixed 20M)<td>1000x100 (237K)<td>100 <td> ~10 sec : 1 machine

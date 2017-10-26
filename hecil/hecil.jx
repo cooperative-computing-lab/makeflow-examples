@@ -1,4 +1,5 @@
-{"rules": [
+{
+	"rules": [
 	{
 		"command": format(
 			"%s index %s 2> index.err",
@@ -41,7 +42,7 @@
 		),
 		"inputs": [
 			BWA,
-			[x for x in REF_INDEX],
+			x for x in REF_INDEX,
 			format("%s.%d", INPUT_PRE, i),
 		],
 		"outputs": [

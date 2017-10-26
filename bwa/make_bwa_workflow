@@ -103,8 +103,7 @@ def write_fastq_reduce(destination):
 	log.info("Writing Partitioning Script to : {0}".format(destination))
 	fastq_r = open(destination, 'w')
 	try:
-		fastq_r.write('''
-#!/usr/bin/perl
+		fastq_r.write('''#!/usr/bin/perl
 #
 #Copyright (C) 2013- The University of Notre Dame
 #This software is distributed under the GNU General Public License.
