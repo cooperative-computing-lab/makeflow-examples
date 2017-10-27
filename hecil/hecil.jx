@@ -1,4 +1,5 @@
-{"rules": [
+{
+	"rules": [
 	{
 		"command": format(
 			"%s index %s 2> index.err",
@@ -20,14 +21,14 @@
 			"%s %s %d",
 			SPLIT,
 			INPUT_PRE,
-			TOTAL_SEQ,
+			SEQ_PER_SPLIT,
 		),
 		"inputs": [
 			SPLIT,
 			INPUT_PRE,
 		],
 		"outputs":[
-			format("%s.%d", INPUT_PRE, x) for x in range(SPLITS),
+			format("%s.%d", INPUT_PRE, x) for x in range(ceil(TOTAL_SEQ/SEQ_PER_SPLIT)),
 		],
 		"local_job": true,
 	},
@@ -41,23 +42,23 @@
 		),
 		"inputs": [
 			BWA,
-			[x for x in REF_INDEX],
+			x for x in REF_INDEX,
 			format("%s.%d", INPUT_PRE, i),
 		],
 		"outputs": [
 			format("Out.%d.sam", i),
 			format("mem.%d.err", i),
 		]
-	} for i in range(SPLITS),
+	} for i in range(ceil(TOTAL_SEQ/SEQ_PER_SPLIT)),
 	{
 		"command": format(
 			"%s %s > Out.sam",
 			CONCAT,
-			join([format("Out.%d.sam", x) for x in range(SPLITS)])
+			join([format("Out.%d.sam", x) for x in range(ceil(TOTAL_SEQ/SEQ_PER_SPLIT))])
 		),
 		"inputs": [
 			CONCAT,
-			format("Out.%d.sam", x) for x in range(SPLITS),
+			format("Out.%d.sam", x) for x in range(ceil(TOTAL_SEQ/SEQ_PER_SPLIT)),
 		],
 		"outputs": [
 			"Out.sam"
@@ -69,7 +70,7 @@
 			"cat mem.*.err > mem.err"
 		),
 		"inputs": [
-			format("mem.%d.err", x) for x in range(SPLITS),
+			format("mem.%d.err", x) for x in range(ceil(TOTAL_SEQ/SEQ_PER_SPLIT)),
 		],
 		"outputs": [
 			"mem.err",
@@ -132,7 +133,7 @@
 			x,
 			REF,
 			x,
-			SPLITS,
+			ceil(TOTAL_SEQ/SEQ_PER_SPLIT),
 			x,
 			x,
 			x,
@@ -201,7 +202,7 @@
 			REF,
 		],
 		"outputs": [
-			format("%s.%d", REF, x) for x in range(SPLITS),
+			format("%s.%d", REF, x) for x in range(ceil(TOTAL_SEQ/SEQ_PER_SPLIT)),
 		],
 		"local_job": true,
 	},
@@ -222,14 +223,14 @@
 		"outputs": [
 			format("Corrected_ref.fasta.%d", x),
 		],
-	} for x in range(SPLITS),
+	} for x in range(ceil(TOTAL_SEQ/SEQ_PER_SPLIT)),
 	{
 		"command": format(
 			"cat %s > Corrected_ref.fasta",
-			join([format("Corrected_ref.fasta.%d", x) for x in range(SPLITS)])
+			join([format("Corrected_ref.fasta.%d", x) for x in range(ceil(TOTAL_SEQ/SEQ_PER_SPLIT))])
 		),
 		"inputs": [
-			format("Corrected_ref.fasta.%d", x) for x in range(SPLITS),
+			format("Corrected_ref.fasta.%d", x) for x in range(ceil(TOTAL_SEQ/SEQ_PER_SPLIT)),
 		],
 		"outputs": [
 			"Corrected_ref.fasta",

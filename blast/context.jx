@@ -1,9 +1,0 @@
-{
-	"BLAST_EXE" : "./blastall",
-	"BLAST_ALGO":  "blastn",
-	"BLAST_DB":	"nt",
-	"SPLIT_BLAST": "./split_fasta",
-	"CAT_BLAST": "./cat_blast",
-	"SPLITS": 20, # Number of sections
-	"TOTAL_SEQ": 10 # Number given to generate splits
-}

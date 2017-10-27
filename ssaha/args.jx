@@ -7,6 +7,6 @@
 	"OPTIONS": "-tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2",
 
 	"SPLIT": "./fastq_split.pl",
-	"TOTAL_SEQ": 1000,
-	"SPLITS": 100,
+	"SEQ_PER_SPLIT": 1000,
+	"TOTAL_SEQ": 100000,
 }

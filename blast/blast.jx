@@ -3,13 +3,13 @@
 		"command": format(
 			"%s %d small.fasta",
 			SPLIT_BLAST,
-			TOTAL_SEQ
+			SEQ_PER_SPLIT
 		),
 		"inputs": [
 			"small.fasta",
 			SPLIT_BLAST
 		],
-		"outputs": [format("small.fasta.%d", x) for x in range(SPLITS)],
+		"outputs": [format("small.fasta.%d", x) for x in range(ceil(TOTAL_SEQ/SEQ_PER_SPLIT))],
 		"local_job": true,
 	},
 	{
@@ -31,16 +31,16 @@
 			format("small.fasta.%d.out", x),
 			format("small.fasta.%d.err", x),
 		]
-	} for x in range(SPLITS),
+	} for x in range(ceil(TOTAL_SEQ/SEQ_PER_SPLIT)),
 	{
 		"command": format(
 			"%s output.fasta %s",
 			CAT_BLAST,
-			join([format("small.fasta.%d.out", x) for x in range(SPLITS)]),
+			join([format("small.fasta.%d.out", x) for x in range(ceil(TOTAL_SEQ/SEQ_PER_SPLIT))]),
 		),	
 		"inputs": [
 			CAT_BLAST,
-			format("small.fasta.%d.out", x) for x in range(SPLITS),
+			format("small.fasta.%d.out", x) for x in range(ceil(TOTAL_SEQ/SEQ_PER_SPLIT)),
 		],
 		"output": [
 			"output.fasta"
@@ -50,10 +50,10 @@
 	{
 		"command": format(
 			"cat %s > output.fasta.err",
-			join([format("small.fasta.%d.err", x) for x in range(SPLITS)]),
+			join([format("small.fasta.%d.err", x) for x in range(ceil(TOTAL_SEQ/SEQ_PER_SPLIT))]),
 		),	
 		"inputs": [
-			format("small.fasta.%d.err", x) for x in range(SPLITS),
+			format("small.fasta.%d.err", x) for x in range(ceil(TOTAL_SEQ/SEQ_PER_SPLIT)),
 		],
 		"output": [
 			"output.fasta.err"

@@ -1,8 +1,8 @@
 {
     "rules": [
         {
-            "command": format("%s %s %d", SPLIT, INPUT_PRE, TOTAL_SEQ),
-            "outputs": [format("%s.%d", INPUT_PRE, i) for i in range(SPLITS)],
+            "command": format("%s %s %d", SPLIT, INPUT_PRE, SEQ_PER_SPLIT),
+            "outputs": [format("%s.%d", INPUT_PRE, i) for i in range(ceil(TOTAL_SEQ/SEQ_PER_SPLIT))],
             "inputs": [SPLIT, INPUT_PRE],
             "local_job": true,
         },
@@ -41,7 +41,7 @@
                 x for x in REF_INDEX,
 				format("%s.%d", INPUT_PRE, i)
             ],
-        } for i in range(SPLITS),
+        } for i in range(ceil(TOTAL_SEQ/SEQ_PER_SPLIT)),
         {
             "command": format(
                 "%s %s.sam %s*.sam",
@@ -52,7 +52,7 @@
             "outputs": [format("%s.sam", INPUT_PRE)],
             "inputs": [
                 CONCAT,
-                format("%s.%d.sam", INPUT_PRE, i) for i in range(SPLITS),
+                format("%s.%d.sam", INPUT_PRE, i) for i in range(ceil(TOTAL_SEQ/SEQ_PER_SPLIT)),
             ],
         },
     ],

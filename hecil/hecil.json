@@ -40,13 +40,11 @@
             "command": "./bwa mem ref.fasta query.fastq.0 > Out.0.sam 2> mem.0.err",
             "inputs": [
                 "./bwa",
-                [
-                    "ref.fasta.amb",
-                    "ref.fasta.ann",
-                    "ref.fasta.bwt",
-                    "ref.fasta.pac",
-                    "ref.fasta.sa"
-                ],
+                "ref.fasta.amb",
+                "ref.fasta.ann",
+                "ref.fasta.bwt",
+                "ref.fasta.pac",
+                "ref.fasta.sa",
                 "query.fastq.0"
             ],
             "outputs": [
@@ -58,13 +56,11 @@
             "command": "./bwa mem ref.fasta query.fastq.1 > Out.1.sam 2> mem.1.err",
             "inputs": [
                 "./bwa",
-                [
-                    "ref.fasta.amb",
-                    "ref.fasta.ann",
-                    "ref.fasta.bwt",
-                    "ref.fasta.pac",
-                    "ref.fasta.sa"
-                ],
+                "ref.fasta.amb",
+                "ref.fasta.ann",
+                "ref.fasta.bwt",
+                "ref.fasta.pac",
+                "ref.fasta.sa",
                 "query.fastq.1"
             ],
             "outputs": [
@@ -76,13 +72,11 @@
             "command": "./bwa mem ref.fasta query.fastq.2 > Out.2.sam 2> mem.2.err",
             "inputs": [
                 "./bwa",
-                [
-                    "ref.fasta.amb",
-                    "ref.fasta.ann",
-                    "ref.fasta.bwt",
-                    "ref.fasta.pac",
-                    "ref.fasta.sa"
-                ],
+                "ref.fasta.amb",
+                "ref.fasta.ann",
+                "ref.fasta.bwt",
+                "ref.fasta.pac",
+                "ref.fasta.sa",
                 "query.fastq.2"
             ],
             "outputs": [
@@ -94,13 +88,11 @@
             "command": "./bwa mem ref.fasta query.fastq.3 > Out.3.sam 2> mem.3.err",
             "inputs": [
                 "./bwa",
-                [
-                    "ref.fasta.amb",
-                    "ref.fasta.ann",
-                    "ref.fasta.bwt",
-                    "ref.fasta.pac",
-                    "ref.fasta.sa"
-                ],
+                "ref.fasta.amb",
+                "ref.fasta.ann",
+                "ref.fasta.bwt",
+                "ref.fasta.pac",
+                "ref.fasta.sa",
                 "query.fastq.3"
             ],
             "outputs": [
@@ -112,13 +104,11 @@
             "command": "./bwa mem ref.fasta query.fastq.4 > Out.4.sam 2> mem.4.err",
             "inputs": [
                 "./bwa",
-                [
-                    "ref.fasta.amb",
-                    "ref.fasta.ann",
-                    "ref.fasta.bwt",
-                    "ref.fasta.pac",
-                    "ref.fasta.sa"
-                ],
+                "ref.fasta.amb",
+                "ref.fasta.ann",
+                "ref.fasta.bwt",
+                "ref.fasta.pac",
+                "ref.fasta.sa",
                 "query.fastq.4"
             ],
             "outputs": [
@@ -130,13 +120,11 @@
             "command": "./bwa mem ref.fasta query.fastq.5 > Out.5.sam 2> mem.5.err",
             "inputs": [
                 "./bwa",
-                [
-                    "ref.fasta.amb",
-                    "ref.fasta.ann",
-                    "ref.fasta.bwt",
-                    "ref.fasta.pac",
-                    "ref.fasta.sa"
-                ],
+                "ref.fasta.amb",
+                "ref.fasta.ann",
+                "ref.fasta.bwt",
+                "ref.fasta.pac",
+                "ref.fasta.sa",
                 "query.fastq.5"
             ],
             "outputs": [
@@ -148,13 +136,11 @@
             "command": "./bwa mem ref.fasta query.fastq.6 > Out.6.sam 2> mem.6.err",
             "inputs": [
                 "./bwa",
-                [
-                    "ref.fasta.amb",
-                    "ref.fasta.ann",
-                    "ref.fasta.bwt",
-                    "ref.fasta.pac",
-                    "ref.fasta.sa"
-                ],
+                "ref.fasta.amb",
+                "ref.fasta.ann",
+                "ref.fasta.bwt",
+                "ref.fasta.pac",
+                "ref.fasta.sa",
                 "query.fastq.6"
             ],
             "outputs": [
@@ -166,13 +152,11 @@
             "command": "./bwa mem ref.fasta query.fastq.7 > Out.7.sam 2> mem.7.err",
             "inputs": [
                 "./bwa",
-                [
-                    "ref.fasta.amb",
-                    "ref.fasta.ann",
-                    "ref.fasta.bwt",
-                    "ref.fasta.pac",
-                    "ref.fasta.sa"
-                ],
+                "ref.fasta.amb",
+                "ref.fasta.ann",
+                "ref.fasta.bwt",
+                "ref.fasta.pac",
+                "ref.fasta.sa",
                 "query.fastq.7"
             ],
             "outputs": [
@@ -184,13 +168,11 @@
             "command": "./bwa mem ref.fasta query.fastq.8 > Out.8.sam 2> mem.8.err",
             "inputs": [
                 "./bwa",
-                [
-                    "ref.fasta.amb",
-                    "ref.fasta.ann",
-                    "ref.fasta.bwt",
-                    "ref.fasta.pac",
-                    "ref.fasta.sa"
-                ],
+                "ref.fasta.amb",
+                "ref.fasta.ann",
+                "ref.fasta.bwt",
+                "ref.fasta.pac",
+                "ref.fasta.sa",
                 "query.fastq.8"
             ],
             "outputs": [
@@ -202,13 +184,11 @@
             "command": "./bwa mem ref.fasta query.fastq.9 > Out.9.sam 2> mem.9.err",
             "inputs": [
                 "./bwa",
-                [
-                    "ref.fasta.amb",
-                    "ref.fasta.ann",
-                    "ref.fasta.bwt",
-                    "ref.fasta.pac",
-                    "ref.fasta.sa"
-                ],
+                "ref.fasta.amb",
+                "ref.fasta.ann",
+                "ref.fasta.bwt",
+                "ref.fasta.pac",
+                "ref.fasta.sa",
                 "query.fastq.9"
             ],
             "outputs": [

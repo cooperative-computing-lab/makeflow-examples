@@ -3,7 +3,7 @@
 		"command": format(
 			"%s %d %s",
 			SPLIT,
-			TOTAL_SEQ,
+			SEQ_PER_SPLIT,
 			QUERY,
 		),
 		"inputs": [
@@ -11,7 +11,7 @@
 			SPLIT,
 		],
 		"outputs": [
-			format("%s.%d", QUERY, x) for x in range(SPLITS),
+			format("%s.%d", QUERY, x) for x in range(ceil(TOTAL_SEQ/SEQ_PER_SPLIT)),
 		],
 		"local_job": true,
 	},
@@ -31,13 +31,13 @@
 			format("%s.%d", QUERY, x),
 		],
 		"outputs": [ format("output.%d", x) ],
-	} for x in range(SPLITS),
+	} for x in range(ceil(TOTAL_SEQ/SEQ_PER_SPLIT)),
 	{
 		"command": format("cat %s > output.txt",
-			join([format("output.%d", x) for x in range(SPLITS)])
+			join([format("output.%d", x) for x in range(ceil(TOTAL_SEQ/SEQ_PER_SPLIT))])
 		),
 		"inputs": [
-			format("output.%d", x) for x in range(SPLITS),	
+			format("output.%d", x) for x in range(ceil(TOTAL_SEQ/SEQ_PER_SPLIT)),	
 		],
 		"outputs": [
 			"output.txt",
