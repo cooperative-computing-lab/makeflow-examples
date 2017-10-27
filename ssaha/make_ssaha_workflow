@@ -1,4 +1,5 @@
 #!/usr/bin/perl -w
+use POSIX;
 
 if($#ARGV!=3) {
     print "$0 <database.fastq> <query.fastq> <output.fastq> <num-seqs-per-split>\n";
@@ -10,10 +11,17 @@ my $infile = $ARGV[1];
 my $outfile = $ARGV[2];
 my $seqs_per_file = int($ARGV[3]);
 
-$nseqs = `./fastq_count.pl $infile`;
-chomp $nseqs;
+my $nseqs = 0;
 
-$nfiles = 1 + int($nseqs / $seqs_per_file);
+open FILE, $infile or die "$0: couldn't open $ARGV[1]\n";
+while(<FILE>) {
+	if(/^@.*/ ) {
+		$nseqs++;
+	}
+}
+close FILE;
+
+$nfiles = int(ceil($nseqs / $seqs_per_file));
 
 my $inputlist;
 my $outputlist;
@@ -26,7 +34,7 @@ for (my $i = 0; $i < $nfiles; $i++) {
 print "OPTIONS=-tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2\n";
 
 print "$inputlist: $infile fastq_split.pl\n";
-print "\tLOCAL ./fastq_split.pl $infile $seqs_per_file\n\n";
+print "\tLOCAL ./fastq_reduce $infile $seqs_per_file\n\n";
 
 for (my $i = 0; $i < $nfiles; $i++){
 	print "$outfile.$i: $infile.$i $db ssaha2\n";
