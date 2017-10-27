@@ -26,7 +26,8 @@ makeflow -T condor shakespeare.makeflow
 makeflow -T sge shakespeare.makeflow
 makeflow -T wq shakespeare.makeflow
 ```
-Alternatively, the makeflow can be run using the `JX` format:
+Alternatively, the makeflow can be run using the `JX` or `JSON` format:
 ```
 makeflow --jx shakespeare.jx --jx-args="args.jx"
+makeflow --json shakespeare.json"
 ```
