@@ -1,0 +1,171 @@
+
+{
+  "rules":
+    [
+      
+      {
+        "command":"perl count_characters.pl",
+        "inputs":
+          [
+            "characters_henry_iv_part_1.txt",
+            "characters_henry_iv_part_2.txt",
+            "characters_henry_vi_part_1.txt",
+            "characters_henry_vi_part_2.txt",
+            "characters_henry_vi_part_3.txt",
+            "count_characters.pl"
+          ],
+        "outputs":
+          [
+            "top_character.txt"
+          ]
+      },
+      
+      {
+        "command":"curl -o henry_iv_part_1.txt http://ccl.cse.nd.edu/workflows/shakespeare/henry_iv_part_1.txt",
+        "inputs":
+          [
+          ],
+        "outputs":
+          [
+            "henry_iv_part_1.txt"
+          ],
+        "local_job":true
+      },
+      
+      {
+        "command":"curl -o henry_iv_part_2.txt http://ccl.cse.nd.edu/workflows/shakespeare/henry_iv_part_2.txt",
+        "inputs":
+          [
+          ],
+        "outputs":
+          [
+            "henry_iv_part_2.txt"
+          ],
+        "local_job":true
+      },
+      
+      {
+        "command":"curl -o henry_vi_part_1.txt http://ccl.cse.nd.edu/workflows/shakespeare/henry_vi_part_1.txt",
+        "inputs":
+          [
+          ],
+        "outputs":
+          [
+            "henry_vi_part_1.txt"
+          ],
+        "local_job":true
+      },
+      
+      {
+        "command":"curl -o henry_vi_part_2.txt http://ccl.cse.nd.edu/workflows/shakespeare/henry_vi_part_2.txt",
+        "inputs":
+          [
+          ],
+        "outputs":
+          [
+            "henry_vi_part_2.txt"
+          ],
+        "local_job":true
+      },
+      
+      {
+        "command":"curl -o henry_vi_part_3.txt http://ccl.cse.nd.edu/workflows/shakespeare/henry_vi_part_3.txt",
+        "inputs":
+          [
+          ],
+        "outputs":
+          [
+            "henry_vi_part_3.txt"
+          ],
+        "local_job":true
+      },
+      
+      {
+        "command":"starch -C starch.config -c \"perl text_analyzer.pl\" perl.sfx",
+        "inputs":
+          [
+            "/usr/bin/perl",
+            "text_analyzer.pl"
+          ],
+        "outputs":
+          [
+            "perl.sfx"
+          ],
+        "local_job":true
+      },
+      
+      {
+        "command":"./perl.sfx henry_iv_part_1.txt",
+        "inputs":
+          [
+            "henry_iv_part_1.txt",
+            "perl.sfx",
+            "text_analyzer.pl"
+          ],
+        "outputs":
+          [
+            "characters_henry_iv_part_1.txt"
+          ]
+      },
+      
+      {
+        "command":"./perl.sfx henry_iv_part_2.txt",
+        "inputs":
+          [
+            "characters_henry_iv_part_1.txt",
+            "henry_iv_part_2.txt",
+            "perl.sfx",
+            "text_analyzer.pl"
+          ],
+        "outputs":
+          [
+            "characters_henry_iv_part_2.txt"
+          ]
+      },
+      
+      {
+        "command":"./perl.sfx henry_vi_part_1.txt",
+        "inputs":
+          [
+            "henry_vi_part_1.txt",
+            "perl.sfx",
+            "text_analyzer.pl"
+          ],
+        "outputs":
+          [
+            "characters_henry_vi_part_1.txt"
+          ]
+      },
+      
+      {
+        "command":"./perl.sfx henry_vi_part_2.txt",
+        "inputs":
+          [
+            "characters_henry_vi_part_1.txt",
+            "henry_vi_part_2.txt",
+            "perl.sfx",
+            "text_analyzer.pl"
+          ],
+        "outputs":
+          [
+            "characters_henry_vi_part_2.txt"
+          ]
+      },
+      
+      {
+        "command":"./perl.sfx henry_vi_part_3.txt",
+        "inputs":
+          [
+            "characters_henry_vi_part_1.txt",
+            "characters_henry_vi_part_2.txt",
+            "henry_vi_part_3.txt",
+            "perl.sfx",
+            "text_analyzer.pl"
+          ],
+        "outputs":
+          [
+            "characters_henry_vi_part_3.txt"
+          ]
+      }
+    ]
+}
