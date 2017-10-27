@@ -3,7 +3,7 @@
 ## JX ##
 JX is a language that simplfies and shortens interaction with the Makeflow program. At the core, JX is an extended JSON form.  It allows for the formatting of strings, for loops to iterate over a rule, list comprehension, and `join` functions to create single strings out of lists.
 
-Additionally, external variables can be defined in an external "context" file, where lists, strings, and values can be defined for use within the JX structure.
+Additionally, external variables can be defined in an external `context` file, where lists, strings, and values can be defined for use within the JX structure.
 
 ## General Structure ##
 The JX structure is a JSON object with a single "rules" key, which contains a list of separate rules.  Each rule entry is another object containing, at the least, and "outputs", "inputs", and "command" key.  "inputs" and "outputs" contains a list of input and output files respecgively, and the "commmand" key contains a single string.
@@ -115,16 +115,16 @@ where the only items changing through the rule is the integer 0 counting upwards
 ```
 All the capital variables are simply values defined in the context file. However, the for loop after the closing brace indicated that we will be iterating over this rule several times.  The defined value `i` is placed throughout the rule, and it is replaced in those locations as is necessary.  The ending result is a `SPLIT_SIZE` number of analgous rules where only the digit in question has been changed.
 
-### Command Reqires String of Inputs of the Same Style ###
+### Command Requires String of Inputs of the Same Style ###
 This final example makes use of join, for and format.  Often, the different files must be concatenated into one single string for a command.  This could be a command such as the following:
 ```
 "command" : "cat Corrected_ref.fasta.0 Corrected_ref.fasta.1 Corrected_ref.fasta.2 Corrected_ref.fasta.3 Corrected_ref.fasta.4 Corrected_ref.fasta.5 Corrected_ref.fasta.6 Corrected_ref.fasta.7 Corrected_ref.fasta.8 Corrected_ref.fasta.9 > Corrected_ref.fasta"
 ```
-We see that there is a very simialr structure to the inputs. As join accepts a list of objects, we can follow a similar procedure to the inputs and outputs structure mentioned previously.  This list simply needs to be placed inside a join function.
+We see that there is a very similar structure to the inputs. As join accepts a list of objects, we can follow a similar procedure to the inputs and outputs structure mentioned previously.  This list simply needs to be placed inside a join function.
 ```
 "command": format(
 	"cat %s > Corrected_ref.fasta",
-	join([format("Corrected_ref.fasta.%d", x) for x in r    ange(SPLIT_SIZE)])
+	join([format("Corrected_ref.fasta.%d", x) for x in range(SPLIT_SIZE)])
 )
 ```
 When expanded, this creates an analagous string to be executed.
