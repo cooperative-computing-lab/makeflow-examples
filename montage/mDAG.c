@@ -96,6 +96,9 @@ int main(int argc, char **argv)
    int     haveHdr, itmp, istat, mAddCntr;
    int     nparents, parent, parent_prev;
    int     naxis1s, naxis2s;
+
+   //Flag for outputting Makeflow instead of DAX
+   int dax_mode = 1;
   
    char    line        [MAXSTR];
    char    mproj       [MAXSTR];
@@ -256,7 +259,7 @@ int main(int argc, char **argv)
 
    if(argc < 2)
    {
-      printf("[struct stat=\"ERROR\", msg=\"Usage: %s survey band objstr width height cdelt workdir workurlbase [urlbase] | %s -h survey band hdrfile workdir workurlbase [urlbase] (object/location string must be a single argument)\"]\n", argv[0], argv[0]);
+      printf("[struct stat=\"ERROR\", msg=\"Usage: %s survey band objstr width height cdelt workdir workurlbase [urlbase] | %s -m survey band objstr width height cdelt workdir workurlbase [urlbase] | %s -h survey band hdrfile workdir workurlbase [urlbase] (object/location string must be a single argument)\"]\n", argv[0], argv[0]);
       exit(0);
    }
 
@@ -264,7 +267,7 @@ int main(int argc, char **argv)
    {
       if(argc < 7)
       {
-         printf("[struct stat=\"ERROR\", msg=\"Usage: %s survey band objstr width height cdelt workdir workurlbase [urlbase] | %s -h survey band hdrfile workdir workurlbase [urlbase] (object/location string must be a single argument)\"]\n", argv[0], argv[0]);
+         printf("[struct stat=\"ERROR\", msg=\"Usage: %s survey band objstr width height cdelt workdir workurlbase [urlbase] | %s -m survey band objstr width height cdelt workdir workurlbase [urlbase] | %s -h survey band hdrfile workdir workurlbase [urlbase] (object/location string must be a single argument)\"]\n", argv[0], argv[0]);
          exit(0);
       }
 
@@ -279,6 +282,39 @@ int main(int argc, char **argv)
          strcpy(urlbase,      argv[7]);
          haveurlbase = 1;
       }
+   }
+   else if(strcmp(argv[1], "-m") == 0)
+   {
+      if(argc < 9)
+      {
+         printf("[struct stat=\"ERROR\", msg=\"Usage: %s survey band objstr width height cdelt workdir workurlbase [urlbase] | %s -m survey band objstr width height cdelt workdir workurlbase [urlbase] | %s -h survey band hdrfile workdir workurlbase [urlbase] (object/location string must be a single argument)\"]\n", argv[0], argv[0]);
+         exit(0);
+      }
+
+      dax_mode = 0;
+
+      strcpy(survey,       argv[1]);
+      strcpy(band,         argv[2]);
+      strcpy(mosaicCenter, argv[3]);
+      strcpy(mosaicWidth,  argv[4]);
+      strcpy(mosaicHeight, argv[5]);
+      strcpy(mosaicCdelt,  argv[6]);
+      strcpy(workdir,      argv[7]);
+      strcpy(workurlbase,  argv[8]);
+      if(argc == 10) {
+        strcpy(urlbase,      argv[9]);
+        haveurlbase = 1;
+      }
+
+      width  = fabs(atof(mosaicWidth));
+      height = fabs(atof(mosaicHeight));
+      cdelt  = fabs(atof(mosaicCdelt));
+
+      naxis1 = (int)(width  / cdelt) + 0.5;
+      naxis2 = (int)(height / cdelt) + 0.5;
+
+      crpix1 = (naxis1+1.)/2.;
+      crpix2 = (naxis2+1.)/2.;
    }
    else
    {
@@ -727,15 +763,18 @@ int main(int argc, char **argv)
    /* Create tiled header files, subset image tables, and list of shrunken   */
    /* images.                                                                */
    /**************************************************************************/
-	sprintf(cmd, "%s/montage.mf", workdir);
+   
+   if(!dax_mode)
+   {
+		sprintf(cmd, "%s/montage.makeflow", workdir);
    	fdag = fopen(cmd, "w+");
+   }
+   
    if(numTiles > 1)
    {
       sprintf(cmd, "%s/slist.tbl", workdir);
 
       fp = fopen(cmd, "w+");
-
-		
 
       if(fp == (FILE *)NULL)
       {
@@ -756,8 +795,11 @@ int main(int argc, char **argv)
                else
                   sprintf(cmd, "mTileHdr %s/region.hdr %s/region_%d_%d.hdr %d %d %d %d %d %d",
                      workdir, workdir, i, j, numTilesX, numTilesY, i, j, tileOverlapX, tileOverlapY);
-            	fprintf(stderr, "\n\n\nCaught\n\n\n");
-				fprintf(fdag, "region_%d_%d.hdr: region.hdr\n\tmTileHdr region.hdr region_%d_%d.hdr %d %d %d %d %d %d\n\n", i, j, numTilesX, numTilesY, i, j, tileOverlapX, tileOverlapY);
+	    
+	    if(!dax_mode)
+	    {
+	       fprintf(fdag, "region_%d_%d.hdr: region.hdr ./mTileHdr\n\t./mTileHdr region.hdr region_%d_%d.hdr %d %d %d %d %d %d\n\n", i, j, numTilesX, numTilesY, i, j, tileOverlapX, tileOverlapY);
+	    }
 
             if(debug)
             {
@@ -782,10 +824,13 @@ int main(int argc, char **argv)
                else
                   sprintf(cmd, "mSubset -f %s/cimages.tbl %s/region_%d_%d.hdr %s/cimages_%d_%d.tbl",
                      workdir, workdir, i, j, workdir, i, j);
-			           
-			fprintf(fdag, "cimages_%d_%d.tbl: cimages.tbl region_%d_%d.hdr\n\tmSubset -f cimages.tbl region_%d_%d.hdr cimages_%d_%d.tbl\n\n", i, j, i, j, i, j, i, j);
- 
-            if(debug)
+            
+	    if(!dax_mode)
+            {		           
+	       fprintf(fdag, "cimages_%d_%d.tbl: cimages.tbl region_%d_%d.hdr ./mSubset\n\t./mSubset -f cimages.tbl region_%d_%d.hdr cimages_%d_%d.tbl\n\n", i, j, i, j, i, j, i, j);
+ 	    }
+            
+	    if(debug)
             {
                fprintf(fdebug, "[%s]\n", cmd);
                fflush(fdebug);
@@ -821,39 +866,46 @@ int main(int argc, char **argv)
       fflush(fdebug);
    }
 
-   
+   if(dax_mode)
+   {
+      sprintf(cmd, "%s/dag.xml", workdir);
+      fdag = fopen(cmd, "w+");
+   }
 
    sprintf(cmd, "%s/cache.list", workdir);
    fcache = fopen(cmd, "w+");
 
    sprintf(cmd, "%s/url.list", workdir);
    furl = fopen(cmd, "w+");
-/*
-   fprintf(fdag, "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n");
-   fprintf(fdag, "<!-- Generated:    %s -->\n", timestr);
-   fprintf(fdag, "<!-- Generated by: Montage DAG service      -->\n\n");
-   fprintf(fdag, "<adag xmlns=\"http://pegasus.isi.edu/schema/DAX\"\n");
-   fprintf(fdag, "      xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\n");
-   fprintf(fdag, "      xsi:schemaLocation=\"http://pegasus.isi.edu/schema/DAX http://pegasus.isi.edu/schema/dax-2.1.xsd\"\n");
-   fprintf(fdag, "      version=\"2.1\" count=\"1\" index=\"0\" name=\"montage\">\n\n");
 
-   fflush(fdag);
-
-   fprintf(fdag, "  <!-- Survey:  %-30s -->\n", survey);
-   fprintf(fdag, "  <!-- Band:    %-30s -->\n", band);
-   fprintf(fdag, "  <!-- Center:  %-30s -->\n", mosaicCenter);
-
-   if(haveHdr)
-      fprintf(fdag, "  <!-- (WCS is in input header file)           -->\n");
-   else
+   if(dax_mode)
    {
-      fprintf(fdag, "  <!-- Width:   %-30s -->\n", mosaicWidth);
-      fprintf(fdag, "  <!-- Height:  %-30s -->\n", mosaicHeight);
+      fprintf(fdag, "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n");
+      fprintf(fdag, "<!-- Generated:    %s -->\n", timestr);
+      fprintf(fdag, "<!-- Generated by: Montage DAG service      -->\n\n");
+      fprintf(fdag, "<adag xmlns=\"http://pegasus.isi.edu/schema/DAX\"\n");
+      fprintf(fdag, "      xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\n");
+      fprintf(fdag, "      xsi:schemaLocation=\"http://pegasus.isi.edu/schema/DAX http://pegasus.isi.edu/schema/dax-2.1.xsd\"\n");
+      fprintf(fdag, "      version=\"2.1\" count=\"1\" index=\"0\" name=\"montage\">\n\n");
+
+      fflush(fdag);
+
+      fprintf(fdag, "  <!-- Survey:  %-30s -->\n", survey);
+      fprintf(fdag, "  <!-- Band:    %-30s -->\n", band);
+      fprintf(fdag, "  <!-- Center:  %-30s -->\n", mosaicCenter);
+
+      if(haveHdr)
+         fprintf(fdag, "  <!-- (WCS is in input header file)           -->\n");
+      else
+      {
+         fprintf(fdag, "  <!-- Width:   %-30s -->\n", mosaicWidth);
+         fprintf(fdag, "  <!-- Height:  %-30s -->\n", mosaicHeight);
+      }
+
+      fprintf(fdag, "\n\n");
+      fflush(fdag);
    }
 
-   fprintf(fdag, "\n\n");
-   fflush(fdag);
-*/
    /******************************************/
    /* compose the url lfn cache list         */
    /******************************************/
@@ -879,6 +931,11 @@ int main(int argc, char **argv)
          break;
 
       fprintf(furl, "%s %s pool=\"ipac_cluster\"\n", tval(ifname), tval(iurl));
+      
+      if(!dax_mode)
+      {
+         fprintf(fdag, "%s:\n\twget %s -O %s.gz %s.gz ; gunzip -d %s.gz\n\n", tval(ifname), tval(iurl), tval(ifname), tval(ifname), tval(ifname));
+      }
    }
 
    tclose();
@@ -888,79 +945,81 @@ int main(int argc, char **argv)
    /******************************************/
    /* DAG: "filename" lines for input images */
    /******************************************/
-/*
-   if(debug)
+
+   if(dax_mode)
    {
-      fprintf(fdebug, "Generating DAG file filename list ...\n");
-      fflush(fdebug);
+      if(debug)
+      {
+         fprintf(fdebug, "Generating DAG file filename list ...\n");
+         fflush(fdebug);
+      }
+
+      fprintf(fdag, "  <!-- Part 1:  Files Used -->\n\n");
+
+      sprintf(cmd, "%s/rimages.tbl", workdir);
+
+      ncol = topen(cmd);
+
+      ifname = tcol("file");
+
+      if(ifname < 0)
+         printError("'Raw' image list does not have column 'file'");
+
+      while(1)
+      {
+         istat = tread();
+
+         if(istat < 0)
+            break;
+
+         fprintf(fdag, "  <filename file=\"%s\" link=\"input\"/>\n", tval(ifname));
+      }
+
+      fprintf(fdag, "\n");
+      fflush(fdag);
+      tclose();
    }
 
-   //fprintf(fdag, "  <!-- Part 1:  Files Used -->\n\n");
-   fprintf(fdag, "MAKEFLOW_INPUTS=");
 
-   sprintf(cmd, "%s/rimages.tbl", workdir);
-
-   ncol = topen(cmd);
-
-   ifname = tcol("file");
-
-   if(ifname < 0)
-      printError("'Raw' image list does not have column 'file'");
-
-   while(1)
-   {
-      istat = tread();
-
-      if(istat < 0)
-         break;
-
-      //fprintf(fdag, "  <filename file=\"%s\" link=\"input\"/>\n", tval(ifname));
-      fprintf(fdag, "%s ", tval(ifname));
-   }
-
-   //fprintf(fdag, "\n");
-   fflush(fdag);
-   tclose();
-
-*/
    /**********************************************/
    /* DAG: "filename" lines for projected images */
    /* including area files                       */
    /**********************************************/
-/*
-   sprintf(cmd, "%s/pimages.tbl", workdir);
 
-   ncol = topen(cmd);
-
-   ifname = tcol("file");
-
-   if(ifname < 0)
-      printError("'Projected' image list does not have column 'file'");
-
-   while(1)
+   if(dax_mode)
    {
-      istat = tread();
+      sprintf(cmd, "%s/pimages.tbl", workdir);
 
-      if(istat < 0)
-         break;
+      ncol = topen(cmd);
 
-      //fprintf(fdag, "  <filename file=\"%s\" link=\"inout\"/>\n", tval(ifname));
-      fprintf(fdag, "%s ", tval(ifname));
+      ifname = tcol("file");
 
-      strcpy(fname, tval(ifname));
+      if(ifname < 0)
+         printError("'Projected' image list does not have column 'file'");
 
-      fname[strlen(fname)-5] = '\0';
+      while(1)
+      {
+         istat = tread();
 
-      strcat(fname, "_area.fits");
+         if(istat < 0)
+            break;
 
-      //fprintf(fdag, "  <filename file=\"%s\" link=\"inout\"/>\n", fname);
-      fprintf(fdag, "%s ", fname);
+         fprintf(fdag, "  <filename file=\"%s\" link=\"inout\"/>\n", tval(ifname));
+
+         strcpy(fname, tval(ifname));
+
+         fname[strlen(fname)-5] = '\0';
+
+         strcat(fname, "_area.fits");
+
+         fprintf(fdag, "  <filename file=\"%s\" link=\"inout\"/>\n", fname);
+      }
+
+      fprintf(fdag, "\n");
+      fflush(fdag);
+      tclose();
    }
 
-   //fprintf(fdag, "\n");
-   fflush(fdag);
-   tclose();
-*/
 
    /***********************************************/
    /* DAG: "filename" lines for difference images */
@@ -998,7 +1057,10 @@ int main(int argc, char **argv)
       cntr1 = atoi(tval(icntr1));
       cntr2 = atoi(tval(icntr2));
 
-      //fprintf(fdag, "  <filename file=\"%s\" link=\"output\"/>\n", tval(ifname));
+      if(dax_mode)
+      {
+         fprintf(fdag, "  <filename file=\"%s\" link=\"output\"/>\n", tval(ifname));
+      }
 
       strcpy(fname, tval(ifname));
 
@@ -1006,9 +1068,11 @@ int main(int argc, char **argv)
 
       sprintf(fitname, "fit%s.txt", fname+4);
 
-      //fprintf(fdag, "  <filename file=\"%s\" link=\"inout\"/>\n\n", fitname);
-      //fprintf(fdag, "%s ", fitname);
-
+      if(dax_mode)
+      {
+         fprintf(fdag, "  <filename file=\"%s\" link=\"inout\"/>\n\n", fitname);
+      }
+      
       fprintf(ffit, dfmt, cntr1, cntr2, fitname);
    }
 
@@ -1017,11 +1081,13 @@ int main(int argc, char **argv)
 
    fclose(ffit);
 
-   //fprintf(fdag, "  <filename file=\"statfile_%s.tbl\" link=\"input\"/>\n", idstr);
-   //fprintf(fdag, "  <filename file=\"fits.tbl\" link=\"inout\"/>\n");
-   //fprintf(fdag, "\n");
-   //fprintf(fdag, "statfile_%s.tbl fits.tbl ", idstr);
-   //fflush(fdag);
+   if(dax_mode)
+   {
+      fprintf(fdag, "  <filename file=\"statfile_%s.tbl\" link=\"input\"/>\n", idstr);
+      fprintf(fdag, "  <filename file=\"fits.tbl\" link=\"inout\"/>\n");
+      fprintf(fdag, "\n");
+      fflush(fdag);
+   }
 
    fprintf(fcache, "statfile_%s.tbl %s/%s/statfile.tbl pool=\"ipac_cluster\"\n", idstr, workurlbase, workdir);
 
@@ -1031,121 +1097,129 @@ int main(int argc, char **argv)
    /* and the corrected image files (including    */
    /* area files)                                 */
    /***********************************************/
-/*
-   //fprintf(fdag, "  <filename file=\"corrections.tbl\" link=\"inout\"/>\n");
-   //fprintf(fdag, "\n");
-   fprintf(fdag, "corrections.tbl ");
-   fflush(fdag);
 
-   sprintf(cmd, "%s/cimages.tbl", workdir);
-
-   ncol = topen(cmd);
-   ifname = tcol("file");
-
-   if(ifname < 0)
-      printError("'Corrected' image list does not have column 'file'");
-
-   while(1)
+   if(dax_mode)
    {
-      istat = tread();
+      fprintf(fdag, "  <filename file=\"corrections.tbl\" link=\"inout\"/>\n");
+      fprintf(fdag, "\n");
+      fflush(fdag);
 
-      if(istat < 0)
-         break;
+      sprintf(cmd, "%s/cimages.tbl", workdir);
 
-      //fprintf(fdag, "  <filename file=\"%s\" link=\"inout\"/>\n", tval(ifname));
-      fprintf(fdag, "%s ", tval(ifname));
+      ncol = topen(cmd);
+      ifname = tcol("file");
 
-      strcpy(fname, tval(ifname));
+      if(ifname < 0)
+         printError("'Corrected' image list does not have column 'file'");
 
-      fname[strlen(fname)-5] = '\0';
+      while(1)
+      {
+         istat = tread();
 
-      strcat(fname, "_area.fits");
+         if(istat < 0)
+            break;
 
-      //fprintf(fdag, "  <filename file=\"%s\" link=\"inout\"/>\n", fname);
-      fprintf(fdag, "%s ", fname);
+         fprintf(fdag, "  <filename file=\"%s\" link=\"inout\"/>\n", tval(ifname));
+
+         strcpy(fname, tval(ifname));
+
+         fname[strlen(fname)-5] = '\0';
+
+         strcat(fname, "_area.fits");
+
+         fprintf(fdag, "  <filename file=\"%s\" link=\"inout\"/>\n", fname);
+      }
+
+      fprintf(fdag, "\n");
+      fflush(fdag);
+      tclose();
    }
+   
 
-   //fprintf(fdag, "\n");
-   fflush(fdag);
-   tclose();
-*/
    /***********************************************/
    /* DAG: "filename" lines for template files,   */
    /* subset image files, output files, and       */
    /* shrunken output files.                      */
    /***********************************************/
-/*
-   if(numTiles > 1)
+
+   if(dax_mode)
    {
-      for(i=0; i<numTilesX; ++i)
+      if(numTiles > 1)
       {
-         for(j=0; j<numTilesY; ++j)
+         for(i=0; i<numTilesX; ++i)
          {
-            fprintf(fdag, "  <filename file=\"region_%d_%d_%s.hdr\" link=\"input\"/>\n", i, j, idstr);
-            fprintf(fdag, "  <filename file=\"cimages_%d_%d_%s.tbl\" link=\"input\"/>\n", i, j, idstr);
-            fprintf(fdag, "  <filename file=\"newcimages_%d_%d.tbl\" link=\"inout\"/>\n", i, j);
-            fprintf(fdag, "  <filename file=\"tile_%d_%d_%s.fits\" link=\"inout\"/>\n", i, j, idstr);
-            fprintf(fdag, "  <filename file=\"tile_%d_%d_%s_area.fits\" link=\"inout\"/>\n", i, j, idstr);
-            fprintf(fdag, "  <filename file=\"shrunken_%d_%d_%s.fits\" link=\"inout\"/>\n", i, j, idstr);
-            fprintf(fdag, "\n");
+            for(j=0; j<numTilesY; ++j)
+            {
+               fprintf(fdag, "  <filename file=\"region_%d_%d_%s.hdr\" link=\"input\"/>\n", i, j, idstr);
+               fprintf(fdag, "  <filename file=\"cimages_%d_%d_%s.tbl\" link=\"input\"/>\n", i, j, idstr);
+               fprintf(fdag, "  <filename file=\"newcimages_%d_%d.tbl\" link=\"inout\"/>\n", i, j);
+               fprintf(fdag, "  <filename file=\"tile_%d_%d_%s.fits\" link=\"inout\"/>\n", i, j, idstr);
+               fprintf(fdag, "  <filename file=\"tile_%d_%d_%s_area.fits\" link=\"inout\"/>\n", i, j, idstr);
+               fprintf(fdag, "  <filename file=\"shrunken_%d_%d_%s.fits\" link=\"inout\"/>\n", i, j, idstr);
+               fprintf(fdag, "\n");
 
-            fprintf(fcache, "region_%d_%d_%s.hdr %s/%s/region_%d_%d.hdr pool=\"ipac_cluster\"\n",   i, j, idstr, workurlbase, workdir, i, j);
-            fprintf(fcache, "cimages_%d_%d_%s.tbl %s/%s/cimages_%d_%d.tbl pool=\"ipac_cluster\"\n", i, j, idstr, workurlbase, workdir, i, j);
+               fprintf(fcache, "region_%d_%d_%s.hdr %s/%s/region_%d_%d.hdr pool=\"ipac_cluster\"\n",   i, j, idstr, workurlbase, workdir, i, j);
+               fprintf(fcache, "cimages_%d_%d_%s.tbl %s/%s/cimages_%d_%d.tbl pool=\"ipac_cluster\"\n", i, j, idstr, workurlbase, workdir, i, j);
 
+            }
          }
+
+         fprintf(fdag, "  <filename file=\"slist_%s.tbl\" link=\"input\"/>\n", idstr);
+         fprintf(fdag, "  <filename file=\"simages_%s.tbl\" link=\"inout\"/>\n", idstr);
+         fprintf(fdag, "\n");
+         fflush(fdag);
+
+         fprintf(fcache, "slist_%s.tbl %s/%s/slist.tbl pool=\"ipac_cluster\"\n", idstr, workurlbase, workdir);
+         fflush(fdag);
+         fflush(fcache);
+      }
+      else
+      {
+         fprintf(fdag, "  <filename file=\"newcimages.tbl\" link=\"inout\"/>\n");
+         fprintf(fdag, "\n");
+         fflush(fdag);
       }
 
-      fprintf(fdag, "  <filename file=\"slist_%s.tbl\" link=\"input\"/>\n", idstr);
-      fprintf(fdag, "  <filename file=\"simages_%s.tbl\" link=\"inout\"/>\n", idstr);
+      fprintf(fdag, "  <filename file=\"region_%s.hdr\" link=\"input\"/>\n", idstr);
+      fprintf(fdag, "  <filename file=\"big_region_%s.hdr\" link=\"input\"/>\n", idstr);
+      fprintf(fdag, "  <filename file=\"pimages_%s.tbl\" link=\"input\"/>\n", idstr);
+      fprintf(fdag, "  <filename file=\"cimages_%s.tbl\" link=\"input\"/>\n", idstr);
+      fprintf(fdag, "  <filename file=\"dag_%s.xml\" link=\"inout\"/>\n", idstr);
+      fprintf(fdag, "  <filename file=\"images_%s.tbl\" link=\"inout\"/>\n", idstr);
       fprintf(fdag, "\n");
+
+      if(numTiles == 1)
+      {
+         fprintf(fdag, "  <filename file=\"mosaic_%s.fits\" link=\"inout\"/>\n", idstr);
+         fprintf(fdag, "  <filename file=\"mosaic_%s_area.fits\" link=\"output\"/>\n", idstr);
+         fprintf(fdag, "\n");
+      } 
+      else
+      { 
+         fprintf(fdag, "  <filename file=\"shrunken_%s.hdr\" link=\"inout\"/>\n", idstr);
+      }
+
+      fprintf(fdag, "  <filename file=\"shrunken_%s.fits\" link=\"inout\"/>\n", idstr);
+      fprintf(fdag, "  <filename file=\"shrunken_%s.jpg\" link=\"output\"/>\n", idstr);
+      fprintf(fdag, "\n\n");
       fflush(fdag);
 
-      fprintf(fcache, "slist_%s.tbl %s/%s/slist.tbl pool=\"ipac_cluster\"\n", idstr, workurlbase, workdir);
-      fflush(fdag);
+      fprintf(fcache, "region_%s.hdr %s/%s/region.hdr pool=\"ipac_cluster\"\n", idstr, workurlbase, workdir);
+      fprintf(fcache, "big_region_%s.hdr %s/%s/big_region.hdr pool=\"ipac_cluster\"\n", idstr, workurlbase, workdir);
+
+      if(numTiles > 1)
+      {
+         fprintf(fcache, "shrunken_%s.hdr %s/%s/shrunken.hdr pool=\"ipac_cluster\"\n", idstr, workurlbase, workdir);
+      }
+
+      fprintf(fcache, "pimages_%s.tbl %s/%s/pimages.tbl pool=\"ipac_cluster\"\n", idstr, workurlbase, workdir);
+      fprintf(fcache, "cimages_%s.tbl %s/%s/cimages.tbl pool=\"ipac_cluster\"\n", idstr, workurlbase, workdir);
       fflush(fcache);
-   }
-   else
-   {
-      fprintf(fdag, "  <filename file=\"newcimages.tbl\" link=\"inout\"/>\n");
-      fprintf(fdag, "\n");
-      fflush(fdag);
-   }
 
-   fprintf(fdag, "  <filename file=\"region_%s.hdr\" link=\"input\"/>\n", idstr);
-   fprintf(fdag, "  <filename file=\"big_region_%s.hdr\" link=\"input\"/>\n", idstr);
-   fprintf(fdag, "  <filename file=\"pimages_%s.tbl\" link=\"input\"/>\n", idstr);
-   fprintf(fdag, "  <filename file=\"cimages_%s.tbl\" link=\"input\"/>\n", idstr);
-   fprintf(fdag, "  <filename file=\"dag_%s.xml\" link=\"inout\"/>\n", idstr);
-   fprintf(fdag, "  <filename file=\"images_%s.tbl\" link=\"inout\"/>\n", idstr);
-   fprintf(fdag, "\n");
-
-   if(numTiles == 1) {
-   fprintf(fdag, "  <filename file=\"mosaic_%s.fits\" link=\"inout\"/>\n", idstr);
-   fprintf(fdag, "  <filename file=\"mosaic_%s_area.fits\" link=\"output\"/>\n", idstr);
-   fprintf(fdag, "\n");
-   } else { 
-     fprintf(fdag, "  <filename file=\"shrunken_%s.hdr\" link=\"inout\"/>\n", idstr);
-   }
-
-   fprintf(fdag, "  <filename file=\"shrunken_%s.fits\" link=\"inout\"/>\n", idstr);
-   fprintf(fdag, "  <filename file=\"shrunken_%s.jpg\" link=\"output\"/>\n", idstr);
-   fprintf(fdag, "\n\n");
-   fflush(fdag);
-
-   fprintf(fcache, "region_%s.hdr %s/%s/region.hdr pool=\"ipac_cluster\"\n", idstr, workurlbase, workdir);
-   fprintf(fcache, "big_region_%s.hdr %s/%s/big_region.hdr pool=\"ipac_cluster\"\n", idstr, workurlbase, workdir);
-
-   if(numTiles > 1) {
-      fprintf(fcache, "shrunken_%s.hdr %s/%s/shrunken.hdr pool=\"ipac_cluster\"\n", idstr, workurlbase, workdir);
-   }
-
-   fprintf(fcache, "pimages_%s.tbl %s/%s/pimages.tbl pool=\"ipac_cluster\"\n", idstr, workurlbase, workdir);
-   fprintf(fcache, "cimages_%s.tbl %s/%s/cimages.tbl pool=\"ipac_cluster\"\n", idstr, workurlbase, workdir);
-   fflush(fcache);
-*/
-   /* to be saved in user's storage space */
-//   fprintf(fcache, "dag_%s.xml %s/%s/dag.xml pool=\"ipac_cluster\"\n", idstr, workurlbase, workdir);
-//   fprintf(fcache, "images_%s.tbl %s/%s/images.tbl pool=\"ipac_cluster\"\n", idstr, workurlbase, workdir);
+      /* to be saved in user's storage space */
+      fprintf(fcache, "dag_%s.xml %s/%s/dag.xml pool=\"ipac_cluster\"\n", idstr, workurlbase, workdir);
+      fprintf(fcache, "images_%s.tbl %s/%s/images.tbl pool=\"ipac_cluster\"\n", idstr, workurlbase, workdir);
+	}
 
    /**************************************************/
    /* DAG: "job" lines for mProject/mProjectPP jobs. */
@@ -1163,7 +1237,10 @@ int main(int argc, char **argv)
    if(numTiles > 1)
       level = 12;
 
-//   fprintf(fdag, "  <!-- Part 2:  Definition of Jobs -->\n\n");
+	if(dax_mode)
+	{
+   fprintf(fdag, "  <!-- Part 2:  Definition of Jobs -->\n\n");
+	}
 
    cntr = 0;
 
@@ -1191,43 +1268,66 @@ int main(int argc, char **argv)
 
       fname[strlen(fname) - 5] = '\0';
 
-  //    fprintf(fdag,"  <job id=\"ID%06d\" name=\"%s\" version=\"3.0\" level=\"%d\" dv-name=\"mProject%d\" dv-version=\"1.0\">\n", id, mproj, level, cntr);
+		if(dax_mode)
+		{
+      	fprintf(fdag,"  <job id=\"ID%06d\" name=\"%s\" version=\"3.0\" level=\"%d\" dv-name=\"mProject%d\" dv-version=\"1.0\">\n", id, mproj, level, cntr);
 
-      //if(iscale >= 0)
-    //     fprintf(fdag,"    <argument>\n      -X\n      -x %s\n      <filename file=\"%s.fits\"/>\n      <filename file=\"p%s.fits\"/>\n      <filename file=\"big_region_%s.hdr\"/>\n    </argument>\n\n", tval(iscale), fname, fname, idstr);
-      //else
-      //   fprintf(fdag,"    <argument>\n      -X\n      <filename file=\"%s.fits\"/>\n      <filename file=\"p%s.fits\"/>\n      <filename file=\"big_region_%s.hdr\"/>\n    </argument>\n\n", fname, fname, idstr);
+      	if(iscale >= 0)
+         	fprintf(fdag,"    <argument>\n      -X\n      -x %s\n      <filename file=\"%s.fits\"/>\n      <filename file=\"p%s.fits\"/>\n      <filename file=\"big_region_%s.hdr\"/>\n    </argument>\n\n", tval(iscale), fname, fname, idstr);
+      	else
+         	fprintf(fdag,"    <argument>\n      -X\n      <filename file=\"%s.fits\"/>\n      <filename file=\"p%s.fits\"/>\n      <filename file=\"big_region_%s.hdr\"/>\n    </argument>\n\n", fname, fname, idstr);
 
-      //fprintf(fdag,"    <uses file=\"%s.fits\" link=\"input\" transfer=\"true\"/>\n", fname);
+      	fprintf(fdag,"    <uses file=\"%s.fits\" link=\"input\" transfer=\"true\"/>\n", fname);
+		}
 
       sprintf(key, "ID%06d", id);
       sprintf(val, "%s.fits",  fname);
       HT_add_entry(depends, key, val);
 
       if(haveurlbase)
-        //fprintf(fcache,"%s.fits %s/%s.fits pool=\"ipac_cluster\"\n",fname,urlbase,fname);
+		{
+			if(dax_mode)
+			{
+        		fprintf(fcache,"%s.fits %s/%s.fits pool=\"ipac_cluster\"\n",fname,urlbase,fname);
+			}
+		}
 
-     //fprintf(fdag,"    <uses file=\"p%s.fits\" link=\"output\" register=\"false\" transfer=\"false\"/>\n", fname);
+		if(dax_mode)
+		{
+     		fprintf(fdag,"    <uses file=\"p%s.fits\" link=\"output\" register=\"false\" transfer=\"false\"/>\n", fname);
+		}
 
       sprintf(key, "p%s.fits", fname);
       sprintf(val, "ID%06d", id);
       HT_add_entry(depends, key, val);
 
-      //fprintf(fdag,"    <uses file=\"p%s_area.fits\" link=\"output\" register=\"false\" transfer=\"false\"/>\n", fname);
+		if(dax_mode)
+		{
+      	fprintf(fdag,"    <uses file=\"p%s_area.fits\" link=\"output\" register=\"false\" transfer=\"false\"/>\n", fname);
 
-      //fprintf(fdag,"    <uses file=\"big_region_%s.hdr\" link=\"input\" transfer=\"true\"/>\n", idstr);
+      	fprintf(fdag,"    <uses file=\"big_region_%s.hdr\" link=\"input\" transfer=\"true\"/>\n", idstr);
+		}
 
       sprintf(key, "ID%06d", id);
       sprintf(val, "big_region.hdr");
       HT_add_entry(depends, key, val);
 
-      //fprintf(fdag,"  </job>\n\n\n");
-	if(iscale >= 0) {
-		fprintf(fdag, "p%s.fits p%s_area.fits: %s.fits big_region.hdr\n\t%s -X -x %s %s.fits p%s.fits big_region.hdr\n\n", fname, fname, fname, mproj, tval(iscale), fname, fname);
-	}
-	else {
-		fprintf(fdag, "p%s.fits p%s_area.fits: %s.fits big_region.hdr\n\t%s -X %s.fits p%s.fits big_region.hdr\n\n", fname, fname, fname, mproj, fname, fname);
-	}
+		if(dax_mode)
+		{
+      	fprintf(fdag,"  </job>\n\n\n");
+		}
+
+		if(!dax_mode)
+		{
+			if(iscale >= 0)
+			{
+				fprintf(fdag, "p%s.fits p%s_area.fits: %s.fits big_region.hdr ./%s\n\t./%s -X -x %s %s.fits p%s.fits big_region.hdr\n\n", fname, fname, fname, mproj, mproj, tval(iscale), fname, fname);
+			}
+			else
+			{
+				fprintf(fdag, "p%s.fits p%s_area.fits: %s.fits big_region.hdr ./%s\n\t./%s -X %s.fits p%s.fits big_region.hdr\n\n", fname, fname, fname, mproj, mproj, fname, fname);
+			}
+		}
    }
 
    tclose();
@@ -1274,58 +1374,77 @@ int main(int argc, char **argv)
 
       fname[strlen(fname) - 5] = '\0';
 
-//      fprintf(fdag, "  <job id=\"ID%06d\" name=\"mDiffFit\" version=\"3.0\" level=\"%d\" dv-name=\"mDiffFit%d\" dv-version=\"1.0\">\n", id, level, cntr);
+		if(dax_mode)
+		{
+      	fprintf(fdag, "  <job id=\"ID%06d\" name=\"mDiffFit\" version=\"3.0\" level=\"%d\" dv-name=\"mDiffFit%d\" dv-version=\"1.0\">\n", id, level, cntr);
 
-//      fprintf(fdag, "    <argument>\n      -s <filename file=\"fit.%06d.%06d.txt\"/>\n      <filename file=\"p%s.fits\"/>\n      <filename file=\"p%s.fits\"/>\n      <filename file=\"diff.%06d.%06d.fits\"/>\n      <filename file=\"big_region_%s.hdr\"/>\n    </argument>\n\n", 
-//         cntr1, cntr2, plusname, minusname, cntr1, cntr2, idstr);
+      	fprintf(fdag, "    <argument>\n      -s <filename file=\"fit.%06d.%06d.txt\"/>\n      <filename file=\"p%s.fits\"/>\n      <filename file=\"p%s.fits\"/>\n      <filename file=\"diff.%06d.%06d.fits\"/>\n      <filename file=\"big_region_%s.hdr\"/>\n    </argument>\n\n", 
+         	cntr1, cntr2, plusname, minusname, cntr1, cntr2, idstr);
 
-//      fprintf(fdag, "    <uses file=\"mDiff\" link=\"input\" transfer=\"true\" type=\"executable\"/>\n");
-//      fprintf(fdag, "    <uses file=\"mFitplane\" link=\"input\" transfer=\"true\" type=\"executable\"/>\n");
+      	fprintf(fdag, "    <uses file=\"mDiff\" link=\"input\" transfer=\"true\" type=\"executable\"/>\n");
+      	fprintf(fdag, "    <uses file=\"mFitplane\" link=\"input\" transfer=\"true\" type=\"executable\"/>\n");
 
-//      fprintf(fdag, "    <uses file=\"fit.%06d.%06d.txt\" link=\"output\" register=\"false\" transfer=\"false\"/>\n",
-//         cntr1, cntr2);
+      	fprintf(fdag, "    <uses file=\"fit.%06d.%06d.txt\" link=\"output\" register=\"false\" transfer=\"false\"/>\n",
+         	cntr1, cntr2);
+		}
 
       sprintf(key, "fit.%06d.%06d.txt",  cntr1, cntr2);
       sprintf(val, "ID%06d", id);
       HT_add_entry(depends, key, val);
 
-//      fprintf(fdag, "    <uses file=\"p%s.fits\" link=\"input\" transfer=\"true\"/>\n",
-//         plusname);
+		if(dax_mode)
+		{
+      	fprintf(fdag, "    <uses file=\"p%s.fits\" link=\"input\" transfer=\"true\"/>\n",
+         	plusname);
+		}
 
       sprintf(key, "ID%06d", id);
       sprintf(val, "p%s.fits",  plusname);
       HT_add_entry(depends, key, val);
 
+		if(dax_mode)
+		{
+      	fprintf(fdag, "    <uses file=\"p%s_area.fits\" link=\"input\" transfer=\"true\"/>\n", 
+         	plusname);
 
-//      fprintf(fdag, "    <uses file=\"p%s_area.fits\" link=\"input\" transfer=\"true\"/>\n", 
-//         plusname);
-
-//      fprintf(fdag, "    <uses file=\"p%s.fits\" link=\"input\" transfer=\"true\"/>\n",
-//         minusname);
+      	fprintf(fdag, "    <uses file=\"p%s.fits\" link=\"input\" transfer=\"true\"/>\n",
+         	minusname);
+		}
 
       sprintf(key, "ID%06d", id);
       sprintf(val, "p%s.fits",  minusname);
       HT_add_entry(depends, key, val);
 
-//      fprintf(fdag, "    <uses file=\"p%s_area.fits\" link=\"input\" transfer=\"true\"/>\n", 
-//         minusname);
+		if(dax_mode)
+		{
+      	fprintf(fdag, "    <uses file=\"p%s_area.fits\" link=\"input\" transfer=\"true\"/>\n", 
+         	minusname);
 
-//      fprintf(fdag, "    <uses file=\"diff.%06d.%06d.fits\" link=\"output\" register=\"false\" transfer=\"false\" optional=\"true\"/>\n", cntr1, cntr2);
+      	fprintf(fdag, "    <uses file=\"diff.%06d.%06d.fits\" link=\"output\" register=\"false\" transfer=\"false\" optional=\"true\"/>\n", cntr1, cntr2);
+		}
 
       sprintf(key, "diff.%06d.%06d.fits",  cntr1, cntr2);
       sprintf(val, "ID%06d", id);
       HT_add_entry(depends, key, val);
 
-
-//      fprintf(fdag, "    <uses file=\"big_region_%s.hdr\" link=\"input\" transfer=\"true\"/>\n", idstr);
+		if(dax_mode)
+		{
+      	fprintf(fdag, "    <uses file=\"big_region_%s.hdr\" link=\"input\" transfer=\"true\"/>\n", idstr);
+		}
 
       sprintf(key, "ID%06d", id);
       sprintf(val, "big_region.hdr");
       HT_add_entry(depends, key, val);
 
-//      fprintf(fdag, "  </job>\n\n\n");
+		if(dax_mode)
+		{
+      	fprintf(fdag, "  </job>\n\n\n");
+		}
 
-		fprintf(fdag, "fit.%06d.%06d.txt diff.%06d.%06d.fits diff.%06d.%06d_area.fits: p%s.fits p%s_area.fits p%s.fits p%s_area.fits big_region.hdr\n\tmDiffFit -s fit.%06d.%06d.txt p%s.fits p%s.fits diff.%06d.%06d.fits big_region.hdr\n\n", cntr1, cntr2, cntr1, cntr2, cntr1, cntr2, plusname, plusname, minusname, minusname, cntr1, cntr2, plusname, minusname, cntr1, cntr2);
+		if(!dax_mode)
+		{
+		fprintf(fdag, "fit.%06d.%06d.txt diff.%06d.%06d.fits diff.%06d.%06d_area.fits: p%s.fits p%s_area.fits p%s.fits p%s_area.fits big_region.hdr ./mDiffFit\n\t./mDiffFit -s fit.%06d.%06d.txt p%s.fits p%s.fits diff.%06d.%06d.fits big_region.hdr\n\n", cntr1, cntr2, cntr1, cntr2, cntr1, cntr2, plusname, plusname, minusname, minusname, cntr1, cntr2, plusname, minusname, cntr1, cntr2);
+		}
    }
 
    tclose();
@@ -1340,17 +1459,23 @@ int main(int argc, char **argv)
 
    --level;
 
-   //fprintf(fdag, "  <job id=\"ID%06d\" name=\"mConcatFit\" version=\"3.0\" level=\"%d\" dv-name=\"mConcatFit1\" dv-version=\"1.0\">\n", id, level);
+	if(dax_mode)
+	{
+   	fprintf(fdag, "  <job id=\"ID%06d\" name=\"mConcatFit\" version=\"3.0\" level=\"%d\" dv-name=\"mConcatFit1\" dv-version=\"1.0\">\n", id, level);
 
-   //fprintf(fdag, "    <argument>\n      <filename file=\"statfile_%s.tbl\"/>\n      <filename file=\"fits.tbl\"/>\n      .\n    </argument>\n\n", idstr);
+   	fprintf(fdag, "    <argument>\n      <filename file=\"statfile_%s.tbl\"/>\n      <filename file=\"fits.tbl\"/>\n      .\n    </argument>\n\n", idstr);
 
-   //fprintf(fdag, "    <uses file=\"statfile_%s.tbl\" link=\"input\" transfer=\"true\"/>\n", idstr);
+   	fprintf(fdag, "    <uses file=\"statfile_%s.tbl\" link=\"input\" transfer=\"true\"/>\n", idstr);
+	}
 
    sprintf(key, "ID%06d", id);
    sprintf(val, "statfile.tbl");
    HT_add_entry(depends, key, val);
 
-   //fprintf(fdag, "    <uses file=\"fits.tbl\" link=\"output\" register=\"false\" transfer=\"false\"/>\n");
+	if(dax_mode)
+	{
+   	fprintf(fdag, "    <uses file=\"fits.tbl\" link=\"output\" register=\"false\" transfer=\"false\"/>\n");
+	}
 
    sprintf(key, "fits.tbl");
    sprintf(val, "ID%06d", id);
@@ -1362,7 +1487,10 @@ int main(int argc, char **argv)
    icntr1 = tcol("cntr1");
    icntr2 = tcol("cntr2");
 
-	fprintf(fdag, "fits.tbl: ");
+	if(!dax_mode)
+	{
+		fprintf(fdag, "fits.tbl: ");
+	}
 
    while(1)
    {
@@ -1374,19 +1502,29 @@ int main(int argc, char **argv)
       cntr1 = atoi(tval(icntr1));
       cntr2 = atoi(tval(icntr2));
 
-      //fprintf(fdag, "    <uses file=\"fit.%06d.%06d.txt\" link=\"input\" transfer=\"true\"/>\n", 
-      fprintf(fdag, "fit.%06d.%06d.txt ", 
-         cntr1, cntr2);
+		if(dax_mode)
+		{
+      	fprintf(fdag, "    <uses file=\"fit.%06d.%06d.txt\" link=\"input\" transfer=\"true\"/>\n", 
+		}
+		else
+		{
+      	fprintf(fdag, "fit.%06d.%06d.txt ", cntr1, cntr2);
+		}
 
       sprintf(key, "ID%06d", id);
       sprintf(val, "fit.%06d.%06d.txt", cntr1, cntr2);
       HT_add_entry(depends, key, val);
    }
-	fprintf(fdag, "\n\tmConcatFit statfile.tbl fits.tbl .\n\n");
-   tclose();
 
-   //fprintf(fdag, "  </job>\n\n\n");
-
+	if(dax_mode)
+	{      
+   	fprintf(fdag, "  </job>\n\n\n");
+	}
+	else
+	{
+		fprintf(fdag, " ./mConcatFit\n\t./mConcatFit statfile.tbl fits.tbl .\n\n", path);
+   }
+	tclose();
 
 
    /*************************************/
@@ -1397,32 +1535,45 @@ int main(int argc, char **argv)
 
    --level;
 
-   //fprintf(fdag, "  <job id=\"ID%06d\" name=\"mBgModel\" version=\"3.0\" level=\"%d\" dv-name=\"mBgModel1\" dv-version=\"1.0\">\n", id, level);
+   if(dax_mode)
+	{
+		fprintf(fdag, "  <job id=\"ID%06d\" name=\"mBgModel\" version=\"3.0\" level=\"%d\" dv-name=\"mBgModel1\" dv-version=\"1.0\">\n", id, level);
 
-   //fprintf(fdag, "    <argument>\n      -i 100000\n      <filename file=\"pimages_%s.tbl\"/>\n      <filename file=\"fits.tbl\"/>\n      <filename file=\"corrections.tbl\"/>\n    </argument>\n\n", idstr);
+   	fprintf(fdag, "    <argument>\n      -i 100000\n      <filename file=\"pimages_%s.tbl\"/>\n      <filename file=\"fits.tbl\"/>\n      <filename file=\"corrections.tbl\"/>\n    </argument>\n\n", idstr);
 
-   //fprintf(fdag, "    <uses file=\"pimages_%s.tbl\" link=\"input\" transfer=\"true\"/>\n", idstr);
+   	fprintf(fdag, "    <uses file=\"pimages_%s.tbl\" link=\"input\" transfer=\"true\"/>\n", idstr);
+	}
 
    sprintf(key, "ID%06d", id);
    sprintf(val, "pimages.tbl");
    HT_add_entry(depends, key, val);
 
-   //fprintf(fdag, "    <uses file=\"fits.tbl\" link=\"input\" transfer=\"true\"/>\n");
+	if(dax_mode)
+	{
+   	fprintf(fdag, "    <uses file=\"fits.tbl\" link=\"input\" transfer=\"true\"/>\n");
+	}
 
    sprintf(key, "ID%06d", id);
    sprintf(val, "fits.tbl");
    HT_add_entry(depends, key, val);
 
-   //fprintf(fdag, "    <uses file=\"corrections.tbl\" link=\"output\" register=\"false\" transfer=\"false\"/>\n");
+	if(dax_mode)
+	{
+   	fprintf(fdag, "    <uses file=\"corrections.tbl\" link=\"output\" register=\"false\" transfer=\"false\"/>\n");
+	}
 
    sprintf(key, "corrections.tbl");
    sprintf(val, "ID%06d", id);
    HT_add_entry(depends, key, val);
 
-   //fprintf(fdag, "  </job>\n\n\n");
-
-	fprintf(fdag, "corrections.tbl: pimages.tbl fits.tbl\n\tmBgModel -i 100000 pimages.tbl fits.tbl corrections.tbl\n\n");
-
+	if(dax_mode)
+	{
+   	fprintf(fdag, "  </job>\n\n\n");
+	}
+	else
+	{
+		fprintf(fdag, "corrections.tbl: pimages.tbl fits.tbl ./mBgModel\n\t./mBgModel -i 100000 pimages.tbl fits.tbl corrections.tbl\n\n", path);
+	}
 
    /*****************************************/
    /* DAG: "job" line for mBackground jobs. */
@@ -1454,46 +1605,61 @@ int main(int argc, char **argv)
       ++id;
       ++cntr;
 
-      //fprintf(fdag, "  <job id=\"ID%06d\" name=\"mBackground\" version=\"3.0\" level=\"%d\" dv-name=\"mBackground%d\" dv-version=\"1.0\">\n", id, level, cntr);
+		if(dax_mode)
+		{
+      	fprintf(fdag, "  <job id=\"ID%06d\" name=\"mBackground\" version=\"3.0\" level=\"%d\" dv-name=\"mBackground%d\" dv-version=\"1.0\">\n", id, level, cntr);
 
-      //fprintf(fdag, "    <argument>\n      -t\n      <filename file=\"p%s.fits\"/>\n      <filename file=\"c%s.fits\"/>\n      <filename file=\"pimages_%s.tbl\"/>\n      <filename file=\"corrections.tbl\"/>\n    </argument>\n\n", 
-        // fname, fname, idstr);
+      	fprintf(fdag, "    <argument>\n      -t\n      <filename file=\"p%s.fits\"/>\n      <filename file=\"c%s.fits\"/>\n      <filename file=\"pimages_%s.tbl\"/>\n      <filename file=\"corrections.tbl\"/>\n    </argument>\n\n", 
+         	fname, fname, idstr);
 
-      //fprintf(fdag, "    <uses file=\"p%s.fits\" link=\"input\" transfer=\"true\"/>\n",
-       //  fname);
+      	fprintf(fdag, "    <uses file=\"p%s.fits\" link=\"input\" transfer=\"true\"/>\n",
+         	fname);
+		}
 
       sprintf(key, "ID%06d", id);
       sprintf(val, "p%s.fits", fname);
       HT_add_entry(depends, key, val);
 
-      //fprintf(fdag, "    <uses file=\"p%s_area.fits\" link=\"input\" transfer=\"true\"/>\n", 
-       //  fname);
+		if(dax_mode)
+		{
+      	fprintf(fdag, "    <uses file=\"p%s_area.fits\" link=\"input\" transfer=\"true\"/>\n", fname);
 
-      //fprintf(fdag, "    <uses file=\"pimages_%s.tbl\" link=\"input\" transfer=\"true\"/>\n", idstr);
+      	fprintf(fdag, "    <uses file=\"pimages_%s.tbl\" link=\"input\" transfer=\"true\"/>\n", idstr);
+		}
 
       sprintf(key, "ID%06d", id);
       sprintf(val, "pimages.tbl");
       HT_add_entry(depends, key, val);
 
-      //fprintf(fdag, "    <uses file=\"corrections.tbl\" link=\"input\" transfer=\"true\"/>\n");
+      if(dax_mode)
+		{
+			fprintf(fdag, "    <uses file=\"corrections.tbl\" link=\"input\" transfer=\"true\"/>\n");
+		}
 
       sprintf(key, "ID%06d", id);
       sprintf(val, "corrections.tbl");
       HT_add_entry(depends, key, val);
 
-      //fprintf(fdag, "    <uses file=\"c%s.fits\" link=\"output\" register=\"false\" transfer=\"false\"/>\n", 
-       //  fname);
+		if(dax_mode)
+		{
+      	fprintf(fdag, "    <uses file=\"c%s.fits\" link=\"output\" register=\"false\" transfer=\"false\"/>\n", fname);
+		}
 
       sprintf(key, "c%s.fits", fname);
       sprintf(val, "ID%06d", id);
       HT_add_entry(depends, key, val);
 
-      //fprintf(fdag, "    <uses file=\"c%s_area.fits\" link=\"output\" register=\"false\" transfer=\"false\"/>\n", 
-        // fname);
+		if(dax_mode)
+		{
+      	fprintf(fdag, "    <uses file=\"c%s_area.fits\" link=\"output\" register=\"false\" transfer=\"false\"/>\n", 
+         	fname);
 
-      //fprintf(fdag, "  </job>\n\n\n");
-
-		fprintf(fdag, "c%s.fits c%s_area.fits: p%s.fits p%s_area.fits pimages.tbl corrections.tbl\n\tmBackground -t p%s.fits c%s.fits pimages.tbl corrections.tbl\n\n", fname, fname, fname, fname, fname, fname);
+      	fprintf(fdag, "  </job>\n\n\n");
+		}
+		else
+		{
+			fprintf(fdag, "c%s.fits c%s_area.fits: p%s.fits p%s_area.fits pimages.tbl corrections.tbl ./mBackground\n\t./mBackground -t p%s.fits c%s.fits pimages.tbl corrections.tbl\n\n", fname, fname, fname, fname, fname, fname);
+		}
    }
 
    fflush(fdag);
@@ -1521,20 +1687,26 @@ int main(int argc, char **argv)
             ++id;
             ++cntr;
      
-            //fprintf(fdag, "  <job id=\"ID%06d\" name=\"mImgtbl\" version=\"3.0\" level=\"%d\" dv-name=\"mImgtbl%d\" dv-version=\"1.0\">\n", 
-             //  id, level, cntr);
+				if(dax_mode)
+				{
+            	fprintf(fdag, "  <job id=\"ID%06d\" name=\"mImgtbl\" version=\"3.0\" level=\"%d\" dv-name=\"mImgtbl%d\" dv-version=\"1.0\">\n", 
+               	id, level, cntr);
 
-            //fprintf(fdag, "    <argument>\n       .\n     -t <filename file=\"cimages_%d_%d_%s.tbl\"/>\n      <filename file=\"newcimages_%d_%d.tbl\"/>\n    </argument>\n\n", 
-            //   i, j, idstr, i, j);
+            	fprintf(fdag, "    <argument>\n       .\n     -t <filename file=\"cimages_%d_%d_%s.tbl\"/>\n      <filename file=\"newcimages_%d_%d.tbl\"/>\n    </argument>\n\n", 
+               	i, j, idstr, i, j);
 
-            //fprintf(fdag, "    <uses file=\"cimages_%d_%d_%s.tbl\" link=\"input\" transfer=\"true\"/>\n",
-            //   i, j, idstr);
+            	fprintf(fdag, "    <uses file=\"cimages_%d_%d_%s.tbl\" link=\"input\" transfer=\"true\"/>\n",
+               	i, j, idstr);
+				}
 
             sprintf(key, "ID%06d", id);
             sprintf(val, "cimages_%d_%d.tbl", i, j);
             HT_add_entry(depends, key, val);
 
-            //fprintf(fdag, "    <uses file=\"newcimages_%d_%d.tbl\" link=\"output\" register=\"false\" transfer=\"false\"/>\n", i, j);
+				if(dax_mode)
+				{
+            	fprintf(fdag, "    <uses file=\"newcimages_%d_%d.tbl\" link=\"output\" register=\"false\" transfer=\"false\"/>\n", i, j);
+				}
 
             sprintf(key, "newcimages_%d_%d.tbl",i,j);
             sprintf(val, "ID%06d", id);
@@ -1542,7 +1714,10 @@ int main(int argc, char **argv)
 
             sprintf(cmd, "%s/cimages_%d_%d.tbl", workdir, i, j);
 
-			fprintf(fdag, "newcimages_%d_%d.tbl: cimages.tbl ", i, j);
+			if(!dax_mode)
+			{
+				fprintf(fdag, "newcimages_%d_%d.tbl: cimages.tbl ", i, j);
+			}
 
             ncol = topen(cmd);
             ifname = tcol("file");
@@ -1561,9 +1736,15 @@ int main(int argc, char **argv)
 
                fname[strlen(fname) - 5] = '\0';
 
-               //fprintf(fdag, "    <uses file=\"%s.fits\" link=\"input\" transfer=\"true\"/>\n", 
-               //   fname);
-               fprintf(fdag, "%s.fits ", fname);
+					if(dax_mode)
+					{
+               	fprintf(fdag, "    <uses file=\"%s.fits\" link=\"input\" transfer=\"true\"/>\n", 
+                  	fname);
+					}
+					else
+					{
+               	fprintf(fdag, "%s.fits ", fname);
+					}
 
                sprintf(key, "ID%06d", id);
                sprintf(val, "%s.fits", fname);
@@ -1571,8 +1752,16 @@ int main(int argc, char **argv)
             }
 
             tclose();
-			fprintf(fdag, "\n\tmImgtbl . -t cimages.tbl newcimages_%d_%d.tbl\n\n", i, j);
-            //fprintf(fdag, "  </job>\n\n\n");
+				
+				if(dax_mode)
+				{
+            	fprintf(fdag, "  </job>\n\n\n");
+				}
+				else
+				{
+					fprintf(fdag, " ./mImgtbl\n\t./mImgtbl . -t cimages.tbl newcimages_%d_%d.tbl\n\n", i, j);
+				}
+
             fflush(fdag);
          }
       }
@@ -1582,18 +1771,24 @@ int main(int argc, char **argv)
       ++id;
       ++cntr;
 
-      //fprintf(fdag, "  <job id=\"ID%06d\" name=\"mImgtbl\" version=\"3.0\" level=\"%d\" dv-name=\"mImgtbl%d\" dv-version=\"1.0\">\n", 
-      //   id, level, cntr);
+		if(dax_mode)
+		{
+      	fprintf(fdag, "  <job id=\"ID%06d\" name=\"mImgtbl\" version=\"3.0\" level=\"%d\" dv-name=\"mImgtbl%d\" dv-version=\"1.0\">\n", 
+         	id, level, cntr);
 
-      //fprintf(fdag, "    <argument>\n      .\n      -t <filename file=\"cimages_%s.tbl\"/>\n      <filename file=\"newcimages.tbl\"/>\n    </argument>\n\n", idstr);
+      	fprintf(fdag, "    <argument>\n      .\n      -t <filename file=\"cimages_%s.tbl\"/>\n      <filename file=\"newcimages.tbl\"/>\n    </argument>\n\n", idstr);
 
-      //fprintf(fdag, "    <uses file=\"cimages_%s.tbl\" link=\"input\" transfer=\"true\"/>\n", idstr);
+      	fprintf(fdag, "    <uses file=\"cimages_%s.tbl\" link=\"input\" transfer=\"true\"/>\n", idstr);
+		}
 
       sprintf(key, "ID%06d", id);
       sprintf(val, "cimages.tbl");
       HT_add_entry(depends, key, val);
 
-      //fprintf(fdag, "    <uses file=\"newcimages.tbl\" link=\"output\" register=\"false\" transfer=\"false\"/>\n");
+		if(dax_mode)
+		{
+      	fprintf(fdag, "    <uses file=\"newcimages.tbl\" link=\"output\" register=\"false\" transfer=\"false\"/>\n");
+		}
 
       sprintf(key, "newcimages.tbl");
       sprintf(val, "ID%06d", id);
@@ -1604,7 +1799,10 @@ int main(int argc, char **argv)
       ncol = topen(cmd);
       ifname = tcol("file");
 
-	fprintf(fdag, "newcimages.tbl: cimages.tbl ");
+		if(!dax_mode)
+		{
+			fprintf(fdag, "newcimages.tbl: cimages.tbl ");
+		}
 
       if(ifname < 0)
          printError("'Corrected' image list does not have column 'file'");
@@ -1620,9 +1818,15 @@ int main(int argc, char **argv)
 
          fname[strlen(fname) - 5] = '\0';
 
-         //fprintf(fdag, "    <uses file=\"%s.fits\" link=\"input\" transfer=\"true\"/>\n", 
-         //   fname);
-         fprintf(fdag, "%s.fits ", fname);
+         if(dax_mode)
+			{
+				fprintf(fdag, "    <uses file=\"%s.fits\" link=\"input\" transfer=\"true\"/>\n", 
+            	fname);
+			}
+			else
+			{
+				fprintf(fdag, "%s.fits ", fname);
+			}
 
          sprintf(key, "ID%06d", id);
          sprintf(val, "%s.fits", fname);
@@ -1630,9 +1834,17 @@ int main(int argc, char **argv)
       }
 
       tclose();
-		fprintf(fdag, "\n\tmImgtbl . -t cimages.tbl newcimages.tbl\n\n");
-      //fprintf(fdag, "  </job>\n\n\n");
-      fflush(fdag);
+
+		if(dax_mode)
+		{
+      	fprintf(fdag, "  </job>\n\n\n");
+		}
+		else
+		{
+			fprintf(fdag, " ./mImgtbl\n\t./mImgtbl . -t cimages.tbl newcimages.tbl\n\n", path);
+      }
+
+		fflush(fdag);
    }
 
 
@@ -1653,43 +1865,58 @@ int main(int argc, char **argv)
          {
             ++id;
             ++cntr;
-     
-            //fprintf(fdag, "  <job id=\"ID%06d\" name=\"mAdd\" version=\"3.0\" level=\"%d\" dv-name=\"mAdd%d\" dv-version=\"1.0\">\n", 
-            //   id, level, cntr);
+    
+				if(dax_mode)
+				{ 
+            	fprintf(fdag, "  <job id=\"ID%06d\" name=\"mAdd\" version=\"3.0\" level=\"%d\" dv-name=\"mAdd%d\" dv-version=\"1.0\">\n", 
+               	id, level, cntr);
 
-            //fprintf(fdag, "    <argument>\n      -e\n      <filename file=\"newcimages_%d_%d.tbl\"/>\n      <filename file=\"region_%d_%d_%s.hdr\"/>\n      <filename file=\"tile_%d_%d_%s.fits\"/>\n    </argument>\n\n", 
-            //   i, j, i, j, idstr, i, j, idstr);
+            	fprintf(fdag, "    <argument>\n      -e\n      <filename file=\"newcimages_%d_%d.tbl\"/>\n      <filename file=\"region_%d_%d_%s.hdr\"/>\n      <filename file=\"tile_%d_%d_%s.fits\"/>\n    </argument>\n\n", 
+               	i, j, i, j, idstr, i, j, idstr);
 
-            //fprintf(fdag, "    <uses file=\"newcimages_%d_%d.tbl\" link=\"input\" transfer=\"true\"/>\n",
-            //   i, j);
+            	fprintf(fdag, "    <uses file=\"newcimages_%d_%d.tbl\" link=\"input\" transfer=\"true\"/>\n",
+               	i, j);
+				}
 
             sprintf(key, "ID%06d", id);
             sprintf(val, "newcimages_%d_%d.tbl", i, j);
             HT_add_entry(depends, key, val);
 
-            //fprintf(fdag, "    <uses file=\"region_%d_%d_%s.hdr\" link=\"input\" transfer=\"true\"/>\n",
-            //   i, j, idstr);
+            if(dax_mode)
+				{
+					fprintf(fdag, "    <uses file=\"region_%d_%d_%s.hdr\" link=\"input\" transfer=\"true\"/>\n",
+               	i, j, idstr);
+				}
 
             sprintf(key, "ID%06d", id);
             sprintf(val, "region_%d_%d.hdr", i, j);
             HT_add_entry(depends, key, val);
 
-            //fprintf(fdag, "    <uses file=\"tile_%d_%d_%s.fits\" link=\"output\" register=\"true\" transfer=\"true\"/>\n",
-            //   i, j, idstr);
+				if(dax_mode)
+				{
+            	fprintf(fdag, "    <uses file=\"tile_%d_%d_%s.fits\" link=\"output\" register=\"true\" transfer=\"true\"/>\n",
+               	i, j, idstr);
+				}
 
             sprintf(key, "tile_%d_%d.fits", i, j);
             sprintf(val, "ID%06d", id);
             HT_add_entry(depends, key, val);
 
-            //fprintf(fdag, "    <uses file=\"tile_%d_%d_%s_area.fits\" link=\"output\" register=\"true\" transfer=\"true\"/>\n",
-            //   i, j, idstr);
+				if(dax_mode)
+				{
+            	fprintf(fdag, "    <uses file=\"tile_%d_%d_%s_area.fits\" link=\"output\" register=\"true\" transfer=\"true\"/>\n",
+               	i, j, idstr);
+				}
 
             sprintf(cmd, "%s/cimages_%d_%d.tbl", workdir, i, j);
 
             ncol = topen(cmd);
             ifname = tcol("file");
 
-			fprintf(fdag, "tile_%d_%d_%s.fits tile_%d_%d_%s_area.fits: newcimages_%d_%d.tbl region.hdr ", i, j, idstr, i, j, idstr, i, j);
+			if(!dax_mode)
+			{
+				fprintf(fdag, "tile_%d_%d_%s.fits tile_%d_%d_%s_area.fits: newcimages_%d_%d.tbl region.hdr ", i, j, idstr, i, j, idstr, i, j);
+			}
 
             if(ifname < 0)
                printError("'Corrected' image list does not have column 'file'");
@@ -1705,20 +1932,34 @@ int main(int argc, char **argv)
 
                fname[strlen(fname) - 5] = '\0';
 
-               //fprintf(fdag, "    <uses file=\"%s.fits\" link=\"input\" transfer=\"true\"/>\n", 
-               //   fname);
+					if(dax_mode)
+					{
+               	fprintf(fdag, "    <uses file=\"%s.fits\" link=\"input\" transfer=\"true\"/>\n", 
+                  	fname);
 
-               //fprintf(fdag, "    <uses file=\"%s_area.fits\" link=\"input\" transfer=\"true\"/>\n", 
-               //   fname);
-               fprintf(fdag, "%s.fits %s_area.fits ", fname, fname);
+               	fprintf(fdag, "    <uses file=\"%s_area.fits\" link=\"input\" transfer=\"true\"/>\n", 
+                  	fname);
+					}
+					else
+					{
+               	fprintf(fdag, "%s.fits %s_area.fits ", fname, fname);
+					}
 
                sprintf(key, "ID%06d", id);
                sprintf(val, "%s.fits", fname);
                HT_add_entry(depends, key, val);
             }
-			fprintf(fdag, "\n\tmAdd -e newcimages_%d_%d.tbl region.hdr tile_%d_%d_%s.fits\n\n", i, j, i, j, idstr);
-            //fprintf(fdag, "  </job>\n\n\n");
-            fflush(fdag);
+
+				if(dax_mode)
+				{
+            	fprintf(fdag, "  </job>\n\n\n");
+				}
+				else
+				{
+					fprintf(fdag, " ./mAdd\n\t./mAdd -e newcimages_%d_%d.tbl region.hdr tile_%d_%d_%s.fits\n\n", i, j, i, j, idstr);
+            }
+
+				fflush(fdag);
          }
       }
    }
@@ -1727,37 +1968,52 @@ int main(int argc, char **argv)
       ++id;
       ++cntr;
 
-      //fprintf(fdag, "  <job id=\"ID%06d\" name=\"mAdd\" version=\"3.0\" level=\"%d\" dv-name=\"mAdd%d\" dv-version=\"1.0\">\n", 
-      //   id, level, cntr);
+		if(dax_mode)
+		{
+      	fprintf(fdag, "  <job id=\"ID%06d\" name=\"mAdd\" version=\"3.0\" level=\"%d\" dv-name=\"mAdd%d\" dv-version=\"1.0\">\n", 
+         	id, level, cntr);
 
-      //fprintf(fdag, "    <argument>\n      -e\n      <filename file=\"newcimages.tbl\"/>\n      <filename file=\"region_%s.hdr\"/>\n      <filename file=\"mosaic_%s.fits\"/>\n    </argument>\n\n", idstr, idstr);
+      	fprintf(fdag, "    <argument>\n      -e\n      <filename file=\"newcimages.tbl\"/>\n      <filename file=\"region_%s.hdr\"/>\n      <filename file=\"mosaic_%s.fits\"/>\n    </argument>\n\n", idstr, idstr);
 
-      //fprintf(fdag, "    <uses file=\"newcimages.tbl\" link=\"input\" transfer=\"true\"/>\n");
+      	fprintf(fdag, "    <uses file=\"newcimages.tbl\" link=\"input\" transfer=\"true\"/>\n");
+		}
 
       sprintf(key, "ID%06d", id);
       sprintf(val, "newcimages.tbl");
       HT_add_entry(depends, key, val);
 
-      //fprintf(fdag, "    <uses file=\"region_%s.hdr\" link=\"input\" transfer=\"true\"/>\n", idstr);
+		if(dax_mode)
+		{
+      	fprintf(fdag, "    <uses file=\"region_%s.hdr\" link=\"input\" transfer=\"true\"/>\n", idstr);
+		}
 
       sprintf(key, "ID%06d", id);
       sprintf(val, "region.hdr");
       HT_add_entry(depends, key, val);
 
-      //fprintf(fdag, "    <uses file=\"mosaic_%s.fits\" link=\"output\" register=\"true\" transfer=\"true\"/>\n", idstr);
+      if(dax_mode)
+		{
+			fprintf(fdag, "    <uses file=\"mosaic_%s.fits\" link=\"output\" register=\"true\" transfer=\"true\"/>\n", idstr);
+		}
 
       sprintf(key, "mosaic.fits");
       sprintf(val, "ID%06d", id);
       HT_add_entry(depends, key, val);
 
-      //fprintf(fdag, "    <uses file=\"mosaic_%s_area.fits\" link=\"output\" register=\"true\" transfer=\"true\"/>\n", idstr);
+      if(dax_mode)
+		{
+			fprintf(fdag, "    <uses file=\"mosaic_%s_area.fits\" link=\"output\" register=\"true\" transfer=\"true\"/>\n", idstr);
+		}
 
       sprintf(cmd, "%s/cimages.tbl", workdir);
 
       ncol = topen(cmd);
       ifname = tcol("file");
 
-		fprintf(fdag, "mosaic_%s.fits mosaic_%s_area.fits: newcimages.tbl region.hdr ", idstr, idstr);
+		if(!dax_mode)
+		{
+			fprintf(fdag, "mosaic_%s.fits mosaic_%s_area.fits: newcimages.tbl region.hdr ", idstr, idstr);
+		}
 
       if(ifname < 0)
          printError("'Corrected' image list does not have column 'file'");
@@ -1773,13 +2029,18 @@ int main(int argc, char **argv)
 
          fname[strlen(fname) - 5] = '\0';
 
-         //fprintf(fdag, "    <uses file=\"%s.fits\" link=\"input\" transfer=\"true\"/>\n", 
-         //   fname);
+			if(dax_mode)
+			{
+         	fprintf(fdag, "    <uses file=\"%s.fits\" link=\"input\" transfer=\"true\"/>\n", 
+            	fname);
 
-         //fprintf(fdag, "    <uses file=\"%s_area.fits\" link=\"input\" transfer=\"true\"/>\n", 
-         //   fname);
-
-		fprintf(fdag, "%s.fits %s_area.fits ", fname, fname);
+         	fprintf(fdag, "    <uses file=\"%s_area.fits\" link=\"input\" transfer=\"true\"/>\n", 
+         	   fname);
+			}
+			else
+			{
+				fprintf(fdag, "%s.fits %s_area.fits ", fname, fname);
+			}
 
       sprintf(key, "ID%06d", id);
       sprintf(val, "%s.fits",  fname);
@@ -1787,9 +2048,15 @@ int main(int argc, char **argv)
 
       }
 
-		fprintf(fdag, "\n\tmAdd -e newcimages.tbl region.hdr mosaic_%s.fits\n\n", idstr);
+		if(dax_mode)
+		{
+      	fprintf(fdag, "  </job>\n\n\n");
+		}
+		else
+		{
+		fprintf(fdag, " ./mAdd\n\t./mAdd -e newcimages.tbl region.hdr mosaic_%s.fits\n\n", idstr);
+		}
 
-      //fprintf(fdag, "  </job>\n\n\n");
       fflush(fdag);
    }
 
@@ -1814,28 +2081,41 @@ int main(int argc, char **argv)
             ++id;
             ++cntr;
 
-            //fprintf(fdag, "  <job id=\"ID%06d\" name=\"mShrink\" version=\"3.0\" level=\"%d\" dv-name=\"mShrink%d\" dv-version=\"1.0\">\n", id, level, cntr);
+				if(dax_mode)
+				{
+            	fprintf(fdag, "  <job id=\"ID%06d\" name=\"mShrink\" version=\"3.0\" level=\"%d\" dv-name=\"mShrink%d\" dv-version=\"1.0\">\n", id, level, cntr);
 
-            //fprintf(fdag, "    <argument>\n      <filename file=\"tile_%d_%d_%s.fits\"/>\n      <filename file=\"shrunken_%d_%d_%s.fits\"/>\n      %d\n    </argument>\n\n", 
-            //   i, j, idstr, i, j, idstr, shrinkFactor);
+            	fprintf(fdag, "    <argument>\n      <filename file=\"tile_%d_%d_%s.fits\"/>\n      <filename file=\"shrunken_%d_%d_%s.fits\"/>\n      %d\n    </argument>\n\n", 
+               	i, j, idstr, i, j, idstr, shrinkFactor);
 
-            //fprintf(fdag, "    <uses file=\"tile_%d_%d_%s.fits\" link=\"input\" transfer=\"true\"/>\n",
-            //   i, j, idstr);
+            	fprintf(fdag, "    <uses file=\"tile_%d_%d_%s.fits\" link=\"input\" transfer=\"true\"/>\n",
+               	i, j, idstr);
+				}
 
             sprintf(key, "ID%06d", id);
             sprintf(val, "tile_%d_%d.fits", i, j);
             HT_add_entry(depends, key, val);
 
-            //fprintf(fdag, "    <uses file=\"shrunken_%d_%d_%s.fits\" link=\"output\" register=\"false\" transfer=\"false\"/>\n", 
-            //   i, j, idstr);
+				if(dax_mode)
+				{
+            fprintf(fdag, "    <uses file=\"shrunken_%d_%d_%s.fits\" link=\"output\" register=\"false\" transfer=\"false\"/>\n", 
+               i, j, idstr);
+				}
 
             sprintf(key, "shrunken_%d_%d.fits", i, j);
             sprintf(val, "ID%06d", id);
             HT_add_entry(depends, key, val);
 
-			fprintf(fdag, "shrunken_%d_%d_%s.fits: tile_%d_%d_%s.fits\n\tmShrink tile_%d_%d_%s.fits shrunken_%d_%d_%s.fits %d\n\n", i, j, idstr, i, j, idstr, i, j, idstr, i, j, idstr, shrinkFactor);
+				if(dax_mode)
+				{
+            	fprintf(fdag, "  </job>\n\n\n");
+				}
+				else
+				{
+					fprintf(fdag, "shrunken_%d_%d_%s.fits: tile_%d_%d_%s.fits ./mShrink\n\t./mShrink tile_%d_%d_%s.fits shrunken_%d_%d_%s.fits %d\n\n", 
+						i, j, idstr, i, j, idstr, i, j, idstr, i, j, idstr, shrinkFactor);
+				}
 
-            //fprintf(fdag, "  </job>\n\n\n");
          }
       }
    }
@@ -1844,26 +2124,37 @@ int main(int argc, char **argv)
       ++id;
       ++cntr;
 
-      //fprintf(fdag, "  <job id=\"ID%06d\" name=\"mShrink\" version=\"3.0\" level=\"%d\" dv-name=\"mShrink%d\" dv-version=\"1.0\">\n", id, level, cntr);
+		if(dax_mode)
+		{
+      	fprintf(fdag, "  <job id=\"ID%06d\" name=\"mShrink\" version=\"3.0\" level=\"%d\" dv-name=\"mShrink%d\" dv-version=\"1.0\">\n", id, level, cntr);
 
-      //fprintf(fdag, "    <argument>\n      <filename file=\"mosaic_%s.fits\"/>\n      <filename file=\"shrunken_%s.fits\"/>\n      %d\n    </argument>\n\n", idstr, idstr, shrinkFactor);
+      	fprintf(fdag, "    <argument>\n      <filename file=\"mosaic_%s.fits\"/>\n      <filename file=\"shrunken_%s.fits\"/>\n      %d\n    </argument>\n\n", idstr, idstr, shrinkFactor);
 
-      //fprintf(fdag, "    <uses file=\"mosaic_%s.fits\" link=\"input\" transfer=\"true\"/>\n", idstr);
+      	fprintf(fdag, "    <uses file=\"mosaic_%s.fits\" link=\"input\" transfer=\"true\"/>\n", idstr);
+		}
 
       sprintf(key, "ID%06d", id);
       sprintf(val, "mosaic.fits");
       HT_add_entry(depends, key, val);
 
-      //fprintf(fdag, "    <uses file=\"shrunken_%s.fits\" link=\"output\" register=\"true\" transfer=\"true\"/>\n", idstr);
+      if(dax_mode)
+		{
+			fprintf(fdag, "    <uses file=\"shrunken_%s.fits\" link=\"output\" register=\"true\" transfer=\"true\"/>\n", idstr);
+		}
 
       sprintf(key, "shrunken.fits");
       sprintf(val, "ID%06d", id);
       HT_add_entry(depends, key, val);
 
-		fprintf(fdag, "shrunken_%s.fits: mosaic_%s.fits\n\tmShrink mosaic_%s.fits shrunken_%s.fits %d\n\n", idstr, idstr, idstr, idstr, shrinkFactor);
-
-      //fprintf(fdag, "  </job>\n\n\n");
-   }
+		if(dax_mode)
+		{
+      	fprintf(fdag, "  </job>\n\n\n");
+		}
+		else
+		{
+			fprintf(fdag, "shrunken_%s.fits: mosaic_%s.fits ./mShrink\n\t./mShrink mosaic_%s.fits shrunken_%s.fits %d\n\n", idstr, idstr, idstr, idstr, shrinkFactor);
+   	}
+	}
 
    fflush(fdag);
 
@@ -1886,39 +2177,62 @@ int main(int argc, char **argv)
 
       --level;
 
-      //fprintf(fdag, "  <job id=\"ID%06d\" name=\"mImgtbl\" version=\"3.0\" level=\"%d\" dv-name=\"mImgtbl1\" dv-version=\"1.0\">\n", id, level);
+		if(dax_mode)
+		{
+      	fprintf(fdag, "  <job id=\"ID%06d\" name=\"mImgtbl\" version=\"3.0\" level=\"%d\" dv-name=\"mImgtbl1\" dv-version=\"1.0\">\n", id, level);
 
-      //fprintf(fdag, "    <argument>\n      .\n      -t <filename file=\"slist_%s.tbl\"/>\n      <filename file=\"simages_%s.tbl\"/>\n    </argument>\n\n", idstr, idstr);
+      	fprintf(fdag, "    <argument>\n      .\n      -t <filename file=\"slist_%s.tbl\"/>\n      <filename file=\"simages_%s.tbl\"/>\n    </argument>\n\n", idstr, idstr);
 
-      //fprintf(fdag, "    <uses file=\"slist_%s.tbl\" link=\"input\" transfer=\"true\"/>\n", idstr);
+      	fprintf(fdag, "    <uses file=\"slist_%s.tbl\" link=\"input\" transfer=\"true\"/>\n", idstr);
+		}
 
       sprintf(key, "ID%06d", id);
       sprintf(val, "slist.tbl");
       HT_add_entry(depends, key, val);
 
-      //fprintf(fdag, "    <uses file=\"simages_%s.tbl\" link=\"output\" register=\"false\" transfer=\"false\"/>\n", idstr);
+		if(dax_mode)
+		{
+      	fprintf(fdag, "    <uses file=\"simages_%s.tbl\" link=\"output\" register=\"false\" transfer=\"false\"/>\n", idstr);
+		}
 
       sprintf(key, "simages.tbl");
       sprintf(val, "ID%06d", id);
       HT_add_entry(depends, key, val);
 
-		fprintf(fdag, "simages_%s.tbl: slist_%s.tbl ", idstr, idstr);
+		if(!dax_mode)
+		{
+			fprintf(fdag, "simages_%s.tbl: slist_%s.tbl ", idstr, idstr);
+		}
 
       for(i=0; i<numTilesX; ++i)
       {
          for(j=0; j<numTilesY; ++j)
          {
-            //fprintf(fdag, "    <uses file=\"shrunken_%d_%d_%s.fits\" link=\"input\" transfer=\"true\"/>\n", 
-            //   i, j, idstr);
-			fprintf(fdag, "shrunken_%d_%d_%s.fits ", i, j, idstr);
+				if(dax_mode)
+				{
+            	fprintf(fdag, "    <uses file=\"shrunken_%d_%d_%s.fits\" link=\"input\" transfer=\"true\"/>\n", 
+               	i, j, idstr);
+				}
+				else
+				{
+					fprintf(fdag, "shrunken_%d_%d_%s.fits ", i, j, idstr);
+				}
 
             sprintf(key, "ID%06d", id);
             sprintf(val, "shrunken_%d_%d.fits", i, j);
             HT_add_entry(depends, key, val);
          }
       }
-		fprintf(fdag, "\n\tmImgtbl . -t slist_%s.tbl simages_%s.tbl\n\n", idstr, idstr);
-      //fprintf(fdag, "  </job>\n\n\n");
+
+		if(dax_mode)
+		{
+      	fprintf(fdag, "  </job>\n\n\n");
+		}
+		else
+		{
+			fprintf(fdag, " ./mImgtbl\n\t./mImgtbl . -t slist_%s.tbl simages_%s.tbl\n\n", idstr, idstr);
+		}
+
       fflush(fdag);
 
 
@@ -1930,45 +2244,70 @@ int main(int argc, char **argv)
 
       --level;
 
-      //fprintf(fdag, "  <job id=\"ID%06d\" name=\"mAdd\" version=\"3.0\" level=\"%d\" dv-name=\"mAdd%d\" dv-version=\"1.0\">\n", id, level, mAddCntr+1);
+      if(dax_mode)
+		{
+			fprintf(fdag, "  <job id=\"ID%06d\" name=\"mAdd\" version=\"3.0\" level=\"%d\" dv-name=\"mAdd%d\" dv-version=\"1.0\">\n", id, level, mAddCntr+1);
 
-      //fprintf(fdag, "    <argument>\n      -n\n      -e\n      <filename file=\"simages_%s.tbl\"/>\n      <filename file=\"shrunken_%s.hdr\"/>\n      <filename file=\"shrunken_%s.fits\"/>\n    </argument>\n\n", idstr, idstr, idstr);
+      	fprintf(fdag, "    <argument>\n      -n\n      -e\n      <filename file=\"simages_%s.tbl\"/>\n      <filename file=\"shrunken_%s.hdr\"/>\n      <filename file=\"shrunken_%s.fits\"/>\n    </argument>\n\n", idstr, idstr, idstr);
 
-      //fprintf(fdag, "    <uses file=\"simages_%s.tbl\" link=\"input\" transfer=\"true\"/>\n", idstr);
+      	fprintf(fdag, "    <uses file=\"simages_%s.tbl\" link=\"input\" transfer=\"true\"/>\n", idstr);
+		}
 
       sprintf(key, "ID%06d", id);
       sprintf(val, "simages.tbl");
       HT_add_entry(depends, key, val);
 
-      //fprintf(fdag, "    <uses file=\"shrunken_%s.hdr\" link=\"input\" transfer=\"true\"/>\n", idstr);
+		if(dax_mode)
+		{
+	      fprintf(fdag, "    <uses file=\"shrunken_%s.hdr\" link=\"input\" transfer=\"true\"/>\n", idstr);
+		}
 
       sprintf(key, "ID%06d", id);
       sprintf(val, "shrunken.hdr");
       HT_add_entry(depends, key, val);
 
-      //fprintf(fdag, "    <uses file=\"shrunken_%s.fits\" link=\"output\" register=\"true\" transfer=\"true\"/>\n", idstr);
+		if(dax_mode)
+		{
+      	fprintf(fdag, "    <uses file=\"shrunken_%s.fits\" link=\"output\" register=\"true\" transfer=\"true\"/>\n", idstr);
+		}
 
       sprintf(key, "shrunken.fits");
       sprintf(val, "ID%06d", id);
       HT_add_entry(depends, key, val);
 
-		fprintf(fdag, "shrunken_%s.fits: simages_%s.tbl shrunken_%s.hdr ", idstr, idstr, idstr);
+		if(!dax_mode) {
+			fprintf(fdag, "shrunken_%s.fits: simages_%s.tbl shrunken_%s.hdr ", idstr, idstr, idstr);
+		}
 
       for(i=0; i<numTilesX; ++i)
       {
          for(j=0; j<numTilesY; ++j)
          {
-            //fprintf(fdag, "    <uses file=\"shrunken_%d_%d_%s.fits\" link=\"input\" transfer=\"true\"/>\n", 
-            //   i, j, idstr);
-			fprintf(fdag, "shrunken_%d_%d_%s.fits ", i, j, idstr);
+				if(dax_mode)
+				{
+            	fprintf(fdag, "    <uses file=\"shrunken_%d_%d_%s.fits\" link=\"input\" transfer=\"true\"/>\n", 
+               	i, j, idstr);
+				}
+				else
+				{
+					fprintf(fdag, "shrunken_%d_%d_%s.fits ", i, j, idstr);
+				}
 
             sprintf(key, "ID%06d", id);
             sprintf(val, "shrunken_%d_%d.fits", i, j);
             HT_add_entry(depends, key, val);
          }
       }
-		fprintf(fdag, "\n\tmAdd -n -e simages_%s.tbl shrunken_%s.hdr shrunken_%s.fits\n\n", idstr, idstr, idstr);
-      //fprintf(fdag, "  </job>\n\n\n");
+
+		if(dax_mode)
+		{
+      	fprintf(fdag, "  </job>\n\n\n");
+		}
+		else
+		{
+			fprintf(fdag, " ./mAdd\n\t./mAdd -n -e simages_%s.tbl shrunken_%s.hdr shrunken_%s.fits\n\n", idstr, idstr, idstr);
+		}
+
    }
 
    fflush(fdag);
@@ -1983,39 +2322,57 @@ int main(int argc, char **argv)
 
    --level;
 
-   //fprintf(fdag, "  <job id=\"ID%06d\" name=\"mJPEG\" version=\"3.0\" level=\"%d\" dv-name=\"mJPEG1\" dv-version=\"1.0\">\n", id, level);
+   if(dax_mode)
+	{
+		fprintf(fdag, "  <job id=\"ID%06d\" name=\"mJPEG\" version=\"3.0\" level=\"%d\" dv-name=\"mJPEG1\" dv-version=\"1.0\">\n", id, level);
 
-   //fprintf(fdag, "    <argument>\n      -ct 1\n      -gray <filename file=\"shrunken_%s.fits\"/>\n      min max gaussianlog\n      -out <filename file=\"shrunken_%s.jpg\"/>\n    </argument>\n\n", idstr, idstr);
+   	fprintf(fdag, "    <argument>\n      -ct 1\n      -gray <filename file=\"shrunken_%s.fits\"/>\n      min max gaussianlog\n      -out <filename file=\"shrunken_%s.jpg\"/>\n    </argument>\n\n", idstr, idstr);
 
-   //fprintf(fdag, "    <uses file=\"shrunken_%s.fits\" link=\"input\" transfer=\"true\"/>\n", idstr);
+   	fprintf(fdag, "    <uses file=\"shrunken_%s.fits\" link=\"input\" transfer=\"true\"/>\n", idstr);
+	}
 
    sprintf(key, "ID%06d", id);
    sprintf(val, "shrunken.fits");
    HT_add_entry(depends, key, val);
 
-   //fprintf(fdag, "    <uses file=\"shrunken_%s.jpg\" link=\"output\" register=\"true\" transfer=\"true\"/>\n", idstr);
+   if(dax_mode)
+	{
+		fprintf(fdag, "    <uses file=\"shrunken_%s.jpg\" link=\"output\" register=\"true\" transfer=\"true\"/>\n", idstr);
+	}
 
    sprintf(key, "shrunken.jpg");
    sprintf(val, "ID%06d", id);
    HT_add_entry(depends, key, val);
 
-   //fprintf(fdag, "    <uses file=\"dag_%s.xml\" link=\"input\" transfer=\"true\"/>\n", idstr);
-   //fprintf(fdag, "    <uses file=\"dag_%s.xml\" link=\"output\" register=\"false\" transfer=\"true\"/>\n", idstr);
+   if(dax_mode)
+	{
+		fprintf(fdag, "    <uses file=\"dag_%s.xml\" link=\"input\" transfer=\"true\"/>\n", idstr);
+   	fprintf(fdag, "    <uses file=\"dag_%s.xml\" link=\"output\" register=\"false\" transfer=\"true\"/>\n", idstr);
+	}
 
    sprintf(key, "dag.xml");
    sprintf(val, "ID%06d", id);
    HT_add_entry(depends, key, val);
 
-   //fprintf(fdag, "    <uses file=\"images_%s.tbl\" link=\"input\" transfer=\"true\"/>\n", idstr);
-   //fprintf(fdag, "    <uses file=\"images_%s.tbl\" link=\"output\" register=\"false\" transfer=\"true\"/>\n", idstr);
+   if(dax_mode)
+	{
+		fprintf(fdag, "    <uses file=\"images_%s.tbl\" link=\"input\" transfer=\"true\"/>\n", idstr);
+   	fprintf(fdag, "    <uses file=\"images_%s.tbl\" link=\"output\" register=\"false\" transfer=\"true\"/>\n", idstr);
+	}
 
    sprintf(key, "images.tbl");
    sprintf(val, "ID%06d", id);
    HT_add_entry(depends, key, val);
 
-   fprintf(fdag, "shrunken_%s.jpg: shrunken_%s.fits\n\tmJPEG -ct 1 -gray shrunken_%s.fits min max gaussianlog -out shrunken_%s.jpg\n\n", idstr, idstr, idstr, idstr);
-
-   //fprintf(fdag, "  </job>\n\n\n\n");
+   if(dax_mode)
+	{
+		fprintf(fdag, "  </job>\n\n\n\n");
+	}
+	else
+	{
+	   fprintf(fdag, "shrunken_%s.jpg: shrunken_%s.fits ./mJPEG\n\t./mJPEG -ct 1 -gray shrunken_%s.fits min max gaussianlog -out shrunken_%s.jpg\n\n",
+			idstr, idstr, idstr, idstr);
+	}
 
    fflush(fdag);
 
@@ -2025,156 +2382,159 @@ int main(int argc, char **argv)
    /* DAG: Flow control dependencies.         */
    /* First, mDiffs depend on mProjects       */
    /*******************************************/
-/*
-   if(debug)
-   {
-      fprintf(fdebug, "Generating DAG file parent/child info ...\n");
-      fflush(fdebug);
-   }
 
-   fprintf(fdag, "  <!-- Part 3:  Control-Flow Dependencies -->\n\n");
+	if(dax_mode)
+	{
+   	if(debug)
+   	{
+      	fprintf(fdebug, "Generating DAG file parent/child info ...\n");
+      	fflush(fdebug);
+   	}
 
-   sprintf(fileList,     "%s/files.lis",   workdir);
-   sprintf(parentList,   "%s/parents.lis", workdir);
-   sprintf(sortedParent, "%s/sortedParents.lis", workdir);
+   	fprintf(fdag, "  <!-- Part 3:  Control-Flow Dependencies -->\n\n");
 
-   for(i=1; i<=id; ++i)
-   {
-      sprintf(jobid, "ID%06d", i);
+   	sprintf(fileList,     "%s/files.lis",   workdir);
+  		sprintf(parentList,   "%s/parents.lis", workdir);
+   	sprintf(sortedParent, "%s/sortedParents.lis", workdir);
 
-      fileid = HT_lookup_key(depends, jobid);
+   	for(i=1; i<=id; ++i)
+   	{
+      	sprintf(jobid, "ID%06d", i);
 
-      ffile = fopen(fileList, "w+");
+      	fileid = HT_lookup_key(depends, jobid);
 
-      if(ffile == (FILE *)NULL)
-      {
-         printf("[struct stat=\"ERROR\", msg=\"Error opening working file list for write\"]\n");
-         exit(0);
-      }
+      	ffile = fopen(fileList, "w+");
 
-      while(fileid != (char *)NULL)
-      {
-         fprintf(ffile, "%s\n", fileid);
-         fflush(ffile);
+      	if(ffile == (FILE *)NULL)
+      	{
+         	printf("[struct stat=\"ERROR\", msg=\"Error opening working file list for write\"]\n");
+         	exit(0);
+      	}
 
-         fileid = HT_next_entry(depends);
-      }
+      	while(fileid != (char *)NULL)
+      	{
+         	fprintf(ffile, "%s\n", fileid);
+         	fflush(ffile);
 
-      fclose(ffile);
+         	fileid = HT_next_entry(depends);
+      	}
 
-      ffile = fopen(fileList, "r");
+      	fclose(ffile);
 
-      if(ffile == (FILE *)NULL)
-      {
-         printf("[struct stat=\"ERROR\", msg=\"Error opening working file list for read\"]\n");
-         exit(0);
-      }
+      	ffile = fopen(fileList, "r");
 
-      fparent = fopen(parentList, "w+");
+      	if(ffile == (FILE *)NULL)
+      	{
+        		printf("[struct stat=\"ERROR\", msg=\"Error opening working file list for read\"]\n");
+         	exit(0);
+      	}
 
-      if(fparent == (FILE *)NULL)
-      {
-         printf("[struct stat=\"ERROR\", msg=\"Error opening parent list\"]\n");
-         exit(0);
-      }
+      	fparent = fopen(parentList, "w+");
 
-      nparents = 0;
+      	if(fparent == (FILE *)NULL)
+      	{
+         	printf("[struct stat=\"ERROR\", msg=\"Error opening parent list\"]\n");
+         	exit(0);
+      	}
 
-      fprintf(fparent, "|   parent   |\n");
+      	nparents = 0;
 
-      while(1)
-      {
-         if(fgets(line, MAXSTR, ffile) == (char *)NULL)
-            break;
+      	fprintf(fparent, "|   parent   |\n");
 
-         if(line[strlen(line)-1] == '\n')
-            line[strlen(line)-1]  = '\0';
+      	while(1)
+      	{
+         	if(fgets(line, MAXSTR, ffile) == (char *)NULL)
+            	break;
 
-         parentid = HT_lookup_key(depends, line);
+         	if(line[strlen(line)-1] == '\n')
+            	line[strlen(line)-1]  = '\0';
 
-         while(parentid != (char *)NULL)
-         {
-            parent = atoi(parentid+2);
+         	parentid = HT_lookup_key(depends, line);
 
-            fprintf(fparent, " %12d\n", parent);
-            fflush(fparent);
+         	while(parentid != (char *)NULL)
+         	{
+            	parent = atoi(parentid+2);
 
-            ++nparents;
+            	fprintf(fparent, " %12d\n", parent);
+            	fflush(fparent);
 
-            parentid = HT_next_entry(depends);
-         }
-      }
+	            ++nparents;
 
-      fclose(ffile);
-      fclose(fparent);
+   	         parentid = HT_next_entry(depends);
+      	   }
+      	}
 
-      unlink(fileList);
+      	fclose(ffile);
+      	fclose(fparent);
 
-      if(nparents > 0)
-      {
+      	unlink(fileList);
 
-      if(path)
-         sprintf(cmd, "%s/bin/mTblSort %s parent %s", path, parentList, sortedParent);
-         else 
-            sprintf(cmd, "mTblSort %s parent %s", parentList, sortedParent);
+      	if(nparents > 0)
+      	{
+
+      		if(path)
+         		sprintf(cmd, "%s/bin/mTblSort %s parent %s", path, parentList, sortedParent);
+         	else 
+            	sprintf(cmd, "mTblSort %s parent %s", parentList, sortedParent);
          
-         svc_run(cmd);
+         	svc_run(cmd);
 
-         strcpy( status, svc_value( "stat" ));
+         	strcpy( status, svc_value( "stat" ));
 
-         if (strcmp( status, "ERROR") == 0)
-         {
-            strcpy( msg, svc_value( "msg" ));
+         	if (strcmp( status, "ERROR") == 0)
+         	{
+            	strcpy( msg, svc_value( "msg" ));
 
-            printError(msg);
-         }
+            	printError(msg);
+         	}
 
-         unlink(parentList);
+         	unlink(parentList);
 
-         fparent = fopen(sortedParent, "r");
+         	fparent = fopen(sortedParent, "r");
 
-         if(fparent == (FILE *)NULL)
-         {
-            printf("[struct stat=\"ERROR\", msg=\"Error opening sorted parent list\"]\n");
-            exit(0);
-         }
+         	if(fparent == (FILE *)NULL)
+         	{
+            	printf("[struct stat=\"ERROR\", msg=\"Error opening sorted parent list\"]\n");
+            	exit(0);
+         	}
 
-         fgets(line, MAXSTR, fparent);
+         	fgets(line, MAXSTR, fparent);
 
-         fprintf(fdag, "  <child ref=\"%s\">\n", jobid);
+         	fprintf(fdag, "  <child ref=\"%s\">\n", jobid);
 
-         for(j=0; j<nparents; ++j)
-         {
-            if(fgets(line, MAXSTR, fparent) == (char *)NULL)
-               break;
+         	for(j=0; j<nparents; ++j)
+         	{
+            	if(fgets(line, MAXSTR, fparent) == (char *)NULL)
+               	break;
             
-            parent_prev = parent;
-            parent = atoi(line);
+            	parent_prev = parent;
+            	parent = atoi(line);
 
-            if(j > 0 && parent == parent_prev)
-               continue;
+            	if(j > 0 && parent == parent_prev)
+               	continue;
 
-            fprintf(fdag, "    <parent ref=\"ID%06d\"/>\n", parent);
-         }
+            	fprintf(fdag, "    <parent ref=\"ID%06d\"/>\n", parent);
+         	}
 
-         fprintf(fdag, "  </child>\n\n");
-         fflush(fdag);
+         	fprintf(fdag, "  </child>\n\n");
+         	fflush(fdag);
 
-         fclose(fparent);
-      }
-      unlink(sortedParent);
-   }
+         	fclose(fparent);
+      	}
+      	unlink(sortedParent);
+   	}
 
-   fprintf(fdag, "</adag>\n");
-   fflush(fdag);
-   fclose(fdag);
+   	fprintf(fdag, "</adag>\n");
+   	fflush(fdag);
+   	fclose(fdag);
 
-   if(debug)
-   {
-      fprintf(fdebug, "done.\n");
-      fflush(fdebug);
-   }
-*/
+   	if(debug)
+   	{
+   	   fprintf(fdebug, "done.\n");
+   	   fflush(fdebug);
+   	}
+	}
+
    printf("[struct stat=\"OK\", id=\"%s\"]\n", idstr);
    exit(0);
 }
@@ -2535,7 +2895,9 @@ int tcp_connect(char *hostname, int port)
 
    sin.sin_family = AF_INET;
    sin.sin_port = htons(port);
-   bcopy(host->h_addr, &sin.sin_addr, host->h_length);
+   
+	bcopy(host->h_addr_list[0], &sin.sin_addr, host->h_length);
+   //bcopy(host->h_addr, &sin.sin_addr, host->h_length);
 
    if(connect(sock_fd, (struct sockaddr *)&sin, sizeof(sin)) < 0)
    {
@@ -2596,3 +2958,4 @@ char *url_encode(char *s)
 }
 
 
+/* vim: set noexpandtab tabstop=3: */
