@@ -7,7 +7,7 @@ import getopt
 
 def printhelp():
 	print("Creation tool for \"hello, world!\" container makeflow maker.")
-	print("Usage: python make.py [ARGS]")
+	print("Usage: python hello_world_creator.py [ARGS]")
 	print("-h,--help          Print this Help")
 	print("-d,--docker        Specify Docker Image")
 	print("-s,--singularity   Specify Singularity Image")
@@ -32,7 +32,7 @@ if __name__ =='__main__':
 		elif o in ("-s","--singularity"):
 			singularity = a
 	
-	mffile = open("Makeflow","w+")
+	mffile = open("hello_world.mf","w+")
 	if not docker == None:
 		mffile.write("hello-docker.out: \n\tdocker run %s echo \"hello, world!\" > hello-docker.out\n\n"%docker)
 	if not singularity == None:
