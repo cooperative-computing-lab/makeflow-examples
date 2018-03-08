@@ -1,0 +1,2 @@
+hello.out:
+	echo "hello, world!" > hello.out

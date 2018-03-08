@@ -15,7 +15,7 @@ cd ./makeflow-examples/blast
 
 First, obtain a blast binary suitable for your architecture. (about 30MB)
 ```
-wget ftp://ftp.ncbi.nlm.nih.gov/blast/executables/legacy/2.2.26/blast-2.2.26-x64-linux.tar.gz
+wget ftp://ftp.ncbi.nlm.nih.gov/blast/executables/legacy.NOTSUPPORTED/2.2.26/blast-2.2.26-x64-linux.tar.gz
 tar xvzf blast-2.2.26-x64-linux.tar.gz
 ```
 
