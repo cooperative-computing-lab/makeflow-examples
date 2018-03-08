@@ -34,9 +34,9 @@ if __name__ =='__main__':
 	
 	mffile = open("Makeflow","w+")
 	if not docker == None:
-		mffile.write("hello-docker.out: \n\tdocker run %s sh -c 'echo \"hello, world!\" > hello-docker.out'\n\n"%docker)
+		mffile.write("hello-docker.out: \n\tdocker run %s echo \"hello, world!\" > hello-docker.out\n\n"%docker)
 	if not singularity == None:
-		imffile.write("hello-sing.out: %s \n\tsingularity exec %s sh -c 'echo \"hello, world!\" > hello-docker.out'\n\n"%(singularity,singularity))
+		mffile.write("hello-sing.out: %s \n\tsingularity exec %s sh -c 'echo \"hello, world!\" > hello-sing.out'\n\n"%(singularity,singularity))
 	
 	if docker == None and singularity == None:
 		print("Making empty Makefile!!")
