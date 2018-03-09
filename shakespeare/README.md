@@ -14,7 +14,7 @@ dialogue out of the plays selected.
 If you have not done so already, please clone this example repository like so:
 ```
 git clone https://github.com/cooperative-computing-lab/makeflow-examples.git
-cd ./makeflow-examples/bwa
+cd ./makeflow-examples/shakespeare
 ```
 
 Finally, execute the workflow using makeflow locally,
