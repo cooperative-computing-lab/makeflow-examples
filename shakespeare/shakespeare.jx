@@ -26,7 +26,7 @@
 #In the rule below, we tell Makeflow to get all the plays listed in our context.jx file.
 #Look at example in shakespeare.makeflow to see the expanded version using the Make syntax.
 {
-	"command": format("curl -o %s.txt http://ccl.cse.nd.edu/workflows/shakespeare/%s.txt", p, p),
+	"command": format("curl -s -o %s.txt http://ccl.cse.nd.edu/workflows/shakespeare/%s.txt", p, p),
 	"inputs": [],
 	"outputs": [format("%s.txt", p)],
 	"local_job": true

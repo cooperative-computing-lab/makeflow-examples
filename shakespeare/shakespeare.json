@@ -21,7 +21,7 @@
       },
       
       {
-        "command":"curl -o henry_iv_part_1.txt http://ccl.cse.nd.edu/workflows/shakespeare/henry_iv_part_1.txt",
+        "command":"curl -s -o henry_iv_part_1.txt http://ccl.cse.nd.edu/workflows/shakespeare/henry_iv_part_1.txt",
         "inputs":
           [
           ],
@@ -33,7 +33,7 @@
       },
       
       {
-        "command":"curl -o henry_iv_part_2.txt http://ccl.cse.nd.edu/workflows/shakespeare/henry_iv_part_2.txt",
+        "command":"curl -s -o henry_iv_part_2.txt http://ccl.cse.nd.edu/workflows/shakespeare/henry_iv_part_2.txt",
         "inputs":
           [
           ],
@@ -45,7 +45,7 @@
       },
       
       {
-        "command":"curl -o henry_vi_part_1.txt http://ccl.cse.nd.edu/workflows/shakespeare/henry_vi_part_1.txt",
+        "command":"curl -s -o henry_vi_part_1.txt http://ccl.cse.nd.edu/workflows/shakespeare/henry_vi_part_1.txt",
         "inputs":
           [
           ],
@@ -57,7 +57,7 @@
       },
       
       {
-        "command":"curl -o henry_vi_part_2.txt http://ccl.cse.nd.edu/workflows/shakespeare/henry_vi_part_2.txt",
+        "command":"curl -s -o henry_vi_part_2.txt http://ccl.cse.nd.edu/workflows/shakespeare/henry_vi_part_2.txt",
         "inputs":
           [
           ],
@@ -69,7 +69,7 @@
       },
       
       {
-        "command":"curl -o henry_vi_part_3.txt http://ccl.cse.nd.edu/workflows/shakespeare/henry_vi_part_3.txt",
+        "command":"curl -s -o henry_vi_part_3.txt http://ccl.cse.nd.edu/workflows/shakespeare/henry_vi_part_3.txt",
         "inputs":
           [
           ],
