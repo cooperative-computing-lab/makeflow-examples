@@ -4,15 +4,6 @@ The Makeflow Benchmarking Tool is a tool designed to help developers and researc
 The DAG itself is extremely flat, with no jobs dependant on one another.
 
 
-###### the\_job
-This is the worker which performs the operations. To create this file, call:
-
-```
-make
-```
-
-and the program will compile.
-
 ###### make\_benchmark
 This is the python script which will generate the makeflow file. Please ensure that you have Python 2.7+ installed to run it.
 
@@ -20,6 +11,7 @@ This is the python script which will generate the makeflow file. Please ensure t
 ## Using the Software
 First, ensure that `the_job` has been compiled by calling:
 ```
+gcc the_job.c -o the_job
 make
 ```
 
@@ -29,7 +21,7 @@ Next, call `make_benchmark` with the proper flags to generate your makeflow. The
 ./make_benchmark --run-time=10 --unique-size=10MB --common-size=10GB --pass-unique --null-output --number=1000
 ```
 
-This call will create a workflow with 1000 jobs, along with 1000 unique input files each 10MB large, and a single 10GB large common file. While the job will recieve the 10MB file, it will not read it, and instead write out 4MB of data to /dev/null. The job will also spend 10 seconds doing busy work.
+This call will create a workflow in `benchmark.mf` with 1000 jobs, along with 1000 unique input files each 10MB large, and a single 10GB large common file. While the job will recieve the 10MB file, it will not read it, and instead write out 4MB of data to /dev/null. The job will also spend 10 seconds doing busy work.
 
 Let's break that down.
 
@@ -54,3 +46,14 @@ Here is a copy of the running `make_benchmark --help` specifying all of the diff
 -z,--null-output    Tells the program to send all output to /dev/null
 -h,--help           Prints this out
 ```
+
+Finally, use `makeflow` to execute the workflow either locally or in your desired batch system:
+
+```
+makeflow benchmark.mf -T local
+makeflow benchmark.mf -T wq
+makeflow benchmark.mf -T condor
+makeflow benchmark.mf -T sge
+...
+```
+

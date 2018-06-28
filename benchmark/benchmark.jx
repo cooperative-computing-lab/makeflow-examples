@@ -1,0 +1,2913 @@
+
+{
+  "default_category":"default",
+  "categories":
+    {
+      "default":
+        {
+        }
+    },
+  "rules":
+    [
+      
+      {
+        "command":"./the_job --seconds=10s --unique-input=custom_input_0.in --common-input=common_input.dat --output=workflow_0.out",
+        "allocation":"first",
+        "outputs":
+          [
+            
+            {
+              "name":"workflow_0.out"
+            }
+          ],
+        "inputs":
+          [
+            
+            {
+              "name":"the_job"
+            },
+            
+            {
+              "name":"custom_input_0.in"
+            },
+            
+            {
+              "name":"common_input.dat"
+            }
+          ],
+        "category":"default",
+        "local_job":false
+      },
+      
+      {
+        "command":"./the_job --seconds=10s --unique-input=custom_input_1.in --common-input=common_input.dat --output=workflow_1.out",
+        "allocation":"first",
+        "outputs":
+          [
+            
+            {
+              "name":"workflow_1.out"
+            }
+          ],
+        "inputs":
+          [
+            
+            {
+              "name":"the_job"
+            },
+            
+            {
+              "name":"custom_input_1.in"
+            },
+            
+            {
+              "name":"common_input.dat"
+            }
+          ],
+        "category":"default",
+        "local_job":false
+      },
+      
+      {
+        "command":"./the_job --seconds=10s --unique-input=custom_input_2.in --common-input=common_input.dat --output=workflow_2.out",
+        "allocation":"first",
+        "outputs":
+          [
+            
+            {
+              "name":"workflow_2.out"
+            }
+          ],
+        "inputs":
+          [
+            
+            {
+              "name":"the_job"
+            },
+            
+            {
+              "name":"custom_input_2.in"
+            },
+            
+            {
+              "name":"common_input.dat"
+            }
+          ],
+        "category":"default",
+        "local_job":false
+      },
+      
+      {
+        "command":"./the_job --seconds=10s --unique-input=custom_input_3.in --common-input=common_input.dat --output=workflow_3.out",
+        "allocation":"first",
+        "outputs":
+          [
+            
+            {
+              "name":"workflow_3.out"
+            }
+          ],
+        "inputs":
+          [
+            
+            {
+              "name":"the_job"
+            },
+            
+            {
+              "name":"custom_input_3.in"
+            },
+            
+            {
+              "name":"common_input.dat"
+            }
+          ],
+        "category":"default",
+        "local_job":false
+      },
+      
+      {
+        "command":"./the_job --seconds=10s --unique-input=custom_input_4.in --common-input=common_input.dat --output=workflow_4.out",
+        "allocation":"first",
+        "outputs":
+          [
+            
+            {
+              "name":"workflow_4.out"
+            }
+          ],
+        "inputs":
+          [
+            
+            {
+              "name":"the_job"
+            },
+            
+            {
+              "name":"custom_input_4.in"
+            },
+            
+            {
+              "name":"common_input.dat"
+            }
+          ],
+        "category":"default",
+        "local_job":false
+      },
+      
+      {
+        "command":"./the_job --seconds=10s --unique-input=custom_input_5.in --common-input=common_input.dat --output=workflow_5.out",
+        "allocation":"first",
+        "outputs":
+          [
+            
+            {
+              "name":"workflow_5.out"
+            }
+          ],
+        "inputs":
+          [
+            
+            {
+              "name":"the_job"
+            },
+            
+            {
+              "name":"custom_input_5.in"
+            },
+            
+            {
+              "name":"common_input.dat"
+            }
+          ],
+        "category":"default",
+        "local_job":false
+      },
+      
+      {
+        "command":"./the_job --seconds=10s --unique-input=custom_input_6.in --common-input=common_input.dat --output=workflow_6.out",
+        "allocation":"first",
+        "outputs":
+          [
+            
+            {
+              "name":"workflow_6.out"
+            }
+          ],
+        "inputs":
+          [
+            
+            {
+              "name":"the_job"
+            },
+            
+            {
+              "name":"custom_input_6.in"
+            },
+            
+            {
+              "name":"common_input.dat"
+            }
+          ],
+        "category":"default",
+        "local_job":false
+      },
+      
+      {
+        "command":"./the_job --seconds=10s --unique-input=custom_input_7.in --common-input=common_input.dat --output=workflow_7.out",
+        "allocation":"first",
+        "outputs":
+          [
+            
+            {
+              "name":"workflow_7.out"
+            }
+          ],
+        "inputs":
+          [
+            
+            {
+              "name":"the_job"
+            },
+            
+            {
+              "name":"custom_input_7.in"
+            },
+            
+            {
+              "name":"common_input.dat"
+            }
+          ],
+        "category":"default",
+        "local_job":false
+      },
+      
+      {
+        "command":"./the_job --seconds=10s --unique-input=custom_input_8.in --common-input=common_input.dat --output=workflow_8.out",
+        "allocation":"first",
+        "outputs":
+          [
+            
+            {
+              "name":"workflow_8.out"
+            }
+          ],
+        "inputs":
+          [
+            
+            {
+              "name":"the_job"
+            },
+            
+            {
+              "name":"custom_input_8.in"
+            },
+            
+            {
+              "name":"common_input.dat"
+            }
+          ],
+        "category":"default",
+        "local_job":false
+      },
+      
+      {
+        "command":"./the_job --seconds=10s --unique-input=custom_input_9.in --common-input=common_input.dat --output=workflow_9.out",
+        "allocation":"first",
+        "outputs":
+          [
+            
+            {
+              "name":"workflow_9.out"
+            }
+          ],
+        "inputs":
+          [
+            
+            {
+              "name":"the_job"
+            },
+            
+            {
+              "name":"custom_input_9.in"
+            },
+            
+            {
+              "name":"common_input.dat"
+            }
+          ],
+        "category":"default",
+        "local_job":false
+      },
+      
+      {
+        "command":"./the_job --seconds=10s --unique-input=custom_input_10.in --common-input=common_input.dat --output=workflow_10.out",
+        "allocation":"first",
+        "outputs":
+          [
+            
+            {
+              "name":"workflow_10.out"
+            }
+          ],
+        "inputs":
+          [
+            
+            {
+              "name":"the_job"
+            },
+            
+            {
+              "name":"custom_input_10.in"
+            },
+            
+            {
+              "name":"common_input.dat"
+            }
+          ],
+        "category":"default",
+        "local_job":false
+      },
+      
+      {
+        "command":"./the_job --seconds=10s --unique-input=custom_input_11.in --common-input=common_input.dat --output=workflow_11.out",
+        "allocation":"first",
+        "outputs":
+          [
+            
+            {
+              "name":"workflow_11.out"
+            }
+          ],
+        "inputs":
+          [
+            
+            {
+              "name":"the_job"
+            },
+            
+            {
+              "name":"custom_input_11.in"
+            },
+            
+            {
+              "name":"common_input.dat"
+            }
+          ],
+        "category":"default",
+        "local_job":false
+      },
+      
+      {
+        "command":"./the_job --seconds=10s --unique-input=custom_input_12.in --common-input=common_input.dat --output=workflow_12.out",
+        "allocation":"first",
+        "outputs":
+          [
+            
+            {
+              "name":"workflow_12.out"
+            }
+          ],
+        "inputs":
+          [
+            
+            {
+              "name":"the_job"
+            },
+            
+            {
+              "name":"custom_input_12.in"
+            },
+            
+            {
+              "name":"common_input.dat"
+            }
+          ],
+        "category":"default",
+        "local_job":false
+      },
+      
+      {
+        "command":"./the_job --seconds=10s --unique-input=custom_input_13.in --common-input=common_input.dat --output=workflow_13.out",
+        "allocation":"first",
+        "outputs":
+          [
+            
+            {
+              "name":"workflow_13.out"
+            }
+          ],
+        "inputs":
+          [
+            
+            {
+              "name":"the_job"
+            },
+            
+            {
+              "name":"custom_input_13.in"
+            },
+            
+            {
+              "name":"common_input.dat"
+            }
+          ],
+        "category":"default",
+        "local_job":false
+      },
+      
+      {
+        "command":"./the_job --seconds=10s --unique-input=custom_input_14.in --common-input=common_input.dat --output=workflow_14.out",
+        "allocation":"first",
+        "outputs":
+          [
+            
+            {
+              "name":"workflow_14.out"
+            }
+          ],
+        "inputs":
+          [
+            
+            {
+              "name":"the_job"
+            },
+            
+            {
+              "name":"custom_input_14.in"
+            },
+            
+            {
+              "name":"common_input.dat"
+            }
+          ],
+        "category":"default",
+        "local_job":false
+      },
+      
+      {
+        "command":"./the_job --seconds=10s --unique-input=custom_input_15.in --common-input=common_input.dat --output=workflow_15.out",
+        "allocation":"first",
+        "outputs":
+          [
+            
+            {
+              "name":"workflow_15.out"
+            }
+          ],
+        "inputs":
+          [
+            
+            {
+              "name":"the_job"
+            },
+            
+            {
+              "name":"custom_input_15.in"
+            },
+            
+            {
+              "name":"common_input.dat"
+            }
+          ],
+        "category":"default",
+        "local_job":false
+      },
+      
+      {
+        "command":"./the_job --seconds=10s --unique-input=custom_input_16.in --common-input=common_input.dat --output=workflow_16.out",
+        "allocation":"first",
+        "outputs":
+          [
+            
+            {
+              "name":"workflow_16.out"
+            }
+          ],
+        "inputs":
+          [
+            
+            {
+              "name":"the_job"
+            },
+            
+            {
+              "name":"custom_input_16.in"
+            },
+            
+            {
+              "name":"common_input.dat"
+            }
+          ],
+        "category":"default",
+        "local_job":false
+      },
+      
+      {
+        "command":"./the_job --seconds=10s --unique-input=custom_input_17.in --common-input=common_input.dat --output=workflow_17.out",
+        "allocation":"first",
+        "outputs":
+          [
+            
+            {
+              "name":"workflow_17.out"
+            }
+          ],
+        "inputs":
+          [
+            
+            {
+              "name":"the_job"
+            },
+            
+            {
+              "name":"custom_input_17.in"
+            },
+            
+            {
+              "name":"common_input.dat"
+            }
+          ],
+        "category":"default",
+        "local_job":false
+      },
+      
+      {
+        "command":"./the_job --seconds=10s --unique-input=custom_input_18.in --common-input=common_input.dat --output=workflow_18.out",
+        "allocation":"first",
+        "outputs":
+          [
+            
+            {
+              "name":"workflow_18.out"
+            }
+          ],
+        "inputs":
+          [
+            
+            {
+              "name":"the_job"
+            },
+            
+            {
+              "name":"custom_input_18.in"
+            },
+            
+            {
+              "name":"common_input.dat"
+            }
+          ],
+        "category":"default",
+        "local_job":false
+      },
+      
+      {
+        "command":"./the_job --seconds=10s --unique-input=custom_input_19.in --common-input=common_input.dat --output=workflow_19.out",
+        "allocation":"first",
+        "outputs":
+          [
+            
+            {
+              "name":"workflow_19.out"
+            }
+          ],
+        "inputs":
+          [
+            
+            {
+              "name":"the_job"
+            },
+            
+            {
+              "name":"custom_input_19.in"
+            },
+            
+            {
+              "name":"common_input.dat"
+            }
+          ],
+        "category":"default",
+        "local_job":false
+      },
+      
+      {
+        "command":"./the_job --seconds=10s --unique-input=custom_input_20.in --common-input=common_input.dat --output=workflow_20.out",
+        "allocation":"first",
+        "outputs":
+          [
+            
+            {
+              "name":"workflow_20.out"
+            }
+          ],
+        "inputs":
+          [
+            
+            {
+              "name":"the_job"
+            },
+            
+            {
+              "name":"custom_input_20.in"
+            },
+            
+            {
+              "name":"common_input.dat"
+            }
+          ],
+        "category":"default",
+        "local_job":false
+      },
+      
+      {
+        "command":"./the_job --seconds=10s --unique-input=custom_input_21.in --common-input=common_input.dat --output=workflow_21.out",
+        "allocation":"first",
+        "outputs":
+          [
+            
+            {
+              "name":"workflow_21.out"
+            }
+          ],
+        "inputs":
+          [
+            
+            {
+              "name":"the_job"
+            },
+            
+            {
+              "name":"custom_input_21.in"
+            },
+            
+            {
+              "name":"common_input.dat"
+            }
+          ],
+        "category":"default",
+        "local_job":false
+      },
+      
+      {
+        "command":"./the_job --seconds=10s --unique-input=custom_input_22.in --common-input=common_input.dat --output=workflow_22.out",
+        "allocation":"first",
+        "outputs":
+          [
+            
+            {
+              "name":"workflow_22.out"
+            }
+          ],
+        "inputs":
+          [
+            
+            {
+              "name":"the_job"
+            },
+            
+            {
+              "name":"custom_input_22.in"
+            },
+            
+            {
+              "name":"common_input.dat"
+            }
+          ],
+        "category":"default",
+        "local_job":false
+      },
+      
+      {
+        "command":"./the_job --seconds=10s --unique-input=custom_input_23.in --common-input=common_input.dat --output=workflow_23.out",
+        "allocation":"first",
+        "outputs":
+          [
+            
+            {
+              "name":"workflow_23.out"
+            }
+          ],
+        "inputs":
+          [
+            
+            {
+              "name":"the_job"
+            },
+            
+            {
+              "name":"custom_input_23.in"
+            },
+            
+            {
+              "name":"common_input.dat"
+            }
+          ],
+        "category":"default",
+        "local_job":false
+      },
+      
+      {
+        "command":"./the_job --seconds=10s --unique-input=custom_input_24.in --common-input=common_input.dat --output=workflow_24.out",
+        "allocation":"first",
+        "outputs":
+          [
+            
+            {
+              "name":"workflow_24.out"
+            }
+          ],
+        "inputs":
+          [
+            
+            {
+              "name":"the_job"
+            },
+            
+            {
+              "name":"custom_input_24.in"
+            },
+            
+            {
+              "name":"common_input.dat"
+            }
+          ],
+        "category":"default",
+        "local_job":false
+      },
+      
+      {
+        "command":"./the_job --seconds=10s --unique-input=custom_input_25.in --common-input=common_input.dat --output=workflow_25.out",
+        "allocation":"first",
+        "outputs":
+          [
+            
+            {
+              "name":"workflow_25.out"
+            }
+          ],
+        "inputs":
+          [
+            
+            {
+              "name":"the_job"
+            },
+            
+            {
+              "name":"custom_input_25.in"
+            },
+            
+            {
+              "name":"common_input.dat"
+            }
+          ],
+        "category":"default",
+        "local_job":false
+      },
+      
+      {
+        "command":"./the_job --seconds=10s --unique-input=custom_input_26.in --common-input=common_input.dat --output=workflow_26.out",
+        "allocation":"first",
+        "outputs":
+          [
+            
+            {
+              "name":"workflow_26.out"
+            }
+          ],
+        "inputs":
+          [
+            
+            {
+              "name":"the_job"
+            },
+            
+            {
+              "name":"custom_input_26.in"
+            },
+            
+            {
+              "name":"common_input.dat"
+            }
+          ],
+        "category":"default",
+        "local_job":false
+      },
+      
+      {
+        "command":"./the_job --seconds=10s --unique-input=custom_input_27.in --common-input=common_input.dat --output=workflow_27.out",
+        "allocation":"first",
+        "outputs":
+          [
+            
+            {
+              "name":"workflow_27.out"
+            }
+          ],
+        "inputs":
+          [
+            
+            {
+              "name":"the_job"
+            },
+            
+            {
+              "name":"custom_input_27.in"
+            },
+            
+            {
+              "name":"common_input.dat"
+            }
+          ],
+        "category":"default",
+        "local_job":false
+      },
+      
+      {
+        "command":"./the_job --seconds=10s --unique-input=custom_input_28.in --common-input=common_input.dat --output=workflow_28.out",
+        "allocation":"first",
+        "outputs":
+          [
+            
+            {
+              "name":"workflow_28.out"
+            }
+          ],
+        "inputs":
+          [
+            
+            {
+              "name":"the_job"
+            },
+            
+            {
+              "name":"custom_input_28.in"
+            },
+            
+            {
+              "name":"common_input.dat"
+            }
+          ],
+        "category":"default",
+        "local_job":false
+      },
+      
+      {
+        "command":"./the_job --seconds=10s --unique-input=custom_input_29.in --common-input=common_input.dat --output=workflow_29.out",
+        "allocation":"first",
+        "outputs":
+          [
+            
+            {
+              "name":"workflow_29.out"
+            }
+          ],
+        "inputs":
+          [
+            
+            {
+              "name":"the_job"
+            },
+            
+            {
+              "name":"custom_input_29.in"
+            },
+            
+            {
+              "name":"common_input.dat"
+            }
+          ],
+        "category":"default",
+        "local_job":false
+      },
+      
+      {
+        "command":"./the_job --seconds=10s --unique-input=custom_input_30.in --common-input=common_input.dat --output=workflow_30.out",
+        "allocation":"first",
+        "outputs":
+          [
+            
+            {
+              "name":"workflow_30.out"
+            }
+          ],
+        "inputs":
+          [
+            
+            {
+              "name":"the_job"
+            },
+            
+            {
+              "name":"custom_input_30.in"
+            },
+            
+            {
+              "name":"common_input.dat"
+            }
+          ],
+        "category":"default",
+        "local_job":false
+      },
+      
+      {
+        "command":"./the_job --seconds=10s --unique-input=custom_input_31.in --common-input=common_input.dat --output=workflow_31.out",
+        "allocation":"first",
+        "outputs":
+          [
+            
+            {
+              "name":"workflow_31.out"
+            }
+          ],
+        "inputs":
+          [
+            
+            {
+              "name":"the_job"
+            },
+            
+            {
+              "name":"custom_input_31.in"
+            },
+            
+            {
+              "name":"common_input.dat"
+            }
+          ],
+        "category":"default",
+        "local_job":false
+      },
+      
+      {
+        "command":"./the_job --seconds=10s --unique-input=custom_input_32.in --common-input=common_input.dat --output=workflow_32.out",
+        "allocation":"first",
+        "outputs":
+          [
+            
+            {
+              "name":"workflow_32.out"
+            }
+          ],
+        "inputs":
+          [
+            
+            {
+              "name":"the_job"
+            },
+            
+            {
+              "name":"custom_input_32.in"
+            },
+            
+            {
+              "name":"common_input.dat"
+            }
+          ],
+        "category":"default",
+        "local_job":false
+      },
+      
+      {
+        "command":"./the_job --seconds=10s --unique-input=custom_input_33.in --common-input=common_input.dat --output=workflow_33.out",
+        "allocation":"first",
+        "outputs":
+          [
+            
+            {
+              "name":"workflow_33.out"
+            }
+          ],
+        "inputs":
+          [
+            
+            {
+              "name":"the_job"
+            },
+            
+            {
+              "name":"custom_input_33.in"
+            },
+            
+            {
+              "name":"common_input.dat"
+            }
+          ],
+        "category":"default",
+        "local_job":false
+      },
+      
+      {
+        "command":"./the_job --seconds=10s --unique-input=custom_input_34.in --common-input=common_input.dat --output=workflow_34.out",
+        "allocation":"first",
+        "outputs":
+          [
+            
+            {
+              "name":"workflow_34.out"
+            }
+          ],
+        "inputs":
+          [
+            
+            {
+              "name":"the_job"
+            },
+            
+            {
+              "name":"custom_input_34.in"
+            },
+            
+            {
+              "name":"common_input.dat"
+            }
+          ],
+        "category":"default",
+        "local_job":false
+      },
+      
+      {
+        "command":"./the_job --seconds=10s --unique-input=custom_input_35.in --common-input=common_input.dat --output=workflow_35.out",
+        "allocation":"first",
+        "outputs":
+          [
+            
+            {
+              "name":"workflow_35.out"
+            }
+          ],
+        "inputs":
+          [
+            
+            {
+              "name":"the_job"
+            },
+            
+            {
+              "name":"custom_input_35.in"
+            },
+            
+            {
+              "name":"common_input.dat"
+            }
+          ],
+        "category":"default",
+        "local_job":false
+      },
+      
+      {
+        "command":"./the_job --seconds=10s --unique-input=custom_input_36.in --common-input=common_input.dat --output=workflow_36.out",
+        "allocation":"first",
+        "outputs":
+          [
+            
+            {
+              "name":"workflow_36.out"
+            }
+          ],
+        "inputs":
+          [
+            
+            {
+              "name":"the_job"
+            },
+            
+            {
+              "name":"custom_input_36.in"
+            },
+            
+            {
+              "name":"common_input.dat"
+            }
+          ],
+        "category":"default",
+        "local_job":false
+      },
+      
+      {
+        "command":"./the_job --seconds=10s --unique-input=custom_input_37.in --common-input=common_input.dat --output=workflow_37.out",
+        "allocation":"first",
+        "outputs":
+          [
+            
+            {
+              "name":"workflow_37.out"
+            }
+          ],
+        "inputs":
+          [
+            
+            {
+              "name":"the_job"
+            },
+            
+            {
+              "name":"custom_input_37.in"
+            },
+            
+            {
+              "name":"common_input.dat"
+            }
+          ],
+        "category":"default",
+        "local_job":false
+      },
+      
+      {
+        "command":"./the_job --seconds=10s --unique-input=custom_input_38.in --common-input=common_input.dat --output=workflow_38.out",
+        "allocation":"first",
+        "outputs":
+          [
+            
+            {
+              "name":"workflow_38.out"
+            }
+          ],
+        "inputs":
+          [
+            
+            {
+              "name":"the_job"
+            },
+            
+            {
+              "name":"custom_input_38.in"
+            },
+            
+            {
+              "name":"common_input.dat"
+            }
+          ],
+        "category":"default",
+        "local_job":false
+      },
+      
+      {
+        "command":"./the_job --seconds=10s --unique-input=custom_input_39.in --common-input=common_input.dat --output=workflow_39.out",
+        "allocation":"first",
+        "outputs":
+          [
+            
+            {
+              "name":"workflow_39.out"
+            }
+          ],
+        "inputs":
+          [
+            
+            {
+              "name":"the_job"
+            },
+            
+            {
+              "name":"custom_input_39.in"
+            },
+            
+            {
+              "name":"common_input.dat"
+            }
+          ],
+        "category":"default",
+        "local_job":false
+      },
+      
+      {
+        "command":"./the_job --seconds=10s --unique-input=custom_input_40.in --common-input=common_input.dat --output=workflow_40.out",
+        "allocation":"first",
+        "outputs":
+          [
+            
+            {
+              "name":"workflow_40.out"
+            }
+          ],
+        "inputs":
+          [
+            
+            {
+              "name":"the_job"
+            },
+            
+            {
+              "name":"custom_input_40.in"
+            },
+            
+            {
+              "name":"common_input.dat"
+            }
+          ],
+        "category":"default",
+        "local_job":false
+      },
+      
+      {
+        "command":"./the_job --seconds=10s --unique-input=custom_input_41.in --common-input=common_input.dat --output=workflow_41.out",
+        "allocation":"first",
+        "outputs":
+          [
+            
+            {
+              "name":"workflow_41.out"
+            }
+          ],
+        "inputs":
+          [
+            
+            {
+              "name":"the_job"
+            },
+            
+            {
+              "name":"custom_input_41.in"
+            },
+            
+            {
+              "name":"common_input.dat"
+            }
+          ],
+        "category":"default",
+        "local_job":false
+      },
+      
+      {
+        "command":"./the_job --seconds=10s --unique-input=custom_input_42.in --common-input=common_input.dat --output=workflow_42.out",
+        "allocation":"first",
+        "outputs":
+          [
+            
+            {
+              "name":"workflow_42.out"
+            }
+          ],
+        "inputs":
+          [
+            
+            {
+              "name":"the_job"
+            },
+            
+            {
+              "name":"custom_input_42.in"
+            },
+            
+            {
+              "name":"common_input.dat"
+            }
+          ],
+        "category":"default",
+        "local_job":false
+      },
+      
+      {
+        "command":"./the_job --seconds=10s --unique-input=custom_input_43.in --common-input=common_input.dat --output=workflow_43.out",
+        "allocation":"first",
+        "outputs":
+          [
+            
+            {
+              "name":"workflow_43.out"
+            }
+          ],
+        "inputs":
+          [
+            
+            {
+              "name":"the_job"
+            },
+            
+            {
+              "name":"custom_input_43.in"
+            },
+            
+            {
+              "name":"common_input.dat"
+            }
+          ],
+        "category":"default",
+        "local_job":false
+      },
+      
+      {
+        "command":"./the_job --seconds=10s --unique-input=custom_input_44.in --common-input=common_input.dat --output=workflow_44.out",
+        "allocation":"first",
+        "outputs":
+          [
+            
+            {
+              "name":"workflow_44.out"
+            }
+          ],
+        "inputs":
+          [
+            
+            {
+              "name":"the_job"
+            },
+            
+            {
+              "name":"custom_input_44.in"
+            },
+            
+            {
+              "name":"common_input.dat"
+            }
+          ],
+        "category":"default",
+        "local_job":false
+      },
+      
+      {
+        "command":"./the_job --seconds=10s --unique-input=custom_input_45.in --common-input=common_input.dat --output=workflow_45.out",
+        "allocation":"first",
+        "outputs":
+          [
+            
+            {
+              "name":"workflow_45.out"
+            }
+          ],
+        "inputs":
+          [
+            
+            {
+              "name":"the_job"
+            },
+            
+            {
+              "name":"custom_input_45.in"
+            },
+            
+            {
+              "name":"common_input.dat"
+            }
+          ],
+        "category":"default",
+        "local_job":false
+      },
+      
+      {
+        "command":"./the_job --seconds=10s --unique-input=custom_input_46.in --common-input=common_input.dat --output=workflow_46.out",
+        "allocation":"first",
+        "outputs":
+          [
+            
+            {
+              "name":"workflow_46.out"
+            }
+          ],
+        "inputs":
+          [
+            
+            {
+              "name":"the_job"
+            },
+            
+            {
+              "name":"custom_input_46.in"
+            },
+            
+            {
+              "name":"common_input.dat"
+            }
+          ],
+        "category":"default",
+        "local_job":false
+      },
+      
+      {
+        "command":"./the_job --seconds=10s --unique-input=custom_input_47.in --common-input=common_input.dat --output=workflow_47.out",
+        "allocation":"first",
+        "outputs":
+          [
+            
+            {
+              "name":"workflow_47.out"
+            }
+          ],
+        "inputs":
+          [
+            
+            {
+              "name":"the_job"
+            },
+            
+            {
+              "name":"custom_input_47.in"
+            },
+            
+            {
+              "name":"common_input.dat"
+            }
+          ],
+        "category":"default",
+        "local_job":false
+      },
+      
+      {
+        "command":"./the_job --seconds=10s --unique-input=custom_input_48.in --common-input=common_input.dat --output=workflow_48.out",
+        "allocation":"first",
+        "outputs":
+          [
+            
+            {
+              "name":"workflow_48.out"
+            }
+          ],
+        "inputs":
+          [
+            
+            {
+              "name":"the_job"
+            },
+            
+            {
+              "name":"custom_input_48.in"
+            },
+            
+            {
+              "name":"common_input.dat"
+            }
+          ],
+        "category":"default",
+        "local_job":false
+      },
+      
+      {
+        "command":"./the_job --seconds=10s --unique-input=custom_input_49.in --common-input=common_input.dat --output=workflow_49.out",
+        "allocation":"first",
+        "outputs":
+          [
+            
+            {
+              "name":"workflow_49.out"
+            }
+          ],
+        "inputs":
+          [
+            
+            {
+              "name":"the_job"
+            },
+            
+            {
+              "name":"custom_input_49.in"
+            },
+            
+            {
+              "name":"common_input.dat"
+            }
+          ],
+        "category":"default",
+        "local_job":false
+      },
+      
+      {
+        "command":"./the_job --seconds=10s --unique-input=custom_input_50.in --common-input=common_input.dat --output=workflow_50.out",
+        "allocation":"first",
+        "outputs":
+          [
+            
+            {
+              "name":"workflow_50.out"
+            }
+          ],
+        "inputs":
+          [
+            
+            {
+              "name":"the_job"
+            },
+            
+            {
+              "name":"custom_input_50.in"
+            },
+            
+            {
+              "name":"common_input.dat"
+            }
+          ],
+        "category":"default",
+        "local_job":false
+      },
+      
+      {
+        "command":"./the_job --seconds=10s --unique-input=custom_input_51.in --common-input=common_input.dat --output=workflow_51.out",
+        "allocation":"first",
+        "outputs":
+          [
+            
+            {
+              "name":"workflow_51.out"
+            }
+          ],
+        "inputs":
+          [
+            
+            {
+              "name":"the_job"
+            },
+            
+            {
+              "name":"custom_input_51.in"
+            },
+            
+            {
+              "name":"common_input.dat"
+            }
+          ],
+        "category":"default",
+        "local_job":false
+      },
+      
+      {
+        "command":"./the_job --seconds=10s --unique-input=custom_input_52.in --common-input=common_input.dat --output=workflow_52.out",
+        "allocation":"first",
+        "outputs":
+          [
+            
+            {
+              "name":"workflow_52.out"
+            }
+          ],
+        "inputs":
+          [
+            
+            {
+              "name":"the_job"
+            },
+            
+            {
+              "name":"custom_input_52.in"
+            },
+            
+            {
+              "name":"common_input.dat"
+            }
+          ],
+        "category":"default",
+        "local_job":false
+      },
+      
+      {
+        "command":"./the_job --seconds=10s --unique-input=custom_input_53.in --common-input=common_input.dat --output=workflow_53.out",
+        "allocation":"first",
+        "outputs":
+          [
+            
+            {
+              "name":"workflow_53.out"
+            }
+          ],
+        "inputs":
+          [
+            
+            {
+              "name":"the_job"
+            },
+            
+            {
+              "name":"custom_input_53.in"
+            },
+            
+            {
+              "name":"common_input.dat"
+            }
+          ],
+        "category":"default",
+        "local_job":false
+      },
+      
+      {
+        "command":"./the_job --seconds=10s --unique-input=custom_input_54.in --common-input=common_input.dat --output=workflow_54.out",
+        "allocation":"first",
+        "outputs":
+          [
+            
+            {
+              "name":"workflow_54.out"
+            }
+          ],
+        "inputs":
+          [
+            
+            {
+              "name":"the_job"
+            },
+            
+            {
+              "name":"custom_input_54.in"
+            },
+            
+            {
+              "name":"common_input.dat"
+            }
+          ],
+        "category":"default",
+        "local_job":false
+      },
+      
+      {
+        "command":"./the_job --seconds=10s --unique-input=custom_input_55.in --common-input=common_input.dat --output=workflow_55.out",
+        "allocation":"first",
+        "outputs":
+          [
+            
+            {
+              "name":"workflow_55.out"
+            }
+          ],
+        "inputs":
+          [
+            
+            {
+              "name":"the_job"
+            },
+            
+            {
+              "name":"custom_input_55.in"
+            },
+            
+            {
+              "name":"common_input.dat"
+            }
+          ],
+        "category":"default",
+        "local_job":false
+      },
+      
+      {
+        "command":"./the_job --seconds=10s --unique-input=custom_input_56.in --common-input=common_input.dat --output=workflow_56.out",
+        "allocation":"first",
+        "outputs":
+          [
+            
+            {
+              "name":"workflow_56.out"
+            }
+          ],
+        "inputs":
+          [
+            
+            {
+              "name":"the_job"
+            },
+            
+            {
+              "name":"custom_input_56.in"
+            },
+            
+            {
+              "name":"common_input.dat"
+            }
+          ],
+        "category":"default",
+        "local_job":false
+      },
+      
+      {
+        "command":"./the_job --seconds=10s --unique-input=custom_input_57.in --common-input=common_input.dat --output=workflow_57.out",
+        "allocation":"first",
+        "outputs":
+          [
+            
+            {
+              "name":"workflow_57.out"
+            }
+          ],
+        "inputs":
+          [
+            
+            {
+              "name":"the_job"
+            },
+            
+            {
+              "name":"custom_input_57.in"
+            },
+            
+            {
+              "name":"common_input.dat"
+            }
+          ],
+        "category":"default",
+        "local_job":false
+      },
+      
+      {
+        "command":"./the_job --seconds=10s --unique-input=custom_input_58.in --common-input=common_input.dat --output=workflow_58.out",
+        "allocation":"first",
+        "outputs":
+          [
+            
+            {
+              "name":"workflow_58.out"
+            }
+          ],
+        "inputs":
+          [
+            
+            {
+              "name":"the_job"
+            },
+            
+            {
+              "name":"custom_input_58.in"
+            },
+            
+            {
+              "name":"common_input.dat"
+            }
+          ],
+        "category":"default",
+        "local_job":false
+      },
+      
+      {
+        "command":"./the_job --seconds=10s --unique-input=custom_input_59.in --common-input=common_input.dat --output=workflow_59.out",
+        "allocation":"first",
+        "outputs":
+          [
+            
+            {
+              "name":"workflow_59.out"
+            }
+          ],
+        "inputs":
+          [
+            
+            {
+              "name":"the_job"
+            },
+            
+            {
+              "name":"custom_input_59.in"
+            },
+            
+            {
+              "name":"common_input.dat"
+            }
+          ],
+        "category":"default",
+        "local_job":false
+      },
+      
+      {
+        "command":"./the_job --seconds=10s --unique-input=custom_input_60.in --common-input=common_input.dat --output=workflow_60.out",
+        "allocation":"first",
+        "outputs":
+          [
+            
+            {
+              "name":"workflow_60.out"
+            }
+          ],
+        "inputs":
+          [
+            
+            {
+              "name":"the_job"
+            },
+            
+            {
+              "name":"custom_input_60.in"
+            },
+            
+            {
+              "name":"common_input.dat"
+            }
+          ],
+        "category":"default",
+        "local_job":false
+      },
+      
+      {
+        "command":"./the_job --seconds=10s --unique-input=custom_input_61.in --common-input=common_input.dat --output=workflow_61.out",
+        "allocation":"first",
+        "outputs":
+          [
+            
+            {
+              "name":"workflow_61.out"
+            }
+          ],
+        "inputs":
+          [
+            
+            {
+              "name":"the_job"
+            },
+            
+            {
+              "name":"custom_input_61.in"
+            },
+            
+            {
+              "name":"common_input.dat"
+            }
+          ],
+        "category":"default",
+        "local_job":false
+      },
+      
+      {
+        "command":"./the_job --seconds=10s --unique-input=custom_input_62.in --common-input=common_input.dat --output=workflow_62.out",
+        "allocation":"first",
+        "outputs":
+          [
+            
+            {
+              "name":"workflow_62.out"
+            }
+          ],
+        "inputs":
+          [
+            
+            {
+              "name":"the_job"
+            },
+            
+            {
+              "name":"custom_input_62.in"
+            },
+            
+            {
+              "name":"common_input.dat"
+            }
+          ],
+        "category":"default",
+        "local_job":false
+      },
+      
+      {
+        "command":"./the_job --seconds=10s --unique-input=custom_input_63.in --common-input=common_input.dat --output=workflow_63.out",
+        "allocation":"first",
+        "outputs":
+          [
+            
+            {
+              "name":"workflow_63.out"
+            }
+          ],
+        "inputs":
+          [
+            
+            {
+              "name":"the_job"
+            },
+            
+            {
+              "name":"custom_input_63.in"
+            },
+            
+            {
+              "name":"common_input.dat"
+            }
+          ],
+        "category":"default",
+        "local_job":false
+      },
+      
+      {
+        "command":"./the_job --seconds=10s --unique-input=custom_input_64.in --common-input=common_input.dat --output=workflow_64.out",
+        "allocation":"first",
+        "outputs":
+          [
+            
+            {
+              "name":"workflow_64.out"
+            }
+          ],
+        "inputs":
+          [
+            
+            {
+              "name":"the_job"
+            },
+            
+            {
+              "name":"custom_input_64.in"
+            },
+            
+            {
+              "name":"common_input.dat"
+            }
+          ],
+        "category":"default",
+        "local_job":false
+      },
+      
+      {
+        "command":"./the_job --seconds=10s --unique-input=custom_input_65.in --common-input=common_input.dat --output=workflow_65.out",
+        "allocation":"first",
+        "outputs":
+          [
+            
+            {
+              "name":"workflow_65.out"
+            }
+          ],
+        "inputs":
+          [
+            
+            {
+              "name":"the_job"
+            },
+            
+            {
+              "name":"custom_input_65.in"
+            },
+            
+            {
+              "name":"common_input.dat"
+            }
+          ],
+        "category":"default",
+        "local_job":false
+      },
+      
+      {
+        "command":"./the_job --seconds=10s --unique-input=custom_input_66.in --common-input=common_input.dat --output=workflow_66.out",
+        "allocation":"first",
+        "outputs":
+          [
+            
+            {
+              "name":"workflow_66.out"
+            }
+          ],
+        "inputs":
+          [
+            
+            {
+              "name":"the_job"
+            },
+            
+            {
+              "name":"custom_input_66.in"
+            },
+            
+            {
+              "name":"common_input.dat"
+            }
+          ],
+        "category":"default",
+        "local_job":false
+      },
+      
+      {
+        "command":"./the_job --seconds=10s --unique-input=custom_input_67.in --common-input=common_input.dat --output=workflow_67.out",
+        "allocation":"first",
+        "outputs":
+          [
+            
+            {
+              "name":"workflow_67.out"
+            }
+          ],
+        "inputs":
+          [
+            
+            {
+              "name":"the_job"
+            },
+            
+            {
+              "name":"custom_input_67.in"
+            },
+            
+            {
+              "name":"common_input.dat"
+            }
+          ],
+        "category":"default",
+        "local_job":false
+      },
+      
+      {
+        "command":"./the_job --seconds=10s --unique-input=custom_input_68.in --common-input=common_input.dat --output=workflow_68.out",
+        "allocation":"first",
+        "outputs":
+          [
+            
+            {
+              "name":"workflow_68.out"
+            }
+          ],
+        "inputs":
+          [
+            
+            {
+              "name":"the_job"
+            },
+            
+            {
+              "name":"custom_input_68.in"
+            },
+            
+            {
+              "name":"common_input.dat"
+            }
+          ],
+        "category":"default",
+        "local_job":false
+      },
+      
+      {
+        "command":"./the_job --seconds=10s --unique-input=custom_input_69.in --common-input=common_input.dat --output=workflow_69.out",
+        "allocation":"first",
+        "outputs":
+          [
+            
+            {
+              "name":"workflow_69.out"
+            }
+          ],
+        "inputs":
+          [
+            
+            {
+              "name":"the_job"
+            },
+            
+            {
+              "name":"custom_input_69.in"
+            },
+            
+            {
+              "name":"common_input.dat"
+            }
+          ],
+        "category":"default",
+        "local_job":false
+      },
+      
+      {
+        "command":"./the_job --seconds=10s --unique-input=custom_input_70.in --common-input=common_input.dat --output=workflow_70.out",
+        "allocation":"first",
+        "outputs":
+          [
+            
+            {
+              "name":"workflow_70.out"
+            }
+          ],
+        "inputs":
+          [
+            
+            {
+              "name":"the_job"
+            },
+            
+            {
+              "name":"custom_input_70.in"
+            },
+            
+            {
+              "name":"common_input.dat"
+            }
+          ],
+        "category":"default",
+        "local_job":false
+      },
+      
+      {
+        "command":"./the_job --seconds=10s --unique-input=custom_input_71.in --common-input=common_input.dat --output=workflow_71.out",
+        "allocation":"first",
+        "outputs":
+          [
+            
+            {
+              "name":"workflow_71.out"
+            }
+          ],
+        "inputs":
+          [
+            
+            {
+              "name":"the_job"
+            },
+            
+            {
+              "name":"custom_input_71.in"
+            },
+            
+            {
+              "name":"common_input.dat"
+            }
+          ],
+        "category":"default",
+        "local_job":false
+      },
+      
+      {
+        "command":"./the_job --seconds=10s --unique-input=custom_input_72.in --common-input=common_input.dat --output=workflow_72.out",
+        "allocation":"first",
+        "outputs":
+          [
+            
+            {
+              "name":"workflow_72.out"
+            }
+          ],
+        "inputs":
+          [
+            
+            {
+              "name":"the_job"
+            },
+            
+            {
+              "name":"custom_input_72.in"
+            },
+            
+            {
+              "name":"common_input.dat"
+            }
+          ],
+        "category":"default",
+        "local_job":false
+      },
+      
+      {
+        "command":"./the_job --seconds=10s --unique-input=custom_input_73.in --common-input=common_input.dat --output=workflow_73.out",
+        "allocation":"first",
+        "outputs":
+          [
+            
+            {
+              "name":"workflow_73.out"
+            }
+          ],
+        "inputs":
+          [
+            
+            {
+              "name":"the_job"
+            },
+            
+            {
+              "name":"custom_input_73.in"
+            },
+            
+            {
+              "name":"common_input.dat"
+            }
+          ],
+        "category":"default",
+        "local_job":false
+      },
+      
+      {
+        "command":"./the_job --seconds=10s --unique-input=custom_input_74.in --common-input=common_input.dat --output=workflow_74.out",
+        "allocation":"first",
+        "outputs":
+          [
+            
+            {
+              "name":"workflow_74.out"
+            }
+          ],
+        "inputs":
+          [
+            
+            {
+              "name":"the_job"
+            },
+            
+            {
+              "name":"custom_input_74.in"
+            },
+            
+            {
+              "name":"common_input.dat"
+            }
+          ],
+        "category":"default",
+        "local_job":false
+      },
+      
+      {
+        "command":"./the_job --seconds=10s --unique-input=custom_input_75.in --common-input=common_input.dat --output=workflow_75.out",
+        "allocation":"first",
+        "outputs":
+          [
+            
+            {
+              "name":"workflow_75.out"
+            }
+          ],
+        "inputs":
+          [
+            
+            {
+              "name":"the_job"
+            },
+            
+            {
+              "name":"custom_input_75.in"
+            },
+            
+            {
+              "name":"common_input.dat"
+            }
+          ],
+        "category":"default",
+        "local_job":false
+      },
+      
+      {
+        "command":"./the_job --seconds=10s --unique-input=custom_input_76.in --common-input=common_input.dat --output=workflow_76.out",
+        "allocation":"first",
+        "outputs":
+          [
+            
+            {
+              "name":"workflow_76.out"
+            }
+          ],
+        "inputs":
+          [
+            
+            {
+              "name":"the_job"
+            },
+            
+            {
+              "name":"custom_input_76.in"
+            },
+            
+            {
+              "name":"common_input.dat"
+            }
+          ],
+        "category":"default",
+        "local_job":false
+      },
+      
+      {
+        "command":"./the_job --seconds=10s --unique-input=custom_input_77.in --common-input=common_input.dat --output=workflow_77.out",
+        "allocation":"first",
+        "outputs":
+          [
+            
+            {
+              "name":"workflow_77.out"
+            }
+          ],
+        "inputs":
+          [
+            
+            {
+              "name":"the_job"
+            },
+            
+            {
+              "name":"custom_input_77.in"
+            },
+            
+            {
+              "name":"common_input.dat"
+            }
+          ],
+        "category":"default",
+        "local_job":false
+      },
+      
+      {
+        "command":"./the_job --seconds=10s --unique-input=custom_input_78.in --common-input=common_input.dat --output=workflow_78.out",
+        "allocation":"first",
+        "outputs":
+          [
+            
+            {
+              "name":"workflow_78.out"
+            }
+          ],
+        "inputs":
+          [
+            
+            {
+              "name":"the_job"
+            },
+            
+            {
+              "name":"custom_input_78.in"
+            },
+            
+            {
+              "name":"common_input.dat"
+            }
+          ],
+        "category":"default",
+        "local_job":false
+      },
+      
+      {
+        "command":"./the_job --seconds=10s --unique-input=custom_input_79.in --common-input=common_input.dat --output=workflow_79.out",
+        "allocation":"first",
+        "outputs":
+          [
+            
+            {
+              "name":"workflow_79.out"
+            }
+          ],
+        "inputs":
+          [
+            
+            {
+              "name":"the_job"
+            },
+            
+            {
+              "name":"custom_input_79.in"
+            },
+            
+            {
+              "name":"common_input.dat"
+            }
+          ],
+        "category":"default",
+        "local_job":false
+      },
+      
+      {
+        "command":"./the_job --seconds=10s --unique-input=custom_input_80.in --common-input=common_input.dat --output=workflow_80.out",
+        "allocation":"first",
+        "outputs":
+          [
+            
+            {
+              "name":"workflow_80.out"
+            }
+          ],
+        "inputs":
+          [
+            
+            {
+              "name":"the_job"
+            },
+            
+            {
+              "name":"custom_input_80.in"
+            },
+            
+            {
+              "name":"common_input.dat"
+            }
+          ],
+        "category":"default",
+        "local_job":false
+      },
+      
+      {
+        "command":"./the_job --seconds=10s --unique-input=custom_input_81.in --common-input=common_input.dat --output=workflow_81.out",
+        "allocation":"first",
+        "outputs":
+          [
+            
+            {
+              "name":"workflow_81.out"
+            }
+          ],
+        "inputs":
+          [
+            
+            {
+              "name":"the_job"
+            },
+            
+            {
+              "name":"custom_input_81.in"
+            },
+            
+            {
+              "name":"common_input.dat"
+            }
+          ],
+        "category":"default",
+        "local_job":false
+      },
+      
+      {
+        "command":"./the_job --seconds=10s --unique-input=custom_input_82.in --common-input=common_input.dat --output=workflow_82.out",
+        "allocation":"first",
+        "outputs":
+          [
+            
+            {
+              "name":"workflow_82.out"
+            }
+          ],
+        "inputs":
+          [
+            
+            {
+              "name":"the_job"
+            },
+            
+            {
+              "name":"custom_input_82.in"
+            },
+            
+            {
+              "name":"common_input.dat"
+            }
+          ],
+        "category":"default",
+        "local_job":false
+      },
+      
+      {
+        "command":"./the_job --seconds=10s --unique-input=custom_input_83.in --common-input=common_input.dat --output=workflow_83.out",
+        "allocation":"first",
+        "outputs":
+          [
+            
+            {
+              "name":"workflow_83.out"
+            }
+          ],
+        "inputs":
+          [
+            
+            {
+              "name":"the_job"
+            },
+            
+            {
+              "name":"custom_input_83.in"
+            },
+            
+            {
+              "name":"common_input.dat"
+            }
+          ],
+        "category":"default",
+        "local_job":false
+      },
+      
+      {
+        "command":"./the_job --seconds=10s --unique-input=custom_input_84.in --common-input=common_input.dat --output=workflow_84.out",
+        "allocation":"first",
+        "outputs":
+          [
+            
+            {
+              "name":"workflow_84.out"
+            }
+          ],
+        "inputs":
+          [
+            
+            {
+              "name":"the_job"
+            },
+            
+            {
+              "name":"custom_input_84.in"
+            },
+            
+            {
+              "name":"common_input.dat"
+            }
+          ],
+        "category":"default",
+        "local_job":false
+      },
+      
+      {
+        "command":"./the_job --seconds=10s --unique-input=custom_input_85.in --common-input=common_input.dat --output=workflow_85.out",
+        "allocation":"first",
+        "outputs":
+          [
+            
+            {
+              "name":"workflow_85.out"
+            }
+          ],
+        "inputs":
+          [
+            
+            {
+              "name":"the_job"
+            },
+            
+            {
+              "name":"custom_input_85.in"
+            },
+            
+            {
+              "name":"common_input.dat"
+            }
+          ],
+        "category":"default",
+        "local_job":false
+      },
+      
+      {
+        "command":"./the_job --seconds=10s --unique-input=custom_input_86.in --common-input=common_input.dat --output=workflow_86.out",
+        "allocation":"first",
+        "outputs":
+          [
+            
+            {
+              "name":"workflow_86.out"
+            }
+          ],
+        "inputs":
+          [
+            
+            {
+              "name":"the_job"
+            },
+            
+            {
+              "name":"custom_input_86.in"
+            },
+            
+            {
+              "name":"common_input.dat"
+            }
+          ],
+        "category":"default",
+        "local_job":false
+      },
+      
+      {
+        "command":"./the_job --seconds=10s --unique-input=custom_input_87.in --common-input=common_input.dat --output=workflow_87.out",
+        "allocation":"first",
+        "outputs":
+          [
+            
+            {
+              "name":"workflow_87.out"
+            }
+          ],
+        "inputs":
+          [
+            
+            {
+              "name":"the_job"
+            },
+            
+            {
+              "name":"custom_input_87.in"
+            },
+            
+            {
+              "name":"common_input.dat"
+            }
+          ],
+        "category":"default",
+        "local_job":false
+      },
+      
+      {
+        "command":"./the_job --seconds=10s --unique-input=custom_input_88.in --common-input=common_input.dat --output=workflow_88.out",
+        "allocation":"first",
+        "outputs":
+          [
+            
+            {
+              "name":"workflow_88.out"
+            }
+          ],
+        "inputs":
+          [
+            
+            {
+              "name":"the_job"
+            },
+            
+            {
+              "name":"custom_input_88.in"
+            },
+            
+            {
+              "name":"common_input.dat"
+            }
+          ],
+        "category":"default",
+        "local_job":false
+      },
+      
+      {
+        "command":"./the_job --seconds=10s --unique-input=custom_input_89.in --common-input=common_input.dat --output=workflow_89.out",
+        "allocation":"first",
+        "outputs":
+          [
+            
+            {
+              "name":"workflow_89.out"
+            }
+          ],
+        "inputs":
+          [
+            
+            {
+              "name":"the_job"
+            },
+            
+            {
+              "name":"custom_input_89.in"
+            },
+            
+            {
+              "name":"common_input.dat"
+            }
+          ],
+        "category":"default",
+        "local_job":false
+      },
+      
+      {
+        "command":"./the_job --seconds=10s --unique-input=custom_input_90.in --common-input=common_input.dat --output=workflow_90.out",
+        "allocation":"first",
+        "outputs":
+          [
+            
+            {
+              "name":"workflow_90.out"
+            }
+          ],
+        "inputs":
+          [
+            
+            {
+              "name":"the_job"
+            },
+            
+            {
+              "name":"custom_input_90.in"
+            },
+            
+            {
+              "name":"common_input.dat"
+            }
+          ],
+        "category":"default",
+        "local_job":false
+      },
+      
+      {
+        "command":"./the_job --seconds=10s --unique-input=custom_input_91.in --common-input=common_input.dat --output=workflow_91.out",
+        "allocation":"first",
+        "outputs":
+          [
+            
+            {
+              "name":"workflow_91.out"
+            }
+          ],
+        "inputs":
+          [
+            
+            {
+              "name":"the_job"
+            },
+            
+            {
+              "name":"custom_input_91.in"
+            },
+            
+            {
+              "name":"common_input.dat"
+            }
+          ],
+        "category":"default",
+        "local_job":false
+      },
+      
+      {
+        "command":"./the_job --seconds=10s --unique-input=custom_input_92.in --common-input=common_input.dat --output=workflow_92.out",
+        "allocation":"first",
+        "outputs":
+          [
+            
+            {
+              "name":"workflow_92.out"
+            }
+          ],
+        "inputs":
+          [
+            
+            {
+              "name":"the_job"
+            },
+            
+            {
+              "name":"custom_input_92.in"
+            },
+            
+            {
+              "name":"common_input.dat"
+            }
+          ],
+        "category":"default",
+        "local_job":false
+      },
+      
+      {
+        "command":"./the_job --seconds=10s --unique-input=custom_input_93.in --common-input=common_input.dat --output=workflow_93.out",
+        "allocation":"first",
+        "outputs":
+          [
+            
+            {
+              "name":"workflow_93.out"
+            }
+          ],
+        "inputs":
+          [
+            
+            {
+              "name":"the_job"
+            },
+            
+            {
+              "name":"custom_input_93.in"
+            },
+            
+            {
+              "name":"common_input.dat"
+            }
+          ],
+        "category":"default",
+        "local_job":false
+      },
+      
+      {
+        "command":"./the_job --seconds=10s --unique-input=custom_input_94.in --common-input=common_input.dat --output=workflow_94.out",
+        "allocation":"first",
+        "outputs":
+          [
+            
+            {
+              "name":"workflow_94.out"
+            }
+          ],
+        "inputs":
+          [
+            
+            {
+              "name":"the_job"
+            },
+            
+            {
+              "name":"custom_input_94.in"
+            },
+            
+            {
+              "name":"common_input.dat"
+            }
+          ],
+        "category":"default",
+        "local_job":false
+      },
+      
+      {
+        "command":"./the_job --seconds=10s --unique-input=custom_input_95.in --common-input=common_input.dat --output=workflow_95.out",
+        "allocation":"first",
+        "outputs":
+          [
+            
+            {
+              "name":"workflow_95.out"
+            }
+          ],
+        "inputs":
+          [
+            
+            {
+              "name":"the_job"
+            },
+            
+            {
+              "name":"custom_input_95.in"
+            },
+            
+            {
+              "name":"common_input.dat"
+            }
+          ],
+        "category":"default",
+        "local_job":false
+      },
+      
+      {
+        "command":"./the_job --seconds=10s --unique-input=custom_input_96.in --common-input=common_input.dat --output=workflow_96.out",
+        "allocation":"first",
+        "outputs":
+          [
+            
+            {
+              "name":"workflow_96.out"
+            }
+          ],
+        "inputs":
+          [
+            
+            {
+              "name":"the_job"
+            },
+            
+            {
+              "name":"custom_input_96.in"
+            },
+            
+            {
+              "name":"common_input.dat"
+            }
+          ],
+        "category":"default",
+        "local_job":false
+      },
+      
+      {
+        "command":"./the_job --seconds=10s --unique-input=custom_input_97.in --common-input=common_input.dat --output=workflow_97.out",
+        "allocation":"first",
+        "outputs":
+          [
+            
+            {
+              "name":"workflow_97.out"
+            }
+          ],
+        "inputs":
+          [
+            
+            {
+              "name":"the_job"
+            },
+            
+            {
+              "name":"custom_input_97.in"
+            },
+            
+            {
+              "name":"common_input.dat"
+            }
+          ],
+        "category":"default",
+        "local_job":false
+      },
+      
+      {
+        "command":"./the_job --seconds=10s --unique-input=custom_input_98.in --common-input=common_input.dat --output=workflow_98.out",
+        "allocation":"first",
+        "outputs":
+          [
+            
+            {
+              "name":"workflow_98.out"
+            }
+          ],
+        "inputs":
+          [
+            
+            {
+              "name":"the_job"
+            },
+            
+            {
+              "name":"custom_input_98.in"
+            },
+            
+            {
+              "name":"common_input.dat"
+            }
+          ],
+        "category":"default",
+        "local_job":false
+      },
+      
+      {
+        "command":"./the_job --seconds=10s --unique-input=custom_input_99.in --common-input=common_input.dat --output=workflow_99.out",
+        "allocation":"first",
+        "outputs":
+          [
+            
+            {
+              "name":"workflow_99.out"
+            }
+          ],
+        "inputs":
+          [
+            
+            {
+              "name":"the_job"
+            },
+            
+            {
+              "name":"custom_input_99.in"
+            },
+            
+            {
+              "name":"common_input.dat"
+            }
+          ],
+        "category":"default",
+        "local_job":false
+      }
+    ]
+}

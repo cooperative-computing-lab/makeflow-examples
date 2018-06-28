@@ -56,7 +56,7 @@ if __name__ == '__main__':
 			no_output = True
 		elif o in ("-z","--null-output"):
 			null_output = True
-	f = open("Makeflow","w+")
+	f = open("benchmark.mf","w+")
 	for x in xrange(0,int(num)):
 		outfile = ""
 		in_files = []
