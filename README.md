@@ -37,5 +37,5 @@ Some analysis programs may emit errors indicating low quality data.
 <tr><td><a href=lifemapper><img width=128 src=lifemapper/lifemapper.png></a><td>Lifemapper Species Distribution Modeling (SDM) workflow, courtesy of C.J. Grady.  (Shown at scale of 10 species and 5 random trials.)
 <tr><td><a href=snpexp><img width=128 src=snpexp/snpexp.png></a><td>SNPEXP Genomics analysis workflow courtesy of Scott Emrich and Notre Dame Bioinformatics Laboratory.
 <tr><td><a href=bwa-gatk><img width=128 src=bwa-gatk/bwa-gatk.png></a><td>BWA-GATK genomics workflow by Nick Hazekamp and Olivia Choudhury.
-<tr><td><a href=shakespeare.<img width=128 src=shakespeare/shakespeare.png></a><td>Example text analysis workflow by Nate Kremer-Herman.
+<tr><td><a href=shakespeare><img width=128 src=shakespeare/shakespeare.png></a><td>Example text analysis workflow by Nate Kremer-Herman.
 </table>
