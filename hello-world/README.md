@@ -20,3 +20,9 @@ To run this call:
 ```
 makeflow hello_world.mf
 ```
+
+The same concept is also given in the JX language, which can be run:
+
+```
+makeflow --jx hello_world.jx
+```
