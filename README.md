@@ -17,13 +17,16 @@ files in each directory:
 
 - BLAST, SSAHA, BWA, HECIL, BWA-GATK, SHRIMP, and Shakespeare contain complete instructions for downloading software,
 generating sample data, and creating and running complete workflows from scratch.
-The other examples are static snapshots of workflows for display
-or analysis, but do not contain the actual applications necessary to run them.
+Each workflow is demonstrated in two ways: once using the classic make language (.mf file)
+and again using the JX language (.jx file).
+
+- LIFEMAPPER and SNPEXP are static snapshots of just the workflow structure,
+but do not contain the applications and data necessary to execute them.
+You may find them instructive as further examples of how to write workflows.
 
 - It should be noted that the sample data that is generated in these is complelely
-random and has no value other than for showing these workflows in action. As a result
-some generated behavior may appear to cause issues when programs expect some format 
-or quality guarantee.
+random and has no value other than for showing workflow performance.
+Some analysis programs may emit errors indicating low quality data.
 
 <table cellpadding=20>
 <tr><td><a href=blast><img width=128 src=blast/blast.png></a><td>BLAST workflow adapted from the Biocompute web portal.  (Shown at a scale of 10 splits.)
