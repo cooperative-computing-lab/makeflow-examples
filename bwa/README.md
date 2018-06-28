@@ -47,8 +47,8 @@ makeflow -T wq bwa.mf
 ```
 Alternatively, the makeflow can be run using the `JX` or `JSON` format
 ```
-makeflow --jx bwa.jx --jx-args="args.jx"
-makeflow --json bwa.json"
+makeflow --jx bwa.jx
+makeflow --json bwa.json
 ```
 NOTE: both the `JX` and `JSON` formats utilize fastq_reduce and cat_bwa 
 which are created using the `make_bwa_workflow` script.

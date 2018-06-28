@@ -1,9 +1,0 @@
-{
-	"BLAST_EXE" : "./blastall",     # Executable enabling legacy BLAST invocation
-	"BLAST_ALGO":  "blastn",        # Name of legacy BLAST algorithm
-	"BLAST_DB":	"nt",               # BLAST database
-	"SPLIT_BLAST": "./split_fasta", # Input partitioning script
-	"CAT_BLAST": "./cat_blast",     # Output concatenation script
-	"SEQ_PER_SPLIT": 10,            # Number of sequences per split
-	"TOTAL_SEQ": 200                # Total number of sequences in input
-}

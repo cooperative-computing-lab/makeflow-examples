@@ -1,1323 +1,1641 @@
+
 {
-    "rules": [
-        {
-            "command": "./fastq_split.pl query.fastq 1000",
-            "inputs": [
-                "./fastq_split.pl",
-                "query.fastq"
-            ],
-            "outputs": [
-                "query.fastq.0",
-                "query.fastq.1",
-                "query.fastq.2",
-                "query.fastq.3",
-                "query.fastq.4",
-                "query.fastq.5",
-                "query.fastq.6",
-                "query.fastq.7",
-                "query.fastq.8",
-                "query.fastq.9",
-                "query.fastq.10",
-                "query.fastq.11",
-                "query.fastq.12",
-                "query.fastq.13",
-                "query.fastq.14",
-                "query.fastq.15",
-                "query.fastq.16",
-                "query.fastq.17",
-                "query.fastq.18",
-                "query.fastq.19",
-                "query.fastq.20",
-                "query.fastq.21",
-                "query.fastq.22",
-                "query.fastq.23",
-                "query.fastq.24",
-                "query.fastq.25",
-                "query.fastq.26",
-                "query.fastq.27",
-                "query.fastq.28",
-                "query.fastq.29",
-                "query.fastq.30",
-                "query.fastq.31",
-                "query.fastq.32",
-                "query.fastq.33",
-                "query.fastq.34",
-                "query.fastq.35",
-                "query.fastq.36",
-                "query.fastq.37",
-                "query.fastq.38",
-                "query.fastq.39",
-                "query.fastq.40",
-                "query.fastq.41",
-                "query.fastq.42",
-                "query.fastq.43",
-                "query.fastq.44",
-                "query.fastq.45",
-                "query.fastq.46",
-                "query.fastq.47",
-                "query.fastq.48",
-                "query.fastq.49",
-                "query.fastq.50",
-                "query.fastq.51",
-                "query.fastq.52",
-                "query.fastq.53",
-                "query.fastq.54",
-                "query.fastq.55",
-                "query.fastq.56",
-                "query.fastq.57",
-                "query.fastq.58",
-                "query.fastq.59",
-                "query.fastq.60",
-                "query.fastq.61",
-                "query.fastq.62",
-                "query.fastq.63",
-                "query.fastq.64",
-                "query.fastq.65",
-                "query.fastq.66",
-                "query.fastq.67",
-                "query.fastq.68",
-                "query.fastq.69",
-                "query.fastq.70",
-                "query.fastq.71",
-                "query.fastq.72",
-                "query.fastq.73",
-                "query.fastq.74",
-                "query.fastq.75",
-                "query.fastq.76",
-                "query.fastq.77",
-                "query.fastq.78",
-                "query.fastq.79",
-                "query.fastq.80",
-                "query.fastq.81",
-                "query.fastq.82",
-                "query.fastq.83",
-                "query.fastq.84",
-                "query.fastq.85",
-                "query.fastq.86",
-                "query.fastq.87",
-                "query.fastq.88",
-                "query.fastq.89",
-                "query.fastq.90",
-                "query.fastq.91",
-                "query.fastq.92",
-                "query.fastq.93",
-                "query.fastq.94",
-                "query.fastq.95",
-                "query.fastq.96",
-                "query.fastq.97",
-                "query.fastq.98",
-                "query.fastq.99"
-            ],
-            "local_job": true
-        },
-        {
-            "command": "./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.0 > output.fastq.0",
-            "inputs": [
-                "./ssaha2",
-                "db.fastq",
-                "query.fastq.0"
-            ],
-            "outputs": [
-                "output.fastq.0"
-            ]
-        },
-        {
-            "command": "./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.1 > output.fastq.1",
-            "inputs": [
-                "./ssaha2",
-                "db.fastq",
-                "query.fastq.1"
-            ],
-            "outputs": [
-                "output.fastq.1"
-            ]
-        },
-        {
-            "command": "./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.2 > output.fastq.2",
-            "inputs": [
-                "./ssaha2",
-                "db.fastq",
-                "query.fastq.2"
-            ],
-            "outputs": [
-                "output.fastq.2"
-            ]
-        },
-        {
-            "command": "./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.3 > output.fastq.3",
-            "inputs": [
-                "./ssaha2",
-                "db.fastq",
-                "query.fastq.3"
-            ],
-            "outputs": [
-                "output.fastq.3"
-            ]
-        },
-        {
-            "command": "./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.4 > output.fastq.4",
-            "inputs": [
-                "./ssaha2",
-                "db.fastq",
-                "query.fastq.4"
-            ],
-            "outputs": [
-                "output.fastq.4"
-            ]
-        },
-        {
-            "command": "./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.5 > output.fastq.5",
-            "inputs": [
-                "./ssaha2",
-                "db.fastq",
-                "query.fastq.5"
-            ],
-            "outputs": [
-                "output.fastq.5"
-            ]
-        },
-        {
-            "command": "./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.6 > output.fastq.6",
-            "inputs": [
-                "./ssaha2",
-                "db.fastq",
-                "query.fastq.6"
-            ],
-            "outputs": [
-                "output.fastq.6"
-            ]
-        },
-        {
-            "command": "./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.7 > output.fastq.7",
-            "inputs": [
-                "./ssaha2",
-                "db.fastq",
-                "query.fastq.7"
-            ],
-            "outputs": [
-                "output.fastq.7"
-            ]
-        },
-        {
-            "command": "./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.8 > output.fastq.8",
-            "inputs": [
-                "./ssaha2",
-                "db.fastq",
-                "query.fastq.8"
-            ],
-            "outputs": [
-                "output.fastq.8"
-            ]
-        },
-        {
-            "command": "./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.9 > output.fastq.9",
-            "inputs": [
-                "./ssaha2",
-                "db.fastq",
-                "query.fastq.9"
-            ],
-            "outputs": [
-                "output.fastq.9"
-            ]
-        },
-        {
-            "command": "./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.10 > output.fastq.10",
-            "inputs": [
-                "./ssaha2",
-                "db.fastq",
-                "query.fastq.10"
-            ],
-            "outputs": [
-                "output.fastq.10"
-            ]
-        },
-        {
-            "command": "./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.11 > output.fastq.11",
-            "inputs": [
-                "./ssaha2",
-                "db.fastq",
-                "query.fastq.11"
-            ],
-            "outputs": [
-                "output.fastq.11"
-            ]
-        },
-        {
-            "command": "./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.12 > output.fastq.12",
-            "inputs": [
-                "./ssaha2",
-                "db.fastq",
-                "query.fastq.12"
-            ],
-            "outputs": [
-                "output.fastq.12"
-            ]
-        },
-        {
-            "command": "./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.13 > output.fastq.13",
-            "inputs": [
-                "./ssaha2",
-                "db.fastq",
-                "query.fastq.13"
-            ],
-            "outputs": [
-                "output.fastq.13"
-            ]
-        },
-        {
-            "command": "./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.14 > output.fastq.14",
-            "inputs": [
-                "./ssaha2",
-                "db.fastq",
-                "query.fastq.14"
-            ],
-            "outputs": [
-                "output.fastq.14"
-            ]
-        },
-        {
-            "command": "./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.15 > output.fastq.15",
-            "inputs": [
-                "./ssaha2",
-                "db.fastq",
-                "query.fastq.15"
-            ],
-            "outputs": [
-                "output.fastq.15"
-            ]
-        },
-        {
-            "command": "./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.16 > output.fastq.16",
-            "inputs": [
-                "./ssaha2",
-                "db.fastq",
-                "query.fastq.16"
-            ],
-            "outputs": [
-                "output.fastq.16"
-            ]
-        },
-        {
-            "command": "./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.17 > output.fastq.17",
-            "inputs": [
-                "./ssaha2",
-                "db.fastq",
-                "query.fastq.17"
-            ],
-            "outputs": [
-                "output.fastq.17"
-            ]
-        },
-        {
-            "command": "./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.18 > output.fastq.18",
-            "inputs": [
-                "./ssaha2",
-                "db.fastq",
-                "query.fastq.18"
-            ],
-            "outputs": [
-                "output.fastq.18"
-            ]
-        },
-        {
-            "command": "./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.19 > output.fastq.19",
-            "inputs": [
-                "./ssaha2",
-                "db.fastq",
-                "query.fastq.19"
-            ],
-            "outputs": [
-                "output.fastq.19"
-            ]
-        },
-        {
-            "command": "./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.20 > output.fastq.20",
-            "inputs": [
-                "./ssaha2",
-                "db.fastq",
-                "query.fastq.20"
-            ],
-            "outputs": [
-                "output.fastq.20"
-            ]
-        },
-        {
-            "command": "./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.21 > output.fastq.21",
-            "inputs": [
-                "./ssaha2",
-                "db.fastq",
-                "query.fastq.21"
-            ],
-            "outputs": [
-                "output.fastq.21"
-            ]
-        },
-        {
-            "command": "./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.22 > output.fastq.22",
-            "inputs": [
-                "./ssaha2",
-                "db.fastq",
-                "query.fastq.22"
-            ],
-            "outputs": [
-                "output.fastq.22"
-            ]
-        },
-        {
-            "command": "./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.23 > output.fastq.23",
-            "inputs": [
-                "./ssaha2",
-                "db.fastq",
-                "query.fastq.23"
-            ],
-            "outputs": [
-                "output.fastq.23"
-            ]
-        },
-        {
-            "command": "./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.24 > output.fastq.24",
-            "inputs": [
-                "./ssaha2",
-                "db.fastq",
-                "query.fastq.24"
-            ],
-            "outputs": [
-                "output.fastq.24"
-            ]
-        },
-        {
-            "command": "./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.25 > output.fastq.25",
-            "inputs": [
-                "./ssaha2",
-                "db.fastq",
-                "query.fastq.25"
-            ],
-            "outputs": [
-                "output.fastq.25"
-            ]
-        },
-        {
-            "command": "./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.26 > output.fastq.26",
-            "inputs": [
-                "./ssaha2",
-                "db.fastq",
-                "query.fastq.26"
-            ],
-            "outputs": [
-                "output.fastq.26"
-            ]
-        },
-        {
-            "command": "./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.27 > output.fastq.27",
-            "inputs": [
-                "./ssaha2",
-                "db.fastq",
-                "query.fastq.27"
-            ],
-            "outputs": [
-                "output.fastq.27"
-            ]
-        },
-        {
-            "command": "./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.28 > output.fastq.28",
-            "inputs": [
-                "./ssaha2",
-                "db.fastq",
-                "query.fastq.28"
-            ],
-            "outputs": [
-                "output.fastq.28"
-            ]
-        },
-        {
-            "command": "./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.29 > output.fastq.29",
-            "inputs": [
-                "./ssaha2",
-                "db.fastq",
-                "query.fastq.29"
-            ],
-            "outputs": [
-                "output.fastq.29"
-            ]
-        },
-        {
-            "command": "./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.30 > output.fastq.30",
-            "inputs": [
-                "./ssaha2",
-                "db.fastq",
-                "query.fastq.30"
-            ],
-            "outputs": [
-                "output.fastq.30"
-            ]
-        },
-        {
-            "command": "./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.31 > output.fastq.31",
-            "inputs": [
-                "./ssaha2",
-                "db.fastq",
-                "query.fastq.31"
-            ],
-            "outputs": [
-                "output.fastq.31"
-            ]
-        },
-        {
-            "command": "./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.32 > output.fastq.32",
-            "inputs": [
-                "./ssaha2",
-                "db.fastq",
-                "query.fastq.32"
-            ],
-            "outputs": [
-                "output.fastq.32"
-            ]
-        },
-        {
-            "command": "./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.33 > output.fastq.33",
-            "inputs": [
-                "./ssaha2",
-                "db.fastq",
-                "query.fastq.33"
-            ],
-            "outputs": [
-                "output.fastq.33"
-            ]
-        },
-        {
-            "command": "./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.34 > output.fastq.34",
-            "inputs": [
-                "./ssaha2",
-                "db.fastq",
-                "query.fastq.34"
-            ],
-            "outputs": [
-                "output.fastq.34"
-            ]
-        },
-        {
-            "command": "./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.35 > output.fastq.35",
-            "inputs": [
-                "./ssaha2",
-                "db.fastq",
-                "query.fastq.35"
-            ],
-            "outputs": [
-                "output.fastq.35"
-            ]
-        },
-        {
-            "command": "./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.36 > output.fastq.36",
-            "inputs": [
-                "./ssaha2",
-                "db.fastq",
-                "query.fastq.36"
-            ],
-            "outputs": [
-                "output.fastq.36"
-            ]
-        },
-        {
-            "command": "./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.37 > output.fastq.37",
-            "inputs": [
-                "./ssaha2",
-                "db.fastq",
-                "query.fastq.37"
-            ],
-            "outputs": [
-                "output.fastq.37"
-            ]
-        },
-        {
-            "command": "./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.38 > output.fastq.38",
-            "inputs": [
-                "./ssaha2",
-                "db.fastq",
-                "query.fastq.38"
-            ],
-            "outputs": [
-                "output.fastq.38"
-            ]
-        },
-        {
-            "command": "./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.39 > output.fastq.39",
-            "inputs": [
-                "./ssaha2",
-                "db.fastq",
-                "query.fastq.39"
-            ],
-            "outputs": [
-                "output.fastq.39"
-            ]
-        },
-        {
-            "command": "./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.40 > output.fastq.40",
-            "inputs": [
-                "./ssaha2",
-                "db.fastq",
-                "query.fastq.40"
-            ],
-            "outputs": [
-                "output.fastq.40"
-            ]
-        },
-        {
-            "command": "./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.41 > output.fastq.41",
-            "inputs": [
-                "./ssaha2",
-                "db.fastq",
-                "query.fastq.41"
-            ],
-            "outputs": [
-                "output.fastq.41"
-            ]
-        },
-        {
-            "command": "./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.42 > output.fastq.42",
-            "inputs": [
-                "./ssaha2",
-                "db.fastq",
-                "query.fastq.42"
-            ],
-            "outputs": [
-                "output.fastq.42"
-            ]
-        },
-        {
-            "command": "./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.43 > output.fastq.43",
-            "inputs": [
-                "./ssaha2",
-                "db.fastq",
-                "query.fastq.43"
-            ],
-            "outputs": [
-                "output.fastq.43"
-            ]
-        },
-        {
-            "command": "./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.44 > output.fastq.44",
-            "inputs": [
-                "./ssaha2",
-                "db.fastq",
-                "query.fastq.44"
-            ],
-            "outputs": [
-                "output.fastq.44"
-            ]
-        },
-        {
-            "command": "./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.45 > output.fastq.45",
-            "inputs": [
-                "./ssaha2",
-                "db.fastq",
-                "query.fastq.45"
-            ],
-            "outputs": [
-                "output.fastq.45"
-            ]
-        },
-        {
-            "command": "./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.46 > output.fastq.46",
-            "inputs": [
-                "./ssaha2",
-                "db.fastq",
-                "query.fastq.46"
-            ],
-            "outputs": [
-                "output.fastq.46"
-            ]
-        },
-        {
-            "command": "./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.47 > output.fastq.47",
-            "inputs": [
-                "./ssaha2",
-                "db.fastq",
-                "query.fastq.47"
-            ],
-            "outputs": [
-                "output.fastq.47"
-            ]
-        },
-        {
-            "command": "./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.48 > output.fastq.48",
-            "inputs": [
-                "./ssaha2",
-                "db.fastq",
-                "query.fastq.48"
-            ],
-            "outputs": [
-                "output.fastq.48"
-            ]
-        },
-        {
-            "command": "./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.49 > output.fastq.49",
-            "inputs": [
-                "./ssaha2",
-                "db.fastq",
-                "query.fastq.49"
-            ],
-            "outputs": [
-                "output.fastq.49"
-            ]
-        },
-        {
-            "command": "./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.50 > output.fastq.50",
-            "inputs": [
-                "./ssaha2",
-                "db.fastq",
-                "query.fastq.50"
-            ],
-            "outputs": [
-                "output.fastq.50"
-            ]
-        },
-        {
-            "command": "./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.51 > output.fastq.51",
-            "inputs": [
-                "./ssaha2",
-                "db.fastq",
-                "query.fastq.51"
-            ],
-            "outputs": [
-                "output.fastq.51"
-            ]
-        },
-        {
-            "command": "./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.52 > output.fastq.52",
-            "inputs": [
-                "./ssaha2",
-                "db.fastq",
-                "query.fastq.52"
-            ],
-            "outputs": [
-                "output.fastq.52"
-            ]
-        },
-        {
-            "command": "./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.53 > output.fastq.53",
-            "inputs": [
-                "./ssaha2",
-                "db.fastq",
-                "query.fastq.53"
-            ],
-            "outputs": [
-                "output.fastq.53"
-            ]
-        },
-        {
-            "command": "./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.54 > output.fastq.54",
-            "inputs": [
-                "./ssaha2",
-                "db.fastq",
-                "query.fastq.54"
-            ],
-            "outputs": [
-                "output.fastq.54"
-            ]
-        },
-        {
-            "command": "./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.55 > output.fastq.55",
-            "inputs": [
-                "./ssaha2",
-                "db.fastq",
-                "query.fastq.55"
-            ],
-            "outputs": [
-                "output.fastq.55"
-            ]
-        },
-        {
-            "command": "./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.56 > output.fastq.56",
-            "inputs": [
-                "./ssaha2",
-                "db.fastq",
-                "query.fastq.56"
-            ],
-            "outputs": [
-                "output.fastq.56"
-            ]
-        },
-        {
-            "command": "./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.57 > output.fastq.57",
-            "inputs": [
-                "./ssaha2",
-                "db.fastq",
-                "query.fastq.57"
-            ],
-            "outputs": [
-                "output.fastq.57"
-            ]
-        },
-        {
-            "command": "./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.58 > output.fastq.58",
-            "inputs": [
-                "./ssaha2",
-                "db.fastq",
-                "query.fastq.58"
-            ],
-            "outputs": [
-                "output.fastq.58"
-            ]
-        },
-        {
-            "command": "./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.59 > output.fastq.59",
-            "inputs": [
-                "./ssaha2",
-                "db.fastq",
-                "query.fastq.59"
-            ],
-            "outputs": [
-                "output.fastq.59"
-            ]
-        },
-        {
-            "command": "./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.60 > output.fastq.60",
-            "inputs": [
-                "./ssaha2",
-                "db.fastq",
-                "query.fastq.60"
-            ],
-            "outputs": [
-                "output.fastq.60"
-            ]
-        },
-        {
-            "command": "./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.61 > output.fastq.61",
-            "inputs": [
-                "./ssaha2",
-                "db.fastq",
-                "query.fastq.61"
-            ],
-            "outputs": [
-                "output.fastq.61"
-            ]
-        },
-        {
-            "command": "./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.62 > output.fastq.62",
-            "inputs": [
-                "./ssaha2",
-                "db.fastq",
-                "query.fastq.62"
-            ],
-            "outputs": [
-                "output.fastq.62"
-            ]
-        },
-        {
-            "command": "./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.63 > output.fastq.63",
-            "inputs": [
-                "./ssaha2",
-                "db.fastq",
-                "query.fastq.63"
-            ],
-            "outputs": [
-                "output.fastq.63"
-            ]
-        },
-        {
-            "command": "./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.64 > output.fastq.64",
-            "inputs": [
-                "./ssaha2",
-                "db.fastq",
-                "query.fastq.64"
-            ],
-            "outputs": [
-                "output.fastq.64"
-            ]
-        },
-        {
-            "command": "./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.65 > output.fastq.65",
-            "inputs": [
-                "./ssaha2",
-                "db.fastq",
-                "query.fastq.65"
-            ],
-            "outputs": [
-                "output.fastq.65"
-            ]
-        },
-        {
-            "command": "./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.66 > output.fastq.66",
-            "inputs": [
-                "./ssaha2",
-                "db.fastq",
-                "query.fastq.66"
-            ],
-            "outputs": [
-                "output.fastq.66"
-            ]
-        },
-        {
-            "command": "./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.67 > output.fastq.67",
-            "inputs": [
-                "./ssaha2",
-                "db.fastq",
-                "query.fastq.67"
-            ],
-            "outputs": [
-                "output.fastq.67"
-            ]
-        },
-        {
-            "command": "./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.68 > output.fastq.68",
-            "inputs": [
-                "./ssaha2",
-                "db.fastq",
-                "query.fastq.68"
-            ],
-            "outputs": [
-                "output.fastq.68"
-            ]
-        },
-        {
-            "command": "./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.69 > output.fastq.69",
-            "inputs": [
-                "./ssaha2",
-                "db.fastq",
-                "query.fastq.69"
-            ],
-            "outputs": [
-                "output.fastq.69"
-            ]
-        },
-        {
-            "command": "./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.70 > output.fastq.70",
-            "inputs": [
-                "./ssaha2",
-                "db.fastq",
-                "query.fastq.70"
-            ],
-            "outputs": [
-                "output.fastq.70"
-            ]
-        },
-        {
-            "command": "./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.71 > output.fastq.71",
-            "inputs": [
-                "./ssaha2",
-                "db.fastq",
-                "query.fastq.71"
-            ],
-            "outputs": [
-                "output.fastq.71"
-            ]
-        },
-        {
-            "command": "./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.72 > output.fastq.72",
-            "inputs": [
-                "./ssaha2",
-                "db.fastq",
-                "query.fastq.72"
-            ],
-            "outputs": [
-                "output.fastq.72"
-            ]
-        },
-        {
-            "command": "./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.73 > output.fastq.73",
-            "inputs": [
-                "./ssaha2",
-                "db.fastq",
-                "query.fastq.73"
-            ],
-            "outputs": [
-                "output.fastq.73"
-            ]
-        },
-        {
-            "command": "./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.74 > output.fastq.74",
-            "inputs": [
-                "./ssaha2",
-                "db.fastq",
-                "query.fastq.74"
-            ],
-            "outputs": [
-                "output.fastq.74"
-            ]
-        },
-        {
-            "command": "./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.75 > output.fastq.75",
-            "inputs": [
-                "./ssaha2",
-                "db.fastq",
-                "query.fastq.75"
-            ],
-            "outputs": [
-                "output.fastq.75"
-            ]
-        },
-        {
-            "command": "./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.76 > output.fastq.76",
-            "inputs": [
-                "./ssaha2",
-                "db.fastq",
-                "query.fastq.76"
-            ],
-            "outputs": [
-                "output.fastq.76"
-            ]
-        },
-        {
-            "command": "./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.77 > output.fastq.77",
-            "inputs": [
-                "./ssaha2",
-                "db.fastq",
-                "query.fastq.77"
-            ],
-            "outputs": [
-                "output.fastq.77"
-            ]
-        },
-        {
-            "command": "./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.78 > output.fastq.78",
-            "inputs": [
-                "./ssaha2",
-                "db.fastq",
-                "query.fastq.78"
-            ],
-            "outputs": [
-                "output.fastq.78"
-            ]
-        },
-        {
-            "command": "./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.79 > output.fastq.79",
-            "inputs": [
-                "./ssaha2",
-                "db.fastq",
-                "query.fastq.79"
-            ],
-            "outputs": [
-                "output.fastq.79"
-            ]
-        },
-        {
-            "command": "./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.80 > output.fastq.80",
-            "inputs": [
-                "./ssaha2",
-                "db.fastq",
-                "query.fastq.80"
-            ],
-            "outputs": [
-                "output.fastq.80"
-            ]
-        },
-        {
-            "command": "./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.81 > output.fastq.81",
-            "inputs": [
-                "./ssaha2",
-                "db.fastq",
-                "query.fastq.81"
-            ],
-            "outputs": [
-                "output.fastq.81"
-            ]
-        },
-        {
-            "command": "./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.82 > output.fastq.82",
-            "inputs": [
-                "./ssaha2",
-                "db.fastq",
-                "query.fastq.82"
-            ],
-            "outputs": [
-                "output.fastq.82"
-            ]
-        },
-        {
-            "command": "./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.83 > output.fastq.83",
-            "inputs": [
-                "./ssaha2",
-                "db.fastq",
-                "query.fastq.83"
-            ],
-            "outputs": [
-                "output.fastq.83"
-            ]
-        },
-        {
-            "command": "./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.84 > output.fastq.84",
-            "inputs": [
-                "./ssaha2",
-                "db.fastq",
-                "query.fastq.84"
-            ],
-            "outputs": [
-                "output.fastq.84"
-            ]
-        },
-        {
-            "command": "./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.85 > output.fastq.85",
-            "inputs": [
-                "./ssaha2",
-                "db.fastq",
-                "query.fastq.85"
-            ],
-            "outputs": [
-                "output.fastq.85"
-            ]
-        },
-        {
-            "command": "./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.86 > output.fastq.86",
-            "inputs": [
-                "./ssaha2",
-                "db.fastq",
-                "query.fastq.86"
-            ],
-            "outputs": [
-                "output.fastq.86"
-            ]
-        },
-        {
-            "command": "./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.87 > output.fastq.87",
-            "inputs": [
-                "./ssaha2",
-                "db.fastq",
-                "query.fastq.87"
-            ],
-            "outputs": [
-                "output.fastq.87"
-            ]
-        },
-        {
-            "command": "./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.88 > output.fastq.88",
-            "inputs": [
-                "./ssaha2",
-                "db.fastq",
-                "query.fastq.88"
-            ],
-            "outputs": [
-                "output.fastq.88"
-            ]
-        },
-        {
-            "command": "./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.89 > output.fastq.89",
-            "inputs": [
-                "./ssaha2",
-                "db.fastq",
-                "query.fastq.89"
-            ],
-            "outputs": [
-                "output.fastq.89"
-            ]
-        },
-        {
-            "command": "./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.90 > output.fastq.90",
-            "inputs": [
-                "./ssaha2",
-                "db.fastq",
-                "query.fastq.90"
-            ],
-            "outputs": [
-                "output.fastq.90"
-            ]
-        },
-        {
-            "command": "./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.91 > output.fastq.91",
-            "inputs": [
-                "./ssaha2",
-                "db.fastq",
-                "query.fastq.91"
-            ],
-            "outputs": [
-                "output.fastq.91"
-            ]
-        },
-        {
-            "command": "./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.92 > output.fastq.92",
-            "inputs": [
-                "./ssaha2",
-                "db.fastq",
-                "query.fastq.92"
-            ],
-            "outputs": [
-                "output.fastq.92"
-            ]
-        },
-        {
-            "command": "./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.93 > output.fastq.93",
-            "inputs": [
-                "./ssaha2",
-                "db.fastq",
-                "query.fastq.93"
-            ],
-            "outputs": [
-                "output.fastq.93"
-            ]
-        },
-        {
-            "command": "./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.94 > output.fastq.94",
-            "inputs": [
-                "./ssaha2",
-                "db.fastq",
-                "query.fastq.94"
-            ],
-            "outputs": [
-                "output.fastq.94"
-            ]
-        },
-        {
-            "command": "./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.95 > output.fastq.95",
-            "inputs": [
-                "./ssaha2",
-                "db.fastq",
-                "query.fastq.95"
-            ],
-            "outputs": [
-                "output.fastq.95"
-            ]
-        },
-        {
-            "command": "./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.96 > output.fastq.96",
-            "inputs": [
-                "./ssaha2",
-                "db.fastq",
-                "query.fastq.96"
-            ],
-            "outputs": [
-                "output.fastq.96"
-            ]
-        },
-        {
-            "command": "./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.97 > output.fastq.97",
-            "inputs": [
-                "./ssaha2",
-                "db.fastq",
-                "query.fastq.97"
-            ],
-            "outputs": [
-                "output.fastq.97"
-            ]
-        },
-        {
-            "command": "./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.98 > output.fastq.98",
-            "inputs": [
-                "./ssaha2",
-                "db.fastq",
-                "query.fastq.98"
-            ],
-            "outputs": [
-                "output.fastq.98"
-            ]
-        },
-        {
-            "command": "./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.99 > output.fastq.99",
-            "inputs": [
-                "./ssaha2",
-                "db.fastq",
-                "query.fastq.99"
-            ],
-            "outputs": [
-                "output.fastq.99"
-            ]
-        },
-        {
-            "command": "cat output.fastq.0 output.fastq.1 output.fastq.2 output.fastq.3 output.fastq.4 output.fastq.5 output.fastq.6 output.fastq.7 output.fastq.8 output.fastq.9 output.fastq.10 output.fastq.11 output.fastq.12 output.fastq.13 output.fastq.14 output.fastq.15 output.fastq.16 output.fastq.17 output.fastq.18 output.fastq.19 output.fastq.20 output.fastq.21 output.fastq.22 output.fastq.23 output.fastq.24 output.fastq.25 output.fastq.26 output.fastq.27 output.fastq.28 output.fastq.29 output.fastq.30 output.fastq.31 output.fastq.32 output.fastq.33 output.fastq.34 output.fastq.35 output.fastq.36 output.fastq.37 output.fastq.38 output.fastq.39 output.fastq.40 output.fastq.41 output.fastq.42 output.fastq.43 output.fastq.44 output.fastq.45 output.fastq.46 output.fastq.47 output.fastq.48 output.fastq.49 output.fastq.50 output.fastq.51 output.fastq.52 output.fastq.53 output.fastq.54 output.fastq.55 output.fastq.56 output.fastq.57 output.fastq.58 output.fastq.59 output.fastq.60 output.fastq.61 output.fastq.62 output.fastq.63 output.fastq.64 output.fastq.65 output.fastq.66 output.fastq.67 output.fastq.68 output.fastq.69 output.fastq.70 output.fastq.71 output.fastq.72 output.fastq.73 output.fastq.74 output.fastq.75 output.fastq.76 output.fastq.77 output.fastq.78 output.fastq.79 output.fastq.80 output.fastq.81 output.fastq.82 output.fastq.83 output.fastq.84 output.fastq.85 output.fastq.86 output.fastq.87 output.fastq.88 output.fastq.89 output.fastq.90 output.fastq.91 output.fastq.92 output.fastq.93 output.fastq.94 output.fastq.95 output.fastq.96 output.fastq.97 output.fastq.98 output.fastq.99 > output.fastq",
-            "inputs": [
-                "output.fastq.0",
-                "output.fastq.1",
-                "output.fastq.2",
-                "output.fastq.3",
-                "output.fastq.4",
-                "output.fastq.5",
-                "output.fastq.6",
-                "output.fastq.7",
-                "output.fastq.8",
-                "output.fastq.9",
-                "output.fastq.10",
-                "output.fastq.11",
-                "output.fastq.12",
-                "output.fastq.13",
-                "output.fastq.14",
-                "output.fastq.15",
-                "output.fastq.16",
-                "output.fastq.17",
-                "output.fastq.18",
-                "output.fastq.19",
-                "output.fastq.20",
-                "output.fastq.21",
-                "output.fastq.22",
-                "output.fastq.23",
-                "output.fastq.24",
-                "output.fastq.25",
-                "output.fastq.26",
-                "output.fastq.27",
-                "output.fastq.28",
-                "output.fastq.29",
-                "output.fastq.30",
-                "output.fastq.31",
-                "output.fastq.32",
-                "output.fastq.33",
-                "output.fastq.34",
-                "output.fastq.35",
-                "output.fastq.36",
-                "output.fastq.37",
-                "output.fastq.38",
-                "output.fastq.39",
-                "output.fastq.40",
-                "output.fastq.41",
-                "output.fastq.42",
-                "output.fastq.43",
-                "output.fastq.44",
-                "output.fastq.45",
-                "output.fastq.46",
-                "output.fastq.47",
-                "output.fastq.48",
-                "output.fastq.49",
-                "output.fastq.50",
-                "output.fastq.51",
-                "output.fastq.52",
-                "output.fastq.53",
-                "output.fastq.54",
-                "output.fastq.55",
-                "output.fastq.56",
-                "output.fastq.57",
-                "output.fastq.58",
-                "output.fastq.59",
-                "output.fastq.60",
-                "output.fastq.61",
-                "output.fastq.62",
-                "output.fastq.63",
-                "output.fastq.64",
-                "output.fastq.65",
-                "output.fastq.66",
-                "output.fastq.67",
-                "output.fastq.68",
-                "output.fastq.69",
-                "output.fastq.70",
-                "output.fastq.71",
-                "output.fastq.72",
-                "output.fastq.73",
-                "output.fastq.74",
-                "output.fastq.75",
-                "output.fastq.76",
-                "output.fastq.77",
-                "output.fastq.78",
-                "output.fastq.79",
-                "output.fastq.80",
-                "output.fastq.81",
-                "output.fastq.82",
-                "output.fastq.83",
-                "output.fastq.84",
-                "output.fastq.85",
-                "output.fastq.86",
-                "output.fastq.87",
-                "output.fastq.88",
-                "output.fastq.89",
-                "output.fastq.90",
-                "output.fastq.91",
-                "output.fastq.92",
-                "output.fastq.93",
-                "output.fastq.94",
-                "output.fastq.95",
-                "output.fastq.96",
-                "output.fastq.97",
-                "output.fastq.98",
-                "output.fastq.99"
-            ],
-            "outputs": [
-                "output.fastq"
-            ],
-            "local_job": true
-        }
+  "define":
+    {
+      "QUERY":"query.fastq",
+      "DB":"db.fastq",
+      "SSAHA":"./ssaha2",
+      "OPTIONS":"-tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2",
+      "SPLIT":"./fastq_split.pl",
+      "SEQ_PER_SPLIT":1000,
+      "TOTAL_SEQ":100000
+    },
+  "rules":
+    [
+      
+      {
+        "command":"./fastq_split.pl query.fastq 1000",
+        "inputs":
+          [
+            "./fastq_split.pl",
+            "query.fastq"
+          ],
+        "outputs":
+          [
+            "query.fastq.0",
+            "query.fastq.1",
+            "query.fastq.2",
+            "query.fastq.3",
+            "query.fastq.4",
+            "query.fastq.5",
+            "query.fastq.6",
+            "query.fastq.7",
+            "query.fastq.8",
+            "query.fastq.9",
+            "query.fastq.10",
+            "query.fastq.11",
+            "query.fastq.12",
+            "query.fastq.13",
+            "query.fastq.14",
+            "query.fastq.15",
+            "query.fastq.16",
+            "query.fastq.17",
+            "query.fastq.18",
+            "query.fastq.19",
+            "query.fastq.20",
+            "query.fastq.21",
+            "query.fastq.22",
+            "query.fastq.23",
+            "query.fastq.24",
+            "query.fastq.25",
+            "query.fastq.26",
+            "query.fastq.27",
+            "query.fastq.28",
+            "query.fastq.29",
+            "query.fastq.30",
+            "query.fastq.31",
+            "query.fastq.32",
+            "query.fastq.33",
+            "query.fastq.34",
+            "query.fastq.35",
+            "query.fastq.36",
+            "query.fastq.37",
+            "query.fastq.38",
+            "query.fastq.39",
+            "query.fastq.40",
+            "query.fastq.41",
+            "query.fastq.42",
+            "query.fastq.43",
+            "query.fastq.44",
+            "query.fastq.45",
+            "query.fastq.46",
+            "query.fastq.47",
+            "query.fastq.48",
+            "query.fastq.49",
+            "query.fastq.50",
+            "query.fastq.51",
+            "query.fastq.52",
+            "query.fastq.53",
+            "query.fastq.54",
+            "query.fastq.55",
+            "query.fastq.56",
+            "query.fastq.57",
+            "query.fastq.58",
+            "query.fastq.59",
+            "query.fastq.60",
+            "query.fastq.61",
+            "query.fastq.62",
+            "query.fastq.63",
+            "query.fastq.64",
+            "query.fastq.65",
+            "query.fastq.66",
+            "query.fastq.67",
+            "query.fastq.68",
+            "query.fastq.69",
+            "query.fastq.70",
+            "query.fastq.71",
+            "query.fastq.72",
+            "query.fastq.73",
+            "query.fastq.74",
+            "query.fastq.75",
+            "query.fastq.76",
+            "query.fastq.77",
+            "query.fastq.78",
+            "query.fastq.79",
+            "query.fastq.80",
+            "query.fastq.81",
+            "query.fastq.82",
+            "query.fastq.83",
+            "query.fastq.84",
+            "query.fastq.85",
+            "query.fastq.86",
+            "query.fastq.87",
+            "query.fastq.88",
+            "query.fastq.89",
+            "query.fastq.90",
+            "query.fastq.91",
+            "query.fastq.92",
+            "query.fastq.93",
+            "query.fastq.94",
+            "query.fastq.95",
+            "query.fastq.96",
+            "query.fastq.97",
+            "query.fastq.98",
+            "query.fastq.99"
+          ],
+        "local_job":true
+      },
+      
+      {
+        "command":"./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.0 > output.fastq.0",
+        "inputs":
+          [
+            "./ssaha2",
+            "db.fastq",
+            "query.fastq.0"
+          ],
+        "outputs":
+          [
+            "output.fastq.0"
+          ]
+      },
+      
+      {
+        "command":"./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.1 > output.fastq.1",
+        "inputs":
+          [
+            "./ssaha2",
+            "db.fastq",
+            "query.fastq.1"
+          ],
+        "outputs":
+          [
+            "output.fastq.1"
+          ]
+      },
+      
+      {
+        "command":"./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.2 > output.fastq.2",
+        "inputs":
+          [
+            "./ssaha2",
+            "db.fastq",
+            "query.fastq.2"
+          ],
+        "outputs":
+          [
+            "output.fastq.2"
+          ]
+      },
+      
+      {
+        "command":"./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.3 > output.fastq.3",
+        "inputs":
+          [
+            "./ssaha2",
+            "db.fastq",
+            "query.fastq.3"
+          ],
+        "outputs":
+          [
+            "output.fastq.3"
+          ]
+      },
+      
+      {
+        "command":"./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.4 > output.fastq.4",
+        "inputs":
+          [
+            "./ssaha2",
+            "db.fastq",
+            "query.fastq.4"
+          ],
+        "outputs":
+          [
+            "output.fastq.4"
+          ]
+      },
+      
+      {
+        "command":"./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.5 > output.fastq.5",
+        "inputs":
+          [
+            "./ssaha2",
+            "db.fastq",
+            "query.fastq.5"
+          ],
+        "outputs":
+          [
+            "output.fastq.5"
+          ]
+      },
+      
+      {
+        "command":"./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.6 > output.fastq.6",
+        "inputs":
+          [
+            "./ssaha2",
+            "db.fastq",
+            "query.fastq.6"
+          ],
+        "outputs":
+          [
+            "output.fastq.6"
+          ]
+      },
+      
+      {
+        "command":"./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.7 > output.fastq.7",
+        "inputs":
+          [
+            "./ssaha2",
+            "db.fastq",
+            "query.fastq.7"
+          ],
+        "outputs":
+          [
+            "output.fastq.7"
+          ]
+      },
+      
+      {
+        "command":"./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.8 > output.fastq.8",
+        "inputs":
+          [
+            "./ssaha2",
+            "db.fastq",
+            "query.fastq.8"
+          ],
+        "outputs":
+          [
+            "output.fastq.8"
+          ]
+      },
+      
+      {
+        "command":"./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.9 > output.fastq.9",
+        "inputs":
+          [
+            "./ssaha2",
+            "db.fastq",
+            "query.fastq.9"
+          ],
+        "outputs":
+          [
+            "output.fastq.9"
+          ]
+      },
+      
+      {
+        "command":"./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.10 > output.fastq.10",
+        "inputs":
+          [
+            "./ssaha2",
+            "db.fastq",
+            "query.fastq.10"
+          ],
+        "outputs":
+          [
+            "output.fastq.10"
+          ]
+      },
+      
+      {
+        "command":"./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.11 > output.fastq.11",
+        "inputs":
+          [
+            "./ssaha2",
+            "db.fastq",
+            "query.fastq.11"
+          ],
+        "outputs":
+          [
+            "output.fastq.11"
+          ]
+      },
+      
+      {
+        "command":"./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.12 > output.fastq.12",
+        "inputs":
+          [
+            "./ssaha2",
+            "db.fastq",
+            "query.fastq.12"
+          ],
+        "outputs":
+          [
+            "output.fastq.12"
+          ]
+      },
+      
+      {
+        "command":"./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.13 > output.fastq.13",
+        "inputs":
+          [
+            "./ssaha2",
+            "db.fastq",
+            "query.fastq.13"
+          ],
+        "outputs":
+          [
+            "output.fastq.13"
+          ]
+      },
+      
+      {
+        "command":"./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.14 > output.fastq.14",
+        "inputs":
+          [
+            "./ssaha2",
+            "db.fastq",
+            "query.fastq.14"
+          ],
+        "outputs":
+          [
+            "output.fastq.14"
+          ]
+      },
+      
+      {
+        "command":"./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.15 > output.fastq.15",
+        "inputs":
+          [
+            "./ssaha2",
+            "db.fastq",
+            "query.fastq.15"
+          ],
+        "outputs":
+          [
+            "output.fastq.15"
+          ]
+      },
+      
+      {
+        "command":"./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.16 > output.fastq.16",
+        "inputs":
+          [
+            "./ssaha2",
+            "db.fastq",
+            "query.fastq.16"
+          ],
+        "outputs":
+          [
+            "output.fastq.16"
+          ]
+      },
+      
+      {
+        "command":"./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.17 > output.fastq.17",
+        "inputs":
+          [
+            "./ssaha2",
+            "db.fastq",
+            "query.fastq.17"
+          ],
+        "outputs":
+          [
+            "output.fastq.17"
+          ]
+      },
+      
+      {
+        "command":"./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.18 > output.fastq.18",
+        "inputs":
+          [
+            "./ssaha2",
+            "db.fastq",
+            "query.fastq.18"
+          ],
+        "outputs":
+          [
+            "output.fastq.18"
+          ]
+      },
+      
+      {
+        "command":"./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.19 > output.fastq.19",
+        "inputs":
+          [
+            "./ssaha2",
+            "db.fastq",
+            "query.fastq.19"
+          ],
+        "outputs":
+          [
+            "output.fastq.19"
+          ]
+      },
+      
+      {
+        "command":"./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.20 > output.fastq.20",
+        "inputs":
+          [
+            "./ssaha2",
+            "db.fastq",
+            "query.fastq.20"
+          ],
+        "outputs":
+          [
+            "output.fastq.20"
+          ]
+      },
+      
+      {
+        "command":"./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.21 > output.fastq.21",
+        "inputs":
+          [
+            "./ssaha2",
+            "db.fastq",
+            "query.fastq.21"
+          ],
+        "outputs":
+          [
+            "output.fastq.21"
+          ]
+      },
+      
+      {
+        "command":"./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.22 > output.fastq.22",
+        "inputs":
+          [
+            "./ssaha2",
+            "db.fastq",
+            "query.fastq.22"
+          ],
+        "outputs":
+          [
+            "output.fastq.22"
+          ]
+      },
+      
+      {
+        "command":"./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.23 > output.fastq.23",
+        "inputs":
+          [
+            "./ssaha2",
+            "db.fastq",
+            "query.fastq.23"
+          ],
+        "outputs":
+          [
+            "output.fastq.23"
+          ]
+      },
+      
+      {
+        "command":"./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.24 > output.fastq.24",
+        "inputs":
+          [
+            "./ssaha2",
+            "db.fastq",
+            "query.fastq.24"
+          ],
+        "outputs":
+          [
+            "output.fastq.24"
+          ]
+      },
+      
+      {
+        "command":"./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.25 > output.fastq.25",
+        "inputs":
+          [
+            "./ssaha2",
+            "db.fastq",
+            "query.fastq.25"
+          ],
+        "outputs":
+          [
+            "output.fastq.25"
+          ]
+      },
+      
+      {
+        "command":"./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.26 > output.fastq.26",
+        "inputs":
+          [
+            "./ssaha2",
+            "db.fastq",
+            "query.fastq.26"
+          ],
+        "outputs":
+          [
+            "output.fastq.26"
+          ]
+      },
+      
+      {
+        "command":"./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.27 > output.fastq.27",
+        "inputs":
+          [
+            "./ssaha2",
+            "db.fastq",
+            "query.fastq.27"
+          ],
+        "outputs":
+          [
+            "output.fastq.27"
+          ]
+      },
+      
+      {
+        "command":"./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.28 > output.fastq.28",
+        "inputs":
+          [
+            "./ssaha2",
+            "db.fastq",
+            "query.fastq.28"
+          ],
+        "outputs":
+          [
+            "output.fastq.28"
+          ]
+      },
+      
+      {
+        "command":"./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.29 > output.fastq.29",
+        "inputs":
+          [
+            "./ssaha2",
+            "db.fastq",
+            "query.fastq.29"
+          ],
+        "outputs":
+          [
+            "output.fastq.29"
+          ]
+      },
+      
+      {
+        "command":"./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.30 > output.fastq.30",
+        "inputs":
+          [
+            "./ssaha2",
+            "db.fastq",
+            "query.fastq.30"
+          ],
+        "outputs":
+          [
+            "output.fastq.30"
+          ]
+      },
+      
+      {
+        "command":"./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.31 > output.fastq.31",
+        "inputs":
+          [
+            "./ssaha2",
+            "db.fastq",
+            "query.fastq.31"
+          ],
+        "outputs":
+          [
+            "output.fastq.31"
+          ]
+      },
+      
+      {
+        "command":"./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.32 > output.fastq.32",
+        "inputs":
+          [
+            "./ssaha2",
+            "db.fastq",
+            "query.fastq.32"
+          ],
+        "outputs":
+          [
+            "output.fastq.32"
+          ]
+      },
+      
+      {
+        "command":"./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.33 > output.fastq.33",
+        "inputs":
+          [
+            "./ssaha2",
+            "db.fastq",
+            "query.fastq.33"
+          ],
+        "outputs":
+          [
+            "output.fastq.33"
+          ]
+      },
+      
+      {
+        "command":"./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.34 > output.fastq.34",
+        "inputs":
+          [
+            "./ssaha2",
+            "db.fastq",
+            "query.fastq.34"
+          ],
+        "outputs":
+          [
+            "output.fastq.34"
+          ]
+      },
+      
+      {
+        "command":"./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.35 > output.fastq.35",
+        "inputs":
+          [
+            "./ssaha2",
+            "db.fastq",
+            "query.fastq.35"
+          ],
+        "outputs":
+          [
+            "output.fastq.35"
+          ]
+      },
+      
+      {
+        "command":"./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.36 > output.fastq.36",
+        "inputs":
+          [
+            "./ssaha2",
+            "db.fastq",
+            "query.fastq.36"
+          ],
+        "outputs":
+          [
+            "output.fastq.36"
+          ]
+      },
+      
+      {
+        "command":"./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.37 > output.fastq.37",
+        "inputs":
+          [
+            "./ssaha2",
+            "db.fastq",
+            "query.fastq.37"
+          ],
+        "outputs":
+          [
+            "output.fastq.37"
+          ]
+      },
+      
+      {
+        "command":"./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.38 > output.fastq.38",
+        "inputs":
+          [
+            "./ssaha2",
+            "db.fastq",
+            "query.fastq.38"
+          ],
+        "outputs":
+          [
+            "output.fastq.38"
+          ]
+      },
+      
+      {
+        "command":"./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.39 > output.fastq.39",
+        "inputs":
+          [
+            "./ssaha2",
+            "db.fastq",
+            "query.fastq.39"
+          ],
+        "outputs":
+          [
+            "output.fastq.39"
+          ]
+      },
+      
+      {
+        "command":"./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.40 > output.fastq.40",
+        "inputs":
+          [
+            "./ssaha2",
+            "db.fastq",
+            "query.fastq.40"
+          ],
+        "outputs":
+          [
+            "output.fastq.40"
+          ]
+      },
+      
+      {
+        "command":"./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.41 > output.fastq.41",
+        "inputs":
+          [
+            "./ssaha2",
+            "db.fastq",
+            "query.fastq.41"
+          ],
+        "outputs":
+          [
+            "output.fastq.41"
+          ]
+      },
+      
+      {
+        "command":"./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.42 > output.fastq.42",
+        "inputs":
+          [
+            "./ssaha2",
+            "db.fastq",
+            "query.fastq.42"
+          ],
+        "outputs":
+          [
+            "output.fastq.42"
+          ]
+      },
+      
+      {
+        "command":"./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.43 > output.fastq.43",
+        "inputs":
+          [
+            "./ssaha2",
+            "db.fastq",
+            "query.fastq.43"
+          ],
+        "outputs":
+          [
+            "output.fastq.43"
+          ]
+      },
+      
+      {
+        "command":"./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.44 > output.fastq.44",
+        "inputs":
+          [
+            "./ssaha2",
+            "db.fastq",
+            "query.fastq.44"
+          ],
+        "outputs":
+          [
+            "output.fastq.44"
+          ]
+      },
+      
+      {
+        "command":"./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.45 > output.fastq.45",
+        "inputs":
+          [
+            "./ssaha2",
+            "db.fastq",
+            "query.fastq.45"
+          ],
+        "outputs":
+          [
+            "output.fastq.45"
+          ]
+      },
+      
+      {
+        "command":"./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.46 > output.fastq.46",
+        "inputs":
+          [
+            "./ssaha2",
+            "db.fastq",
+            "query.fastq.46"
+          ],
+        "outputs":
+          [
+            "output.fastq.46"
+          ]
+      },
+      
+      {
+        "command":"./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.47 > output.fastq.47",
+        "inputs":
+          [
+            "./ssaha2",
+            "db.fastq",
+            "query.fastq.47"
+          ],
+        "outputs":
+          [
+            "output.fastq.47"
+          ]
+      },
+      
+      {
+        "command":"./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.48 > output.fastq.48",
+        "inputs":
+          [
+            "./ssaha2",
+            "db.fastq",
+            "query.fastq.48"
+          ],
+        "outputs":
+          [
+            "output.fastq.48"
+          ]
+      },
+      
+      {
+        "command":"./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.49 > output.fastq.49",
+        "inputs":
+          [
+            "./ssaha2",
+            "db.fastq",
+            "query.fastq.49"
+          ],
+        "outputs":
+          [
+            "output.fastq.49"
+          ]
+      },
+      
+      {
+        "command":"./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.50 > output.fastq.50",
+        "inputs":
+          [
+            "./ssaha2",
+            "db.fastq",
+            "query.fastq.50"
+          ],
+        "outputs":
+          [
+            "output.fastq.50"
+          ]
+      },
+      
+      {
+        "command":"./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.51 > output.fastq.51",
+        "inputs":
+          [
+            "./ssaha2",
+            "db.fastq",
+            "query.fastq.51"
+          ],
+        "outputs":
+          [
+            "output.fastq.51"
+          ]
+      },
+      
+      {
+        "command":"./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.52 > output.fastq.52",
+        "inputs":
+          [
+            "./ssaha2",
+            "db.fastq",
+            "query.fastq.52"
+          ],
+        "outputs":
+          [
+            "output.fastq.52"
+          ]
+      },
+      
+      {
+        "command":"./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.53 > output.fastq.53",
+        "inputs":
+          [
+            "./ssaha2",
+            "db.fastq",
+            "query.fastq.53"
+          ],
+        "outputs":
+          [
+            "output.fastq.53"
+          ]
+      },
+      
+      {
+        "command":"./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.54 > output.fastq.54",
+        "inputs":
+          [
+            "./ssaha2",
+            "db.fastq",
+            "query.fastq.54"
+          ],
+        "outputs":
+          [
+            "output.fastq.54"
+          ]
+      },
+      
+      {
+        "command":"./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.55 > output.fastq.55",
+        "inputs":
+          [
+            "./ssaha2",
+            "db.fastq",
+            "query.fastq.55"
+          ],
+        "outputs":
+          [
+            "output.fastq.55"
+          ]
+      },
+      
+      {
+        "command":"./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.56 > output.fastq.56",
+        "inputs":
+          [
+            "./ssaha2",
+            "db.fastq",
+            "query.fastq.56"
+          ],
+        "outputs":
+          [
+            "output.fastq.56"
+          ]
+      },
+      
+      {
+        "command":"./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.57 > output.fastq.57",
+        "inputs":
+          [
+            "./ssaha2",
+            "db.fastq",
+            "query.fastq.57"
+          ],
+        "outputs":
+          [
+            "output.fastq.57"
+          ]
+      },
+      
+      {
+        "command":"./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.58 > output.fastq.58",
+        "inputs":
+          [
+            "./ssaha2",
+            "db.fastq",
+            "query.fastq.58"
+          ],
+        "outputs":
+          [
+            "output.fastq.58"
+          ]
+      },
+      
+      {
+        "command":"./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.59 > output.fastq.59",
+        "inputs":
+          [
+            "./ssaha2",
+            "db.fastq",
+            "query.fastq.59"
+          ],
+        "outputs":
+          [
+            "output.fastq.59"
+          ]
+      },
+      
+      {
+        "command":"./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.60 > output.fastq.60",
+        "inputs":
+          [
+            "./ssaha2",
+            "db.fastq",
+            "query.fastq.60"
+          ],
+        "outputs":
+          [
+            "output.fastq.60"
+          ]
+      },
+      
+      {
+        "command":"./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.61 > output.fastq.61",
+        "inputs":
+          [
+            "./ssaha2",
+            "db.fastq",
+            "query.fastq.61"
+          ],
+        "outputs":
+          [
+            "output.fastq.61"
+          ]
+      },
+      
+      {
+        "command":"./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.62 > output.fastq.62",
+        "inputs":
+          [
+            "./ssaha2",
+            "db.fastq",
+            "query.fastq.62"
+          ],
+        "outputs":
+          [
+            "output.fastq.62"
+          ]
+      },
+      
+      {
+        "command":"./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.63 > output.fastq.63",
+        "inputs":
+          [
+            "./ssaha2",
+            "db.fastq",
+            "query.fastq.63"
+          ],
+        "outputs":
+          [
+            "output.fastq.63"
+          ]
+      },
+      
+      {
+        "command":"./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.64 > output.fastq.64",
+        "inputs":
+          [
+            "./ssaha2",
+            "db.fastq",
+            "query.fastq.64"
+          ],
+        "outputs":
+          [
+            "output.fastq.64"
+          ]
+      },
+      
+      {
+        "command":"./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.65 > output.fastq.65",
+        "inputs":
+          [
+            "./ssaha2",
+            "db.fastq",
+            "query.fastq.65"
+          ],
+        "outputs":
+          [
+            "output.fastq.65"
+          ]
+      },
+      
+      {
+        "command":"./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.66 > output.fastq.66",
+        "inputs":
+          [
+            "./ssaha2",
+            "db.fastq",
+            "query.fastq.66"
+          ],
+        "outputs":
+          [
+            "output.fastq.66"
+          ]
+      },
+      
+      {
+        "command":"./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.67 > output.fastq.67",
+        "inputs":
+          [
+            "./ssaha2",
+            "db.fastq",
+            "query.fastq.67"
+          ],
+        "outputs":
+          [
+            "output.fastq.67"
+          ]
+      },
+      
+      {
+        "command":"./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.68 > output.fastq.68",
+        "inputs":
+          [
+            "./ssaha2",
+            "db.fastq",
+            "query.fastq.68"
+          ],
+        "outputs":
+          [
+            "output.fastq.68"
+          ]
+      },
+      
+      {
+        "command":"./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.69 > output.fastq.69",
+        "inputs":
+          [
+            "./ssaha2",
+            "db.fastq",
+            "query.fastq.69"
+          ],
+        "outputs":
+          [
+            "output.fastq.69"
+          ]
+      },
+      
+      {
+        "command":"./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.70 > output.fastq.70",
+        "inputs":
+          [
+            "./ssaha2",
+            "db.fastq",
+            "query.fastq.70"
+          ],
+        "outputs":
+          [
+            "output.fastq.70"
+          ]
+      },
+      
+      {
+        "command":"./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.71 > output.fastq.71",
+        "inputs":
+          [
+            "./ssaha2",
+            "db.fastq",
+            "query.fastq.71"
+          ],
+        "outputs":
+          [
+            "output.fastq.71"
+          ]
+      },
+      
+      {
+        "command":"./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.72 > output.fastq.72",
+        "inputs":
+          [
+            "./ssaha2",
+            "db.fastq",
+            "query.fastq.72"
+          ],
+        "outputs":
+          [
+            "output.fastq.72"
+          ]
+      },
+      
+      {
+        "command":"./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.73 > output.fastq.73",
+        "inputs":
+          [
+            "./ssaha2",
+            "db.fastq",
+            "query.fastq.73"
+          ],
+        "outputs":
+          [
+            "output.fastq.73"
+          ]
+      },
+      
+      {
+        "command":"./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.74 > output.fastq.74",
+        "inputs":
+          [
+            "./ssaha2",
+            "db.fastq",
+            "query.fastq.74"
+          ],
+        "outputs":
+          [
+            "output.fastq.74"
+          ]
+      },
+      
+      {
+        "command":"./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.75 > output.fastq.75",
+        "inputs":
+          [
+            "./ssaha2",
+            "db.fastq",
+            "query.fastq.75"
+          ],
+        "outputs":
+          [
+            "output.fastq.75"
+          ]
+      },
+      
+      {
+        "command":"./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.76 > output.fastq.76",
+        "inputs":
+          [
+            "./ssaha2",
+            "db.fastq",
+            "query.fastq.76"
+          ],
+        "outputs":
+          [
+            "output.fastq.76"
+          ]
+      },
+      
+      {
+        "command":"./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.77 > output.fastq.77",
+        "inputs":
+          [
+            "./ssaha2",
+            "db.fastq",
+            "query.fastq.77"
+          ],
+        "outputs":
+          [
+            "output.fastq.77"
+          ]
+      },
+      
+      {
+        "command":"./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.78 > output.fastq.78",
+        "inputs":
+          [
+            "./ssaha2",
+            "db.fastq",
+            "query.fastq.78"
+          ],
+        "outputs":
+          [
+            "output.fastq.78"
+          ]
+      },
+      
+      {
+        "command":"./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.79 > output.fastq.79",
+        "inputs":
+          [
+            "./ssaha2",
+            "db.fastq",
+            "query.fastq.79"
+          ],
+        "outputs":
+          [
+            "output.fastq.79"
+          ]
+      },
+      
+      {
+        "command":"./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.80 > output.fastq.80",
+        "inputs":
+          [
+            "./ssaha2",
+            "db.fastq",
+            "query.fastq.80"
+          ],
+        "outputs":
+          [
+            "output.fastq.80"
+          ]
+      },
+      
+      {
+        "command":"./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.81 > output.fastq.81",
+        "inputs":
+          [
+            "./ssaha2",
+            "db.fastq",
+            "query.fastq.81"
+          ],
+        "outputs":
+          [
+            "output.fastq.81"
+          ]
+      },
+      
+      {
+        "command":"./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.82 > output.fastq.82",
+        "inputs":
+          [
+            "./ssaha2",
+            "db.fastq",
+            "query.fastq.82"
+          ],
+        "outputs":
+          [
+            "output.fastq.82"
+          ]
+      },
+      
+      {
+        "command":"./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.83 > output.fastq.83",
+        "inputs":
+          [
+            "./ssaha2",
+            "db.fastq",
+            "query.fastq.83"
+          ],
+        "outputs":
+          [
+            "output.fastq.83"
+          ]
+      },
+      
+      {
+        "command":"./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.84 > output.fastq.84",
+        "inputs":
+          [
+            "./ssaha2",
+            "db.fastq",
+            "query.fastq.84"
+          ],
+        "outputs":
+          [
+            "output.fastq.84"
+          ]
+      },
+      
+      {
+        "command":"./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.85 > output.fastq.85",
+        "inputs":
+          [
+            "./ssaha2",
+            "db.fastq",
+            "query.fastq.85"
+          ],
+        "outputs":
+          [
+            "output.fastq.85"
+          ]
+      },
+      
+      {
+        "command":"./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.86 > output.fastq.86",
+        "inputs":
+          [
+            "./ssaha2",
+            "db.fastq",
+            "query.fastq.86"
+          ],
+        "outputs":
+          [
+            "output.fastq.86"
+          ]
+      },
+      
+      {
+        "command":"./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.87 > output.fastq.87",
+        "inputs":
+          [
+            "./ssaha2",
+            "db.fastq",
+            "query.fastq.87"
+          ],
+        "outputs":
+          [
+            "output.fastq.87"
+          ]
+      },
+      
+      {
+        "command":"./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.88 > output.fastq.88",
+        "inputs":
+          [
+            "./ssaha2",
+            "db.fastq",
+            "query.fastq.88"
+          ],
+        "outputs":
+          [
+            "output.fastq.88"
+          ]
+      },
+      
+      {
+        "command":"./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.89 > output.fastq.89",
+        "inputs":
+          [
+            "./ssaha2",
+            "db.fastq",
+            "query.fastq.89"
+          ],
+        "outputs":
+          [
+            "output.fastq.89"
+          ]
+      },
+      
+      {
+        "command":"./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.90 > output.fastq.90",
+        "inputs":
+          [
+            "./ssaha2",
+            "db.fastq",
+            "query.fastq.90"
+          ],
+        "outputs":
+          [
+            "output.fastq.90"
+          ]
+      },
+      
+      {
+        "command":"./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.91 > output.fastq.91",
+        "inputs":
+          [
+            "./ssaha2",
+            "db.fastq",
+            "query.fastq.91"
+          ],
+        "outputs":
+          [
+            "output.fastq.91"
+          ]
+      },
+      
+      {
+        "command":"./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.92 > output.fastq.92",
+        "inputs":
+          [
+            "./ssaha2",
+            "db.fastq",
+            "query.fastq.92"
+          ],
+        "outputs":
+          [
+            "output.fastq.92"
+          ]
+      },
+      
+      {
+        "command":"./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.93 > output.fastq.93",
+        "inputs":
+          [
+            "./ssaha2",
+            "db.fastq",
+            "query.fastq.93"
+          ],
+        "outputs":
+          [
+            "output.fastq.93"
+          ]
+      },
+      
+      {
+        "command":"./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.94 > output.fastq.94",
+        "inputs":
+          [
+            "./ssaha2",
+            "db.fastq",
+            "query.fastq.94"
+          ],
+        "outputs":
+          [
+            "output.fastq.94"
+          ]
+      },
+      
+      {
+        "command":"./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.95 > output.fastq.95",
+        "inputs":
+          [
+            "./ssaha2",
+            "db.fastq",
+            "query.fastq.95"
+          ],
+        "outputs":
+          [
+            "output.fastq.95"
+          ]
+      },
+      
+      {
+        "command":"./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.96 > output.fastq.96",
+        "inputs":
+          [
+            "./ssaha2",
+            "db.fastq",
+            "query.fastq.96"
+          ],
+        "outputs":
+          [
+            "output.fastq.96"
+          ]
+      },
+      
+      {
+        "command":"./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.97 > output.fastq.97",
+        "inputs":
+          [
+            "./ssaha2",
+            "db.fastq",
+            "query.fastq.97"
+          ],
+        "outputs":
+          [
+            "output.fastq.97"
+          ]
+      },
+      
+      {
+        "command":"./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.98 > output.fastq.98",
+        "inputs":
+          [
+            "./ssaha2",
+            "db.fastq",
+            "query.fastq.98"
+          ],
+        "outputs":
+          [
+            "output.fastq.98"
+          ]
+      },
+      
+      {
+        "command":"./ssaha2 -tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2 db.fastq query.fastq.99 > output.fastq.99",
+        "inputs":
+          [
+            "./ssaha2",
+            "db.fastq",
+            "query.fastq.99"
+          ],
+        "outputs":
+          [
+            "output.fastq.99"
+          ]
+      },
+      
+      {
+        "command":"cat output.fastq.0 output.fastq.1 output.fastq.2 output.fastq.3 output.fastq.4 output.fastq.5 output.fastq.6 output.fastq.7 output.fastq.8 output.fastq.9 output.fastq.10 output.fastq.11 output.fastq.12 output.fastq.13 output.fastq.14 output.fastq.15 output.fastq.16 output.fastq.17 output.fastq.18 output.fastq.19 output.fastq.20 output.fastq.21 output.fastq.22 output.fastq.23 output.fastq.24 output.fastq.25 output.fastq.26 output.fastq.27 output.fastq.28 output.fastq.29 output.fastq.30 output.fastq.31 output.fastq.32 output.fastq.33 output.fastq.34 output.fastq.35 output.fastq.36 output.fastq.37 output.fastq.38 output.fastq.39 output.fastq.40 output.fastq.41 output.fastq.42 output.fastq.43 output.fastq.44 output.fastq.45 output.fastq.46 output.fastq.47 output.fastq.48 output.fastq.49 output.fastq.50 output.fastq.51 output.fastq.52 output.fastq.53 output.fastq.54 output.fastq.55 output.fastq.56 output.fastq.57 output.fastq.58 output.fastq.59 output.fastq.60 output.fastq.61 output.fastq.62 output.fastq.63 output.fastq.64 output.fastq.65 output.fastq.66 output.fastq.67 output.fastq.68 output.fastq.69 output.fastq.70 output.fastq.71 output.fastq.72 output.fastq.73 output.fastq.74 output.fastq.75 output.fastq.76 output.fastq.77 output.fastq.78 output.fastq.79 output.fastq.80 output.fastq.81 output.fastq.82 output.fastq.83 output.fastq.84 output.fastq.85 output.fastq.86 output.fastq.87 output.fastq.88 output.fastq.89 output.fastq.90 output.fastq.91 output.fastq.92 output.fastq.93 output.fastq.94 output.fastq.95 output.fastq.96 output.fastq.97 output.fastq.98 output.fastq.99 > output.fastq",
+        "inputs":
+          [
+            "output.fastq.0",
+            "output.fastq.1",
+            "output.fastq.2",
+            "output.fastq.3",
+            "output.fastq.4",
+            "output.fastq.5",
+            "output.fastq.6",
+            "output.fastq.7",
+            "output.fastq.8",
+            "output.fastq.9",
+            "output.fastq.10",
+            "output.fastq.11",
+            "output.fastq.12",
+            "output.fastq.13",
+            "output.fastq.14",
+            "output.fastq.15",
+            "output.fastq.16",
+            "output.fastq.17",
+            "output.fastq.18",
+            "output.fastq.19",
+            "output.fastq.20",
+            "output.fastq.21",
+            "output.fastq.22",
+            "output.fastq.23",
+            "output.fastq.24",
+            "output.fastq.25",
+            "output.fastq.26",
+            "output.fastq.27",
+            "output.fastq.28",
+            "output.fastq.29",
+            "output.fastq.30",
+            "output.fastq.31",
+            "output.fastq.32",
+            "output.fastq.33",
+            "output.fastq.34",
+            "output.fastq.35",
+            "output.fastq.36",
+            "output.fastq.37",
+            "output.fastq.38",
+            "output.fastq.39",
+            "output.fastq.40",
+            "output.fastq.41",
+            "output.fastq.42",
+            "output.fastq.43",
+            "output.fastq.44",
+            "output.fastq.45",
+            "output.fastq.46",
+            "output.fastq.47",
+            "output.fastq.48",
+            "output.fastq.49",
+            "output.fastq.50",
+            "output.fastq.51",
+            "output.fastq.52",
+            "output.fastq.53",
+            "output.fastq.54",
+            "output.fastq.55",
+            "output.fastq.56",
+            "output.fastq.57",
+            "output.fastq.58",
+            "output.fastq.59",
+            "output.fastq.60",
+            "output.fastq.61",
+            "output.fastq.62",
+            "output.fastq.63",
+            "output.fastq.64",
+            "output.fastq.65",
+            "output.fastq.66",
+            "output.fastq.67",
+            "output.fastq.68",
+            "output.fastq.69",
+            "output.fastq.70",
+            "output.fastq.71",
+            "output.fastq.72",
+            "output.fastq.73",
+            "output.fastq.74",
+            "output.fastq.75",
+            "output.fastq.76",
+            "output.fastq.77",
+            "output.fastq.78",
+            "output.fastq.79",
+            "output.fastq.80",
+            "output.fastq.81",
+            "output.fastq.82",
+            "output.fastq.83",
+            "output.fastq.84",
+            "output.fastq.85",
+            "output.fastq.86",
+            "output.fastq.87",
+            "output.fastq.88",
+            "output.fastq.89",
+            "output.fastq.90",
+            "output.fastq.91",
+            "output.fastq.92",
+            "output.fastq.93",
+            "output.fastq.94",
+            "output.fastq.95",
+            "output.fastq.96",
+            "output.fastq.97",
+            "output.fastq.98",
+            "output.fastq.99"
+          ],
+        "outputs":
+          [
+            "output.fastq"
+          ],
+        "local_job":true
+      }
     ]
 }

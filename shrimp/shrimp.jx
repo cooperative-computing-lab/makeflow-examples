@@ -1,48 +1,57 @@
-{"rules": [
-	{
-		"command": format(
-			"%s %d %s",
-			SPLIT,
-			SEQ_PER_SPLIT,
-			QUERY,
-		),
-		"inputs": [
-			QUERY,
-			SPLIT,
-		],
-		"outputs": [
-			format("%s.%d", QUERY, x) for x in range(ceil(TOTAL_SEQ/SEQ_PER_SPLIT)),
-		],
-		"local_job": true,
-	},
-	{
-		"command": format(
-			"%s %s %s.%d %s > output.%d",
-			MAPPER,
-			MOPTIONS,
-			QUERY,
-			x,
-			GENOME,
-			x,
-		),
-		"inputs": [
-			MAPPER,
-			GENOME,
-			format("%s.%d", QUERY, x),
-		],
-		"outputs": [ format("output.%d", x) ],
-	} for x in range(ceil(TOTAL_SEQ/SEQ_PER_SPLIT)),
-	{
-		"command": format("cat %s > output.txt",
-			join([format("output.%d", x) for x in range(ceil(TOTAL_SEQ/SEQ_PER_SPLIT))])
-		),
-		"inputs": [
-			format("output.%d", x) for x in range(ceil(TOTAL_SEQ/SEQ_PER_SPLIT)),	
-		],
-		"outputs": [
-			"output.txt",
-		],
-		"local_job": true,
-	},
-],
+
+{
+  "define":
+    {
+      "QUERY":"query.csfasta",
+      "GENOME":"genome.fasta",
+      "MAPPER":"./rmapper-cs",
+      "MOPTIONS":"-M fast -M 50bp",
+      "SPLIT":"./split_fasta",
+      "SEQ_PER_SPLIT":10000,
+      "TOTAL_SEQ":7620000
+    },
+  "rules":
+    [
+      
+      {
+        "command":format("%s %d %s",SPLIT,SEQ_PER_SPLIT,QUERY),
+        "inputs":
+          [
+            QUERY,
+            SPLIT
+          ],
+        "outputs":
+          [
+            format("%s.%d",QUERY,x) for x in range(ceil(TOTAL_SEQ/SEQ_PER_SPLIT))
+          ],
+        "local_job":true
+      },
+      
+      {
+        "command":format("%s %s %s.%d %s > output.%d",MAPPER,MOPTIONS,QUERY,x,GENOME,x),
+        "inputs":
+          [
+            MAPPER,
+            GENOME,
+            format("%s.%d",QUERY,x)
+          ],
+        "outputs":
+          [
+            format("output.%d",x)
+          ]
+      } for x in range(ceil(TOTAL_SEQ/SEQ_PER_SPLIT)),
+      
+      {
+        "command":format("cat %s > output.txt",join([format("output.%d",x) for x in range(ceil(TOTAL_SEQ/SEQ_PER_SPLIT))])),
+        "inputs":
+          [
+            format("output.%d",x) for x in range(ceil(TOTAL_SEQ/SEQ_PER_SPLIT))
+          ],
+        "outputs":
+          [
+            "output.txt"
+          ],
+        "local_job":true
+      }
+    ]
 }
