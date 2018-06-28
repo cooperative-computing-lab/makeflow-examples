@@ -21,10 +21,10 @@ Finally, execute the workflow using makeflow locally,
 or using a batch system like Condor, SGE, or Work Queue:
 
 ```
-makeflow shakespeare.makeflow
-makeflow -T condor shakespeare.makeflow
-makeflow -T sge shakespeare.makeflow
-makeflow -T wq shakespeare.makeflow
+makeflow shakespeare.mf
+makeflow -T condor shakespeare.mf
+makeflow -T sge shakespeare.mf
+makeflow -T wq shakespeare.mf
 ```
 Alternatively, the makeflow can be run using the `JX` or `JSON` format:
 ```
