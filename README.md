@@ -26,13 +26,13 @@ some generated behavior may appear to cause issues when programs expect some for
 or quality guarantee.
 
 <table cellpadding=20>
-<tr><td><img width=128 src=blast/blast.png><td>BLAST workflow adapted from the Biocompute web portal.  (Shown at a scale of 10 splits.)
-<tr><td><img width=128 src=ssaha/ssaha.png><td>SSAHA genomics analysis workflow, courtesy of Scott Emrich and Notre Dame Bioinformatics Laboratory.  (Shown at scale of 25 splits.)
-<tr><td><img width=128 src=bwa/bwa.png><td>BWA genomics analysis workflow, courtesy of Scott Emrich and Notre Dame Bioinformatics Laboratory.  (Shown at scale of 20 splits.)
-<tr><td><img width=128 src=shrimp/shrimp.png><td>SHRIMP genomics analysis workflow adapted from the Biocompute web portal.  (Shown at a scale of 100 splits.)
-<tr><td><img width=128 src=hecil/hecil.png><td>HECIL genomics analysis workflow, courtesy of Olivia Choudhury and Connor Howington.
-<tr><td><img width=128 src=lifemapper/lifemapper.png><td>Lifemapper Species Distribution Modeling (SDM) workflow, courtesy of C.J. Grady.  (Shown at scale of 10 species and 5 random trials.)
-<tr><td><img width=128 src=snpexp/snpexp.png><td>SNPEXP Genomics analysis workflow courtesy of Scott Emrich and Notre Dame Bioinformatics Laboratory.
-<tr><td><img width=128 src=bwa-gatk/bwa-gatk.png><td>BWA-GATK genomics workflow by Nick Hazekamp and Olivia Choudhury.
-<tr><td><img width=128 src=shakespeare/shakespeare.png><td>Example text analysis workflow by Nate Kremer-Herman.
+<tr><td><a href=blast><img width=128 src=blast/blast.png></a><td>BLAST workflow adapted from the Biocompute web portal.  (Shown at a scale of 10 splits.)
+<tr><td><a href=ssaha><img width=128 src=ssaha/ssaha.png></a><td>SSAHA genomics analysis workflow, courtesy of Scott Emrich and Notre Dame Bioinformatics Laboratory.  (Shown at scale of 25 splits.)
+<tr><td><a href=bwa><img width=128 src=bwa/bwa.png></a><td>BWA genomics analysis workflow, courtesy of Scott Emrich and Notre Dame Bioinformatics Laboratory.  (Shown at scale of 20 splits.)
+<tr><td><a href=shrimp><img width=128 src=shrimp/shrimp.png></a><td>SHRIMP genomics analysis workflow adapted from the Biocompute web portal.  (Shown at a scale of 100 splits.)
+<tr><td><a href=hecil><img width=128 src=hecil/hecil.png></a><td>HECIL genomics analysis workflow, courtesy of Olivia Choudhury and Connor Howington.
+<tr><td><a href=lifemapper><img width=128 src=lifemapper/lifemapper.png></a><td>Lifemapper Species Distribution Modeling (SDM) workflow, courtesy of C.J. Grady.  (Shown at scale of 10 species and 5 random trials.)
+<tr><td><a href=snpexp><img width=128 src=snpexp/snpexp.png></a><td>SNPEXP Genomics analysis workflow courtesy of Scott Emrich and Notre Dame Bioinformatics Laboratory.
+<tr><td><a href=bwa-gatk><img width=128 src=bwa-gatk/bwa-gatk.png></a><td>BWA-GATK genomics workflow by Nick Hazekamp and Olivia Choudhury.
+<tr><td><a href=shakespeare.<img width=128 src=shakespeare/shakespeare.png></a><td>Example text analysis workflow by Nate Kremer-Herman.
 </table>
