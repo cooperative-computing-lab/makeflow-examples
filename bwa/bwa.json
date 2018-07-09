@@ -1,1938 +1,2268 @@
+
 {
-    "rules": [
-        {
-            "command": "./fastq_reduce query.fastq 10",
-            "outputs": [
-                "query.fastq.0",
-                "query.fastq.1",
-                "query.fastq.2",
-                "query.fastq.3",
-                "query.fastq.4",
-                "query.fastq.5",
-                "query.fastq.6",
-                "query.fastq.7",
-                "query.fastq.8",
-                "query.fastq.9",
-                "query.fastq.10",
-                "query.fastq.11",
-                "query.fastq.12",
-                "query.fastq.13",
-                "query.fastq.14",
-                "query.fastq.15",
-                "query.fastq.16",
-                "query.fastq.17",
-                "query.fastq.18",
-                "query.fastq.19",
-                "query.fastq.20",
-                "query.fastq.21",
-                "query.fastq.22",
-                "query.fastq.23",
-                "query.fastq.24",
-                "query.fastq.25",
-                "query.fastq.26",
-                "query.fastq.27",
-                "query.fastq.28",
-                "query.fastq.29",
-                "query.fastq.30",
-                "query.fastq.31",
-                "query.fastq.32",
-                "query.fastq.33",
-                "query.fastq.34",
-                "query.fastq.35",
-                "query.fastq.36",
-                "query.fastq.37",
-                "query.fastq.38",
-                "query.fastq.39",
-                "query.fastq.40",
-                "query.fastq.41",
-                "query.fastq.42",
-                "query.fastq.43",
-                "query.fastq.44",
-                "query.fastq.45",
-                "query.fastq.46",
-                "query.fastq.47",
-                "query.fastq.48",
-                "query.fastq.49",
-                "query.fastq.50",
-                "query.fastq.51",
-                "query.fastq.52",
-                "query.fastq.53",
-                "query.fastq.54",
-                "query.fastq.55",
-                "query.fastq.56",
-                "query.fastq.57",
-                "query.fastq.58",
-                "query.fastq.59",
-                "query.fastq.60",
-                "query.fastq.61",
-                "query.fastq.62",
-                "query.fastq.63",
-                "query.fastq.64",
-                "query.fastq.65",
-                "query.fastq.66",
-                "query.fastq.67",
-                "query.fastq.68",
-                "query.fastq.69",
-                "query.fastq.70",
-                "query.fastq.71",
-                "query.fastq.72",
-                "query.fastq.73",
-                "query.fastq.74",
-                "query.fastq.75",
-                "query.fastq.76",
-                "query.fastq.77",
-                "query.fastq.78",
-                "query.fastq.79",
-                "query.fastq.80",
-                "query.fastq.81",
-                "query.fastq.82",
-                "query.fastq.83",
-                "query.fastq.84",
-                "query.fastq.85",
-                "query.fastq.86",
-                "query.fastq.87",
-                "query.fastq.88",
-                "query.fastq.89",
-                "query.fastq.90",
-                "query.fastq.91",
-                "query.fastq.92",
-                "query.fastq.93",
-                "query.fastq.94",
-                "query.fastq.95",
-                "query.fastq.96",
-                "query.fastq.97",
-                "query.fastq.98",
-                "query.fastq.99"
-            ],
-            "inputs": [
-                "./fastq_reduce",
-                "query.fastq"
-            ],
-            "local_job": true
-        },
-        {
-            "command": "./bwa index ref.fastq",
-            "inputs": [
-                "./bwa",
-                "ref.fastq"
-            ],
-            "outputs": [
-                "ref.fastq.amb",
-                "ref.fastq.ann",
-                "ref.fastq.bwt",
-                "ref.fastq.pac",
-                "ref.fastq.sa"
-            ],
-            "local job": true
-        },
-        {
-            "command": "./bwa mem ref.fastq query.fastq.0 > query.fastq.0.sam 2> query.fastq.0.err",
-            "outputs": [
-                "query.fastq.0.sam",
-                "query.fastq.0.err"
-            ],
-            "inputs": [
-                "./bwa",
-                "ref.fastq",
-                "ref.fastq.amb",
-                "ref.fastq.ann",
-                "ref.fastq.bwt",
-                "ref.fastq.pac",
-                "ref.fastq.sa",
-                "query.fastq.0"
-            ]
-        },
-        {
-            "command": "./bwa mem ref.fastq query.fastq.1 > query.fastq.1.sam 2> query.fastq.1.err",
-            "outputs": [
-                "query.fastq.1.sam",
-                "query.fastq.1.err"
-            ],
-            "inputs": [
-                "./bwa",
-                "ref.fastq",
-                "ref.fastq.amb",
-                "ref.fastq.ann",
-                "ref.fastq.bwt",
-                "ref.fastq.pac",
-                "ref.fastq.sa",
-                "query.fastq.1"
-            ]
-        },
-        {
-            "command": "./bwa mem ref.fastq query.fastq.2 > query.fastq.2.sam 2> query.fastq.2.err",
-            "outputs": [
-                "query.fastq.2.sam",
-                "query.fastq.2.err"
-            ],
-            "inputs": [
-                "./bwa",
-                "ref.fastq",
-                "ref.fastq.amb",
-                "ref.fastq.ann",
-                "ref.fastq.bwt",
-                "ref.fastq.pac",
-                "ref.fastq.sa",
-                "query.fastq.2"
-            ]
-        },
-        {
-            "command": "./bwa mem ref.fastq query.fastq.3 > query.fastq.3.sam 2> query.fastq.3.err",
-            "outputs": [
-                "query.fastq.3.sam",
-                "query.fastq.3.err"
-            ],
-            "inputs": [
-                "./bwa",
-                "ref.fastq",
-                "ref.fastq.amb",
-                "ref.fastq.ann",
-                "ref.fastq.bwt",
-                "ref.fastq.pac",
-                "ref.fastq.sa",
-                "query.fastq.3"
-            ]
-        },
-        {
-            "command": "./bwa mem ref.fastq query.fastq.4 > query.fastq.4.sam 2> query.fastq.4.err",
-            "outputs": [
-                "query.fastq.4.sam",
-                "query.fastq.4.err"
-            ],
-            "inputs": [
-                "./bwa",
-                "ref.fastq",
-                "ref.fastq.amb",
-                "ref.fastq.ann",
-                "ref.fastq.bwt",
-                "ref.fastq.pac",
-                "ref.fastq.sa",
-                "query.fastq.4"
-            ]
-        },
-        {
-            "command": "./bwa mem ref.fastq query.fastq.5 > query.fastq.5.sam 2> query.fastq.5.err",
-            "outputs": [
-                "query.fastq.5.sam",
-                "query.fastq.5.err"
-            ],
-            "inputs": [
-                "./bwa",
-                "ref.fastq",
-                "ref.fastq.amb",
-                "ref.fastq.ann",
-                "ref.fastq.bwt",
-                "ref.fastq.pac",
-                "ref.fastq.sa",
-                "query.fastq.5"
-            ]
-        },
-        {
-            "command": "./bwa mem ref.fastq query.fastq.6 > query.fastq.6.sam 2> query.fastq.6.err",
-            "outputs": [
-                "query.fastq.6.sam",
-                "query.fastq.6.err"
-            ],
-            "inputs": [
-                "./bwa",
-                "ref.fastq",
-                "ref.fastq.amb",
-                "ref.fastq.ann",
-                "ref.fastq.bwt",
-                "ref.fastq.pac",
-                "ref.fastq.sa",
-                "query.fastq.6"
-            ]
-        },
-        {
-            "command": "./bwa mem ref.fastq query.fastq.7 > query.fastq.7.sam 2> query.fastq.7.err",
-            "outputs": [
-                "query.fastq.7.sam",
-                "query.fastq.7.err"
-            ],
-            "inputs": [
-                "./bwa",
-                "ref.fastq",
-                "ref.fastq.amb",
-                "ref.fastq.ann",
-                "ref.fastq.bwt",
-                "ref.fastq.pac",
-                "ref.fastq.sa",
-                "query.fastq.7"
-            ]
-        },
-        {
-            "command": "./bwa mem ref.fastq query.fastq.8 > query.fastq.8.sam 2> query.fastq.8.err",
-            "outputs": [
-                "query.fastq.8.sam",
-                "query.fastq.8.err"
-            ],
-            "inputs": [
-                "./bwa",
-                "ref.fastq",
-                "ref.fastq.amb",
-                "ref.fastq.ann",
-                "ref.fastq.bwt",
-                "ref.fastq.pac",
-                "ref.fastq.sa",
-                "query.fastq.8"
-            ]
-        },
-        {
-            "command": "./bwa mem ref.fastq query.fastq.9 > query.fastq.9.sam 2> query.fastq.9.err",
-            "outputs": [
-                "query.fastq.9.sam",
-                "query.fastq.9.err"
-            ],
-            "inputs": [
-                "./bwa",
-                "ref.fastq",
-                "ref.fastq.amb",
-                "ref.fastq.ann",
-                "ref.fastq.bwt",
-                "ref.fastq.pac",
-                "ref.fastq.sa",
-                "query.fastq.9"
-            ]
-        },
-        {
-            "command": "./bwa mem ref.fastq query.fastq.10 > query.fastq.10.sam 2> query.fastq.10.err",
-            "outputs": [
-                "query.fastq.10.sam",
-                "query.fastq.10.err"
-            ],
-            "inputs": [
-                "./bwa",
-                "ref.fastq",
-                "ref.fastq.amb",
-                "ref.fastq.ann",
-                "ref.fastq.bwt",
-                "ref.fastq.pac",
-                "ref.fastq.sa",
-                "query.fastq.10"
-            ]
-        },
-        {
-            "command": "./bwa mem ref.fastq query.fastq.11 > query.fastq.11.sam 2> query.fastq.11.err",
-            "outputs": [
-                "query.fastq.11.sam",
-                "query.fastq.11.err"
-            ],
-            "inputs": [
-                "./bwa",
-                "ref.fastq",
-                "ref.fastq.amb",
-                "ref.fastq.ann",
-                "ref.fastq.bwt",
-                "ref.fastq.pac",
-                "ref.fastq.sa",
-                "query.fastq.11"
-            ]
-        },
-        {
-            "command": "./bwa mem ref.fastq query.fastq.12 > query.fastq.12.sam 2> query.fastq.12.err",
-            "outputs": [
-                "query.fastq.12.sam",
-                "query.fastq.12.err"
-            ],
-            "inputs": [
-                "./bwa",
-                "ref.fastq",
-                "ref.fastq.amb",
-                "ref.fastq.ann",
-                "ref.fastq.bwt",
-                "ref.fastq.pac",
-                "ref.fastq.sa",
-                "query.fastq.12"
-            ]
-        },
-        {
-            "command": "./bwa mem ref.fastq query.fastq.13 > query.fastq.13.sam 2> query.fastq.13.err",
-            "outputs": [
-                "query.fastq.13.sam",
-                "query.fastq.13.err"
-            ],
-            "inputs": [
-                "./bwa",
-                "ref.fastq",
-                "ref.fastq.amb",
-                "ref.fastq.ann",
-                "ref.fastq.bwt",
-                "ref.fastq.pac",
-                "ref.fastq.sa",
-                "query.fastq.13"
-            ]
-        },
-        {
-            "command": "./bwa mem ref.fastq query.fastq.14 > query.fastq.14.sam 2> query.fastq.14.err",
-            "outputs": [
-                "query.fastq.14.sam",
-                "query.fastq.14.err"
-            ],
-            "inputs": [
-                "./bwa",
-                "ref.fastq",
-                "ref.fastq.amb",
-                "ref.fastq.ann",
-                "ref.fastq.bwt",
-                "ref.fastq.pac",
-                "ref.fastq.sa",
-                "query.fastq.14"
-            ]
-        },
-        {
-            "command": "./bwa mem ref.fastq query.fastq.15 > query.fastq.15.sam 2> query.fastq.15.err",
-            "outputs": [
-                "query.fastq.15.sam",
-                "query.fastq.15.err"
-            ],
-            "inputs": [
-                "./bwa",
-                "ref.fastq",
-                "ref.fastq.amb",
-                "ref.fastq.ann",
-                "ref.fastq.bwt",
-                "ref.fastq.pac",
-                "ref.fastq.sa",
-                "query.fastq.15"
-            ]
-        },
-        {
-            "command": "./bwa mem ref.fastq query.fastq.16 > query.fastq.16.sam 2> query.fastq.16.err",
-            "outputs": [
-                "query.fastq.16.sam",
-                "query.fastq.16.err"
-            ],
-            "inputs": [
-                "./bwa",
-                "ref.fastq",
-                "ref.fastq.amb",
-                "ref.fastq.ann",
-                "ref.fastq.bwt",
-                "ref.fastq.pac",
-                "ref.fastq.sa",
-                "query.fastq.16"
-            ]
-        },
-        {
-            "command": "./bwa mem ref.fastq query.fastq.17 > query.fastq.17.sam 2> query.fastq.17.err",
-            "outputs": [
-                "query.fastq.17.sam",
-                "query.fastq.17.err"
-            ],
-            "inputs": [
-                "./bwa",
-                "ref.fastq",
-                "ref.fastq.amb",
-                "ref.fastq.ann",
-                "ref.fastq.bwt",
-                "ref.fastq.pac",
-                "ref.fastq.sa",
-                "query.fastq.17"
-            ]
-        },
-        {
-            "command": "./bwa mem ref.fastq query.fastq.18 > query.fastq.18.sam 2> query.fastq.18.err",
-            "outputs": [
-                "query.fastq.18.sam",
-                "query.fastq.18.err"
-            ],
-            "inputs": [
-                "./bwa",
-                "ref.fastq",
-                "ref.fastq.amb",
-                "ref.fastq.ann",
-                "ref.fastq.bwt",
-                "ref.fastq.pac",
-                "ref.fastq.sa",
-                "query.fastq.18"
-            ]
-        },
-        {
-            "command": "./bwa mem ref.fastq query.fastq.19 > query.fastq.19.sam 2> query.fastq.19.err",
-            "outputs": [
-                "query.fastq.19.sam",
-                "query.fastq.19.err"
-            ],
-            "inputs": [
-                "./bwa",
-                "ref.fastq",
-                "ref.fastq.amb",
-                "ref.fastq.ann",
-                "ref.fastq.bwt",
-                "ref.fastq.pac",
-                "ref.fastq.sa",
-                "query.fastq.19"
-            ]
-        },
-        {
-            "command": "./bwa mem ref.fastq query.fastq.20 > query.fastq.20.sam 2> query.fastq.20.err",
-            "outputs": [
-                "query.fastq.20.sam",
-                "query.fastq.20.err"
-            ],
-            "inputs": [
-                "./bwa",
-                "ref.fastq",
-                "ref.fastq.amb",
-                "ref.fastq.ann",
-                "ref.fastq.bwt",
-                "ref.fastq.pac",
-                "ref.fastq.sa",
-                "query.fastq.20"
-            ]
-        },
-        {
-            "command": "./bwa mem ref.fastq query.fastq.21 > query.fastq.21.sam 2> query.fastq.21.err",
-            "outputs": [
-                "query.fastq.21.sam",
-                "query.fastq.21.err"
-            ],
-            "inputs": [
-                "./bwa",
-                "ref.fastq",
-                "ref.fastq.amb",
-                "ref.fastq.ann",
-                "ref.fastq.bwt",
-                "ref.fastq.pac",
-                "ref.fastq.sa",
-                "query.fastq.21"
-            ]
-        },
-        {
-            "command": "./bwa mem ref.fastq query.fastq.22 > query.fastq.22.sam 2> query.fastq.22.err",
-            "outputs": [
-                "query.fastq.22.sam",
-                "query.fastq.22.err"
-            ],
-            "inputs": [
-                "./bwa",
-                "ref.fastq",
-                "ref.fastq.amb",
-                "ref.fastq.ann",
-                "ref.fastq.bwt",
-                "ref.fastq.pac",
-                "ref.fastq.sa",
-                "query.fastq.22"
-            ]
-        },
-        {
-            "command": "./bwa mem ref.fastq query.fastq.23 > query.fastq.23.sam 2> query.fastq.23.err",
-            "outputs": [
-                "query.fastq.23.sam",
-                "query.fastq.23.err"
-            ],
-            "inputs": [
-                "./bwa",
-                "ref.fastq",
-                "ref.fastq.amb",
-                "ref.fastq.ann",
-                "ref.fastq.bwt",
-                "ref.fastq.pac",
-                "ref.fastq.sa",
-                "query.fastq.23"
-            ]
-        },
-        {
-            "command": "./bwa mem ref.fastq query.fastq.24 > query.fastq.24.sam 2> query.fastq.24.err",
-            "outputs": [
-                "query.fastq.24.sam",
-                "query.fastq.24.err"
-            ],
-            "inputs": [
-                "./bwa",
-                "ref.fastq",
-                "ref.fastq.amb",
-                "ref.fastq.ann",
-                "ref.fastq.bwt",
-                "ref.fastq.pac",
-                "ref.fastq.sa",
-                "query.fastq.24"
-            ]
-        },
-        {
-            "command": "./bwa mem ref.fastq query.fastq.25 > query.fastq.25.sam 2> query.fastq.25.err",
-            "outputs": [
-                "query.fastq.25.sam",
-                "query.fastq.25.err"
-            ],
-            "inputs": [
-                "./bwa",
-                "ref.fastq",
-                "ref.fastq.amb",
-                "ref.fastq.ann",
-                "ref.fastq.bwt",
-                "ref.fastq.pac",
-                "ref.fastq.sa",
-                "query.fastq.25"
-            ]
-        },
-        {
-            "command": "./bwa mem ref.fastq query.fastq.26 > query.fastq.26.sam 2> query.fastq.26.err",
-            "outputs": [
-                "query.fastq.26.sam",
-                "query.fastq.26.err"
-            ],
-            "inputs": [
-                "./bwa",
-                "ref.fastq",
-                "ref.fastq.amb",
-                "ref.fastq.ann",
-                "ref.fastq.bwt",
-                "ref.fastq.pac",
-                "ref.fastq.sa",
-                "query.fastq.26"
-            ]
-        },
-        {
-            "command": "./bwa mem ref.fastq query.fastq.27 > query.fastq.27.sam 2> query.fastq.27.err",
-            "outputs": [
-                "query.fastq.27.sam",
-                "query.fastq.27.err"
-            ],
-            "inputs": [
-                "./bwa",
-                "ref.fastq",
-                "ref.fastq.amb",
-                "ref.fastq.ann",
-                "ref.fastq.bwt",
-                "ref.fastq.pac",
-                "ref.fastq.sa",
-                "query.fastq.27"
-            ]
-        },
-        {
-            "command": "./bwa mem ref.fastq query.fastq.28 > query.fastq.28.sam 2> query.fastq.28.err",
-            "outputs": [
-                "query.fastq.28.sam",
-                "query.fastq.28.err"
-            ],
-            "inputs": [
-                "./bwa",
-                "ref.fastq",
-                "ref.fastq.amb",
-                "ref.fastq.ann",
-                "ref.fastq.bwt",
-                "ref.fastq.pac",
-                "ref.fastq.sa",
-                "query.fastq.28"
-            ]
-        },
-        {
-            "command": "./bwa mem ref.fastq query.fastq.29 > query.fastq.29.sam 2> query.fastq.29.err",
-            "outputs": [
-                "query.fastq.29.sam",
-                "query.fastq.29.err"
-            ],
-            "inputs": [
-                "./bwa",
-                "ref.fastq",
-                "ref.fastq.amb",
-                "ref.fastq.ann",
-                "ref.fastq.bwt",
-                "ref.fastq.pac",
-                "ref.fastq.sa",
-                "query.fastq.29"
-            ]
-        },
-        {
-            "command": "./bwa mem ref.fastq query.fastq.30 > query.fastq.30.sam 2> query.fastq.30.err",
-            "outputs": [
-                "query.fastq.30.sam",
-                "query.fastq.30.err"
-            ],
-            "inputs": [
-                "./bwa",
-                "ref.fastq",
-                "ref.fastq.amb",
-                "ref.fastq.ann",
-                "ref.fastq.bwt",
-                "ref.fastq.pac",
-                "ref.fastq.sa",
-                "query.fastq.30"
-            ]
-        },
-        {
-            "command": "./bwa mem ref.fastq query.fastq.31 > query.fastq.31.sam 2> query.fastq.31.err",
-            "outputs": [
-                "query.fastq.31.sam",
-                "query.fastq.31.err"
-            ],
-            "inputs": [
-                "./bwa",
-                "ref.fastq",
-                "ref.fastq.amb",
-                "ref.fastq.ann",
-                "ref.fastq.bwt",
-                "ref.fastq.pac",
-                "ref.fastq.sa",
-                "query.fastq.31"
-            ]
-        },
-        {
-            "command": "./bwa mem ref.fastq query.fastq.32 > query.fastq.32.sam 2> query.fastq.32.err",
-            "outputs": [
-                "query.fastq.32.sam",
-                "query.fastq.32.err"
-            ],
-            "inputs": [
-                "./bwa",
-                "ref.fastq",
-                "ref.fastq.amb",
-                "ref.fastq.ann",
-                "ref.fastq.bwt",
-                "ref.fastq.pac",
-                "ref.fastq.sa",
-                "query.fastq.32"
-            ]
-        },
-        {
-            "command": "./bwa mem ref.fastq query.fastq.33 > query.fastq.33.sam 2> query.fastq.33.err",
-            "outputs": [
-                "query.fastq.33.sam",
-                "query.fastq.33.err"
-            ],
-            "inputs": [
-                "./bwa",
-                "ref.fastq",
-                "ref.fastq.amb",
-                "ref.fastq.ann",
-                "ref.fastq.bwt",
-                "ref.fastq.pac",
-                "ref.fastq.sa",
-                "query.fastq.33"
-            ]
-        },
-        {
-            "command": "./bwa mem ref.fastq query.fastq.34 > query.fastq.34.sam 2> query.fastq.34.err",
-            "outputs": [
-                "query.fastq.34.sam",
-                "query.fastq.34.err"
-            ],
-            "inputs": [
-                "./bwa",
-                "ref.fastq",
-                "ref.fastq.amb",
-                "ref.fastq.ann",
-                "ref.fastq.bwt",
-                "ref.fastq.pac",
-                "ref.fastq.sa",
-                "query.fastq.34"
-            ]
-        },
-        {
-            "command": "./bwa mem ref.fastq query.fastq.35 > query.fastq.35.sam 2> query.fastq.35.err",
-            "outputs": [
-                "query.fastq.35.sam",
-                "query.fastq.35.err"
-            ],
-            "inputs": [
-                "./bwa",
-                "ref.fastq",
-                "ref.fastq.amb",
-                "ref.fastq.ann",
-                "ref.fastq.bwt",
-                "ref.fastq.pac",
-                "ref.fastq.sa",
-                "query.fastq.35"
-            ]
-        },
-        {
-            "command": "./bwa mem ref.fastq query.fastq.36 > query.fastq.36.sam 2> query.fastq.36.err",
-            "outputs": [
-                "query.fastq.36.sam",
-                "query.fastq.36.err"
-            ],
-            "inputs": [
-                "./bwa",
-                "ref.fastq",
-                "ref.fastq.amb",
-                "ref.fastq.ann",
-                "ref.fastq.bwt",
-                "ref.fastq.pac",
-                "ref.fastq.sa",
-                "query.fastq.36"
-            ]
-        },
-        {
-            "command": "./bwa mem ref.fastq query.fastq.37 > query.fastq.37.sam 2> query.fastq.37.err",
-            "outputs": [
-                "query.fastq.37.sam",
-                "query.fastq.37.err"
-            ],
-            "inputs": [
-                "./bwa",
-                "ref.fastq",
-                "ref.fastq.amb",
-                "ref.fastq.ann",
-                "ref.fastq.bwt",
-                "ref.fastq.pac",
-                "ref.fastq.sa",
-                "query.fastq.37"
-            ]
-        },
-        {
-            "command": "./bwa mem ref.fastq query.fastq.38 > query.fastq.38.sam 2> query.fastq.38.err",
-            "outputs": [
-                "query.fastq.38.sam",
-                "query.fastq.38.err"
-            ],
-            "inputs": [
-                "./bwa",
-                "ref.fastq",
-                "ref.fastq.amb",
-                "ref.fastq.ann",
-                "ref.fastq.bwt",
-                "ref.fastq.pac",
-                "ref.fastq.sa",
-                "query.fastq.38"
-            ]
-        },
-        {
-            "command": "./bwa mem ref.fastq query.fastq.39 > query.fastq.39.sam 2> query.fastq.39.err",
-            "outputs": [
-                "query.fastq.39.sam",
-                "query.fastq.39.err"
-            ],
-            "inputs": [
-                "./bwa",
-                "ref.fastq",
-                "ref.fastq.amb",
-                "ref.fastq.ann",
-                "ref.fastq.bwt",
-                "ref.fastq.pac",
-                "ref.fastq.sa",
-                "query.fastq.39"
-            ]
-        },
-        {
-            "command": "./bwa mem ref.fastq query.fastq.40 > query.fastq.40.sam 2> query.fastq.40.err",
-            "outputs": [
-                "query.fastq.40.sam",
-                "query.fastq.40.err"
-            ],
-            "inputs": [
-                "./bwa",
-                "ref.fastq",
-                "ref.fastq.amb",
-                "ref.fastq.ann",
-                "ref.fastq.bwt",
-                "ref.fastq.pac",
-                "ref.fastq.sa",
-                "query.fastq.40"
-            ]
-        },
-        {
-            "command": "./bwa mem ref.fastq query.fastq.41 > query.fastq.41.sam 2> query.fastq.41.err",
-            "outputs": [
-                "query.fastq.41.sam",
-                "query.fastq.41.err"
-            ],
-            "inputs": [
-                "./bwa",
-                "ref.fastq",
-                "ref.fastq.amb",
-                "ref.fastq.ann",
-                "ref.fastq.bwt",
-                "ref.fastq.pac",
-                "ref.fastq.sa",
-                "query.fastq.41"
-            ]
-        },
-        {
-            "command": "./bwa mem ref.fastq query.fastq.42 > query.fastq.42.sam 2> query.fastq.42.err",
-            "outputs": [
-                "query.fastq.42.sam",
-                "query.fastq.42.err"
-            ],
-            "inputs": [
-                "./bwa",
-                "ref.fastq",
-                "ref.fastq.amb",
-                "ref.fastq.ann",
-                "ref.fastq.bwt",
-                "ref.fastq.pac",
-                "ref.fastq.sa",
-                "query.fastq.42"
-            ]
-        },
-        {
-            "command": "./bwa mem ref.fastq query.fastq.43 > query.fastq.43.sam 2> query.fastq.43.err",
-            "outputs": [
-                "query.fastq.43.sam",
-                "query.fastq.43.err"
-            ],
-            "inputs": [
-                "./bwa",
-                "ref.fastq",
-                "ref.fastq.amb",
-                "ref.fastq.ann",
-                "ref.fastq.bwt",
-                "ref.fastq.pac",
-                "ref.fastq.sa",
-                "query.fastq.43"
-            ]
-        },
-        {
-            "command": "./bwa mem ref.fastq query.fastq.44 > query.fastq.44.sam 2> query.fastq.44.err",
-            "outputs": [
-                "query.fastq.44.sam",
-                "query.fastq.44.err"
-            ],
-            "inputs": [
-                "./bwa",
-                "ref.fastq",
-                "ref.fastq.amb",
-                "ref.fastq.ann",
-                "ref.fastq.bwt",
-                "ref.fastq.pac",
-                "ref.fastq.sa",
-                "query.fastq.44"
-            ]
-        },
-        {
-            "command": "./bwa mem ref.fastq query.fastq.45 > query.fastq.45.sam 2> query.fastq.45.err",
-            "outputs": [
-                "query.fastq.45.sam",
-                "query.fastq.45.err"
-            ],
-            "inputs": [
-                "./bwa",
-                "ref.fastq",
-                "ref.fastq.amb",
-                "ref.fastq.ann",
-                "ref.fastq.bwt",
-                "ref.fastq.pac",
-                "ref.fastq.sa",
-                "query.fastq.45"
-            ]
-        },
-        {
-            "command": "./bwa mem ref.fastq query.fastq.46 > query.fastq.46.sam 2> query.fastq.46.err",
-            "outputs": [
-                "query.fastq.46.sam",
-                "query.fastq.46.err"
-            ],
-            "inputs": [
-                "./bwa",
-                "ref.fastq",
-                "ref.fastq.amb",
-                "ref.fastq.ann",
-                "ref.fastq.bwt",
-                "ref.fastq.pac",
-                "ref.fastq.sa",
-                "query.fastq.46"
-            ]
-        },
-        {
-            "command": "./bwa mem ref.fastq query.fastq.47 > query.fastq.47.sam 2> query.fastq.47.err",
-            "outputs": [
-                "query.fastq.47.sam",
-                "query.fastq.47.err"
-            ],
-            "inputs": [
-                "./bwa",
-                "ref.fastq",
-                "ref.fastq.amb",
-                "ref.fastq.ann",
-                "ref.fastq.bwt",
-                "ref.fastq.pac",
-                "ref.fastq.sa",
-                "query.fastq.47"
-            ]
-        },
-        {
-            "command": "./bwa mem ref.fastq query.fastq.48 > query.fastq.48.sam 2> query.fastq.48.err",
-            "outputs": [
-                "query.fastq.48.sam",
-                "query.fastq.48.err"
-            ],
-            "inputs": [
-                "./bwa",
-                "ref.fastq",
-                "ref.fastq.amb",
-                "ref.fastq.ann",
-                "ref.fastq.bwt",
-                "ref.fastq.pac",
-                "ref.fastq.sa",
-                "query.fastq.48"
-            ]
-        },
-        {
-            "command": "./bwa mem ref.fastq query.fastq.49 > query.fastq.49.sam 2> query.fastq.49.err",
-            "outputs": [
-                "query.fastq.49.sam",
-                "query.fastq.49.err"
-            ],
-            "inputs": [
-                "./bwa",
-                "ref.fastq",
-                "ref.fastq.amb",
-                "ref.fastq.ann",
-                "ref.fastq.bwt",
-                "ref.fastq.pac",
-                "ref.fastq.sa",
-                "query.fastq.49"
-            ]
-        },
-        {
-            "command": "./bwa mem ref.fastq query.fastq.50 > query.fastq.50.sam 2> query.fastq.50.err",
-            "outputs": [
-                "query.fastq.50.sam",
-                "query.fastq.50.err"
-            ],
-            "inputs": [
-                "./bwa",
-                "ref.fastq",
-                "ref.fastq.amb",
-                "ref.fastq.ann",
-                "ref.fastq.bwt",
-                "ref.fastq.pac",
-                "ref.fastq.sa",
-                "query.fastq.50"
-            ]
-        },
-        {
-            "command": "./bwa mem ref.fastq query.fastq.51 > query.fastq.51.sam 2> query.fastq.51.err",
-            "outputs": [
-                "query.fastq.51.sam",
-                "query.fastq.51.err"
-            ],
-            "inputs": [
-                "./bwa",
-                "ref.fastq",
-                "ref.fastq.amb",
-                "ref.fastq.ann",
-                "ref.fastq.bwt",
-                "ref.fastq.pac",
-                "ref.fastq.sa",
-                "query.fastq.51"
-            ]
-        },
-        {
-            "command": "./bwa mem ref.fastq query.fastq.52 > query.fastq.52.sam 2> query.fastq.52.err",
-            "outputs": [
-                "query.fastq.52.sam",
-                "query.fastq.52.err"
-            ],
-            "inputs": [
-                "./bwa",
-                "ref.fastq",
-                "ref.fastq.amb",
-                "ref.fastq.ann",
-                "ref.fastq.bwt",
-                "ref.fastq.pac",
-                "ref.fastq.sa",
-                "query.fastq.52"
-            ]
-        },
-        {
-            "command": "./bwa mem ref.fastq query.fastq.53 > query.fastq.53.sam 2> query.fastq.53.err",
-            "outputs": [
-                "query.fastq.53.sam",
-                "query.fastq.53.err"
-            ],
-            "inputs": [
-                "./bwa",
-                "ref.fastq",
-                "ref.fastq.amb",
-                "ref.fastq.ann",
-                "ref.fastq.bwt",
-                "ref.fastq.pac",
-                "ref.fastq.sa",
-                "query.fastq.53"
-            ]
-        },
-        {
-            "command": "./bwa mem ref.fastq query.fastq.54 > query.fastq.54.sam 2> query.fastq.54.err",
-            "outputs": [
-                "query.fastq.54.sam",
-                "query.fastq.54.err"
-            ],
-            "inputs": [
-                "./bwa",
-                "ref.fastq",
-                "ref.fastq.amb",
-                "ref.fastq.ann",
-                "ref.fastq.bwt",
-                "ref.fastq.pac",
-                "ref.fastq.sa",
-                "query.fastq.54"
-            ]
-        },
-        {
-            "command": "./bwa mem ref.fastq query.fastq.55 > query.fastq.55.sam 2> query.fastq.55.err",
-            "outputs": [
-                "query.fastq.55.sam",
-                "query.fastq.55.err"
-            ],
-            "inputs": [
-                "./bwa",
-                "ref.fastq",
-                "ref.fastq.amb",
-                "ref.fastq.ann",
-                "ref.fastq.bwt",
-                "ref.fastq.pac",
-                "ref.fastq.sa",
-                "query.fastq.55"
-            ]
-        },
-        {
-            "command": "./bwa mem ref.fastq query.fastq.56 > query.fastq.56.sam 2> query.fastq.56.err",
-            "outputs": [
-                "query.fastq.56.sam",
-                "query.fastq.56.err"
-            ],
-            "inputs": [
-                "./bwa",
-                "ref.fastq",
-                "ref.fastq.amb",
-                "ref.fastq.ann",
-                "ref.fastq.bwt",
-                "ref.fastq.pac",
-                "ref.fastq.sa",
-                "query.fastq.56"
-            ]
-        },
-        {
-            "command": "./bwa mem ref.fastq query.fastq.57 > query.fastq.57.sam 2> query.fastq.57.err",
-            "outputs": [
-                "query.fastq.57.sam",
-                "query.fastq.57.err"
-            ],
-            "inputs": [
-                "./bwa",
-                "ref.fastq",
-                "ref.fastq.amb",
-                "ref.fastq.ann",
-                "ref.fastq.bwt",
-                "ref.fastq.pac",
-                "ref.fastq.sa",
-                "query.fastq.57"
-            ]
-        },
-        {
-            "command": "./bwa mem ref.fastq query.fastq.58 > query.fastq.58.sam 2> query.fastq.58.err",
-            "outputs": [
-                "query.fastq.58.sam",
-                "query.fastq.58.err"
-            ],
-            "inputs": [
-                "./bwa",
-                "ref.fastq",
-                "ref.fastq.amb",
-                "ref.fastq.ann",
-                "ref.fastq.bwt",
-                "ref.fastq.pac",
-                "ref.fastq.sa",
-                "query.fastq.58"
-            ]
-        },
-        {
-            "command": "./bwa mem ref.fastq query.fastq.59 > query.fastq.59.sam 2> query.fastq.59.err",
-            "outputs": [
-                "query.fastq.59.sam",
-                "query.fastq.59.err"
-            ],
-            "inputs": [
-                "./bwa",
-                "ref.fastq",
-                "ref.fastq.amb",
-                "ref.fastq.ann",
-                "ref.fastq.bwt",
-                "ref.fastq.pac",
-                "ref.fastq.sa",
-                "query.fastq.59"
-            ]
-        },
-        {
-            "command": "./bwa mem ref.fastq query.fastq.60 > query.fastq.60.sam 2> query.fastq.60.err",
-            "outputs": [
-                "query.fastq.60.sam",
-                "query.fastq.60.err"
-            ],
-            "inputs": [
-                "./bwa",
-                "ref.fastq",
-                "ref.fastq.amb",
-                "ref.fastq.ann",
-                "ref.fastq.bwt",
-                "ref.fastq.pac",
-                "ref.fastq.sa",
-                "query.fastq.60"
-            ]
-        },
-        {
-            "command": "./bwa mem ref.fastq query.fastq.61 > query.fastq.61.sam 2> query.fastq.61.err",
-            "outputs": [
-                "query.fastq.61.sam",
-                "query.fastq.61.err"
-            ],
-            "inputs": [
-                "./bwa",
-                "ref.fastq",
-                "ref.fastq.amb",
-                "ref.fastq.ann",
-                "ref.fastq.bwt",
-                "ref.fastq.pac",
-                "ref.fastq.sa",
-                "query.fastq.61"
-            ]
-        },
-        {
-            "command": "./bwa mem ref.fastq query.fastq.62 > query.fastq.62.sam 2> query.fastq.62.err",
-            "outputs": [
-                "query.fastq.62.sam",
-                "query.fastq.62.err"
-            ],
-            "inputs": [
-                "./bwa",
-                "ref.fastq",
-                "ref.fastq.amb",
-                "ref.fastq.ann",
-                "ref.fastq.bwt",
-                "ref.fastq.pac",
-                "ref.fastq.sa",
-                "query.fastq.62"
-            ]
-        },
-        {
-            "command": "./bwa mem ref.fastq query.fastq.63 > query.fastq.63.sam 2> query.fastq.63.err",
-            "outputs": [
-                "query.fastq.63.sam",
-                "query.fastq.63.err"
-            ],
-            "inputs": [
-                "./bwa",
-                "ref.fastq",
-                "ref.fastq.amb",
-                "ref.fastq.ann",
-                "ref.fastq.bwt",
-                "ref.fastq.pac",
-                "ref.fastq.sa",
-                "query.fastq.63"
-            ]
-        },
-        {
-            "command": "./bwa mem ref.fastq query.fastq.64 > query.fastq.64.sam 2> query.fastq.64.err",
-            "outputs": [
-                "query.fastq.64.sam",
-                "query.fastq.64.err"
-            ],
-            "inputs": [
-                "./bwa",
-                "ref.fastq",
-                "ref.fastq.amb",
-                "ref.fastq.ann",
-                "ref.fastq.bwt",
-                "ref.fastq.pac",
-                "ref.fastq.sa",
-                "query.fastq.64"
-            ]
-        },
-        {
-            "command": "./bwa mem ref.fastq query.fastq.65 > query.fastq.65.sam 2> query.fastq.65.err",
-            "outputs": [
-                "query.fastq.65.sam",
-                "query.fastq.65.err"
-            ],
-            "inputs": [
-                "./bwa",
-                "ref.fastq",
-                "ref.fastq.amb",
-                "ref.fastq.ann",
-                "ref.fastq.bwt",
-                "ref.fastq.pac",
-                "ref.fastq.sa",
-                "query.fastq.65"
-            ]
-        },
-        {
-            "command": "./bwa mem ref.fastq query.fastq.66 > query.fastq.66.sam 2> query.fastq.66.err",
-            "outputs": [
-                "query.fastq.66.sam",
-                "query.fastq.66.err"
-            ],
-            "inputs": [
-                "./bwa",
-                "ref.fastq",
-                "ref.fastq.amb",
-                "ref.fastq.ann",
-                "ref.fastq.bwt",
-                "ref.fastq.pac",
-                "ref.fastq.sa",
-                "query.fastq.66"
-            ]
-        },
-        {
-            "command": "./bwa mem ref.fastq query.fastq.67 > query.fastq.67.sam 2> query.fastq.67.err",
-            "outputs": [
-                "query.fastq.67.sam",
-                "query.fastq.67.err"
-            ],
-            "inputs": [
-                "./bwa",
-                "ref.fastq",
-                "ref.fastq.amb",
-                "ref.fastq.ann",
-                "ref.fastq.bwt",
-                "ref.fastq.pac",
-                "ref.fastq.sa",
-                "query.fastq.67"
-            ]
-        },
-        {
-            "command": "./bwa mem ref.fastq query.fastq.68 > query.fastq.68.sam 2> query.fastq.68.err",
-            "outputs": [
-                "query.fastq.68.sam",
-                "query.fastq.68.err"
-            ],
-            "inputs": [
-                "./bwa",
-                "ref.fastq",
-                "ref.fastq.amb",
-                "ref.fastq.ann",
-                "ref.fastq.bwt",
-                "ref.fastq.pac",
-                "ref.fastq.sa",
-                "query.fastq.68"
-            ]
-        },
-        {
-            "command": "./bwa mem ref.fastq query.fastq.69 > query.fastq.69.sam 2> query.fastq.69.err",
-            "outputs": [
-                "query.fastq.69.sam",
-                "query.fastq.69.err"
-            ],
-            "inputs": [
-                "./bwa",
-                "ref.fastq",
-                "ref.fastq.amb",
-                "ref.fastq.ann",
-                "ref.fastq.bwt",
-                "ref.fastq.pac",
-                "ref.fastq.sa",
-                "query.fastq.69"
-            ]
-        },
-        {
-            "command": "./bwa mem ref.fastq query.fastq.70 > query.fastq.70.sam 2> query.fastq.70.err",
-            "outputs": [
-                "query.fastq.70.sam",
-                "query.fastq.70.err"
-            ],
-            "inputs": [
-                "./bwa",
-                "ref.fastq",
-                "ref.fastq.amb",
-                "ref.fastq.ann",
-                "ref.fastq.bwt",
-                "ref.fastq.pac",
-                "ref.fastq.sa",
-                "query.fastq.70"
-            ]
-        },
-        {
-            "command": "./bwa mem ref.fastq query.fastq.71 > query.fastq.71.sam 2> query.fastq.71.err",
-            "outputs": [
-                "query.fastq.71.sam",
-                "query.fastq.71.err"
-            ],
-            "inputs": [
-                "./bwa",
-                "ref.fastq",
-                "ref.fastq.amb",
-                "ref.fastq.ann",
-                "ref.fastq.bwt",
-                "ref.fastq.pac",
-                "ref.fastq.sa",
-                "query.fastq.71"
-            ]
-        },
-        {
-            "command": "./bwa mem ref.fastq query.fastq.72 > query.fastq.72.sam 2> query.fastq.72.err",
-            "outputs": [
-                "query.fastq.72.sam",
-                "query.fastq.72.err"
-            ],
-            "inputs": [
-                "./bwa",
-                "ref.fastq",
-                "ref.fastq.amb",
-                "ref.fastq.ann",
-                "ref.fastq.bwt",
-                "ref.fastq.pac",
-                "ref.fastq.sa",
-                "query.fastq.72"
-            ]
-        },
-        {
-            "command": "./bwa mem ref.fastq query.fastq.73 > query.fastq.73.sam 2> query.fastq.73.err",
-            "outputs": [
-                "query.fastq.73.sam",
-                "query.fastq.73.err"
-            ],
-            "inputs": [
-                "./bwa",
-                "ref.fastq",
-                "ref.fastq.amb",
-                "ref.fastq.ann",
-                "ref.fastq.bwt",
-                "ref.fastq.pac",
-                "ref.fastq.sa",
-                "query.fastq.73"
-            ]
-        },
-        {
-            "command": "./bwa mem ref.fastq query.fastq.74 > query.fastq.74.sam 2> query.fastq.74.err",
-            "outputs": [
-                "query.fastq.74.sam",
-                "query.fastq.74.err"
-            ],
-            "inputs": [
-                "./bwa",
-                "ref.fastq",
-                "ref.fastq.amb",
-                "ref.fastq.ann",
-                "ref.fastq.bwt",
-                "ref.fastq.pac",
-                "ref.fastq.sa",
-                "query.fastq.74"
-            ]
-        },
-        {
-            "command": "./bwa mem ref.fastq query.fastq.75 > query.fastq.75.sam 2> query.fastq.75.err",
-            "outputs": [
-                "query.fastq.75.sam",
-                "query.fastq.75.err"
-            ],
-            "inputs": [
-                "./bwa",
-                "ref.fastq",
-                "ref.fastq.amb",
-                "ref.fastq.ann",
-                "ref.fastq.bwt",
-                "ref.fastq.pac",
-                "ref.fastq.sa",
-                "query.fastq.75"
-            ]
-        },
-        {
-            "command": "./bwa mem ref.fastq query.fastq.76 > query.fastq.76.sam 2> query.fastq.76.err",
-            "outputs": [
-                "query.fastq.76.sam",
-                "query.fastq.76.err"
-            ],
-            "inputs": [
-                "./bwa",
-                "ref.fastq",
-                "ref.fastq.amb",
-                "ref.fastq.ann",
-                "ref.fastq.bwt",
-                "ref.fastq.pac",
-                "ref.fastq.sa",
-                "query.fastq.76"
-            ]
-        },
-        {
-            "command": "./bwa mem ref.fastq query.fastq.77 > query.fastq.77.sam 2> query.fastq.77.err",
-            "outputs": [
-                "query.fastq.77.sam",
-                "query.fastq.77.err"
-            ],
-            "inputs": [
-                "./bwa",
-                "ref.fastq",
-                "ref.fastq.amb",
-                "ref.fastq.ann",
-                "ref.fastq.bwt",
-                "ref.fastq.pac",
-                "ref.fastq.sa",
-                "query.fastq.77"
-            ]
-        },
-        {
-            "command": "./bwa mem ref.fastq query.fastq.78 > query.fastq.78.sam 2> query.fastq.78.err",
-            "outputs": [
-                "query.fastq.78.sam",
-                "query.fastq.78.err"
-            ],
-            "inputs": [
-                "./bwa",
-                "ref.fastq",
-                "ref.fastq.amb",
-                "ref.fastq.ann",
-                "ref.fastq.bwt",
-                "ref.fastq.pac",
-                "ref.fastq.sa",
-                "query.fastq.78"
-            ]
-        },
-        {
-            "command": "./bwa mem ref.fastq query.fastq.79 > query.fastq.79.sam 2> query.fastq.79.err",
-            "outputs": [
-                "query.fastq.79.sam",
-                "query.fastq.79.err"
-            ],
-            "inputs": [
-                "./bwa",
-                "ref.fastq",
-                "ref.fastq.amb",
-                "ref.fastq.ann",
-                "ref.fastq.bwt",
-                "ref.fastq.pac",
-                "ref.fastq.sa",
-                "query.fastq.79"
-            ]
-        },
-        {
-            "command": "./bwa mem ref.fastq query.fastq.80 > query.fastq.80.sam 2> query.fastq.80.err",
-            "outputs": [
-                "query.fastq.80.sam",
-                "query.fastq.80.err"
-            ],
-            "inputs": [
-                "./bwa",
-                "ref.fastq",
-                "ref.fastq.amb",
-                "ref.fastq.ann",
-                "ref.fastq.bwt",
-                "ref.fastq.pac",
-                "ref.fastq.sa",
-                "query.fastq.80"
-            ]
-        },
-        {
-            "command": "./bwa mem ref.fastq query.fastq.81 > query.fastq.81.sam 2> query.fastq.81.err",
-            "outputs": [
-                "query.fastq.81.sam",
-                "query.fastq.81.err"
-            ],
-            "inputs": [
-                "./bwa",
-                "ref.fastq",
-                "ref.fastq.amb",
-                "ref.fastq.ann",
-                "ref.fastq.bwt",
-                "ref.fastq.pac",
-                "ref.fastq.sa",
-                "query.fastq.81"
-            ]
-        },
-        {
-            "command": "./bwa mem ref.fastq query.fastq.82 > query.fastq.82.sam 2> query.fastq.82.err",
-            "outputs": [
-                "query.fastq.82.sam",
-                "query.fastq.82.err"
-            ],
-            "inputs": [
-                "./bwa",
-                "ref.fastq",
-                "ref.fastq.amb",
-                "ref.fastq.ann",
-                "ref.fastq.bwt",
-                "ref.fastq.pac",
-                "ref.fastq.sa",
-                "query.fastq.82"
-            ]
-        },
-        {
-            "command": "./bwa mem ref.fastq query.fastq.83 > query.fastq.83.sam 2> query.fastq.83.err",
-            "outputs": [
-                "query.fastq.83.sam",
-                "query.fastq.83.err"
-            ],
-            "inputs": [
-                "./bwa",
-                "ref.fastq",
-                "ref.fastq.amb",
-                "ref.fastq.ann",
-                "ref.fastq.bwt",
-                "ref.fastq.pac",
-                "ref.fastq.sa",
-                "query.fastq.83"
-            ]
-        },
-        {
-            "command": "./bwa mem ref.fastq query.fastq.84 > query.fastq.84.sam 2> query.fastq.84.err",
-            "outputs": [
-                "query.fastq.84.sam",
-                "query.fastq.84.err"
-            ],
-            "inputs": [
-                "./bwa",
-                "ref.fastq",
-                "ref.fastq.amb",
-                "ref.fastq.ann",
-                "ref.fastq.bwt",
-                "ref.fastq.pac",
-                "ref.fastq.sa",
-                "query.fastq.84"
-            ]
-        },
-        {
-            "command": "./bwa mem ref.fastq query.fastq.85 > query.fastq.85.sam 2> query.fastq.85.err",
-            "outputs": [
-                "query.fastq.85.sam",
-                "query.fastq.85.err"
-            ],
-            "inputs": [
-                "./bwa",
-                "ref.fastq",
-                "ref.fastq.amb",
-                "ref.fastq.ann",
-                "ref.fastq.bwt",
-                "ref.fastq.pac",
-                "ref.fastq.sa",
-                "query.fastq.85"
-            ]
-        },
-        {
-            "command": "./bwa mem ref.fastq query.fastq.86 > query.fastq.86.sam 2> query.fastq.86.err",
-            "outputs": [
-                "query.fastq.86.sam",
-                "query.fastq.86.err"
-            ],
-            "inputs": [
-                "./bwa",
-                "ref.fastq",
-                "ref.fastq.amb",
-                "ref.fastq.ann",
-                "ref.fastq.bwt",
-                "ref.fastq.pac",
-                "ref.fastq.sa",
-                "query.fastq.86"
-            ]
-        },
-        {
-            "command": "./bwa mem ref.fastq query.fastq.87 > query.fastq.87.sam 2> query.fastq.87.err",
-            "outputs": [
-                "query.fastq.87.sam",
-                "query.fastq.87.err"
-            ],
-            "inputs": [
-                "./bwa",
-                "ref.fastq",
-                "ref.fastq.amb",
-                "ref.fastq.ann",
-                "ref.fastq.bwt",
-                "ref.fastq.pac",
-                "ref.fastq.sa",
-                "query.fastq.87"
-            ]
-        },
-        {
-            "command": "./bwa mem ref.fastq query.fastq.88 > query.fastq.88.sam 2> query.fastq.88.err",
-            "outputs": [
-                "query.fastq.88.sam",
-                "query.fastq.88.err"
-            ],
-            "inputs": [
-                "./bwa",
-                "ref.fastq",
-                "ref.fastq.amb",
-                "ref.fastq.ann",
-                "ref.fastq.bwt",
-                "ref.fastq.pac",
-                "ref.fastq.sa",
-                "query.fastq.88"
-            ]
-        },
-        {
-            "command": "./bwa mem ref.fastq query.fastq.89 > query.fastq.89.sam 2> query.fastq.89.err",
-            "outputs": [
-                "query.fastq.89.sam",
-                "query.fastq.89.err"
-            ],
-            "inputs": [
-                "./bwa",
-                "ref.fastq",
-                "ref.fastq.amb",
-                "ref.fastq.ann",
-                "ref.fastq.bwt",
-                "ref.fastq.pac",
-                "ref.fastq.sa",
-                "query.fastq.89"
-            ]
-        },
-        {
-            "command": "./bwa mem ref.fastq query.fastq.90 > query.fastq.90.sam 2> query.fastq.90.err",
-            "outputs": [
-                "query.fastq.90.sam",
-                "query.fastq.90.err"
-            ],
-            "inputs": [
-                "./bwa",
-                "ref.fastq",
-                "ref.fastq.amb",
-                "ref.fastq.ann",
-                "ref.fastq.bwt",
-                "ref.fastq.pac",
-                "ref.fastq.sa",
-                "query.fastq.90"
-            ]
-        },
-        {
-            "command": "./bwa mem ref.fastq query.fastq.91 > query.fastq.91.sam 2> query.fastq.91.err",
-            "outputs": [
-                "query.fastq.91.sam",
-                "query.fastq.91.err"
-            ],
-            "inputs": [
-                "./bwa",
-                "ref.fastq",
-                "ref.fastq.amb",
-                "ref.fastq.ann",
-                "ref.fastq.bwt",
-                "ref.fastq.pac",
-                "ref.fastq.sa",
-                "query.fastq.91"
-            ]
-        },
-        {
-            "command": "./bwa mem ref.fastq query.fastq.92 > query.fastq.92.sam 2> query.fastq.92.err",
-            "outputs": [
-                "query.fastq.92.sam",
-                "query.fastq.92.err"
-            ],
-            "inputs": [
-                "./bwa",
-                "ref.fastq",
-                "ref.fastq.amb",
-                "ref.fastq.ann",
-                "ref.fastq.bwt",
-                "ref.fastq.pac",
-                "ref.fastq.sa",
-                "query.fastq.92"
-            ]
-        },
-        {
-            "command": "./bwa mem ref.fastq query.fastq.93 > query.fastq.93.sam 2> query.fastq.93.err",
-            "outputs": [
-                "query.fastq.93.sam",
-                "query.fastq.93.err"
-            ],
-            "inputs": [
-                "./bwa",
-                "ref.fastq",
-                "ref.fastq.amb",
-                "ref.fastq.ann",
-                "ref.fastq.bwt",
-                "ref.fastq.pac",
-                "ref.fastq.sa",
-                "query.fastq.93"
-            ]
-        },
-        {
-            "command": "./bwa mem ref.fastq query.fastq.94 > query.fastq.94.sam 2> query.fastq.94.err",
-            "outputs": [
-                "query.fastq.94.sam",
-                "query.fastq.94.err"
-            ],
-            "inputs": [
-                "./bwa",
-                "ref.fastq",
-                "ref.fastq.amb",
-                "ref.fastq.ann",
-                "ref.fastq.bwt",
-                "ref.fastq.pac",
-                "ref.fastq.sa",
-                "query.fastq.94"
-            ]
-        },
-        {
-            "command": "./bwa mem ref.fastq query.fastq.95 > query.fastq.95.sam 2> query.fastq.95.err",
-            "outputs": [
-                "query.fastq.95.sam",
-                "query.fastq.95.err"
-            ],
-            "inputs": [
-                "./bwa",
-                "ref.fastq",
-                "ref.fastq.amb",
-                "ref.fastq.ann",
-                "ref.fastq.bwt",
-                "ref.fastq.pac",
-                "ref.fastq.sa",
-                "query.fastq.95"
-            ]
-        },
-        {
-            "command": "./bwa mem ref.fastq query.fastq.96 > query.fastq.96.sam 2> query.fastq.96.err",
-            "outputs": [
-                "query.fastq.96.sam",
-                "query.fastq.96.err"
-            ],
-            "inputs": [
-                "./bwa",
-                "ref.fastq",
-                "ref.fastq.amb",
-                "ref.fastq.ann",
-                "ref.fastq.bwt",
-                "ref.fastq.pac",
-                "ref.fastq.sa",
-                "query.fastq.96"
-            ]
-        },
-        {
-            "command": "./bwa mem ref.fastq query.fastq.97 > query.fastq.97.sam 2> query.fastq.97.err",
-            "outputs": [
-                "query.fastq.97.sam",
-                "query.fastq.97.err"
-            ],
-            "inputs": [
-                "./bwa",
-                "ref.fastq",
-                "ref.fastq.amb",
-                "ref.fastq.ann",
-                "ref.fastq.bwt",
-                "ref.fastq.pac",
-                "ref.fastq.sa",
-                "query.fastq.97"
-            ]
-        },
-        {
-            "command": "./bwa mem ref.fastq query.fastq.98 > query.fastq.98.sam 2> query.fastq.98.err",
-            "outputs": [
-                "query.fastq.98.sam",
-                "query.fastq.98.err"
-            ],
-            "inputs": [
-                "./bwa",
-                "ref.fastq",
-                "ref.fastq.amb",
-                "ref.fastq.ann",
-                "ref.fastq.bwt",
-                "ref.fastq.pac",
-                "ref.fastq.sa",
-                "query.fastq.98"
-            ]
-        },
-        {
-            "command": "./bwa mem ref.fastq query.fastq.99 > query.fastq.99.sam 2> query.fastq.99.err",
-            "outputs": [
-                "query.fastq.99.sam",
-                "query.fastq.99.err"
-            ],
-            "inputs": [
-                "./bwa",
-                "ref.fastq",
-                "ref.fastq.amb",
-                "ref.fastq.ann",
-                "ref.fastq.bwt",
-                "ref.fastq.pac",
-                "ref.fastq.sa",
-                "query.fastq.99"
-            ]
-        },
-        {
-            "command": "./cat_bwa query.fastq.sam query.fastq*.sam",
-            "outputs": [
-                "query.fastq.sam"
-            ],
-            "inputs": [
-                "./cat_bwa",
-                "query.fastq.0.sam",
-                "query.fastq.1.sam",
-                "query.fastq.2.sam",
-                "query.fastq.3.sam",
-                "query.fastq.4.sam",
-                "query.fastq.5.sam",
-                "query.fastq.6.sam",
-                "query.fastq.7.sam",
-                "query.fastq.8.sam",
-                "query.fastq.9.sam",
-                "query.fastq.10.sam",
-                "query.fastq.11.sam",
-                "query.fastq.12.sam",
-                "query.fastq.13.sam",
-                "query.fastq.14.sam",
-                "query.fastq.15.sam",
-                "query.fastq.16.sam",
-                "query.fastq.17.sam",
-                "query.fastq.18.sam",
-                "query.fastq.19.sam",
-                "query.fastq.20.sam",
-                "query.fastq.21.sam",
-                "query.fastq.22.sam",
-                "query.fastq.23.sam",
-                "query.fastq.24.sam",
-                "query.fastq.25.sam",
-                "query.fastq.26.sam",
-                "query.fastq.27.sam",
-                "query.fastq.28.sam",
-                "query.fastq.29.sam",
-                "query.fastq.30.sam",
-                "query.fastq.31.sam",
-                "query.fastq.32.sam",
-                "query.fastq.33.sam",
-                "query.fastq.34.sam",
-                "query.fastq.35.sam",
-                "query.fastq.36.sam",
-                "query.fastq.37.sam",
-                "query.fastq.38.sam",
-                "query.fastq.39.sam",
-                "query.fastq.40.sam",
-                "query.fastq.41.sam",
-                "query.fastq.42.sam",
-                "query.fastq.43.sam",
-                "query.fastq.44.sam",
-                "query.fastq.45.sam",
-                "query.fastq.46.sam",
-                "query.fastq.47.sam",
-                "query.fastq.48.sam",
-                "query.fastq.49.sam",
-                "query.fastq.50.sam",
-                "query.fastq.51.sam",
-                "query.fastq.52.sam",
-                "query.fastq.53.sam",
-                "query.fastq.54.sam",
-                "query.fastq.55.sam",
-                "query.fastq.56.sam",
-                "query.fastq.57.sam",
-                "query.fastq.58.sam",
-                "query.fastq.59.sam",
-                "query.fastq.60.sam",
-                "query.fastq.61.sam",
-                "query.fastq.62.sam",
-                "query.fastq.63.sam",
-                "query.fastq.64.sam",
-                "query.fastq.65.sam",
-                "query.fastq.66.sam",
-                "query.fastq.67.sam",
-                "query.fastq.68.sam",
-                "query.fastq.69.sam",
-                "query.fastq.70.sam",
-                "query.fastq.71.sam",
-                "query.fastq.72.sam",
-                "query.fastq.73.sam",
-                "query.fastq.74.sam",
-                "query.fastq.75.sam",
-                "query.fastq.76.sam",
-                "query.fastq.77.sam",
-                "query.fastq.78.sam",
-                "query.fastq.79.sam",
-                "query.fastq.80.sam",
-                "query.fastq.81.sam",
-                "query.fastq.82.sam",
-                "query.fastq.83.sam",
-                "query.fastq.84.sam",
-                "query.fastq.85.sam",
-                "query.fastq.86.sam",
-                "query.fastq.87.sam",
-                "query.fastq.88.sam",
-                "query.fastq.89.sam",
-                "query.fastq.90.sam",
-                "query.fastq.91.sam",
-                "query.fastq.92.sam",
-                "query.fastq.93.sam",
-                "query.fastq.94.sam",
-                "query.fastq.95.sam",
-                "query.fastq.96.sam",
-                "query.fastq.97.sam",
-                "query.fastq.98.sam",
-                "query.fastq.99.sam"
-            ]
-        }
+  "define":
+    {
+      "BWA":"./bwa",
+      "ARGS":"mem",
+      "SPLIT":"./fastq_reduce",
+      "CONCAT":"./cat_bwa",
+      "REF":"ref.fastq",
+      "REF_INDEX":
+        [
+          "ref.fastq.amb",
+          "ref.fastq.ann",
+          "ref.fastq.bwt",
+          "ref.fastq.pac",
+          "ref.fastq.sa"
+        ],
+      "INPUT_PRE":"query.fastq",
+      "SEQ_PER_SPLIT":10,
+      "TOTAL_SEQ":1000
+    },
+  "rules":
+    [
+      
+      {
+        "command":"./fastq_reduce query.fastq 10",
+        "outputs":
+          [
+            "query.fastq.0",
+            "query.fastq.1",
+            "query.fastq.2",
+            "query.fastq.3",
+            "query.fastq.4",
+            "query.fastq.5",
+            "query.fastq.6",
+            "query.fastq.7",
+            "query.fastq.8",
+            "query.fastq.9",
+            "query.fastq.10",
+            "query.fastq.11",
+            "query.fastq.12",
+            "query.fastq.13",
+            "query.fastq.14",
+            "query.fastq.15",
+            "query.fastq.16",
+            "query.fastq.17",
+            "query.fastq.18",
+            "query.fastq.19",
+            "query.fastq.20",
+            "query.fastq.21",
+            "query.fastq.22",
+            "query.fastq.23",
+            "query.fastq.24",
+            "query.fastq.25",
+            "query.fastq.26",
+            "query.fastq.27",
+            "query.fastq.28",
+            "query.fastq.29",
+            "query.fastq.30",
+            "query.fastq.31",
+            "query.fastq.32",
+            "query.fastq.33",
+            "query.fastq.34",
+            "query.fastq.35",
+            "query.fastq.36",
+            "query.fastq.37",
+            "query.fastq.38",
+            "query.fastq.39",
+            "query.fastq.40",
+            "query.fastq.41",
+            "query.fastq.42",
+            "query.fastq.43",
+            "query.fastq.44",
+            "query.fastq.45",
+            "query.fastq.46",
+            "query.fastq.47",
+            "query.fastq.48",
+            "query.fastq.49",
+            "query.fastq.50",
+            "query.fastq.51",
+            "query.fastq.52",
+            "query.fastq.53",
+            "query.fastq.54",
+            "query.fastq.55",
+            "query.fastq.56",
+            "query.fastq.57",
+            "query.fastq.58",
+            "query.fastq.59",
+            "query.fastq.60",
+            "query.fastq.61",
+            "query.fastq.62",
+            "query.fastq.63",
+            "query.fastq.64",
+            "query.fastq.65",
+            "query.fastq.66",
+            "query.fastq.67",
+            "query.fastq.68",
+            "query.fastq.69",
+            "query.fastq.70",
+            "query.fastq.71",
+            "query.fastq.72",
+            "query.fastq.73",
+            "query.fastq.74",
+            "query.fastq.75",
+            "query.fastq.76",
+            "query.fastq.77",
+            "query.fastq.78",
+            "query.fastq.79",
+            "query.fastq.80",
+            "query.fastq.81",
+            "query.fastq.82",
+            "query.fastq.83",
+            "query.fastq.84",
+            "query.fastq.85",
+            "query.fastq.86",
+            "query.fastq.87",
+            "query.fastq.88",
+            "query.fastq.89",
+            "query.fastq.90",
+            "query.fastq.91",
+            "query.fastq.92",
+            "query.fastq.93",
+            "query.fastq.94",
+            "query.fastq.95",
+            "query.fastq.96",
+            "query.fastq.97",
+            "query.fastq.98",
+            "query.fastq.99"
+          ],
+        "inputs":
+          [
+            "./fastq_reduce",
+            "query.fastq"
+          ],
+        "local_job":true
+      },
+      
+      {
+        "command":"./bwa index ref.fastq",
+        "inputs":
+          [
+            "./bwa",
+            "ref.fastq"
+          ],
+        "outputs":
+          [
+            "ref.fastq.amb",
+            "ref.fastq.ann",
+            "ref.fastq.bwt",
+            "ref.fastq.pac",
+            "ref.fastq.sa"
+          ],
+        "local job":true
+      },
+      
+      {
+        "command":"./bwa mem ref.fastq query.fastq.0 > query.fastq.0.sam 2> query.fastq.0.err",
+        "outputs":
+          [
+            "query.fastq.0.sam",
+            "query.fastq.0.err"
+          ],
+        "inputs":
+          [
+            "./bwa",
+            "ref.fastq",
+            "ref.fastq.amb",
+            "ref.fastq.ann",
+            "ref.fastq.bwt",
+            "ref.fastq.pac",
+            "ref.fastq.sa",
+            "query.fastq.0"
+          ]
+      },
+      
+      {
+        "command":"./bwa mem ref.fastq query.fastq.1 > query.fastq.1.sam 2> query.fastq.1.err",
+        "outputs":
+          [
+            "query.fastq.1.sam",
+            "query.fastq.1.err"
+          ],
+        "inputs":
+          [
+            "./bwa",
+            "ref.fastq",
+            "ref.fastq.amb",
+            "ref.fastq.ann",
+            "ref.fastq.bwt",
+            "ref.fastq.pac",
+            "ref.fastq.sa",
+            "query.fastq.1"
+          ]
+      },
+      
+      {
+        "command":"./bwa mem ref.fastq query.fastq.2 > query.fastq.2.sam 2> query.fastq.2.err",
+        "outputs":
+          [
+            "query.fastq.2.sam",
+            "query.fastq.2.err"
+          ],
+        "inputs":
+          [
+            "./bwa",
+            "ref.fastq",
+            "ref.fastq.amb",
+            "ref.fastq.ann",
+            "ref.fastq.bwt",
+            "ref.fastq.pac",
+            "ref.fastq.sa",
+            "query.fastq.2"
+          ]
+      },
+      
+      {
+        "command":"./bwa mem ref.fastq query.fastq.3 > query.fastq.3.sam 2> query.fastq.3.err",
+        "outputs":
+          [
+            "query.fastq.3.sam",
+            "query.fastq.3.err"
+          ],
+        "inputs":
+          [
+            "./bwa",
+            "ref.fastq",
+            "ref.fastq.amb",
+            "ref.fastq.ann",
+            "ref.fastq.bwt",
+            "ref.fastq.pac",
+            "ref.fastq.sa",
+            "query.fastq.3"
+          ]
+      },
+      
+      {
+        "command":"./bwa mem ref.fastq query.fastq.4 > query.fastq.4.sam 2> query.fastq.4.err",
+        "outputs":
+          [
+            "query.fastq.4.sam",
+            "query.fastq.4.err"
+          ],
+        "inputs":
+          [
+            "./bwa",
+            "ref.fastq",
+            "ref.fastq.amb",
+            "ref.fastq.ann",
+            "ref.fastq.bwt",
+            "ref.fastq.pac",
+            "ref.fastq.sa",
+            "query.fastq.4"
+          ]
+      },
+      
+      {
+        "command":"./bwa mem ref.fastq query.fastq.5 > query.fastq.5.sam 2> query.fastq.5.err",
+        "outputs":
+          [
+            "query.fastq.5.sam",
+            "query.fastq.5.err"
+          ],
+        "inputs":
+          [
+            "./bwa",
+            "ref.fastq",
+            "ref.fastq.amb",
+            "ref.fastq.ann",
+            "ref.fastq.bwt",
+            "ref.fastq.pac",
+            "ref.fastq.sa",
+            "query.fastq.5"
+          ]
+      },
+      
+      {
+        "command":"./bwa mem ref.fastq query.fastq.6 > query.fastq.6.sam 2> query.fastq.6.err",
+        "outputs":
+          [
+            "query.fastq.6.sam",
+            "query.fastq.6.err"
+          ],
+        "inputs":
+          [
+            "./bwa",
+            "ref.fastq",
+            "ref.fastq.amb",
+            "ref.fastq.ann",
+            "ref.fastq.bwt",
+            "ref.fastq.pac",
+            "ref.fastq.sa",
+            "query.fastq.6"
+          ]
+      },
+      
+      {
+        "command":"./bwa mem ref.fastq query.fastq.7 > query.fastq.7.sam 2> query.fastq.7.err",
+        "outputs":
+          [
+            "query.fastq.7.sam",
+            "query.fastq.7.err"
+          ],
+        "inputs":
+          [
+            "./bwa",
+            "ref.fastq",
+            "ref.fastq.amb",
+            "ref.fastq.ann",
+            "ref.fastq.bwt",
+            "ref.fastq.pac",
+            "ref.fastq.sa",
+            "query.fastq.7"
+          ]
+      },
+      
+      {
+        "command":"./bwa mem ref.fastq query.fastq.8 > query.fastq.8.sam 2> query.fastq.8.err",
+        "outputs":
+          [
+            "query.fastq.8.sam",
+            "query.fastq.8.err"
+          ],
+        "inputs":
+          [
+            "./bwa",
+            "ref.fastq",
+            "ref.fastq.amb",
+            "ref.fastq.ann",
+            "ref.fastq.bwt",
+            "ref.fastq.pac",
+            "ref.fastq.sa",
+            "query.fastq.8"
+          ]
+      },
+      
+      {
+        "command":"./bwa mem ref.fastq query.fastq.9 > query.fastq.9.sam 2> query.fastq.9.err",
+        "outputs":
+          [
+            "query.fastq.9.sam",
+            "query.fastq.9.err"
+          ],
+        "inputs":
+          [
+            "./bwa",
+            "ref.fastq",
+            "ref.fastq.amb",
+            "ref.fastq.ann",
+            "ref.fastq.bwt",
+            "ref.fastq.pac",
+            "ref.fastq.sa",
+            "query.fastq.9"
+          ]
+      },
+      
+      {
+        "command":"./bwa mem ref.fastq query.fastq.10 > query.fastq.10.sam 2> query.fastq.10.err",
+        "outputs":
+          [
+            "query.fastq.10.sam",
+            "query.fastq.10.err"
+          ],
+        "inputs":
+          [
+            "./bwa",
+            "ref.fastq",
+            "ref.fastq.amb",
+            "ref.fastq.ann",
+            "ref.fastq.bwt",
+            "ref.fastq.pac",
+            "ref.fastq.sa",
+            "query.fastq.10"
+          ]
+      },
+      
+      {
+        "command":"./bwa mem ref.fastq query.fastq.11 > query.fastq.11.sam 2> query.fastq.11.err",
+        "outputs":
+          [
+            "query.fastq.11.sam",
+            "query.fastq.11.err"
+          ],
+        "inputs":
+          [
+            "./bwa",
+            "ref.fastq",
+            "ref.fastq.amb",
+            "ref.fastq.ann",
+            "ref.fastq.bwt",
+            "ref.fastq.pac",
+            "ref.fastq.sa",
+            "query.fastq.11"
+          ]
+      },
+      
+      {
+        "command":"./bwa mem ref.fastq query.fastq.12 > query.fastq.12.sam 2> query.fastq.12.err",
+        "outputs":
+          [
+            "query.fastq.12.sam",
+            "query.fastq.12.err"
+          ],
+        "inputs":
+          [
+            "./bwa",
+            "ref.fastq",
+            "ref.fastq.amb",
+            "ref.fastq.ann",
+            "ref.fastq.bwt",
+            "ref.fastq.pac",
+            "ref.fastq.sa",
+            "query.fastq.12"
+          ]
+      },
+      
+      {
+        "command":"./bwa mem ref.fastq query.fastq.13 > query.fastq.13.sam 2> query.fastq.13.err",
+        "outputs":
+          [
+            "query.fastq.13.sam",
+            "query.fastq.13.err"
+          ],
+        "inputs":
+          [
+            "./bwa",
+            "ref.fastq",
+            "ref.fastq.amb",
+            "ref.fastq.ann",
+            "ref.fastq.bwt",
+            "ref.fastq.pac",
+            "ref.fastq.sa",
+            "query.fastq.13"
+          ]
+      },
+      
+      {
+        "command":"./bwa mem ref.fastq query.fastq.14 > query.fastq.14.sam 2> query.fastq.14.err",
+        "outputs":
+          [
+            "query.fastq.14.sam",
+            "query.fastq.14.err"
+          ],
+        "inputs":
+          [
+            "./bwa",
+            "ref.fastq",
+            "ref.fastq.amb",
+            "ref.fastq.ann",
+            "ref.fastq.bwt",
+            "ref.fastq.pac",
+            "ref.fastq.sa",
+            "query.fastq.14"
+          ]
+      },
+      
+      {
+        "command":"./bwa mem ref.fastq query.fastq.15 > query.fastq.15.sam 2> query.fastq.15.err",
+        "outputs":
+          [
+            "query.fastq.15.sam",
+            "query.fastq.15.err"
+          ],
+        "inputs":
+          [
+            "./bwa",
+            "ref.fastq",
+            "ref.fastq.amb",
+            "ref.fastq.ann",
+            "ref.fastq.bwt",
+            "ref.fastq.pac",
+            "ref.fastq.sa",
+            "query.fastq.15"
+          ]
+      },
+      
+      {
+        "command":"./bwa mem ref.fastq query.fastq.16 > query.fastq.16.sam 2> query.fastq.16.err",
+        "outputs":
+          [
+            "query.fastq.16.sam",
+            "query.fastq.16.err"
+          ],
+        "inputs":
+          [
+            "./bwa",
+            "ref.fastq",
+            "ref.fastq.amb",
+            "ref.fastq.ann",
+            "ref.fastq.bwt",
+            "ref.fastq.pac",
+            "ref.fastq.sa",
+            "query.fastq.16"
+          ]
+      },
+      
+      {
+        "command":"./bwa mem ref.fastq query.fastq.17 > query.fastq.17.sam 2> query.fastq.17.err",
+        "outputs":
+          [
+            "query.fastq.17.sam",
+            "query.fastq.17.err"
+          ],
+        "inputs":
+          [
+            "./bwa",
+            "ref.fastq",
+            "ref.fastq.amb",
+            "ref.fastq.ann",
+            "ref.fastq.bwt",
+            "ref.fastq.pac",
+            "ref.fastq.sa",
+            "query.fastq.17"
+          ]
+      },
+      
+      {
+        "command":"./bwa mem ref.fastq query.fastq.18 > query.fastq.18.sam 2> query.fastq.18.err",
+        "outputs":
+          [
+            "query.fastq.18.sam",
+            "query.fastq.18.err"
+          ],
+        "inputs":
+          [
+            "./bwa",
+            "ref.fastq",
+            "ref.fastq.amb",
+            "ref.fastq.ann",
+            "ref.fastq.bwt",
+            "ref.fastq.pac",
+            "ref.fastq.sa",
+            "query.fastq.18"
+          ]
+      },
+      
+      {
+        "command":"./bwa mem ref.fastq query.fastq.19 > query.fastq.19.sam 2> query.fastq.19.err",
+        "outputs":
+          [
+            "query.fastq.19.sam",
+            "query.fastq.19.err"
+          ],
+        "inputs":
+          [
+            "./bwa",
+            "ref.fastq",
+            "ref.fastq.amb",
+            "ref.fastq.ann",
+            "ref.fastq.bwt",
+            "ref.fastq.pac",
+            "ref.fastq.sa",
+            "query.fastq.19"
+          ]
+      },
+      
+      {
+        "command":"./bwa mem ref.fastq query.fastq.20 > query.fastq.20.sam 2> query.fastq.20.err",
+        "outputs":
+          [
+            "query.fastq.20.sam",
+            "query.fastq.20.err"
+          ],
+        "inputs":
+          [
+            "./bwa",
+            "ref.fastq",
+            "ref.fastq.amb",
+            "ref.fastq.ann",
+            "ref.fastq.bwt",
+            "ref.fastq.pac",
+            "ref.fastq.sa",
+            "query.fastq.20"
+          ]
+      },
+      
+      {
+        "command":"./bwa mem ref.fastq query.fastq.21 > query.fastq.21.sam 2> query.fastq.21.err",
+        "outputs":
+          [
+            "query.fastq.21.sam",
+            "query.fastq.21.err"
+          ],
+        "inputs":
+          [
+            "./bwa",
+            "ref.fastq",
+            "ref.fastq.amb",
+            "ref.fastq.ann",
+            "ref.fastq.bwt",
+            "ref.fastq.pac",
+            "ref.fastq.sa",
+            "query.fastq.21"
+          ]
+      },
+      
+      {
+        "command":"./bwa mem ref.fastq query.fastq.22 > query.fastq.22.sam 2> query.fastq.22.err",
+        "outputs":
+          [
+            "query.fastq.22.sam",
+            "query.fastq.22.err"
+          ],
+        "inputs":
+          [
+            "./bwa",
+            "ref.fastq",
+            "ref.fastq.amb",
+            "ref.fastq.ann",
+            "ref.fastq.bwt",
+            "ref.fastq.pac",
+            "ref.fastq.sa",
+            "query.fastq.22"
+          ]
+      },
+      
+      {
+        "command":"./bwa mem ref.fastq query.fastq.23 > query.fastq.23.sam 2> query.fastq.23.err",
+        "outputs":
+          [
+            "query.fastq.23.sam",
+            "query.fastq.23.err"
+          ],
+        "inputs":
+          [
+            "./bwa",
+            "ref.fastq",
+            "ref.fastq.amb",
+            "ref.fastq.ann",
+            "ref.fastq.bwt",
+            "ref.fastq.pac",
+            "ref.fastq.sa",
+            "query.fastq.23"
+          ]
+      },
+      
+      {
+        "command":"./bwa mem ref.fastq query.fastq.24 > query.fastq.24.sam 2> query.fastq.24.err",
+        "outputs":
+          [
+            "query.fastq.24.sam",
+            "query.fastq.24.err"
+          ],
+        "inputs":
+          [
+            "./bwa",
+            "ref.fastq",
+            "ref.fastq.amb",
+            "ref.fastq.ann",
+            "ref.fastq.bwt",
+            "ref.fastq.pac",
+            "ref.fastq.sa",
+            "query.fastq.24"
+          ]
+      },
+      
+      {
+        "command":"./bwa mem ref.fastq query.fastq.25 > query.fastq.25.sam 2> query.fastq.25.err",
+        "outputs":
+          [
+            "query.fastq.25.sam",
+            "query.fastq.25.err"
+          ],
+        "inputs":
+          [
+            "./bwa",
+            "ref.fastq",
+            "ref.fastq.amb",
+            "ref.fastq.ann",
+            "ref.fastq.bwt",
+            "ref.fastq.pac",
+            "ref.fastq.sa",
+            "query.fastq.25"
+          ]
+      },
+      
+      {
+        "command":"./bwa mem ref.fastq query.fastq.26 > query.fastq.26.sam 2> query.fastq.26.err",
+        "outputs":
+          [
+            "query.fastq.26.sam",
+            "query.fastq.26.err"
+          ],
+        "inputs":
+          [
+            "./bwa",
+            "ref.fastq",
+            "ref.fastq.amb",
+            "ref.fastq.ann",
+            "ref.fastq.bwt",
+            "ref.fastq.pac",
+            "ref.fastq.sa",
+            "query.fastq.26"
+          ]
+      },
+      
+      {
+        "command":"./bwa mem ref.fastq query.fastq.27 > query.fastq.27.sam 2> query.fastq.27.err",
+        "outputs":
+          [
+            "query.fastq.27.sam",
+            "query.fastq.27.err"
+          ],
+        "inputs":
+          [
+            "./bwa",
+            "ref.fastq",
+            "ref.fastq.amb",
+            "ref.fastq.ann",
+            "ref.fastq.bwt",
+            "ref.fastq.pac",
+            "ref.fastq.sa",
+            "query.fastq.27"
+          ]
+      },
+      
+      {
+        "command":"./bwa mem ref.fastq query.fastq.28 > query.fastq.28.sam 2> query.fastq.28.err",
+        "outputs":
+          [
+            "query.fastq.28.sam",
+            "query.fastq.28.err"
+          ],
+        "inputs":
+          [
+            "./bwa",
+            "ref.fastq",
+            "ref.fastq.amb",
+            "ref.fastq.ann",
+            "ref.fastq.bwt",
+            "ref.fastq.pac",
+            "ref.fastq.sa",
+            "query.fastq.28"
+          ]
+      },
+      
+      {
+        "command":"./bwa mem ref.fastq query.fastq.29 > query.fastq.29.sam 2> query.fastq.29.err",
+        "outputs":
+          [
+            "query.fastq.29.sam",
+            "query.fastq.29.err"
+          ],
+        "inputs":
+          [
+            "./bwa",
+            "ref.fastq",
+            "ref.fastq.amb",
+            "ref.fastq.ann",
+            "ref.fastq.bwt",
+            "ref.fastq.pac",
+            "ref.fastq.sa",
+            "query.fastq.29"
+          ]
+      },
+      
+      {
+        "command":"./bwa mem ref.fastq query.fastq.30 > query.fastq.30.sam 2> query.fastq.30.err",
+        "outputs":
+          [
+            "query.fastq.30.sam",
+            "query.fastq.30.err"
+          ],
+        "inputs":
+          [
+            "./bwa",
+            "ref.fastq",
+            "ref.fastq.amb",
+            "ref.fastq.ann",
+            "ref.fastq.bwt",
+            "ref.fastq.pac",
+            "ref.fastq.sa",
+            "query.fastq.30"
+          ]
+      },
+      
+      {
+        "command":"./bwa mem ref.fastq query.fastq.31 > query.fastq.31.sam 2> query.fastq.31.err",
+        "outputs":
+          [
+            "query.fastq.31.sam",
+            "query.fastq.31.err"
+          ],
+        "inputs":
+          [
+            "./bwa",
+            "ref.fastq",
+            "ref.fastq.amb",
+            "ref.fastq.ann",
+            "ref.fastq.bwt",
+            "ref.fastq.pac",
+            "ref.fastq.sa",
+            "query.fastq.31"
+          ]
+      },
+      
+      {
+        "command":"./bwa mem ref.fastq query.fastq.32 > query.fastq.32.sam 2> query.fastq.32.err",
+        "outputs":
+          [
+            "query.fastq.32.sam",
+            "query.fastq.32.err"
+          ],
+        "inputs":
+          [
+            "./bwa",
+            "ref.fastq",
+            "ref.fastq.amb",
+            "ref.fastq.ann",
+            "ref.fastq.bwt",
+            "ref.fastq.pac",
+            "ref.fastq.sa",
+            "query.fastq.32"
+          ]
+      },
+      
+      {
+        "command":"./bwa mem ref.fastq query.fastq.33 > query.fastq.33.sam 2> query.fastq.33.err",
+        "outputs":
+          [
+            "query.fastq.33.sam",
+            "query.fastq.33.err"
+          ],
+        "inputs":
+          [
+            "./bwa",
+            "ref.fastq",
+            "ref.fastq.amb",
+            "ref.fastq.ann",
+            "ref.fastq.bwt",
+            "ref.fastq.pac",
+            "ref.fastq.sa",
+            "query.fastq.33"
+          ]
+      },
+      
+      {
+        "command":"./bwa mem ref.fastq query.fastq.34 > query.fastq.34.sam 2> query.fastq.34.err",
+        "outputs":
+          [
+            "query.fastq.34.sam",
+            "query.fastq.34.err"
+          ],
+        "inputs":
+          [
+            "./bwa",
+            "ref.fastq",
+            "ref.fastq.amb",
+            "ref.fastq.ann",
+            "ref.fastq.bwt",
+            "ref.fastq.pac",
+            "ref.fastq.sa",
+            "query.fastq.34"
+          ]
+      },
+      
+      {
+        "command":"./bwa mem ref.fastq query.fastq.35 > query.fastq.35.sam 2> query.fastq.35.err",
+        "outputs":
+          [
+            "query.fastq.35.sam",
+            "query.fastq.35.err"
+          ],
+        "inputs":
+          [
+            "./bwa",
+            "ref.fastq",
+            "ref.fastq.amb",
+            "ref.fastq.ann",
+            "ref.fastq.bwt",
+            "ref.fastq.pac",
+            "ref.fastq.sa",
+            "query.fastq.35"
+          ]
+      },
+      
+      {
+        "command":"./bwa mem ref.fastq query.fastq.36 > query.fastq.36.sam 2> query.fastq.36.err",
+        "outputs":
+          [
+            "query.fastq.36.sam",
+            "query.fastq.36.err"
+          ],
+        "inputs":
+          [
+            "./bwa",
+            "ref.fastq",
+            "ref.fastq.amb",
+            "ref.fastq.ann",
+            "ref.fastq.bwt",
+            "ref.fastq.pac",
+            "ref.fastq.sa",
+            "query.fastq.36"
+          ]
+      },
+      
+      {
+        "command":"./bwa mem ref.fastq query.fastq.37 > query.fastq.37.sam 2> query.fastq.37.err",
+        "outputs":
+          [
+            "query.fastq.37.sam",
+            "query.fastq.37.err"
+          ],
+        "inputs":
+          [
+            "./bwa",
+            "ref.fastq",
+            "ref.fastq.amb",
+            "ref.fastq.ann",
+            "ref.fastq.bwt",
+            "ref.fastq.pac",
+            "ref.fastq.sa",
+            "query.fastq.37"
+          ]
+      },
+      
+      {
+        "command":"./bwa mem ref.fastq query.fastq.38 > query.fastq.38.sam 2> query.fastq.38.err",
+        "outputs":
+          [
+            "query.fastq.38.sam",
+            "query.fastq.38.err"
+          ],
+        "inputs":
+          [
+            "./bwa",
+            "ref.fastq",
+            "ref.fastq.amb",
+            "ref.fastq.ann",
+            "ref.fastq.bwt",
+            "ref.fastq.pac",
+            "ref.fastq.sa",
+            "query.fastq.38"
+          ]
+      },
+      
+      {
+        "command":"./bwa mem ref.fastq query.fastq.39 > query.fastq.39.sam 2> query.fastq.39.err",
+        "outputs":
+          [
+            "query.fastq.39.sam",
+            "query.fastq.39.err"
+          ],
+        "inputs":
+          [
+            "./bwa",
+            "ref.fastq",
+            "ref.fastq.amb",
+            "ref.fastq.ann",
+            "ref.fastq.bwt",
+            "ref.fastq.pac",
+            "ref.fastq.sa",
+            "query.fastq.39"
+          ]
+      },
+      
+      {
+        "command":"./bwa mem ref.fastq query.fastq.40 > query.fastq.40.sam 2> query.fastq.40.err",
+        "outputs":
+          [
+            "query.fastq.40.sam",
+            "query.fastq.40.err"
+          ],
+        "inputs":
+          [
+            "./bwa",
+            "ref.fastq",
+            "ref.fastq.amb",
+            "ref.fastq.ann",
+            "ref.fastq.bwt",
+            "ref.fastq.pac",
+            "ref.fastq.sa",
+            "query.fastq.40"
+          ]
+      },
+      
+      {
+        "command":"./bwa mem ref.fastq query.fastq.41 > query.fastq.41.sam 2> query.fastq.41.err",
+        "outputs":
+          [
+            "query.fastq.41.sam",
+            "query.fastq.41.err"
+          ],
+        "inputs":
+          [
+            "./bwa",
+            "ref.fastq",
+            "ref.fastq.amb",
+            "ref.fastq.ann",
+            "ref.fastq.bwt",
+            "ref.fastq.pac",
+            "ref.fastq.sa",
+            "query.fastq.41"
+          ]
+      },
+      
+      {
+        "command":"./bwa mem ref.fastq query.fastq.42 > query.fastq.42.sam 2> query.fastq.42.err",
+        "outputs":
+          [
+            "query.fastq.42.sam",
+            "query.fastq.42.err"
+          ],
+        "inputs":
+          [
+            "./bwa",
+            "ref.fastq",
+            "ref.fastq.amb",
+            "ref.fastq.ann",
+            "ref.fastq.bwt",
+            "ref.fastq.pac",
+            "ref.fastq.sa",
+            "query.fastq.42"
+          ]
+      },
+      
+      {
+        "command":"./bwa mem ref.fastq query.fastq.43 > query.fastq.43.sam 2> query.fastq.43.err",
+        "outputs":
+          [
+            "query.fastq.43.sam",
+            "query.fastq.43.err"
+          ],
+        "inputs":
+          [
+            "./bwa",
+            "ref.fastq",
+            "ref.fastq.amb",
+            "ref.fastq.ann",
+            "ref.fastq.bwt",
+            "ref.fastq.pac",
+            "ref.fastq.sa",
+            "query.fastq.43"
+          ]
+      },
+      
+      {
+        "command":"./bwa mem ref.fastq query.fastq.44 > query.fastq.44.sam 2> query.fastq.44.err",
+        "outputs":
+          [
+            "query.fastq.44.sam",
+            "query.fastq.44.err"
+          ],
+        "inputs":
+          [
+            "./bwa",
+            "ref.fastq",
+            "ref.fastq.amb",
+            "ref.fastq.ann",
+            "ref.fastq.bwt",
+            "ref.fastq.pac",
+            "ref.fastq.sa",
+            "query.fastq.44"
+          ]
+      },
+      
+      {
+        "command":"./bwa mem ref.fastq query.fastq.45 > query.fastq.45.sam 2> query.fastq.45.err",
+        "outputs":
+          [
+            "query.fastq.45.sam",
+            "query.fastq.45.err"
+          ],
+        "inputs":
+          [
+            "./bwa",
+            "ref.fastq",
+            "ref.fastq.amb",
+            "ref.fastq.ann",
+            "ref.fastq.bwt",
+            "ref.fastq.pac",
+            "ref.fastq.sa",
+            "query.fastq.45"
+          ]
+      },
+      
+      {
+        "command":"./bwa mem ref.fastq query.fastq.46 > query.fastq.46.sam 2> query.fastq.46.err",
+        "outputs":
+          [
+            "query.fastq.46.sam",
+            "query.fastq.46.err"
+          ],
+        "inputs":
+          [
+            "./bwa",
+            "ref.fastq",
+            "ref.fastq.amb",
+            "ref.fastq.ann",
+            "ref.fastq.bwt",
+            "ref.fastq.pac",
+            "ref.fastq.sa",
+            "query.fastq.46"
+          ]
+      },
+      
+      {
+        "command":"./bwa mem ref.fastq query.fastq.47 > query.fastq.47.sam 2> query.fastq.47.err",
+        "outputs":
+          [
+            "query.fastq.47.sam",
+            "query.fastq.47.err"
+          ],
+        "inputs":
+          [
+            "./bwa",
+            "ref.fastq",
+            "ref.fastq.amb",
+            "ref.fastq.ann",
+            "ref.fastq.bwt",
+            "ref.fastq.pac",
+            "ref.fastq.sa",
+            "query.fastq.47"
+          ]
+      },
+      
+      {
+        "command":"./bwa mem ref.fastq query.fastq.48 > query.fastq.48.sam 2> query.fastq.48.err",
+        "outputs":
+          [
+            "query.fastq.48.sam",
+            "query.fastq.48.err"
+          ],
+        "inputs":
+          [
+            "./bwa",
+            "ref.fastq",
+            "ref.fastq.amb",
+            "ref.fastq.ann",
+            "ref.fastq.bwt",
+            "ref.fastq.pac",
+            "ref.fastq.sa",
+            "query.fastq.48"
+          ]
+      },
+      
+      {
+        "command":"./bwa mem ref.fastq query.fastq.49 > query.fastq.49.sam 2> query.fastq.49.err",
+        "outputs":
+          [
+            "query.fastq.49.sam",
+            "query.fastq.49.err"
+          ],
+        "inputs":
+          [
+            "./bwa",
+            "ref.fastq",
+            "ref.fastq.amb",
+            "ref.fastq.ann",
+            "ref.fastq.bwt",
+            "ref.fastq.pac",
+            "ref.fastq.sa",
+            "query.fastq.49"
+          ]
+      },
+      
+      {
+        "command":"./bwa mem ref.fastq query.fastq.50 > query.fastq.50.sam 2> query.fastq.50.err",
+        "outputs":
+          [
+            "query.fastq.50.sam",
+            "query.fastq.50.err"
+          ],
+        "inputs":
+          [
+            "./bwa",
+            "ref.fastq",
+            "ref.fastq.amb",
+            "ref.fastq.ann",
+            "ref.fastq.bwt",
+            "ref.fastq.pac",
+            "ref.fastq.sa",
+            "query.fastq.50"
+          ]
+      },
+      
+      {
+        "command":"./bwa mem ref.fastq query.fastq.51 > query.fastq.51.sam 2> query.fastq.51.err",
+        "outputs":
+          [
+            "query.fastq.51.sam",
+            "query.fastq.51.err"
+          ],
+        "inputs":
+          [
+            "./bwa",
+            "ref.fastq",
+            "ref.fastq.amb",
+            "ref.fastq.ann",
+            "ref.fastq.bwt",
+            "ref.fastq.pac",
+            "ref.fastq.sa",
+            "query.fastq.51"
+          ]
+      },
+      
+      {
+        "command":"./bwa mem ref.fastq query.fastq.52 > query.fastq.52.sam 2> query.fastq.52.err",
+        "outputs":
+          [
+            "query.fastq.52.sam",
+            "query.fastq.52.err"
+          ],
+        "inputs":
+          [
+            "./bwa",
+            "ref.fastq",
+            "ref.fastq.amb",
+            "ref.fastq.ann",
+            "ref.fastq.bwt",
+            "ref.fastq.pac",
+            "ref.fastq.sa",
+            "query.fastq.52"
+          ]
+      },
+      
+      {
+        "command":"./bwa mem ref.fastq query.fastq.53 > query.fastq.53.sam 2> query.fastq.53.err",
+        "outputs":
+          [
+            "query.fastq.53.sam",
+            "query.fastq.53.err"
+          ],
+        "inputs":
+          [
+            "./bwa",
+            "ref.fastq",
+            "ref.fastq.amb",
+            "ref.fastq.ann",
+            "ref.fastq.bwt",
+            "ref.fastq.pac",
+            "ref.fastq.sa",
+            "query.fastq.53"
+          ]
+      },
+      
+      {
+        "command":"./bwa mem ref.fastq query.fastq.54 > query.fastq.54.sam 2> query.fastq.54.err",
+        "outputs":
+          [
+            "query.fastq.54.sam",
+            "query.fastq.54.err"
+          ],
+        "inputs":
+          [
+            "./bwa",
+            "ref.fastq",
+            "ref.fastq.amb",
+            "ref.fastq.ann",
+            "ref.fastq.bwt",
+            "ref.fastq.pac",
+            "ref.fastq.sa",
+            "query.fastq.54"
+          ]
+      },
+      
+      {
+        "command":"./bwa mem ref.fastq query.fastq.55 > query.fastq.55.sam 2> query.fastq.55.err",
+        "outputs":
+          [
+            "query.fastq.55.sam",
+            "query.fastq.55.err"
+          ],
+        "inputs":
+          [
+            "./bwa",
+            "ref.fastq",
+            "ref.fastq.amb",
+            "ref.fastq.ann",
+            "ref.fastq.bwt",
+            "ref.fastq.pac",
+            "ref.fastq.sa",
+            "query.fastq.55"
+          ]
+      },
+      
+      {
+        "command":"./bwa mem ref.fastq query.fastq.56 > query.fastq.56.sam 2> query.fastq.56.err",
+        "outputs":
+          [
+            "query.fastq.56.sam",
+            "query.fastq.56.err"
+          ],
+        "inputs":
+          [
+            "./bwa",
+            "ref.fastq",
+            "ref.fastq.amb",
+            "ref.fastq.ann",
+            "ref.fastq.bwt",
+            "ref.fastq.pac",
+            "ref.fastq.sa",
+            "query.fastq.56"
+          ]
+      },
+      
+      {
+        "command":"./bwa mem ref.fastq query.fastq.57 > query.fastq.57.sam 2> query.fastq.57.err",
+        "outputs":
+          [
+            "query.fastq.57.sam",
+            "query.fastq.57.err"
+          ],
+        "inputs":
+          [
+            "./bwa",
+            "ref.fastq",
+            "ref.fastq.amb",
+            "ref.fastq.ann",
+            "ref.fastq.bwt",
+            "ref.fastq.pac",
+            "ref.fastq.sa",
+            "query.fastq.57"
+          ]
+      },
+      
+      {
+        "command":"./bwa mem ref.fastq query.fastq.58 > query.fastq.58.sam 2> query.fastq.58.err",
+        "outputs":
+          [
+            "query.fastq.58.sam",
+            "query.fastq.58.err"
+          ],
+        "inputs":
+          [
+            "./bwa",
+            "ref.fastq",
+            "ref.fastq.amb",
+            "ref.fastq.ann",
+            "ref.fastq.bwt",
+            "ref.fastq.pac",
+            "ref.fastq.sa",
+            "query.fastq.58"
+          ]
+      },
+      
+      {
+        "command":"./bwa mem ref.fastq query.fastq.59 > query.fastq.59.sam 2> query.fastq.59.err",
+        "outputs":
+          [
+            "query.fastq.59.sam",
+            "query.fastq.59.err"
+          ],
+        "inputs":
+          [
+            "./bwa",
+            "ref.fastq",
+            "ref.fastq.amb",
+            "ref.fastq.ann",
+            "ref.fastq.bwt",
+            "ref.fastq.pac",
+            "ref.fastq.sa",
+            "query.fastq.59"
+          ]
+      },
+      
+      {
+        "command":"./bwa mem ref.fastq query.fastq.60 > query.fastq.60.sam 2> query.fastq.60.err",
+        "outputs":
+          [
+            "query.fastq.60.sam",
+            "query.fastq.60.err"
+          ],
+        "inputs":
+          [
+            "./bwa",
+            "ref.fastq",
+            "ref.fastq.amb",
+            "ref.fastq.ann",
+            "ref.fastq.bwt",
+            "ref.fastq.pac",
+            "ref.fastq.sa",
+            "query.fastq.60"
+          ]
+      },
+      
+      {
+        "command":"./bwa mem ref.fastq query.fastq.61 > query.fastq.61.sam 2> query.fastq.61.err",
+        "outputs":
+          [
+            "query.fastq.61.sam",
+            "query.fastq.61.err"
+          ],
+        "inputs":
+          [
+            "./bwa",
+            "ref.fastq",
+            "ref.fastq.amb",
+            "ref.fastq.ann",
+            "ref.fastq.bwt",
+            "ref.fastq.pac",
+            "ref.fastq.sa",
+            "query.fastq.61"
+          ]
+      },
+      
+      {
+        "command":"./bwa mem ref.fastq query.fastq.62 > query.fastq.62.sam 2> query.fastq.62.err",
+        "outputs":
+          [
+            "query.fastq.62.sam",
+            "query.fastq.62.err"
+          ],
+        "inputs":
+          [
+            "./bwa",
+            "ref.fastq",
+            "ref.fastq.amb",
+            "ref.fastq.ann",
+            "ref.fastq.bwt",
+            "ref.fastq.pac",
+            "ref.fastq.sa",
+            "query.fastq.62"
+          ]
+      },
+      
+      {
+        "command":"./bwa mem ref.fastq query.fastq.63 > query.fastq.63.sam 2> query.fastq.63.err",
+        "outputs":
+          [
+            "query.fastq.63.sam",
+            "query.fastq.63.err"
+          ],
+        "inputs":
+          [
+            "./bwa",
+            "ref.fastq",
+            "ref.fastq.amb",
+            "ref.fastq.ann",
+            "ref.fastq.bwt",
+            "ref.fastq.pac",
+            "ref.fastq.sa",
+            "query.fastq.63"
+          ]
+      },
+      
+      {
+        "command":"./bwa mem ref.fastq query.fastq.64 > query.fastq.64.sam 2> query.fastq.64.err",
+        "outputs":
+          [
+            "query.fastq.64.sam",
+            "query.fastq.64.err"
+          ],
+        "inputs":
+          [
+            "./bwa",
+            "ref.fastq",
+            "ref.fastq.amb",
+            "ref.fastq.ann",
+            "ref.fastq.bwt",
+            "ref.fastq.pac",
+            "ref.fastq.sa",
+            "query.fastq.64"
+          ]
+      },
+      
+      {
+        "command":"./bwa mem ref.fastq query.fastq.65 > query.fastq.65.sam 2> query.fastq.65.err",
+        "outputs":
+          [
+            "query.fastq.65.sam",
+            "query.fastq.65.err"
+          ],
+        "inputs":
+          [
+            "./bwa",
+            "ref.fastq",
+            "ref.fastq.amb",
+            "ref.fastq.ann",
+            "ref.fastq.bwt",
+            "ref.fastq.pac",
+            "ref.fastq.sa",
+            "query.fastq.65"
+          ]
+      },
+      
+      {
+        "command":"./bwa mem ref.fastq query.fastq.66 > query.fastq.66.sam 2> query.fastq.66.err",
+        "outputs":
+          [
+            "query.fastq.66.sam",
+            "query.fastq.66.err"
+          ],
+        "inputs":
+          [
+            "./bwa",
+            "ref.fastq",
+            "ref.fastq.amb",
+            "ref.fastq.ann",
+            "ref.fastq.bwt",
+            "ref.fastq.pac",
+            "ref.fastq.sa",
+            "query.fastq.66"
+          ]
+      },
+      
+      {
+        "command":"./bwa mem ref.fastq query.fastq.67 > query.fastq.67.sam 2> query.fastq.67.err",
+        "outputs":
+          [
+            "query.fastq.67.sam",
+            "query.fastq.67.err"
+          ],
+        "inputs":
+          [
+            "./bwa",
+            "ref.fastq",
+            "ref.fastq.amb",
+            "ref.fastq.ann",
+            "ref.fastq.bwt",
+            "ref.fastq.pac",
+            "ref.fastq.sa",
+            "query.fastq.67"
+          ]
+      },
+      
+      {
+        "command":"./bwa mem ref.fastq query.fastq.68 > query.fastq.68.sam 2> query.fastq.68.err",
+        "outputs":
+          [
+            "query.fastq.68.sam",
+            "query.fastq.68.err"
+          ],
+        "inputs":
+          [
+            "./bwa",
+            "ref.fastq",
+            "ref.fastq.amb",
+            "ref.fastq.ann",
+            "ref.fastq.bwt",
+            "ref.fastq.pac",
+            "ref.fastq.sa",
+            "query.fastq.68"
+          ]
+      },
+      
+      {
+        "command":"./bwa mem ref.fastq query.fastq.69 > query.fastq.69.sam 2> query.fastq.69.err",
+        "outputs":
+          [
+            "query.fastq.69.sam",
+            "query.fastq.69.err"
+          ],
+        "inputs":
+          [
+            "./bwa",
+            "ref.fastq",
+            "ref.fastq.amb",
+            "ref.fastq.ann",
+            "ref.fastq.bwt",
+            "ref.fastq.pac",
+            "ref.fastq.sa",
+            "query.fastq.69"
+          ]
+      },
+      
+      {
+        "command":"./bwa mem ref.fastq query.fastq.70 > query.fastq.70.sam 2> query.fastq.70.err",
+        "outputs":
+          [
+            "query.fastq.70.sam",
+            "query.fastq.70.err"
+          ],
+        "inputs":
+          [
+            "./bwa",
+            "ref.fastq",
+            "ref.fastq.amb",
+            "ref.fastq.ann",
+            "ref.fastq.bwt",
+            "ref.fastq.pac",
+            "ref.fastq.sa",
+            "query.fastq.70"
+          ]
+      },
+      
+      {
+        "command":"./bwa mem ref.fastq query.fastq.71 > query.fastq.71.sam 2> query.fastq.71.err",
+        "outputs":
+          [
+            "query.fastq.71.sam",
+            "query.fastq.71.err"
+          ],
+        "inputs":
+          [
+            "./bwa",
+            "ref.fastq",
+            "ref.fastq.amb",
+            "ref.fastq.ann",
+            "ref.fastq.bwt",
+            "ref.fastq.pac",
+            "ref.fastq.sa",
+            "query.fastq.71"
+          ]
+      },
+      
+      {
+        "command":"./bwa mem ref.fastq query.fastq.72 > query.fastq.72.sam 2> query.fastq.72.err",
+        "outputs":
+          [
+            "query.fastq.72.sam",
+            "query.fastq.72.err"
+          ],
+        "inputs":
+          [
+            "./bwa",
+            "ref.fastq",
+            "ref.fastq.amb",
+            "ref.fastq.ann",
+            "ref.fastq.bwt",
+            "ref.fastq.pac",
+            "ref.fastq.sa",
+            "query.fastq.72"
+          ]
+      },
+      
+      {
+        "command":"./bwa mem ref.fastq query.fastq.73 > query.fastq.73.sam 2> query.fastq.73.err",
+        "outputs":
+          [
+            "query.fastq.73.sam",
+            "query.fastq.73.err"
+          ],
+        "inputs":
+          [
+            "./bwa",
+            "ref.fastq",
+            "ref.fastq.amb",
+            "ref.fastq.ann",
+            "ref.fastq.bwt",
+            "ref.fastq.pac",
+            "ref.fastq.sa",
+            "query.fastq.73"
+          ]
+      },
+      
+      {
+        "command":"./bwa mem ref.fastq query.fastq.74 > query.fastq.74.sam 2> query.fastq.74.err",
+        "outputs":
+          [
+            "query.fastq.74.sam",
+            "query.fastq.74.err"
+          ],
+        "inputs":
+          [
+            "./bwa",
+            "ref.fastq",
+            "ref.fastq.amb",
+            "ref.fastq.ann",
+            "ref.fastq.bwt",
+            "ref.fastq.pac",
+            "ref.fastq.sa",
+            "query.fastq.74"
+          ]
+      },
+      
+      {
+        "command":"./bwa mem ref.fastq query.fastq.75 > query.fastq.75.sam 2> query.fastq.75.err",
+        "outputs":
+          [
+            "query.fastq.75.sam",
+            "query.fastq.75.err"
+          ],
+        "inputs":
+          [
+            "./bwa",
+            "ref.fastq",
+            "ref.fastq.amb",
+            "ref.fastq.ann",
+            "ref.fastq.bwt",
+            "ref.fastq.pac",
+            "ref.fastq.sa",
+            "query.fastq.75"
+          ]
+      },
+      
+      {
+        "command":"./bwa mem ref.fastq query.fastq.76 > query.fastq.76.sam 2> query.fastq.76.err",
+        "outputs":
+          [
+            "query.fastq.76.sam",
+            "query.fastq.76.err"
+          ],
+        "inputs":
+          [
+            "./bwa",
+            "ref.fastq",
+            "ref.fastq.amb",
+            "ref.fastq.ann",
+            "ref.fastq.bwt",
+            "ref.fastq.pac",
+            "ref.fastq.sa",
+            "query.fastq.76"
+          ]
+      },
+      
+      {
+        "command":"./bwa mem ref.fastq query.fastq.77 > query.fastq.77.sam 2> query.fastq.77.err",
+        "outputs":
+          [
+            "query.fastq.77.sam",
+            "query.fastq.77.err"
+          ],
+        "inputs":
+          [
+            "./bwa",
+            "ref.fastq",
+            "ref.fastq.amb",
+            "ref.fastq.ann",
+            "ref.fastq.bwt",
+            "ref.fastq.pac",
+            "ref.fastq.sa",
+            "query.fastq.77"
+          ]
+      },
+      
+      {
+        "command":"./bwa mem ref.fastq query.fastq.78 > query.fastq.78.sam 2> query.fastq.78.err",
+        "outputs":
+          [
+            "query.fastq.78.sam",
+            "query.fastq.78.err"
+          ],
+        "inputs":
+          [
+            "./bwa",
+            "ref.fastq",
+            "ref.fastq.amb",
+            "ref.fastq.ann",
+            "ref.fastq.bwt",
+            "ref.fastq.pac",
+            "ref.fastq.sa",
+            "query.fastq.78"
+          ]
+      },
+      
+      {
+        "command":"./bwa mem ref.fastq query.fastq.79 > query.fastq.79.sam 2> query.fastq.79.err",
+        "outputs":
+          [
+            "query.fastq.79.sam",
+            "query.fastq.79.err"
+          ],
+        "inputs":
+          [
+            "./bwa",
+            "ref.fastq",
+            "ref.fastq.amb",
+            "ref.fastq.ann",
+            "ref.fastq.bwt",
+            "ref.fastq.pac",
+            "ref.fastq.sa",
+            "query.fastq.79"
+          ]
+      },
+      
+      {
+        "command":"./bwa mem ref.fastq query.fastq.80 > query.fastq.80.sam 2> query.fastq.80.err",
+        "outputs":
+          [
+            "query.fastq.80.sam",
+            "query.fastq.80.err"
+          ],
+        "inputs":
+          [
+            "./bwa",
+            "ref.fastq",
+            "ref.fastq.amb",
+            "ref.fastq.ann",
+            "ref.fastq.bwt",
+            "ref.fastq.pac",
+            "ref.fastq.sa",
+            "query.fastq.80"
+          ]
+      },
+      
+      {
+        "command":"./bwa mem ref.fastq query.fastq.81 > query.fastq.81.sam 2> query.fastq.81.err",
+        "outputs":
+          [
+            "query.fastq.81.sam",
+            "query.fastq.81.err"
+          ],
+        "inputs":
+          [
+            "./bwa",
+            "ref.fastq",
+            "ref.fastq.amb",
+            "ref.fastq.ann",
+            "ref.fastq.bwt",
+            "ref.fastq.pac",
+            "ref.fastq.sa",
+            "query.fastq.81"
+          ]
+      },
+      
+      {
+        "command":"./bwa mem ref.fastq query.fastq.82 > query.fastq.82.sam 2> query.fastq.82.err",
+        "outputs":
+          [
+            "query.fastq.82.sam",
+            "query.fastq.82.err"
+          ],
+        "inputs":
+          [
+            "./bwa",
+            "ref.fastq",
+            "ref.fastq.amb",
+            "ref.fastq.ann",
+            "ref.fastq.bwt",
+            "ref.fastq.pac",
+            "ref.fastq.sa",
+            "query.fastq.82"
+          ]
+      },
+      
+      {
+        "command":"./bwa mem ref.fastq query.fastq.83 > query.fastq.83.sam 2> query.fastq.83.err",
+        "outputs":
+          [
+            "query.fastq.83.sam",
+            "query.fastq.83.err"
+          ],
+        "inputs":
+          [
+            "./bwa",
+            "ref.fastq",
+            "ref.fastq.amb",
+            "ref.fastq.ann",
+            "ref.fastq.bwt",
+            "ref.fastq.pac",
+            "ref.fastq.sa",
+            "query.fastq.83"
+          ]
+      },
+      
+      {
+        "command":"./bwa mem ref.fastq query.fastq.84 > query.fastq.84.sam 2> query.fastq.84.err",
+        "outputs":
+          [
+            "query.fastq.84.sam",
+            "query.fastq.84.err"
+          ],
+        "inputs":
+          [
+            "./bwa",
+            "ref.fastq",
+            "ref.fastq.amb",
+            "ref.fastq.ann",
+            "ref.fastq.bwt",
+            "ref.fastq.pac",
+            "ref.fastq.sa",
+            "query.fastq.84"
+          ]
+      },
+      
+      {
+        "command":"./bwa mem ref.fastq query.fastq.85 > query.fastq.85.sam 2> query.fastq.85.err",
+        "outputs":
+          [
+            "query.fastq.85.sam",
+            "query.fastq.85.err"
+          ],
+        "inputs":
+          [
+            "./bwa",
+            "ref.fastq",
+            "ref.fastq.amb",
+            "ref.fastq.ann",
+            "ref.fastq.bwt",
+            "ref.fastq.pac",
+            "ref.fastq.sa",
+            "query.fastq.85"
+          ]
+      },
+      
+      {
+        "command":"./bwa mem ref.fastq query.fastq.86 > query.fastq.86.sam 2> query.fastq.86.err",
+        "outputs":
+          [
+            "query.fastq.86.sam",
+            "query.fastq.86.err"
+          ],
+        "inputs":
+          [
+            "./bwa",
+            "ref.fastq",
+            "ref.fastq.amb",
+            "ref.fastq.ann",
+            "ref.fastq.bwt",
+            "ref.fastq.pac",
+            "ref.fastq.sa",
+            "query.fastq.86"
+          ]
+      },
+      
+      {
+        "command":"./bwa mem ref.fastq query.fastq.87 > query.fastq.87.sam 2> query.fastq.87.err",
+        "outputs":
+          [
+            "query.fastq.87.sam",
+            "query.fastq.87.err"
+          ],
+        "inputs":
+          [
+            "./bwa",
+            "ref.fastq",
+            "ref.fastq.amb",
+            "ref.fastq.ann",
+            "ref.fastq.bwt",
+            "ref.fastq.pac",
+            "ref.fastq.sa",
+            "query.fastq.87"
+          ]
+      },
+      
+      {
+        "command":"./bwa mem ref.fastq query.fastq.88 > query.fastq.88.sam 2> query.fastq.88.err",
+        "outputs":
+          [
+            "query.fastq.88.sam",
+            "query.fastq.88.err"
+          ],
+        "inputs":
+          [
+            "./bwa",
+            "ref.fastq",
+            "ref.fastq.amb",
+            "ref.fastq.ann",
+            "ref.fastq.bwt",
+            "ref.fastq.pac",
+            "ref.fastq.sa",
+            "query.fastq.88"
+          ]
+      },
+      
+      {
+        "command":"./bwa mem ref.fastq query.fastq.89 > query.fastq.89.sam 2> query.fastq.89.err",
+        "outputs":
+          [
+            "query.fastq.89.sam",
+            "query.fastq.89.err"
+          ],
+        "inputs":
+          [
+            "./bwa",
+            "ref.fastq",
+            "ref.fastq.amb",
+            "ref.fastq.ann",
+            "ref.fastq.bwt",
+            "ref.fastq.pac",
+            "ref.fastq.sa",
+            "query.fastq.89"
+          ]
+      },
+      
+      {
+        "command":"./bwa mem ref.fastq query.fastq.90 > query.fastq.90.sam 2> query.fastq.90.err",
+        "outputs":
+          [
+            "query.fastq.90.sam",
+            "query.fastq.90.err"
+          ],
+        "inputs":
+          [
+            "./bwa",
+            "ref.fastq",
+            "ref.fastq.amb",
+            "ref.fastq.ann",
+            "ref.fastq.bwt",
+            "ref.fastq.pac",
+            "ref.fastq.sa",
+            "query.fastq.90"
+          ]
+      },
+      
+      {
+        "command":"./bwa mem ref.fastq query.fastq.91 > query.fastq.91.sam 2> query.fastq.91.err",
+        "outputs":
+          [
+            "query.fastq.91.sam",
+            "query.fastq.91.err"
+          ],
+        "inputs":
+          [
+            "./bwa",
+            "ref.fastq",
+            "ref.fastq.amb",
+            "ref.fastq.ann",
+            "ref.fastq.bwt",
+            "ref.fastq.pac",
+            "ref.fastq.sa",
+            "query.fastq.91"
+          ]
+      },
+      
+      {
+        "command":"./bwa mem ref.fastq query.fastq.92 > query.fastq.92.sam 2> query.fastq.92.err",
+        "outputs":
+          [
+            "query.fastq.92.sam",
+            "query.fastq.92.err"
+          ],
+        "inputs":
+          [
+            "./bwa",
+            "ref.fastq",
+            "ref.fastq.amb",
+            "ref.fastq.ann",
+            "ref.fastq.bwt",
+            "ref.fastq.pac",
+            "ref.fastq.sa",
+            "query.fastq.92"
+          ]
+      },
+      
+      {
+        "command":"./bwa mem ref.fastq query.fastq.93 > query.fastq.93.sam 2> query.fastq.93.err",
+        "outputs":
+          [
+            "query.fastq.93.sam",
+            "query.fastq.93.err"
+          ],
+        "inputs":
+          [
+            "./bwa",
+            "ref.fastq",
+            "ref.fastq.amb",
+            "ref.fastq.ann",
+            "ref.fastq.bwt",
+            "ref.fastq.pac",
+            "ref.fastq.sa",
+            "query.fastq.93"
+          ]
+      },
+      
+      {
+        "command":"./bwa mem ref.fastq query.fastq.94 > query.fastq.94.sam 2> query.fastq.94.err",
+        "outputs":
+          [
+            "query.fastq.94.sam",
+            "query.fastq.94.err"
+          ],
+        "inputs":
+          [
+            "./bwa",
+            "ref.fastq",
+            "ref.fastq.amb",
+            "ref.fastq.ann",
+            "ref.fastq.bwt",
+            "ref.fastq.pac",
+            "ref.fastq.sa",
+            "query.fastq.94"
+          ]
+      },
+      
+      {
+        "command":"./bwa mem ref.fastq query.fastq.95 > query.fastq.95.sam 2> query.fastq.95.err",
+        "outputs":
+          [
+            "query.fastq.95.sam",
+            "query.fastq.95.err"
+          ],
+        "inputs":
+          [
+            "./bwa",
+            "ref.fastq",
+            "ref.fastq.amb",
+            "ref.fastq.ann",
+            "ref.fastq.bwt",
+            "ref.fastq.pac",
+            "ref.fastq.sa",
+            "query.fastq.95"
+          ]
+      },
+      
+      {
+        "command":"./bwa mem ref.fastq query.fastq.96 > query.fastq.96.sam 2> query.fastq.96.err",
+        "outputs":
+          [
+            "query.fastq.96.sam",
+            "query.fastq.96.err"
+          ],
+        "inputs":
+          [
+            "./bwa",
+            "ref.fastq",
+            "ref.fastq.amb",
+            "ref.fastq.ann",
+            "ref.fastq.bwt",
+            "ref.fastq.pac",
+            "ref.fastq.sa",
+            "query.fastq.96"
+          ]
+      },
+      
+      {
+        "command":"./bwa mem ref.fastq query.fastq.97 > query.fastq.97.sam 2> query.fastq.97.err",
+        "outputs":
+          [
+            "query.fastq.97.sam",
+            "query.fastq.97.err"
+          ],
+        "inputs":
+          [
+            "./bwa",
+            "ref.fastq",
+            "ref.fastq.amb",
+            "ref.fastq.ann",
+            "ref.fastq.bwt",
+            "ref.fastq.pac",
+            "ref.fastq.sa",
+            "query.fastq.97"
+          ]
+      },
+      
+      {
+        "command":"./bwa mem ref.fastq query.fastq.98 > query.fastq.98.sam 2> query.fastq.98.err",
+        "outputs":
+          [
+            "query.fastq.98.sam",
+            "query.fastq.98.err"
+          ],
+        "inputs":
+          [
+            "./bwa",
+            "ref.fastq",
+            "ref.fastq.amb",
+            "ref.fastq.ann",
+            "ref.fastq.bwt",
+            "ref.fastq.pac",
+            "ref.fastq.sa",
+            "query.fastq.98"
+          ]
+      },
+      
+      {
+        "command":"./bwa mem ref.fastq query.fastq.99 > query.fastq.99.sam 2> query.fastq.99.err",
+        "outputs":
+          [
+            "query.fastq.99.sam",
+            "query.fastq.99.err"
+          ],
+        "inputs":
+          [
+            "./bwa",
+            "ref.fastq",
+            "ref.fastq.amb",
+            "ref.fastq.ann",
+            "ref.fastq.bwt",
+            "ref.fastq.pac",
+            "ref.fastq.sa",
+            "query.fastq.99"
+          ]
+      },
+      
+      {
+        "command":"./cat_bwa query.fastq.sam query.fastq*.sam",
+        "outputs":
+          [
+            "query.fastq.sam"
+          ],
+        "inputs":
+          [
+            "./cat_bwa",
+            "query.fastq.0.sam",
+            "query.fastq.1.sam",
+            "query.fastq.2.sam",
+            "query.fastq.3.sam",
+            "query.fastq.4.sam",
+            "query.fastq.5.sam",
+            "query.fastq.6.sam",
+            "query.fastq.7.sam",
+            "query.fastq.8.sam",
+            "query.fastq.9.sam",
+            "query.fastq.10.sam",
+            "query.fastq.11.sam",
+            "query.fastq.12.sam",
+            "query.fastq.13.sam",
+            "query.fastq.14.sam",
+            "query.fastq.15.sam",
+            "query.fastq.16.sam",
+            "query.fastq.17.sam",
+            "query.fastq.18.sam",
+            "query.fastq.19.sam",
+            "query.fastq.20.sam",
+            "query.fastq.21.sam",
+            "query.fastq.22.sam",
+            "query.fastq.23.sam",
+            "query.fastq.24.sam",
+            "query.fastq.25.sam",
+            "query.fastq.26.sam",
+            "query.fastq.27.sam",
+            "query.fastq.28.sam",
+            "query.fastq.29.sam",
+            "query.fastq.30.sam",
+            "query.fastq.31.sam",
+            "query.fastq.32.sam",
+            "query.fastq.33.sam",
+            "query.fastq.34.sam",
+            "query.fastq.35.sam",
+            "query.fastq.36.sam",
+            "query.fastq.37.sam",
+            "query.fastq.38.sam",
+            "query.fastq.39.sam",
+            "query.fastq.40.sam",
+            "query.fastq.41.sam",
+            "query.fastq.42.sam",
+            "query.fastq.43.sam",
+            "query.fastq.44.sam",
+            "query.fastq.45.sam",
+            "query.fastq.46.sam",
+            "query.fastq.47.sam",
+            "query.fastq.48.sam",
+            "query.fastq.49.sam",
+            "query.fastq.50.sam",
+            "query.fastq.51.sam",
+            "query.fastq.52.sam",
+            "query.fastq.53.sam",
+            "query.fastq.54.sam",
+            "query.fastq.55.sam",
+            "query.fastq.56.sam",
+            "query.fastq.57.sam",
+            "query.fastq.58.sam",
+            "query.fastq.59.sam",
+            "query.fastq.60.sam",
+            "query.fastq.61.sam",
+            "query.fastq.62.sam",
+            "query.fastq.63.sam",
+            "query.fastq.64.sam",
+            "query.fastq.65.sam",
+            "query.fastq.66.sam",
+            "query.fastq.67.sam",
+            "query.fastq.68.sam",
+            "query.fastq.69.sam",
+            "query.fastq.70.sam",
+            "query.fastq.71.sam",
+            "query.fastq.72.sam",
+            "query.fastq.73.sam",
+            "query.fastq.74.sam",
+            "query.fastq.75.sam",
+            "query.fastq.76.sam",
+            "query.fastq.77.sam",
+            "query.fastq.78.sam",
+            "query.fastq.79.sam",
+            "query.fastq.80.sam",
+            "query.fastq.81.sam",
+            "query.fastq.82.sam",
+            "query.fastq.83.sam",
+            "query.fastq.84.sam",
+            "query.fastq.85.sam",
+            "query.fastq.86.sam",
+            "query.fastq.87.sam",
+            "query.fastq.88.sam",
+            "query.fastq.89.sam",
+            "query.fastq.90.sam",
+            "query.fastq.91.sam",
+            "query.fastq.92.sam",
+            "query.fastq.93.sam",
+            "query.fastq.94.sam",
+            "query.fastq.95.sam",
+            "query.fastq.96.sam",
+            "query.fastq.97.sam",
+            "query.fastq.98.sam",
+            "query.fastq.99.sam"
+          ]
+      }
     ]
 }

@@ -12,6 +12,16 @@
 #The final task in this makeflow produces top_character.txt which reports the character with the most dialogue out of all plays read.
 
 {
+"define" : {
+#Here is a list of the plays we will retrieve
+"PLAYS": ["henry_iv_part_1",
+			  "henry_iv_part_2",
+			  "henry_vi_part_1",
+			  "henry_vi_part_2",
+			  "henry_vi_part_3"
+	]
+},
+
 "rules": [
 #This is the final task in the workflow. Notice that the order we write rules does not matter, Makeflow will figure it out for us.
 {

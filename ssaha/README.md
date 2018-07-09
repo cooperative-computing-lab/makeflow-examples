@@ -58,7 +58,7 @@ makeflow -T wq.ssaha.mf
 ```
 Alternatively, the makeflow can be run using the `JX` or `JSON` implementation
 ```
-makeflow --jx ssaha.jx --jx-args="args.jx"
+makeflow --jx ssaha.jx
 makeflow --json ssaha.json
 ```
 

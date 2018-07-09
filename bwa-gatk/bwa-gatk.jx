@@ -1,143 +1,225 @@
+
 {
-    "rules": [
-        {
-            "command": format(
-                "%s aln %s SM%s.fq > SM%s.sai 2> SM%s.sai.err",
-                BWA,
-                REF,
-                x,
-                x,
-                x,
-            ),
-            "inputs": [
-                BWA,
-                REF,
-                y for y in REF_INDEX,
-                format("SM%s.fq", x),
-            ],
-            "outputs": [format("SM%s.sai", x), format("SM%s.sai.err", x)],
-        } for x in ORGANISMS[:SPLITS],
-        {
-            "command": format(
-                "%s samse %s SM%s.sai SM%s.fq > SM%s.sam 2> SM%s.sam.err",
-                BWA,
-                REF,
-                x,
-                x,
-                x,
-                x,
-            ),
-            "inputs": [
-                BWA,
-                REF,
-                y for y in REF_INDEX,
-                format("SM%s.fq", x),
-                format("SM%s.sai", x),
-            ],
-            "outputs": [format("SM%s.sam", x), format("SM%s.sam.err", x)],
-        } for x in ORGANISMS[:SPLITS],
-        {
-            "command": format(
-                "perl %s %d %s SM%s.sam 2> SM%s_split.sam.err",
-                SPLIT_ALIGN,
-                GRANULARITY,
-                REF,
-                x,
-                x,
-            ),
-            "inputs": [
-                SPLIT_ALIGN,
-                REF,
-                format("SM%s.sam", x),
-            ],
-            "outputs": [
-                format("SM%s_split.sam.err", x),
-                format("SM%s.%d.sam", x, i) for i in range(SLICES),
-            ],
-        } for x in ORGANISMS[:SPLITS],
-        {
-            "command": format(
-                "%s view -bS SM%s.%d.sam > SM%s.%d.bam 2> SM%s.%d.bam.err",
-                SAMTOOLS,
-                x, n,
-                x, n,
-                x, n,
-            ),
-            "inputs": [SAMTOOLS, format("SM%s.%d.sam", x, n)],
-            "outputs": [format("SM%s.%d.bam", x, n), format("SM%s.%d.bam.err", x, n)],
-        } for x in ORGANISMS[:SPLITS] for n in range(SLICES),
-        {
-            "command": format(
-                "java -Xmx8g -jar %s SortSam INPUT=SM%s.%d.bam OUTPUT=SM%s.%d.sort.bam SORT_ORDER=coordinate VALIDATION_STRINGENCY=LENIENT 2> SM%s.%d.sort.bam.err",
-                PICARD,
-                x, n,
-                x, n,
-                x, n,
-            ),
-            "inputs": [PICARD, format("SM%s.%d.bam", x, n)],
-            "outputs": [format("SM%s.%d.sort.bam", x, n), format("SM%s.%d.sort.bam.err", x, n)],
-        } for x in ORGANISMS[:SPLITS] for n in range(SLICES),
-        {
-            "command": format(
-                "java -Xmx8g -jar %s AddOrReplaceReadGroups INPUT=SM%s.%d.sort.bam OUTPUT=SM%s.%d_RG.sort.bam RGID=RG1 RGLB=lib1 RGPL=illumina RGPU=unit1 RGSM=SM%s VALIDATION_STRINGENCY=LENIENT 2> SM%s.%d_RG.sort.bam.err",
-                PICARD,
-                x, n,
-                x, n,
-                x,
-                x, n,
-            ),
-            "inputs": [PICARD, format("SM%s.%d.sort.bam", x, n)],
-            "outputs": [format("SM%s.%d_RG.sort.bam", x, n), format("SM%s.%d_RG.sort.bam.err", x, n)],
-        } for x in ORGANISMS[:SPLITS] for n in range(SLICES),
-        {
-            "command": format(
-                "java -Xmx8g -jar %s BuildBamIndex INPUT=SM%s.%d_RG.sort.bam VALIDATION_STRINGENCY=LENIENT 2> SM%s.%d_RG.sort.bai.err",
-                PICARD,
-                x, n,
-                x, n,
-            ),
-            "inputs": [PICARD, format("SM%s.%d_RG.sort.bam", x, n)],
-            "outputs": [format("SM%s.%d_RG.sort.bai", x, n), format("SM%s.%d_RG.sort.bai.err", x, n)],
-        } for x in ORGANISMS[:SPLITS] for n in range(SLICES),
-        {
-            "command": format(
-                "java -jar %s CreateSequenceDictionary R=oak2.%d.fa O=oak2.%d.dict 2> oak2.%d.dict.err",
-                PICARD,
-                n,
-                n,
-                n,
-            ),
-            "inputs": [PICARD, format("oak2.%d.fa", n)],
-            "outputs": [format("oak2.%d.dict", n), format("oak2.%d.dict.err", n)],
-        } for n in range(SLICES),
-        {
-            "command": format(
-                "%s faidx oak2.%d.fa 2> oak2.%d.fa.fai.err",
-                SAMTOOLS,
-                n,
-                n,
-            ),
-            "inputs": [SAMTOOLS, format("oak2.%d.fa", n)],
-            "outputs": [format("oak2.%d.fa.fai", n), format("oak2.%d.fa.fai.err", n)],
-        } for n in range(SLICES),
-        {
-            "command": format(
-                "java -Xmx8g -jar %s -T HaplotypeCaller -R oak2.%d.fa -I SM%s.%d_RG.sort.bam -o SM%s.%d.vcf --fix_misencoded_quality_scores 2> SM%s.%d.vcf.err",
-                GATK,
-                n,
-                x, n,
-                x, n,
-                x, n,
-            ),
-            "inputs": [
-                GATK,
-                format("oak2.%d.fa", n),
-                format("oak2.%d.fa.fai", n),
-                format("oak2.%d.dict", n),
-                format("SM%s.%d_RG.sort.bai", x, n),
-                format("SM%s.%d_RG.sort.bam", x, n),
-            ],
-            "outputs": [format("SM%s.%d.vcf", x, n), format("SM%s.%d.vcf.err", x, n)],
-        } for x in ORGANISMS[:SPLITS] for n in range(SLICES),
-    ],
+  "define":
+    {
+      "SPLITS":10,
+      "SLICES":10,
+      "GRANULARITY":40000,
+      "BWA":"./bwa",
+      "REF":"oak2.fa",
+      "REF_INDEX":
+        [
+          "oak2.fa."+x for x in ["amb","ann","bwt","sa","pac"]
+        ],
+      "SPLIT_ALIGN":"gatk_split_align",
+      "SAMTOOLS":"./samtools",
+      "PICARD":"picard.jar",
+      "GATK":"GenomeAnalysisTK.jar",
+      "ORGANISMS":
+        [
+          "10001",
+          "10012",
+          "10024",
+          "10034",
+          "10045",
+          "10062",
+          "10081",
+          "10002",
+          "10015",
+          "10025",
+          "10036",
+          "10046",
+          "10072",
+          "10082",
+          "10003",
+          "10016",
+          "10026",
+          "10037",
+          "10048",
+          "10074",
+          "10004",
+          "10017",
+          "10027",
+          "10039",
+          "10049",
+          "10075",
+          "10005",
+          "10018",
+          "10028",
+          "10040",
+          "10050",
+          "10076",
+          "10006",
+          "10019",
+          "10029",
+          "10041",
+          "10051",
+          "10077",
+          "10007",
+          "10021",
+          "10030",
+          "10042",
+          "10060",
+          "10078",
+          "10009",
+          "10023",
+          "10031",
+          "10044",
+          "10061",
+          "10079"
+        ]
+    },
+  "rules":
+    [
+      
+      {
+        "command":format("%s aln %s SM%s.fq > SM%s.sai 2> SM%s.sai.err",BWA,REF,x,x,x),
+        "inputs":
+          [
+            BWA,
+            REF,
+            y for y in REF_INDEX,
+            format("SM%s.fq",x)
+          ],
+        "outputs":
+          [
+            format("SM%s.sai",x),
+            format("SM%s.sai.err",x)
+          ]
+      } for x in ORGANISMS[:SPLITS],
+      
+      {
+        "command":format("%s samse %s SM%s.sai SM%s.fq > SM%s.sam 2> SM%s.sam.err",BWA,REF,x,x,x,x),
+        "inputs":
+          [
+            BWA,
+            REF,
+            y for y in REF_INDEX,
+            format("SM%s.fq",x),
+            format("SM%s.sai",x)
+          ],
+        "outputs":
+          [
+            format("SM%s.sam",x),
+            format("SM%s.sam.err",x)
+          ]
+      } for x in ORGANISMS[:SPLITS],
+      
+      {
+        "command":format("perl %s %d %s SM%s.sam 2> SM%s_split.sam.err",SPLIT_ALIGN,GRANULARITY,REF,x,x),
+        "inputs":
+          [
+            SPLIT_ALIGN,
+            REF,
+            format("SM%s.sam",x)
+          ],
+        "outputs":
+          [
+            format("SM%s_split.sam.err",x),
+            format("SM%s.%d.sam",x,i) for i in range(SLICES)
+          ]
+      } for x in ORGANISMS[:SPLITS],
+      
+      {
+        "command":format("%s view -bS SM%s.%d.sam > SM%s.%d.bam 2> SM%s.%d.bam.err",SAMTOOLS,x,n,x,n,x,n),
+        "inputs":
+          [
+            SAMTOOLS,
+            format("SM%s.%d.sam",x,n)
+          ],
+        "outputs":
+          [
+            format("SM%s.%d.bam",x,n),
+            format("SM%s.%d.bam.err",x,n)
+          ]
+      } for x in ORGANISMS[:SPLITS] for n in range(SLICES),
+      
+      {
+        "command":format("java -Xmx8g -jar %s SortSam INPUT=SM%s.%d.bam OUTPUT=SM%s.%d.sort.bam SORT_ORDER=coordinate VALIDATION_STRINGENCY=LENIENT 2> SM%s.%d.sort.bam.err",PICARD,x,n,x,n,x,n),
+        "inputs":
+          [
+            PICARD,
+            format("SM%s.%d.bam",x,n)
+          ],
+        "outputs":
+          [
+            format("SM%s.%d.sort.bam",x,n),
+            format("SM%s.%d.sort.bam.err",x,n)
+          ]
+      } for x in ORGANISMS[:SPLITS] for n in range(SLICES),
+      
+      {
+        "command":format("java -Xmx8g -jar %s AddOrReplaceReadGroups INPUT=SM%s.%d.sort.bam OUTPUT=SM%s.%d_RG.sort.bam RGID=RG1 RGLB=lib1 RGPL=illumina RGPU=unit1 RGSM=SM%s VALIDATION_STRINGENCY=LENIENT 2> SM%s.%d_RG.sort.bam.err",PICARD,x,n,x,n,x,x,n),
+        "inputs":
+          [
+            PICARD,
+            format("SM%s.%d.sort.bam",x,n)
+          ],
+        "outputs":
+          [
+            format("SM%s.%d_RG.sort.bam",x,n),
+            format("SM%s.%d_RG.sort.bam.err",x,n)
+          ]
+      } for x in ORGANISMS[:SPLITS] for n in range(SLICES),
+      
+      {
+        "command":format("java -Xmx8g -jar %s BuildBamIndex INPUT=SM%s.%d_RG.sort.bam VALIDATION_STRINGENCY=LENIENT 2> SM%s.%d_RG.sort.bai.err",PICARD,x,n,x,n),
+        "inputs":
+          [
+            PICARD,
+            format("SM%s.%d_RG.sort.bam",x,n)
+          ],
+        "outputs":
+          [
+            format("SM%s.%d_RG.sort.bai",x,n),
+            format("SM%s.%d_RG.sort.bai.err",x,n)
+          ]
+      } for x in ORGANISMS[:SPLITS] for n in range(SLICES),
+      
+      {
+        "command":format("java -jar %s CreateSequenceDictionary R=oak2.%d.fa O=oak2.%d.dict 2> oak2.%d.dict.err",PICARD,n,n,n),
+        "inputs":
+          [
+            PICARD,
+            format("oak2.%d.fa",n)
+          ],
+        "outputs":
+          [
+            format("oak2.%d.dict",n),
+            format("oak2.%d.dict.err",n)
+          ]
+      } for n in range(SLICES),
+      
+      {
+        "command":format("%s faidx oak2.%d.fa 2> oak2.%d.fa.fai.err",SAMTOOLS,n,n),
+        "inputs":
+          [
+            SAMTOOLS,
+            format("oak2.%d.fa",n)
+          ],
+        "outputs":
+          [
+            format("oak2.%d.fa.fai",n),
+            format("oak2.%d.fa.fai.err",n)
+          ]
+      } for n in range(SLICES),
+      
+      {
+        "command":format("java -Xmx8g -jar %s -T HaplotypeCaller -R oak2.%d.fa -I SM%s.%d_RG.sort.bam -o SM%s.%d.vcf --fix_misencoded_quality_scores 2> SM%s.%d.vcf.err",GATK,n,x,n,x,n,x,n),
+        "inputs":
+          [
+            GATK,
+            format("oak2.%d.fa",n),
+            format("oak2.%d.fa.fai",n),
+            format("oak2.%d.dict",n),
+            format("SM%s.%d_RG.sort.bai",x,n),
+            format("SM%s.%d_RG.sort.bam",x,n)
+          ],
+        "outputs":
+          [
+            format("SM%s.%d.vcf",x,n),
+            format("SM%s.%d.vcf.err",x,n)
+          ]
+      } for x in ORGANISMS[:SPLITS] for n in range(SLICES)
+    ]
 }

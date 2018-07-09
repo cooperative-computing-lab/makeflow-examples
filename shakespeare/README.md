@@ -28,6 +28,6 @@ makeflow -T wq shakespeare.mf
 ```
 Alternatively, the makeflow can be run using the `JX` or `JSON` format:
 ```
-makeflow --jx shakespeare.jx --jx-args="args.jx"
-makeflow --json shakespeare.json"
+makeflow --jx shakespeare.jx
+makeflow --json shakespeare.json
 ```

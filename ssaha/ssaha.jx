@@ -1,48 +1,57 @@
-{"rules": [
-	{
-		"command": format(
-			"%s %s %d",
-			SPLIT,
-			QUERY,
-			SEQ_PER_SPLIT,
-		),
-		"inputs": [SPLIT, QUERY],
-		"outputs": [
-			format("%s.%d", QUERY, x) for x in range(ceil(TOTAL_SEQ/SEQ_PER_SPLIT)),	
-		],
-		"local_job": true,
-	},
-	{
-		"command": format(
-			"%s %s %s %s.%d > output.fastq.%d",
-			SSAHA,
-			OPTIONS,
-			DB,
-			QUERY,
-			x,
-			x,
-		),
-		"inputs": [
-			SSAHA,
-			DB,
-			format("%s.%d", QUERY, x),
-		],
-		"outputs": [
-			format("output.fastq.%d", x),
-		],
-	} for x in range(ceil(TOTAL_SEQ/SEQ_PER_SPLIT)),	
-	{
-		"command": format(
-			"cat %s > output.fastq",
-			join([format("output.fastq.%d", x) for x in range(ceil(TOTAL_SEQ/SEQ_PER_SPLIT))]),
-		),
-		"inputs": [
-			format("output.fastq.%d", x) for x in range(ceil(TOTAL_SEQ/SEQ_PER_SPLIT)),
-		],
-		"outputs": [
-			"output.fastq",
-		],
-		"local_job": true,
-	},
-],
+
+{
+  "define":
+    {
+      "QUERY":"query.fastq",
+      "DB":"db.fastq",
+      "SSAHA":"./ssaha2",
+      "OPTIONS":"-tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2",
+      "SPLIT":"./fastq_split.pl",
+      "SEQ_PER_SPLIT":1000,
+      "TOTAL_SEQ":100000
+    },
+  "rules":
+    [
+      
+      {
+        "command":format("%s %s %d",SPLIT,QUERY,SEQ_PER_SPLIT),
+        "inputs":
+          [
+            SPLIT,
+            QUERY
+          ],
+        "outputs":
+          [
+            format("%s.%d",QUERY,x) for x in range(ceil(TOTAL_SEQ/SEQ_PER_SPLIT))
+          ],
+        "local_job":true
+      },
+      
+      {
+        "command":format("%s %s %s %s.%d > output.fastq.%d",SSAHA,OPTIONS,DB,QUERY,x,x),
+        "inputs":
+          [
+            SSAHA,
+            DB,
+            format("%s.%d",QUERY,x)
+          ],
+        "outputs":
+          [
+            format("output.fastq.%d",x)
+          ]
+      } for x in range(ceil(TOTAL_SEQ/SEQ_PER_SPLIT)),
+      
+      {
+        "command":format("cat %s > output.fastq",join([format("output.fastq.%d",x) for x in range(ceil(TOTAL_SEQ/SEQ_PER_SPLIT))])),
+        "inputs":
+          [
+            format("output.fastq.%d",x) for x in range(ceil(TOTAL_SEQ/SEQ_PER_SPLIT))
+          ],
+        "outputs":
+          [
+            "output.fastq"
+          ],
+        "local_job":true
+      }
+    ]
 }

@@ -1,241 +1,243 @@
+
 {
-	"rules": [
-	{
-		"command": format(
-			"%s index %s 2> index.err",
-			BWA,
-			REF,
-		),
-		"inputs": [
-			BWA,
-			REF,
-		],
-		"outputs": [
-			"index.err",
-			x for x in REF_INDEX,
-		],
-		"local_job": true,
-	},
-	{
-		"command": format(
-			"%s %s %d",
-			SPLIT,
-			INPUT_PRE,
-			SEQ_PER_SPLIT,
-		),
-		"inputs": [
-			SPLIT,
-			INPUT_PRE,
-		],
-		"outputs":[
-			format("%s.%d", INPUT_PRE, x) for x in range(ceil(TOTAL_SEQ/SEQ_PER_SPLIT)),
-		],
-		"local_job": true,
-	},
-	{
-		"command": format(
-			"%s %s %s %s.%d > Out.%d.sam 2> mem.%d.err",
-			BWA,
-			ARGS,
-			REF,
-			INPUT_PRE, i, i, i,
-		),
-		"inputs": [
-			BWA,
-			x for x in REF_INDEX,
-			format("%s.%d", INPUT_PRE, i),
-		],
-		"outputs": [
-			format("Out.%d.sam", i),
-			format("mem.%d.err", i),
-		]
-	} for i in range(ceil(TOTAL_SEQ/SEQ_PER_SPLIT)),
-	{
-		"command": format(
-			"%s %s > Out.sam",
-			CONCAT,
-			join([format("Out.%d.sam", x) for x in range(ceil(TOTAL_SEQ/SEQ_PER_SPLIT))])
-		),
-		"inputs": [
-			CONCAT,
-			format("Out.%d.sam", x) for x in range(ceil(TOTAL_SEQ/SEQ_PER_SPLIT)),
-		],
-		"outputs": [
-			"Out.sam"
-		],
-		"local_job": true,
-	},
-	{
-		"command": format(
-			"cat mem.*.err > mem.err"
-		),
-		"inputs": [
-			format("mem.%d.err", x) for x in range(ceil(TOTAL_SEQ/SEQ_PER_SPLIT)),
-		],
-		"outputs": [
-			"mem.err",
-		],
-		"local_job": true,
-	},
-	{
-		"command": format(
-			"%s view -bS Out.sam | %s sort - Out 2> sort.err",
-			TOOLS,
-			TOOLS,
-		),
-		"inputs": [
-			TOOLS,
-			"Out.sam",
-		],
-		"outputs": [
-			"Out.bam",
-			"sort.err",
-		]
-	},
-	{
-		"command": format(
-			"%s mpileup -s -f %s Out.bam > pileup.txt 2> pileup.err",
-			TOOLS,
-			REF,
-		),
-		"inputs": [
-			TOOLS,
-			REF,
-			"Out.bam",
-		],
-		"outputs": [
-			"pileup.txt",
-			"ref.fasta.fai",
-			"pileup.err"
-		],
-	},
-	{
-		"command": format(
-			"%s pileup.txt 2 2> Split_Pileup.err",
-			PILEUP,
-		),
-		"inputs": [
-			PILEUP,
-			CREATE_PILEUP,
-			"pileup.txt",
-		],
-		"outputs": [
-			format("Pileup_Set%d.txt", x) for x in range(1,3),
-			"List_RefHeader.txt",
-		],
-		"local_job": true,
-	},
-	{
-		"command": format(
-			"%s %s Pileup_Set%d.txt %s lc.%d.out Out.sam %d > corr.%d.out 2> corr.%d.err ; echo \"\" >> lc.%d.out ; echo \"\" >> corr.%d.out",
-			PYTHON,
-			CORRECTION,
-			x,
-			REF,
-			x,
-			ceil(TOTAL_SEQ/SEQ_PER_SPLIT),
-			x,
-			x,
-			x,
-			x,
-		),
-		"inputs": [
-			CORRECTION,
-			format("Pileup_Set%d.txt", x+1),
-			REF,
-			"Out.sam",
-		],
-		"outputs": [
-			format("corr.%d.out", x),
-			format("lc.%d.out", x),
-			format("corr.%d.err", x),
-		],
-		"local_job": true,
-	} for x in range(2),
-	{
-		"command": format(
-			"cat %s > corr.out",
-			join([format("corr.%d.out", x) for x in range(2)])
-		),
-		"inputs": [
-			format("corr.%d.out", x) for x in range(2),
-		],
-		"outputs": [
-			"corr.out",
-		],
-		"local_job": true,
-	},
-	{
-		"command": format(
-			"cat %s > corr.err",
-			join([format("corr.%d.err", x) for x in range(2)])
-		),
-		"inputs": [
-			format("corr.%d.err", x) for x in range(2),
-		],
-		"outputs": [
-			"corr.err",
-		],
-		"local_job": true,
-	},
-	{
-		"command": format(
-			"cat %s > LowConf.txt",
-			join([format("lc.%d.out", x) for x in range(2)])
-		),
-		"inputs": [
-			format("lc.%d.out", x) for x in range(2),
-		],
-		"outputs": [
-			"LowConf.txt",
-		],
-		"local_job": true,
-	},
-	{
-		"command": format(
-			"%s %s 1000",
-			SPLITA,
-			REF,
-		),
-		"inputs": [
-			SPLITA,
-			REF,
-		],
-		"outputs": [
-			format("%s.%d", REF, x) for x in range(ceil(TOTAL_SEQ/SEQ_PER_SPLIT)),
-		],
-		"local_job": true,
-	},
-	{
-		"command": format(
-			"%s %s %s.%d corr.out 2> create.err.%d",
-			PYTHON,
-			CORRECT_ALLLR,
-			REF,
-			x,
-			x,
-		),
-		"inputs": [
-			CORRECT_ALLLR,
-			"corr.out",
-			format("%s.%d", REF, x),
-		],
-		"outputs": [
-			format("Corrected_ref.fasta.%d", x),
-		],
-	} for x in range(ceil(TOTAL_SEQ/SEQ_PER_SPLIT)),
-	{
-		"command": format(
-			"cat %s > Corrected_ref.fasta",
-			join([format("Corrected_ref.fasta.%d", x) for x in range(ceil(TOTAL_SEQ/SEQ_PER_SPLIT))])
-		),
-		"inputs": [
-			format("Corrected_ref.fasta.%d", x) for x in range(ceil(TOTAL_SEQ/SEQ_PER_SPLIT)),
-		],
-		"outputs": [
-			"Corrected_ref.fasta",
-		],
-		"local_job": true,
-	},
-],
+  "define":
+    {
+      "BWA":"./bwa",
+      "ARGS":"mem",
+      "SPLIT":"./fastq_reduce",
+      "SPLITA":"./fasta_reduce",
+      "CONCAT":"./sam_cat.sh",
+      "TOOLS":"./samtools",
+      "REF":"ref.fasta",
+      "REF_INDEX":
+        [
+          "ref.fasta."+x for x in ["amb","ann","bwt","pac","sa"]
+        ],
+      "PILEUP":"./Split_Pileup.sh",
+      "CREATE_PILEUP":"Create_SubsetPileup.sh",
+      "INPUT_PRE":"query.fastq",
+      "SEQ_PER_SPLIT":100,
+      "TOTAL_SEQ":1000,
+      "PYTHON":"python",
+      "CORRECTION":"Correction.py",
+      "CORRECT_ALLLR":"Create_Corrected_AllLRReads.py"
+    },
+  "rules":
+    [
+      
+      {
+        "command":format("%s index %s 2> index.err",BWA,REF),
+        "inputs":
+          [
+            BWA,
+            REF
+          ],
+        "outputs":
+          [
+            "index.err",
+            x for x in REF_INDEX
+          ],
+        "local_job":true
+      },
+      
+      {
+        "command":format("%s %s %d",SPLIT,INPUT_PRE,SEQ_PER_SPLIT),
+        "inputs":
+          [
+            SPLIT,
+            INPUT_PRE
+          ],
+        "outputs":
+          [
+            format("%s.%d",INPUT_PRE,x) for x in range(ceil(TOTAL_SEQ/SEQ_PER_SPLIT))
+          ],
+        "local_job":true
+      },
+      
+      {
+        "command":format("%s %s %s %s.%d > Out.%d.sam 2> mem.%d.err",BWA,ARGS,REF,INPUT_PRE,i,i,i),
+        "inputs":
+          [
+            BWA,
+            x for x in REF_INDEX,
+            format("%s.%d",INPUT_PRE,i)
+          ],
+        "outputs":
+          [
+            format("Out.%d.sam",i),
+            format("mem.%d.err",i)
+          ]
+      } for i in range(ceil(TOTAL_SEQ/SEQ_PER_SPLIT)),
+      
+      {
+        "command":format("%s %s > Out.sam",CONCAT,join([format("Out.%d.sam",x) for x in range(ceil(TOTAL_SEQ/SEQ_PER_SPLIT))])),
+        "inputs":
+          [
+            CONCAT,
+            format("Out.%d.sam",x) for x in range(ceil(TOTAL_SEQ/SEQ_PER_SPLIT))
+          ],
+        "outputs":
+          [
+            "Out.sam"
+          ],
+        "local_job":true
+      },
+      
+      {
+        "command":format("cat mem.*.err > mem.err"),
+        "inputs":
+          [
+            format("mem.%d.err",x) for x in range(ceil(TOTAL_SEQ/SEQ_PER_SPLIT))
+          ],
+        "outputs":
+          [
+            "mem.err"
+          ],
+        "local_job":true
+      },
+      
+      {
+        "command":format("%s view -bS Out.sam | %s sort - Out 2> sort.err",TOOLS,TOOLS),
+        "inputs":
+          [
+            TOOLS,
+            "Out.sam"
+          ],
+        "outputs":
+          [
+            "Out.bam",
+            "sort.err"
+          ]
+      },
+      
+      {
+        "command":format("%s mpileup -s -f %s Out.bam > pileup.txt 2> pileup.err",TOOLS,REF),
+        "inputs":
+          [
+            TOOLS,
+            REF,
+            "Out.bam"
+          ],
+        "outputs":
+          [
+            "pileup.txt",
+            "ref.fasta.fai",
+            "pileup.err"
+          ]
+      },
+      
+      {
+        "command":format("%s pileup.txt 2 2> Split_Pileup.err",PILEUP),
+        "inputs":
+          [
+            PILEUP,
+            CREATE_PILEUP,
+            "pileup.txt"
+          ],
+        "outputs":
+          [
+            format("Pileup_Set%d.txt",x) for x in range(1,3),
+            "List_RefHeader.txt"
+          ],
+        "local_job":true
+      },
+      
+      {
+        "command":format("%s %s Pileup_Set%d.txt %s lc.%d.out Out.sam %d > corr.%d.out 2> corr.%d.err ; echo \"\" >> lc.%d.out ; echo \"\" >> corr.%d.out",PYTHON,CORRECTION,x,REF,x,ceil(TOTAL_SEQ/SEQ_PER_SPLIT),x,x,x,x),
+        "inputs":
+          [
+            CORRECTION,
+            format("Pileup_Set%d.txt",x+1),
+            REF,
+            "Out.sam"
+          ],
+        "outputs":
+          [
+            format("corr.%d.out",x),
+            format("lc.%d.out",x),
+            format("corr.%d.err",x)
+          ],
+        "local_job":true
+      } for x in range(2),
+      
+      {
+        "command":format("cat %s > corr.out",join([format("corr.%d.out",x) for x in range(2)])),
+        "inputs":
+          [
+            format("corr.%d.out",x) for x in range(2)
+          ],
+        "outputs":
+          [
+            "corr.out"
+          ],
+        "local_job":true
+      },
+      
+      {
+        "command":format("cat %s > corr.err",join([format("corr.%d.err",x) for x in range(2)])),
+        "inputs":
+          [
+            format("corr.%d.err",x) for x in range(2)
+          ],
+        "outputs":
+          [
+            "corr.err"
+          ],
+        "local_job":true
+      },
+      
+      {
+        "command":format("cat %s > LowConf.txt",join([format("lc.%d.out",x) for x in range(2)])),
+        "inputs":
+          [
+            format("lc.%d.out",x) for x in range(2)
+          ],
+        "outputs":
+          [
+            "LowConf.txt"
+          ],
+        "local_job":true
+      },
+      
+      {
+        "command":format("%s %s 1000",SPLITA,REF),
+        "inputs":
+          [
+            SPLITA,
+            REF
+          ],
+        "outputs":
+          [
+            format("%s.%d",REF,x) for x in range(ceil(TOTAL_SEQ/SEQ_PER_SPLIT))
+          ],
+        "local_job":true
+      },
+      
+      {
+        "command":format("%s %s %s.%d corr.out 2> create.err.%d",PYTHON,CORRECT_ALLLR,REF,x,x),
+        "inputs":
+          [
+            CORRECT_ALLLR,
+            "corr.out",
+            format("%s.%d",REF,x)
+          ],
+        "outputs":
+          [
+            format("Corrected_ref.fasta.%d",x)
+          ]
+      } for x in range(ceil(TOTAL_SEQ/SEQ_PER_SPLIT)),
+      
+      {
+        "command":format("cat %s > Corrected_ref.fasta",join([format("Corrected_ref.fasta.%d",x) for x in range(ceil(TOTAL_SEQ/SEQ_PER_SPLIT))])),
+        "inputs":
+          [
+            format("Corrected_ref.fasta.%d",x) for x in range(ceil(TOTAL_SEQ/SEQ_PER_SPLIT))
+          ],
+        "outputs":
+          [
+            "Corrected_ref.fasta"
+          ],
+        "local_job":true
+      }
+    ]
 }

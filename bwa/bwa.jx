@@ -1,59 +1,78 @@
+
 {
-    "rules": [
-        {
-            "command": format("%s %s %d", SPLIT, INPUT_PRE, SEQ_PER_SPLIT),
-            "outputs": [format("%s.%d", INPUT_PRE, i) for i in range(ceil(TOTAL_SEQ/SEQ_PER_SPLIT))],
-            "inputs": [SPLIT, INPUT_PRE],
-            "local_job": true,
-        },
-		{
-			"command": format(
-				"%s index %s",
-				BWA,
-				REF
-			),
-			"inputs": [
-				BWA,
-				REF
-			],
-			"outputs": [
-				x for x in REF_INDEX,
-			],
-			"local job": true
-		},
-        {
-            "command": format(
-                "%s %s %s %s.%d > %s.%d.sam 2> %s.%d.err",
-                BWA,
-                ARGS,
-                REF,
-                INPUT_PRE, i,
-                INPUT_PRE, i,
-                INPUT_PRE, i,
-            ),
-            "outputs": [
-                format("%s.%d.sam", INPUT_PRE, i),
-                format("%s.%d.err", INPUT_PRE, i),
-            ],
-            "inputs": [
-                BWA,
-                REF,
-                x for x in REF_INDEX,
-				format("%s.%d", INPUT_PRE, i)
-            ],
-        } for i in range(ceil(TOTAL_SEQ/SEQ_PER_SPLIT)),
-        {
-            "command": format(
-                "%s %s.sam %s*.sam",
-                CONCAT,
-                INPUT_PRE,
-                INPUT_PRE
-            ),
-            "outputs": [format("%s.sam", INPUT_PRE)],
-            "inputs": [
-                CONCAT,
-                format("%s.%d.sam", INPUT_PRE, i) for i in range(ceil(TOTAL_SEQ/SEQ_PER_SPLIT)),
-            ],
-        },
-    ],
+  "define":
+    {
+      "BWA":"./bwa",
+      "ARGS":"mem",
+      "SPLIT":"./fastq_reduce",
+      "CONCAT":"./cat_bwa",
+      "REF":"ref.fastq",
+      "REF_INDEX":
+        [
+          "ref.fastq."+x for x in ["amb","ann","bwt","pac","sa"]
+        ],
+      "INPUT_PRE":"query.fastq",
+      "SEQ_PER_SPLIT":10,
+      "TOTAL_SEQ":1000
+    },
+  "rules":
+    [
+      
+      {
+        "command":format("%s %s %d",SPLIT,INPUT_PRE,SEQ_PER_SPLIT),
+        "outputs":
+          [
+            format("%s.%d",INPUT_PRE,i) for i in range(ceil(TOTAL_SEQ/SEQ_PER_SPLIT))
+          ],
+        "inputs":
+          [
+            SPLIT,
+            INPUT_PRE
+          ],
+        "local_job":true
+      },
+      
+      {
+        "command":format("%s index %s",BWA,REF),
+        "inputs":
+          [
+            BWA,
+            REF
+          ],
+        "outputs":
+          [
+            x for x in REF_INDEX
+          ],
+        "local job":true
+      },
+      
+      {
+        "command":format("%s %s %s %s.%d > %s.%d.sam 2> %s.%d.err",BWA,ARGS,REF,INPUT_PRE,i,INPUT_PRE,i,INPUT_PRE,i),
+        "outputs":
+          [
+            format("%s.%d.sam",INPUT_PRE,i),
+            format("%s.%d.err",INPUT_PRE,i)
+          ],
+        "inputs":
+          [
+            BWA,
+            REF,
+            x for x in REF_INDEX,
+            format("%s.%d",INPUT_PRE,i)
+          ]
+      } for i in range(ceil(TOTAL_SEQ/SEQ_PER_SPLIT)),
+      
+      {
+        "command":format("%s %s.sam %s*.sam",CONCAT,INPUT_PRE,INPUT_PRE),
+        "outputs":
+          [
+            format("%s.sam",INPUT_PRE)
+          ],
+        "inputs":
+          [
+            CONCAT,
+            format("%s.%d.sam",INPUT_PRE,i) for i in range(ceil(TOTAL_SEQ/SEQ_PER_SPLIT))
+          ]
+      }
+    ]
 }

@@ -58,7 +58,7 @@ makeflow -T wq hecil.mf
 ```
 Alternatively, it can be run using the `JX` or `JSON` representation
 ```
-makeflow --jx hecil.jx --jx-args="args.jx"
+makeflow --jx hecil.jx
 makeflow --json hecil.json
 ```
 
