@@ -1,0 +1,66 @@
+{
+    "define": {
+        "MAXENT": "./tools/maxent.jar",
+        "JAVA": "./tools/java8_run",
+        "PROCESS_POINTS": "./tools/process_points.py",
+        "taxa": [basename(t, ".csv") for t in listdir("raw_points")],
+        "projections": ["data/layers/" + x for x in listdir("data/layers")],
+    },
+    "rules": [
+        {
+            "command": format(
+                "mkdir -p outputs && %s raw_points/%s.csv outputs/%s.csv",
+                PROCESS_POINTS, t, t
+            ),
+            "outputs": [
+                format("outputs/%s.csv", t),
+            ],
+            "inputs": [
+                format("raw_points/%s.csv", t),
+                PROCESS_POINTS,
+            ],
+        } for t in taxa, {
+            "command": format(
+                "mkdir -p outputs/%s && %s -cp %s density.MaxEnt -s outputs/%s.csv -e %s -o outputs/%s nowarnings nocache autorun -z",
+                t,
+                JAVA,
+                MAXENT,
+                t,
+                model,
+                t
+            ),
+            "inputs": [
+                MAXENT,
+                JAVA,
+                model,
+                format("outputs/%s.csv", t)
+            ],
+            "outputs": [
+                format("outputs/%s", t),
+            ],
+        } for t in taxa, {
+            "command": format(
+                "%s -cp %s density.Project outputs/%s/%s.lambdas %s outputs/%s_%s.asc nowarnings nocache autorun -z; touch outputs/%s_%s.asc",
+                JAVA,
+                MAXENT,
+                t,
+                t,
+                p,
+                t,
+                basename(p),
+                t,
+                basename(p)
+            ),
+            "outputs": [
+                format("outputs/%s_%s.asc", t, basename(p))
+            ],
+            "inputs": [
+                MAXENT,
+                JAVA,
+                model,
+                p,
+                format("outputs/%s", t),
+            ]
+        } for t in taxa for p in projections,
+    ],
+}
