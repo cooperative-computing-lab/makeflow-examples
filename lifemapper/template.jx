@@ -3,20 +3,21 @@
         "MAXENT": "./tools/maxent.jar",
         "JAVA": "./tools/java8_run",
         "PROCESS_POINTS": "./tools/process_points.py",
-        "taxa": [basename(t, ".csv") for t in listdir("raw_points")],
-        "projections": ["data/layers/" + x for x in listdir("data/layers")],
+        "PROJECTIONS": ["data/layers/" + x for x in listdir("data/layers")],
+        "taxa": [basename(t, ".csv") for t in listdir(POINTS_DIR)],
+        "model": "data/layers/worldclim",
     },
     "rules": [
         {
             "command": format(
-                "mkdir -p outputs && %s raw_points/%s.csv outputs/%s.csv",
-                PROCESS_POINTS, t, t
+                "mkdir -p outputs && %s %s/%s.csv outputs/%s.csv",
+                PROCESS_POINTS, POINTS_DIR, t, t
             ),
             "outputs": [
                 format("outputs/%s.csv", t),
             ],
             "inputs": [
-                format("raw_points/%s.csv", t),
+                format("%s/%s.csv", POINTS_DIR, t),
                 PROCESS_POINTS,
             ],
         } for t in taxa, {
@@ -61,6 +62,6 @@
                 p,
                 format("outputs/%s", t),
             ]
-        } for t in taxa for p in projections,
+        } for t in taxa for p in PROJECTIONS,
     ],
 }

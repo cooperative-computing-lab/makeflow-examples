@@ -9,19 +9,19 @@ enough points and the projections.
 
 This example processes a small dataset and only one model/projection scenario.
 
-    python split.py data/points/small.csv small/ 
+    python split.py data/points/small.csv small.points 
 
 To run it, make sure Makeflow is in your `$PATH` and type
 
-    makeflow --jx-define 'POINTS_DIR="small"' --jx-define 'PROJECTIONS=["data/layers/worldclim"]' --jx template.jx
+    makeflow --jx-define 'POINTS_DIR="small.points"' --jx-define 'PROJECTIONS=["data/layers/worldclim"]' --jx template.jx
 
 ## Larger Example
 
 This example runs on a larger dataset with a model scenario
 and three projection scenarios each.
 
-    python split.py data/points/large.csv large
+    python split.py data/points/large.csv large.points
 
 This example runs all three projection scenarios.
 
-    makeflow --jx-define 'POINTS_DIR="large"' --jx template.jx
+    makeflow --jx-define 'POINTS_DIR="large.points"' --jx template.jx

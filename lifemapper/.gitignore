@@ -1,4 +1,4 @@
-raw_points/
+*.points
 outputs/
 *.makeflowlog
 **/maxent.cache/
