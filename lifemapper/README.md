@@ -1,9 +1,9 @@
 # Lifemapper
 
 This version of the Lifemapper Makeflow generator splits a single csv file 
-containing multiple taxa but grouped so that like taxa are adjacent to each
-other into files.  These files are used as inputs to models if there are
-enough points and the projections.
+containing multiple taxa into groups such that like taxa are adjacent to each
+other into files.  These files are used as inputs to models (if there are
+enough points) and projections under different climate scenarios.
 
 ## Small Example
 
