@@ -41,7 +41,7 @@
             ],
         } for t in taxa, {
             "command": format(
-                "%s -cp %s density.Project outputs/%s/%s.lambdas %s outputs/%s_%s.asc nowarnings nocache autorun -z; touch outputs/%s_%s.asc",
+                "%s -cp %s density.Project outputs/%s/%s.lambdas %s outputs/%s_%s.asc nowarnings nocache autorun -z; touch outputs/%s_%s.asc; touch outputs/%s_%s_clamping.asc",
                 JAVA,
                 MAXENT,
                 t,
@@ -50,10 +50,13 @@
                 t,
                 basename(p),
                 t,
+                basename(p),
+                t,
                 basename(p)
             ),
             "outputs": [
-                format("outputs/%s_%s.asc", t, basename(p))
+                format("outputs/%s_%s.asc", t, basename(p)),
+                format("outputs/%s_%s_clamping.asc", t, basename(p))
             ],
             "inputs": [
                 MAXENT,
