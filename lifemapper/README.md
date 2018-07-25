@@ -7,7 +7,7 @@ enough points and the projections.
 
 ## Small Example
 
-This example processes a small dataset and only one model/projection scenario.
+This example processes a small dataset and only one model/projection scenario with 183 rules in the workflow.
 
     python split.py data/points/small.csv small.points 
 
@@ -22,6 +22,6 @@ and three projection scenarios each.
 
     python split.py data/points/large.csv large.points
 
-This example runs all three projection scenarios.
+This example consists of 3145 rules and runs all three projection scenarios.
 
     makeflow --jx-define 'POINTS_DIR="large.points"' --jx template.jx
