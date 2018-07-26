@@ -13,7 +13,7 @@ This example processes a small dataset and only one model/projection scenario wi
 
 To run it, make sure Makeflow is in your `$PATH` and type
 
-    makeflow --jx-define 'POINTS_DIR="small.points"' --jx-define 'PROJECTIONS=["data/layers/worldclim"]' --jx template.jx
+    makeflow --jx-define 'POINTS_DIR="small.points"' --jx-define 'PROJECTIONS=["data/layers/worldclim"]' --jx lifemapper.jx
 
 ## Larger Example
 
@@ -24,4 +24,4 @@ and three projection scenarios each.
 
 This example consists of 3145 rules and runs all three projection scenarios.
 
-    makeflow --jx-define 'POINTS_DIR="large.points"' --jx template.jx
+    makeflow --jx-define 'POINTS_DIR="large.points"' --jx lifemapper.jx
