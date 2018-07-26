@@ -1,7 +1,7 @@
 {
     "define": {
         "MAXENT": "./tools/maxent.jar",
-        "JAVA": "./tools/java8_run",
+        "JAVA": "java",
         "PROCESS_POINTS": "./tools/process_points.py",
         "PROJECTIONS": ["data/layers/worldclim"],
         "TAXA": [basename(t, ".csv") for t in listdir("points")],
@@ -32,7 +32,7 @@
             ),
             "inputs": [
                 MAXENT,
-                JAVA,
+                #JAVA,
                 MODEL,
                 format("outputs/%s.csv", t)
             ],
@@ -60,7 +60,7 @@
             ],
             "inputs": [
                 MAXENT,
-                JAVA,
+                #JAVA,
                 MODEL,
                 p,
                 format("outputs/%s", t),
