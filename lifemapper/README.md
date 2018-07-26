@@ -8,6 +8,10 @@ other into files.  These files are used as inputs to models (if there are
 enough points) and projections under different climate scenarios.
 The workflow is comprised of a large number of independent taxa (pictured).
 
+This example requires Java.
+It may be installed or available through your system's package manager.
+You can also download Java [here](https://java.com/en/download/manual.jsp).
+
 ## Small Example
 
 This example processes a small dataset and only one model/projection scenario with 183 rules in the workflow.
