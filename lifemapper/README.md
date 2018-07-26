@@ -9,19 +9,19 @@ enough points) and projections under different climate scenarios.
 
 This example processes a small dataset and only one model/projection scenario with 183 rules in the workflow.
 
-    python split.py data/points/small.csv small.points 
+    python split.py data/points/small.csv
 
 To run it, make sure Makeflow is in your `$PATH` and type
 
-    makeflow --jx-define 'POINTS_DIR="small.points"' --jx-define 'PROJECTIONS=["data/layers/worldclim"]' --jx lifemapper.jx
+    makeflow --jx lifemapper.jx
 
 ## Larger Example
 
 This example runs on a larger dataset with a model scenario
 and three projection scenarios each.
 
-    python split.py data/points/large.csv large.points
+    python split.py data/points/large.csv
 
 This example consists of 3145 rules and runs all three projection scenarios.
 
-    makeflow --jx-define 'POINTS_DIR="large.points"' --jx lifemapper.jx
+    makeflow --jx-define 'PROJECTIONS=["data/layers/" + x for x in listdir("data/layers")]' --jx lifemapper.jx

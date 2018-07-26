@@ -3,43 +3,43 @@
         "MAXENT": "./tools/maxent.jar",
         "JAVA": "./tools/java8_run",
         "PROCESS_POINTS": "./tools/process_points.py",
-        "PROJECTIONS": ["data/layers/" + x for x in listdir("data/layers")],
-        "taxa": [basename(t, ".csv") for t in listdir(POINTS_DIR)],
-        "model": "data/layers/worldclim",
+        "PROJECTIONS": ["data/layers/worldclim"],
+        "TAXA": [basename(t, ".csv") for t in listdir("points")],
+        "MODEL": "data/layers/worldclim",
     },
     "rules": [
         {
             "command": format(
-                "mkdir -p outputs && %s %s/%s.csv outputs/%s.csv",
-                PROCESS_POINTS, POINTS_DIR, t, t
+                "mkdir -p outputs && %s points/%s.csv outputs/%s.csv",
+                PROCESS_POINTS, t, t
             ),
             "outputs": [
                 format("outputs/%s.csv", t),
             ],
             "inputs": [
-                format("%s/%s.csv", POINTS_DIR, t),
+                format("points/%s.csv", t),
                 PROCESS_POINTS,
             ],
-        } for t in taxa, {
+        } for t in TAXA, {
             "command": format(
                 "mkdir -p outputs/%s && %s -cp %s density.MaxEnt -s outputs/%s.csv -e %s -o outputs/%s nowarnings nocache autorun -z",
                 t,
                 JAVA,
                 MAXENT,
                 t,
-                model,
+                MODEL,
                 t
             ),
             "inputs": [
                 MAXENT,
                 JAVA,
-                model,
+                MODEL,
                 format("outputs/%s.csv", t)
             ],
             "outputs": [
                 format("outputs/%s", t),
             ],
-        } for t in taxa, {
+        } for t in TAXA, {
             "command": format(
                 "%s -cp %s density.Project outputs/%s/%s.lambdas %s outputs/%s_%s.asc nowarnings nocache autorun -z; touch outputs/%s_%s.asc; touch outputs/%s_%s_clamping.asc",
                 JAVA,
@@ -61,10 +61,10 @@
             "inputs": [
                 MAXENT,
                 JAVA,
-                model,
+                MODEL,
                 p,
                 format("outputs/%s", t),
             ]
-        } for t in taxa for p in PROJECTIONS,
+        } for t in TAXA for p in PROJECTIONS,
     ],
 }

@@ -17,11 +17,12 @@ if __name__ == '__main__':
     parser.add_argument('points_csv', type=str,
             help='A CSV file containing occurrence information. ' \
             + 'Like taxa should be in consecutive rows.')
-    parser.add_argument('out_dir', type=str,
-            help='Directory to write CSV files to.')
     args = parser.parse_args()
 
-    os.mkdir(args.out_dir)
+    try:
+        os.mkdir("points")
+    except:
+        pass
 
     with open(args.points_csv) as in_f:
         lines = csv.reader(in_f)
@@ -31,7 +32,7 @@ if __name__ == '__main__':
             chunk = list(lines)
             if len(chunk) < POINTS_THRESHOLD:
                 continue
-            chunk_fn = os.path.join(args.out_dir, '{}.csv'.format(name))
+            chunk_fn = os.path.join('points', '{}.csv'.format(name))
             with open(chunk_fn, 'w') as out_f:
                 out = csv.writer(out_f)
                 for l in chunk:
