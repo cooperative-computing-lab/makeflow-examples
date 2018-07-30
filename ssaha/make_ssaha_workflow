@@ -33,7 +33,7 @@ for (my $i = 0; $i < $nfiles; $i++) {
 
 print "OPTIONS=-tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2\n";
 
-print "$inputlist: $infile fastq_split.pl\n";
+print "$inputlist: $infile fastq_reduce\n";
 print "\tLOCAL ./fastq_reduce $infile $seqs_per_file\n\n";
 
 for (my $i = 0; $i < $nfiles; $i++){
