@@ -1,4 +1,4 @@
-<img align=right src=blast.png width=256>
+<img align=right src=image.png width=256>
 
 BLAST Workflow Example
 ----------------------
