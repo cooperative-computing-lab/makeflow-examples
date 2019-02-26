@@ -1,0 +1,6 @@
+points/
+outputs/
+*.makeflowlog
+*.wqlog
+*.wqlog.tr
+**/maxent.cache/

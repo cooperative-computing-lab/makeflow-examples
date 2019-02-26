@@ -1,0 +1,70 @@
+{
+    "define": {
+        "MAXENT": "./tools/maxent.jar",
+        "JAVA": "java",
+        "PROCESS_POINTS": "./tools/process_points.py",
+        "PROJECTIONS": ["data/layers/worldclim"],
+        "TAXA": [basename(t, ".csv") for t in listdir("points")],
+        "MODEL": "data/layers/worldclim",
+    },
+    "rules": [
+        {
+            "command": format(
+                "mkdir -p outputs && %s points/%s.csv outputs/%s.csv",
+                PROCESS_POINTS, t, t
+            ),
+            "outputs": [
+                format("outputs/%s.csv", t),
+            ],
+            "inputs": [
+                format("points/%s.csv", t),
+                PROCESS_POINTS,
+            ],
+        } for t in TAXA, {
+            "command": format(
+                "mkdir -p outputs/%s && %s -cp %s density.MaxEnt -s outputs/%s.csv -e %s -o outputs/%s nowarnings nocache autorun -z",
+                t,
+                JAVA,
+                MAXENT,
+                t,
+                MODEL,
+                t
+            ),
+            "inputs": [
+                MAXENT,
+                #JAVA,
+                MODEL,
+                format("outputs/%s.csv", t)
+            ],
+            "outputs": [
+                format("outputs/%s", t),
+            ],
+        } for t in TAXA, {
+            "command": format(
+                "%s -cp %s density.Project outputs/%s/%s.lambdas %s outputs/%s_%s.asc nowarnings nocache autorun -z; touch outputs/%s_%s.asc; touch outputs/%s_%s_clamping.asc",
+                JAVA,
+                MAXENT,
+                t,
+                t,
+                p,
+                t,
+                basename(p),
+                t,
+                basename(p),
+                t,
+                basename(p)
+            ),
+            "outputs": [
+                format("outputs/%s_%s.asc", t, basename(p)),
+                format("outputs/%s_%s_clamping.asc", t, basename(p))
+            ],
+            "inputs": [
+                MAXENT,
+                #JAVA,
+                MODEL,
+                p,
+                format("outputs/%s", t),
+            ]
+        } for t in TAXA for p in PROJECTIONS,
+    ],
+}
