@@ -1,6 +1,15 @@
 OPTIONS=-tags 1 -rtype abi -score 30 -seeds 5 -output ssaha2
-query.fastq.0 query.fastq.1 query.fastq.2 query.fastq.3 query.fastq.4 query.fastq.5 query.fastq.6 query.fastq.7 query.fastq.8 query.fastq.9 query.fastq.10 query.fastq.11 query.fastq.12 query.fastq.13 query.fastq.14 query.fastq.15 query.fastq.16 query.fastq.17 query.fastq.18 query.fastq.19 query.fastq.20 query.fastq.21 query.fastq.22 query.fastq.23 query.fastq.24 query.fastq.25 query.fastq.26 query.fastq.27 query.fastq.28 query.fastq.29 query.fastq.30 query.fastq.31 query.fastq.32 query.fastq.33 query.fastq.34 query.fastq.35 query.fastq.36 query.fastq.37 query.fastq.38 query.fastq.39 query.fastq.40 query.fastq.41 query.fastq.42 query.fastq.43 query.fastq.44 query.fastq.45 query.fastq.46 query.fastq.47 query.fastq.48 query.fastq.49 query.fastq.50 query.fastq.51 query.fastq.52 query.fastq.53 query.fastq.54 query.fastq.55 query.fastq.56 query.fastq.57 query.fastq.58 query.fastq.59 query.fastq.60 query.fastq.61 query.fastq.62 query.fastq.63 query.fastq.64 query.fastq.65 query.fastq.66 query.fastq.67 query.fastq.68 query.fastq.69 query.fastq.70 query.fastq.71 query.fastq.72 query.fastq.73 query.fastq.74 query.fastq.75 query.fastq.76 query.fastq.77 query.fastq.78 query.fastq.79 query.fastq.80 query.fastq.81 query.fastq.82 query.fastq.83 query.fastq.84 query.fastq.85 query.fastq.86 query.fastq.87 query.fastq.88 query.fastq.89 query.fastq.90 query.fastq.91 query.fastq.92 query.fastq.93 query.fastq.94 query.fastq.95 query.fastq.96 query.fastq.97 query.fastq.98 query.fastq.99 : query.fastq fastq_reduce
+
+CATEGORY=preprocessing
+
+query.fastq.0 query.fastq.1 query.fastq.2 query.fastq.3 query.fastq.4 query.fastq.5 query.fastq.6 query.fastq.7 query.fastq.8 query.fastq.9 query.fastq.10 query.fastq.11 query.fastq.12 query.fastq.13 query.fastq.14 query.fastq.15 query.fastq.16 query.fastq.17 query.fastq.18 query.fastq.19 query.fastq.20 query.fastq.21 query.fastq.22 query.fastq.23 query.fastq.24 query.fastq.25 query.fastq.26 query.fastq.27 query.fastq.28 query.fastq.29 query.fastq.30 query.fastq.31 query.fastq.32 query.fastq.33 query.fastq.34 query.fastq.35 query.fastq.36 query.fastq.37 query.fastq.38 query.fastq.39 query.fastq.40 query.fastq.41 query.fastq.42 query.fastq.43 query.fastq.44 query.fastq.45 query.fastq.46 query.fastq.47 query.fastq.48 query.fastq.49 query.fastq.50 query.fastq.51 query.fastq.52 query.fastq.53 query.fastq.54 query.fastq.55 query.fastq.56 query.fastq.57 query.fastq.58 query.fastq.59 query.fastq.60 query.fastq.61 query.fastq.62 query.fastq.63 query.fastq.64 query.fastq.65 query.fastq.66 query.fastq.67 query.fastq.68 query.fastq.69 query.fastq.70 query.fastq.71 query.fastq.72 query.fastq.73 query.fastq.74 query.fastq.75 query.fastq.76 query.fastq.77 query.fastq.78 query.fastq.79 query.fastq.80 query.fastq.81 query.fastq.82 query.fastq.83 query.fastq.84 query.fastq.85 query.fastq.86 query.fastq.87 query.fastq.88 query.fastq.89 query.fastq.90 query.fastq.91 query.fastq.92 query.fastq.93 query.fastq.94 query.fastq.95 query.fastq.96 query.fastq.97 query.fastq.98 query.fastq.99 query.fastq.100 query.fastq.101 query.fastq.102 query.fastq.103 query.fastq.104 query.fastq.105 query.fastq.106 query.fastq.107 query.fastq.108 query.fastq.109 query.fastq.110 query.fastq.111 query.fastq.112 query.fastq.113 query.fastq.114 query.fastq.115 query.fastq.116 query.fastq.117 query.fastq.118 query.fastq.119 query.fastq.120 query.fastq.121 query.fastq.122 query.fastq.123 query.fastq.124 query.fastq.125 query.fastq.126 query.fastq.127 query.fastq.128 query.fastq.129 query.fastq.130 query.fastq.131 query.fastq.132 query.fastq.133 query.fastq.134 query.fastq.135 query.fastq.136 query.fastq.137 query.fastq.138 query.fastq.139 query.fastq.140 query.fastq.141 query.fastq.142 query.fastq.143 query.fastq.144 query.fastq.145 query.fastq.146 query.fastq.147 query.fastq.148 query.fastq.149 query.fastq.150 query.fastq.151 query.fastq.152 query.fastq.153 query.fastq.154 query.fastq.155 query.fastq.156 query.fastq.157 query.fastq.158 query.fastq.159 query.fastq.160 query.fastq.161 query.fastq.162 query.fastq.163 query.fastq.164 query.fastq.165 query.fastq.166 query.fastq.167 query.fastq.168 query.fastq.169 query.fastq.170 query.fastq.171 query.fastq.172 query.fastq.173 query.fastq.174 query.fastq.175 query.fastq.176 query.fastq.177 query.fastq.178 query.fastq.179 query.fastq.180 query.fastq.181 query.fastq.182 query.fastq.183 query.fastq.184 query.fastq.185 query.fastq.186 query.fastq.187 query.fastq.188 query.fastq.189 query.fastq.190 query.fastq.191 query.fastq.192 query.fastq.193 query.fastq.194 query.fastq.195 query.fastq.196 query.fastq.197 query.fastq.198 query.fastq.199 query.fastq.200 query.fastq.201 query.fastq.202 query.fastq.203 query.fastq.204 query.fastq.205 query.fastq.206 query.fastq.207 query.fastq.208 query.fastq.209 query.fastq.210 query.fastq.211 query.fastq.212 query.fastq.213 query.fastq.214 query.fastq.215 query.fastq.216 query.fastq.217 query.fastq.218 query.fastq.219 query.fastq.220 query.fastq.221 query.fastq.222 query.fastq.223 query.fastq.224 query.fastq.225 query.fastq.226 query.fastq.227 query.fastq.228 query.fastq.229 query.fastq.230 query.fastq.231 query.fastq.232 query.fastq.233 query.fastq.234 query.fastq.235 query.fastq.236 query.fastq.237 query.fastq.238 query.fastq.239 query.fastq.240 query.fastq.241 query.fastq.242 query.fastq.243 query.fastq.244 query.fastq.245 query.fastq.246 query.fastq.247 query.fastq.248 query.fastq.249 query.fastq.250 query.fastq.251 query.fastq.252 query.fastq.253 query.fastq.254 query.fastq.255 query.fastq.256 query.fastq.257 query.fastq.258 query.fastq.259 query.fastq.260 query.fastq.261 query.fastq.262 query.fastq.263 query.fastq.264 query.fastq.265 query.fastq.266 query.fastq.267 query.fastq.268 query.fastq.269 query.fastq.270 query.fastq.271 query.fastq.272 query.fastq.273 query.fastq.274 query.fastq.275 query.fastq.276 query.fastq.277 query.fastq.278 query.fastq.279 query.fastq.280 query.fastq.281 query.fastq.282 query.fastq.283 query.fastq.284 query.fastq.285 query.fastq.286 query.fastq.287 query.fastq.288 query.fastq.289 query.fastq.290 query.fastq.291 query.fastq.292 query.fastq.293 query.fastq.294 query.fastq.295 query.fastq.296 query.fastq.297 query.fastq.298 query.fastq.299 query.fastq.300 query.fastq.301 query.fastq.302 query.fastq.303 query.fastq.304 query.fastq.305 query.fastq.306 query.fastq.307 query.fastq.308 query.fastq.309 query.fastq.310 query.fastq.311 query.fastq.312 query.fastq.313 query.fastq.314 query.fastq.315 query.fastq.316 query.fastq.317 query.fastq.318 query.fastq.319 query.fastq.320 query.fastq.321 query.fastq.322 query.fastq.323 query.fastq.324 query.fastq.325 query.fastq.326 query.fastq.327 query.fastq.328 query.fastq.329 query.fastq.330 query.fastq.331 query.fastq.332 query.fastq.333 query.fastq.334 query.fastq.335 query.fastq.336 query.fastq.337 query.fastq.338 query.fastq.339 query.fastq.340 query.fastq.341 query.fastq.342 query.fastq.343 query.fastq.344 query.fastq.345 query.fastq.346 query.fastq.347 query.fastq.348 query.fastq.349 query.fastq.350 query.fastq.351 query.fastq.352 query.fastq.353 query.fastq.354 query.fastq.355 query.fastq.356 query.fastq.357 query.fastq.358 query.fastq.359 query.fastq.360 query.fastq.361 query.fastq.362 query.fastq.363 query.fastq.364 query.fastq.365 query.fastq.366 query.fastq.367 query.fastq.368 query.fastq.369 query.fastq.370 query.fastq.371 query.fastq.372 query.fastq.373 query.fastq.374 query.fastq.375 query.fastq.376 query.fastq.377 query.fastq.378 query.fastq.379 query.fastq.380 query.fastq.381 query.fastq.382 query.fastq.383 query.fastq.384 query.fastq.385 query.fastq.386 query.fastq.387 query.fastq.388 query.fastq.389 query.fastq.390 query.fastq.391 query.fastq.392 query.fastq.393 query.fastq.394 query.fastq.395 query.fastq.396 query.fastq.397 query.fastq.398 query.fastq.399 query.fastq.400 query.fastq.401 query.fastq.402 query.fastq.403 query.fastq.404 query.fastq.405 query.fastq.406 query.fastq.407 query.fastq.408 query.fastq.409 query.fastq.410 query.fastq.411 query.fastq.412 query.fastq.413 query.fastq.414 query.fastq.415 query.fastq.416 query.fastq.417 query.fastq.418 query.fastq.419 query.fastq.420 query.fastq.421 query.fastq.422 query.fastq.423 query.fastq.424 query.fastq.425 query.fastq.426 query.fastq.427 query.fastq.428 query.fastq.429 query.fastq.430 query.fastq.431 query.fastq.432 query.fastq.433 query.fastq.434 query.fastq.435 query.fastq.436 query.fastq.437 query.fastq.438 query.fastq.439 query.fastq.440 query.fastq.441 query.fastq.442 query.fastq.443 query.fastq.444 query.fastq.445 query.fastq.446 query.fastq.447 query.fastq.448 query.fastq.449 query.fastq.450 query.fastq.451 query.fastq.452 query.fastq.453 query.fastq.454 query.fastq.455 query.fastq.456 query.fastq.457 query.fastq.458 query.fastq.459 query.fastq.460 query.fastq.461 query.fastq.462 query.fastq.463 query.fastq.464 query.fastq.465 query.fastq.466 query.fastq.467 query.fastq.468 query.fastq.469 query.fastq.470 query.fastq.471 query.fastq.472 query.fastq.473 query.fastq.474 query.fastq.475 query.fastq.476 query.fastq.477 query.fastq.478 query.fastq.479 query.fastq.480 query.fastq.481 query.fastq.482 query.fastq.483 query.fastq.484 query.fastq.485 query.fastq.486 query.fastq.487 query.fastq.488 query.fastq.489 query.fastq.490 query.fastq.491 query.fastq.492 query.fastq.493 query.fastq.494 query.fastq.495 query.fastq.496 query.fastq.497 query.fastq.498 query.fastq.499 query.fastq.500 query.fastq.501 query.fastq.502 query.fastq.503 query.fastq.504 query.fastq.505 query.fastq.506 query.fastq.507 query.fastq.508 query.fastq.509 query.fastq.510 query.fastq.511 query.fastq.512 query.fastq.513 query.fastq.514 query.fastq.515 query.fastq.516 query.fastq.517 query.fastq.518 query.fastq.519 query.fastq.520 query.fastq.521 query.fastq.522 query.fastq.523 query.fastq.524 query.fastq.525 query.fastq.526 query.fastq.527 query.fastq.528 query.fastq.529 query.fastq.530 query.fastq.531 query.fastq.532 query.fastq.533 query.fastq.534 query.fastq.535 query.fastq.536 query.fastq.537 query.fastq.538 query.fastq.539 query.fastq.540 query.fastq.541 query.fastq.542 query.fastq.543 query.fastq.544 query.fastq.545 query.fastq.546 query.fastq.547 query.fastq.548 query.fastq.549 query.fastq.550 query.fastq.551 query.fastq.552 query.fastq.553 query.fastq.554 query.fastq.555 query.fastq.556 query.fastq.557 query.fastq.558 query.fastq.559 query.fastq.560 query.fastq.561 query.fastq.562 query.fastq.563 query.fastq.564 query.fastq.565 query.fastq.566 query.fastq.567 query.fastq.568 query.fastq.569 query.fastq.570 query.fastq.571 query.fastq.572 query.fastq.573 query.fastq.574 query.fastq.575 query.fastq.576 query.fastq.577 query.fastq.578 query.fastq.579 query.fastq.580 query.fastq.581 query.fastq.582 query.fastq.583 query.fastq.584 query.fastq.585 query.fastq.586 query.fastq.587 query.fastq.588 query.fastq.589 query.fastq.590 query.fastq.591 query.fastq.592 query.fastq.593 query.fastq.594 query.fastq.595 query.fastq.596 query.fastq.597 query.fastq.598 query.fastq.599 query.fastq.600 query.fastq.601 query.fastq.602 query.fastq.603 query.fastq.604 query.fastq.605 query.fastq.606 query.fastq.607 query.fastq.608 query.fastq.609 query.fastq.610 query.fastq.611 query.fastq.612 query.fastq.613 query.fastq.614 query.fastq.615 query.fastq.616 query.fastq.617 query.fastq.618 query.fastq.619 query.fastq.620 query.fastq.621 query.fastq.622 query.fastq.623 query.fastq.624 query.fastq.625 query.fastq.626 query.fastq.627 query.fastq.628 query.fastq.629 query.fastq.630 query.fastq.631 query.fastq.632 query.fastq.633 query.fastq.634 query.fastq.635 query.fastq.636 query.fastq.637 query.fastq.638 query.fastq.639 query.fastq.640 query.fastq.641 query.fastq.642 query.fastq.643 query.fastq.644 query.fastq.645 query.fastq.646 query.fastq.647 query.fastq.648 query.fastq.649 query.fastq.650 query.fastq.651 query.fastq.652 query.fastq.653 query.fastq.654 query.fastq.655 query.fastq.656 query.fastq.657 query.fastq.658 query.fastq.659 query.fastq.660 query.fastq.661 query.fastq.662 query.fastq.663 query.fastq.664 query.fastq.665 query.fastq.666 query.fastq.667 query.fastq.668 query.fastq.669 query.fastq.670 query.fastq.671 query.fastq.672 query.fastq.673 query.fastq.674 query.fastq.675 query.fastq.676 query.fastq.677 query.fastq.678 query.fastq.679 query.fastq.680 query.fastq.681 query.fastq.682 query.fastq.683 query.fastq.684 query.fastq.685 query.fastq.686 query.fastq.687 query.fastq.688 query.fastq.689 query.fastq.690 query.fastq.691 query.fastq.692 query.fastq.693 query.fastq.694 query.fastq.695 query.fastq.696 query.fastq.697 query.fastq.698 query.fastq.699 query.fastq.700 query.fastq.701 query.fastq.702 query.fastq.703 query.fastq.704 query.fastq.705 query.fastq.706 query.fastq.707 query.fastq.708 query.fastq.709 query.fastq.710 query.fastq.711 query.fastq.712 query.fastq.713 query.fastq.714 query.fastq.715 query.fastq.716 query.fastq.717 query.fastq.718 query.fastq.719 query.fastq.720 query.fastq.721 query.fastq.722 query.fastq.723 query.fastq.724 query.fastq.725 query.fastq.726 query.fastq.727 query.fastq.728 query.fastq.729 query.fastq.730 query.fastq.731 query.fastq.732 query.fastq.733 query.fastq.734 query.fastq.735 query.fastq.736 query.fastq.737 query.fastq.738 query.fastq.739 query.fastq.740 query.fastq.741 query.fastq.742 query.fastq.743 query.fastq.744 query.fastq.745 query.fastq.746 query.fastq.747 query.fastq.748 query.fastq.749 query.fastq.750 query.fastq.751 query.fastq.752 query.fastq.753 query.fastq.754 query.fastq.755 query.fastq.756 query.fastq.757 query.fastq.758 query.fastq.759 query.fastq.760 query.fastq.761 query.fastq.762 query.fastq.763 query.fastq.764 query.fastq.765 query.fastq.766 query.fastq.767 query.fastq.768 query.fastq.769 query.fastq.770 query.fastq.771 query.fastq.772 query.fastq.773 query.fastq.774 query.fastq.775 query.fastq.776 query.fastq.777 query.fastq.778 query.fastq.779 query.fastq.780 query.fastq.781 query.fastq.782 query.fastq.783 query.fastq.784 query.fastq.785 query.fastq.786 query.fastq.787 query.fastq.788 query.fastq.789 query.fastq.790 query.fastq.791 query.fastq.792 query.fastq.793 query.fastq.794 query.fastq.795 query.fastq.796 query.fastq.797 query.fastq.798 query.fastq.799 query.fastq.800 query.fastq.801 query.fastq.802 query.fastq.803 query.fastq.804 query.fastq.805 query.fastq.806 query.fastq.807 query.fastq.808 query.fastq.809 query.fastq.810 query.fastq.811 query.fastq.812 query.fastq.813 query.fastq.814 query.fastq.815 query.fastq.816 query.fastq.817 query.fastq.818 query.fastq.819 query.fastq.820 query.fastq.821 query.fastq.822 query.fastq.823 query.fastq.824 query.fastq.825 query.fastq.826 query.fastq.827 query.fastq.828 query.fastq.829 query.fastq.830 query.fastq.831 query.fastq.832 query.fastq.833 query.fastq.834 query.fastq.835 query.fastq.836 query.fastq.837 query.fastq.838 query.fastq.839 query.fastq.840 query.fastq.841 query.fastq.842 query.fastq.843 query.fastq.844 query.fastq.845 query.fastq.846 query.fastq.847 query.fastq.848 query.fastq.849 query.fastq.850 query.fastq.851 query.fastq.852 query.fastq.853 query.fastq.854 query.fastq.855 query.fastq.856 query.fastq.857 query.fastq.858 query.fastq.859 query.fastq.860 query.fastq.861 query.fastq.862 query.fastq.863 query.fastq.864 query.fastq.865 query.fastq.866 query.fastq.867 query.fastq.868 query.fastq.869 query.fastq.870 query.fastq.871 query.fastq.872 query.fastq.873 query.fastq.874 query.fastq.875 query.fastq.876 query.fastq.877 query.fastq.878 query.fastq.879 query.fastq.880 query.fastq.881 query.fastq.882 query.fastq.883 query.fastq.884 query.fastq.885 query.fastq.886 query.fastq.887 query.fastq.888 query.fastq.889 query.fastq.890 query.fastq.891 query.fastq.892 query.fastq.893 query.fastq.894 query.fastq.895 query.fastq.896 query.fastq.897 query.fastq.898 query.fastq.899 query.fastq.900 query.fastq.901 query.fastq.902 query.fastq.903 query.fastq.904 query.fastq.905 query.fastq.906 query.fastq.907 query.fastq.908 query.fastq.909 query.fastq.910 query.fastq.911 query.fastq.912 query.fastq.913 query.fastq.914 query.fastq.915 query.fastq.916 query.fastq.917 query.fastq.918 query.fastq.919 query.fastq.920 query.fastq.921 query.fastq.922 query.fastq.923 query.fastq.924 query.fastq.925 query.fastq.926 query.fastq.927 query.fastq.928 query.fastq.929 query.fastq.930 query.fastq.931 query.fastq.932 query.fastq.933 query.fastq.934 query.fastq.935 query.fastq.936 query.fastq.937 query.fastq.938 query.fastq.939 query.fastq.940 query.fastq.941 query.fastq.942 query.fastq.943 query.fastq.944 query.fastq.945 query.fastq.946 query.fastq.947 query.fastq.948 query.fastq.949 query.fastq.950 query.fastq.951 query.fastq.952 query.fastq.953 query.fastq.954 query.fastq.955 query.fastq.956 query.fastq.957 query.fastq.958 query.fastq.959 query.fastq.960 query.fastq.961 query.fastq.962 query.fastq.963 query.fastq.964 query.fastq.965 query.fastq.966 query.fastq.967 query.fastq.968 query.fastq.969 query.fastq.970 query.fastq.971 query.fastq.972 query.fastq.973 query.fastq.974 query.fastq.975 query.fastq.976 query.fastq.977 query.fastq.978 query.fastq.979 query.fastq.980 query.fastq.981 query.fastq.982 query.fastq.983 query.fastq.984 query.fastq.985 query.fastq.986 query.fastq.987 query.fastq.988 query.fastq.989 query.fastq.990 query.fastq.991 query.fastq.992 query.fastq.993 query.fastq.994 query.fastq.995 query.fastq.996 query.fastq.997 query.fastq.998 query.fastq.999 : query.fastq fastq_reduce
 	LOCAL ./fastq_reduce query.fastq 1000
+
+CATEGORY=simulation
+CORES=1
+MEMORY=1300
+DISK=400
+WALLTIME=20
 
 output.fastq.0: query.fastq.0 db.fastq ssaha2
 	./ssaha2 $OPTIONS db.fastq query.fastq.0 > output.fastq.0
@@ -302,6 +311,2707 @@ output.fastq.98: query.fastq.98 db.fastq ssaha2
 output.fastq.99: query.fastq.99 db.fastq ssaha2
 	./ssaha2 $OPTIONS db.fastq query.fastq.99 > output.fastq.99
 
-output.fastq: output.fastq.0 output.fastq.1 output.fastq.2 output.fastq.3 output.fastq.4 output.fastq.5 output.fastq.6 output.fastq.7 output.fastq.8 output.fastq.9 output.fastq.10 output.fastq.11 output.fastq.12 output.fastq.13 output.fastq.14 output.fastq.15 output.fastq.16 output.fastq.17 output.fastq.18 output.fastq.19 output.fastq.20 output.fastq.21 output.fastq.22 output.fastq.23 output.fastq.24 output.fastq.25 output.fastq.26 output.fastq.27 output.fastq.28 output.fastq.29 output.fastq.30 output.fastq.31 output.fastq.32 output.fastq.33 output.fastq.34 output.fastq.35 output.fastq.36 output.fastq.37 output.fastq.38 output.fastq.39 output.fastq.40 output.fastq.41 output.fastq.42 output.fastq.43 output.fastq.44 output.fastq.45 output.fastq.46 output.fastq.47 output.fastq.48 output.fastq.49 output.fastq.50 output.fastq.51 output.fastq.52 output.fastq.53 output.fastq.54 output.fastq.55 output.fastq.56 output.fastq.57 output.fastq.58 output.fastq.59 output.fastq.60 output.fastq.61 output.fastq.62 output.fastq.63 output.fastq.64 output.fastq.65 output.fastq.66 output.fastq.67 output.fastq.68 output.fastq.69 output.fastq.70 output.fastq.71 output.fastq.72 output.fastq.73 output.fastq.74 output.fastq.75 output.fastq.76 output.fastq.77 output.fastq.78 output.fastq.79 output.fastq.80 output.fastq.81 output.fastq.82 output.fastq.83 output.fastq.84 output.fastq.85 output.fastq.86 output.fastq.87 output.fastq.88 output.fastq.89 output.fastq.90 output.fastq.91 output.fastq.92 output.fastq.93 output.fastq.94 output.fastq.95 output.fastq.96 output.fastq.97 output.fastq.98 output.fastq.99 
-	LOCAL cat output.fastq.0 output.fastq.1 output.fastq.2 output.fastq.3 output.fastq.4 output.fastq.5 output.fastq.6 output.fastq.7 output.fastq.8 output.fastq.9 output.fastq.10 output.fastq.11 output.fastq.12 output.fastq.13 output.fastq.14 output.fastq.15 output.fastq.16 output.fastq.17 output.fastq.18 output.fastq.19 output.fastq.20 output.fastq.21 output.fastq.22 output.fastq.23 output.fastq.24 output.fastq.25 output.fastq.26 output.fastq.27 output.fastq.28 output.fastq.29 output.fastq.30 output.fastq.31 output.fastq.32 output.fastq.33 output.fastq.34 output.fastq.35 output.fastq.36 output.fastq.37 output.fastq.38 output.fastq.39 output.fastq.40 output.fastq.41 output.fastq.42 output.fastq.43 output.fastq.44 output.fastq.45 output.fastq.46 output.fastq.47 output.fastq.48 output.fastq.49 output.fastq.50 output.fastq.51 output.fastq.52 output.fastq.53 output.fastq.54 output.fastq.55 output.fastq.56 output.fastq.57 output.fastq.58 output.fastq.59 output.fastq.60 output.fastq.61 output.fastq.62 output.fastq.63 output.fastq.64 output.fastq.65 output.fastq.66 output.fastq.67 output.fastq.68 output.fastq.69 output.fastq.70 output.fastq.71 output.fastq.72 output.fastq.73 output.fastq.74 output.fastq.75 output.fastq.76 output.fastq.77 output.fastq.78 output.fastq.79 output.fastq.80 output.fastq.81 output.fastq.82 output.fastq.83 output.fastq.84 output.fastq.85 output.fastq.86 output.fastq.87 output.fastq.88 output.fastq.89 output.fastq.90 output.fastq.91 output.fastq.92 output.fastq.93 output.fastq.94 output.fastq.95 output.fastq.96 output.fastq.97 output.fastq.98 output.fastq.99  > output.fastq
+output.fastq.100: query.fastq.100 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.100 > output.fastq.100
 
+output.fastq.101: query.fastq.101 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.101 > output.fastq.101
+
+output.fastq.102: query.fastq.102 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.102 > output.fastq.102
+
+output.fastq.103: query.fastq.103 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.103 > output.fastq.103
+
+output.fastq.104: query.fastq.104 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.104 > output.fastq.104
+
+output.fastq.105: query.fastq.105 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.105 > output.fastq.105
+
+output.fastq.106: query.fastq.106 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.106 > output.fastq.106
+
+output.fastq.107: query.fastq.107 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.107 > output.fastq.107
+
+output.fastq.108: query.fastq.108 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.108 > output.fastq.108
+
+output.fastq.109: query.fastq.109 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.109 > output.fastq.109
+
+output.fastq.110: query.fastq.110 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.110 > output.fastq.110
+
+output.fastq.111: query.fastq.111 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.111 > output.fastq.111
+
+output.fastq.112: query.fastq.112 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.112 > output.fastq.112
+
+output.fastq.113: query.fastq.113 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.113 > output.fastq.113
+
+output.fastq.114: query.fastq.114 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.114 > output.fastq.114
+
+output.fastq.115: query.fastq.115 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.115 > output.fastq.115
+
+output.fastq.116: query.fastq.116 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.116 > output.fastq.116
+
+output.fastq.117: query.fastq.117 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.117 > output.fastq.117
+
+output.fastq.118: query.fastq.118 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.118 > output.fastq.118
+
+output.fastq.119: query.fastq.119 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.119 > output.fastq.119
+
+output.fastq.120: query.fastq.120 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.120 > output.fastq.120
+
+output.fastq.121: query.fastq.121 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.121 > output.fastq.121
+
+output.fastq.122: query.fastq.122 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.122 > output.fastq.122
+
+output.fastq.123: query.fastq.123 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.123 > output.fastq.123
+
+output.fastq.124: query.fastq.124 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.124 > output.fastq.124
+
+output.fastq.125: query.fastq.125 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.125 > output.fastq.125
+
+output.fastq.126: query.fastq.126 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.126 > output.fastq.126
+
+output.fastq.127: query.fastq.127 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.127 > output.fastq.127
+
+output.fastq.128: query.fastq.128 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.128 > output.fastq.128
+
+output.fastq.129: query.fastq.129 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.129 > output.fastq.129
+
+output.fastq.130: query.fastq.130 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.130 > output.fastq.130
+
+output.fastq.131: query.fastq.131 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.131 > output.fastq.131
+
+output.fastq.132: query.fastq.132 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.132 > output.fastq.132
+
+output.fastq.133: query.fastq.133 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.133 > output.fastq.133
+
+output.fastq.134: query.fastq.134 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.134 > output.fastq.134
+
+output.fastq.135: query.fastq.135 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.135 > output.fastq.135
+
+output.fastq.136: query.fastq.136 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.136 > output.fastq.136
+
+output.fastq.137: query.fastq.137 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.137 > output.fastq.137
+
+output.fastq.138: query.fastq.138 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.138 > output.fastq.138
+
+output.fastq.139: query.fastq.139 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.139 > output.fastq.139
+
+output.fastq.140: query.fastq.140 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.140 > output.fastq.140
+
+output.fastq.141: query.fastq.141 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.141 > output.fastq.141
+
+output.fastq.142: query.fastq.142 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.142 > output.fastq.142
+
+output.fastq.143: query.fastq.143 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.143 > output.fastq.143
+
+output.fastq.144: query.fastq.144 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.144 > output.fastq.144
+
+output.fastq.145: query.fastq.145 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.145 > output.fastq.145
+
+output.fastq.146: query.fastq.146 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.146 > output.fastq.146
+
+output.fastq.147: query.fastq.147 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.147 > output.fastq.147
+
+output.fastq.148: query.fastq.148 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.148 > output.fastq.148
+
+output.fastq.149: query.fastq.149 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.149 > output.fastq.149
+
+output.fastq.150: query.fastq.150 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.150 > output.fastq.150
+
+output.fastq.151: query.fastq.151 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.151 > output.fastq.151
+
+output.fastq.152: query.fastq.152 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.152 > output.fastq.152
+
+output.fastq.153: query.fastq.153 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.153 > output.fastq.153
+
+output.fastq.154: query.fastq.154 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.154 > output.fastq.154
+
+output.fastq.155: query.fastq.155 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.155 > output.fastq.155
+
+output.fastq.156: query.fastq.156 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.156 > output.fastq.156
+
+output.fastq.157: query.fastq.157 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.157 > output.fastq.157
+
+output.fastq.158: query.fastq.158 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.158 > output.fastq.158
+
+output.fastq.159: query.fastq.159 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.159 > output.fastq.159
+
+output.fastq.160: query.fastq.160 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.160 > output.fastq.160
+
+output.fastq.161: query.fastq.161 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.161 > output.fastq.161
+
+output.fastq.162: query.fastq.162 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.162 > output.fastq.162
+
+output.fastq.163: query.fastq.163 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.163 > output.fastq.163
+
+output.fastq.164: query.fastq.164 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.164 > output.fastq.164
+
+output.fastq.165: query.fastq.165 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.165 > output.fastq.165
+
+output.fastq.166: query.fastq.166 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.166 > output.fastq.166
+
+output.fastq.167: query.fastq.167 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.167 > output.fastq.167
+
+output.fastq.168: query.fastq.168 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.168 > output.fastq.168
+
+output.fastq.169: query.fastq.169 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.169 > output.fastq.169
+
+output.fastq.170: query.fastq.170 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.170 > output.fastq.170
+
+output.fastq.171: query.fastq.171 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.171 > output.fastq.171
+
+output.fastq.172: query.fastq.172 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.172 > output.fastq.172
+
+output.fastq.173: query.fastq.173 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.173 > output.fastq.173
+
+output.fastq.174: query.fastq.174 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.174 > output.fastq.174
+
+output.fastq.175: query.fastq.175 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.175 > output.fastq.175
+
+output.fastq.176: query.fastq.176 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.176 > output.fastq.176
+
+output.fastq.177: query.fastq.177 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.177 > output.fastq.177
+
+output.fastq.178: query.fastq.178 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.178 > output.fastq.178
+
+output.fastq.179: query.fastq.179 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.179 > output.fastq.179
+
+output.fastq.180: query.fastq.180 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.180 > output.fastq.180
+
+output.fastq.181: query.fastq.181 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.181 > output.fastq.181
+
+output.fastq.182: query.fastq.182 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.182 > output.fastq.182
+
+output.fastq.183: query.fastq.183 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.183 > output.fastq.183
+
+output.fastq.184: query.fastq.184 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.184 > output.fastq.184
+
+output.fastq.185: query.fastq.185 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.185 > output.fastq.185
+
+output.fastq.186: query.fastq.186 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.186 > output.fastq.186
+
+output.fastq.187: query.fastq.187 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.187 > output.fastq.187
+
+output.fastq.188: query.fastq.188 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.188 > output.fastq.188
+
+output.fastq.189: query.fastq.189 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.189 > output.fastq.189
+
+output.fastq.190: query.fastq.190 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.190 > output.fastq.190
+
+output.fastq.191: query.fastq.191 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.191 > output.fastq.191
+
+output.fastq.192: query.fastq.192 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.192 > output.fastq.192
+
+output.fastq.193: query.fastq.193 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.193 > output.fastq.193
+
+output.fastq.194: query.fastq.194 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.194 > output.fastq.194
+
+output.fastq.195: query.fastq.195 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.195 > output.fastq.195
+
+output.fastq.196: query.fastq.196 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.196 > output.fastq.196
+
+output.fastq.197: query.fastq.197 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.197 > output.fastq.197
+
+output.fastq.198: query.fastq.198 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.198 > output.fastq.198
+
+output.fastq.199: query.fastq.199 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.199 > output.fastq.199
+
+output.fastq.200: query.fastq.200 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.200 > output.fastq.200
+
+output.fastq.201: query.fastq.201 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.201 > output.fastq.201
+
+output.fastq.202: query.fastq.202 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.202 > output.fastq.202
+
+output.fastq.203: query.fastq.203 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.203 > output.fastq.203
+
+output.fastq.204: query.fastq.204 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.204 > output.fastq.204
+
+output.fastq.205: query.fastq.205 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.205 > output.fastq.205
+
+output.fastq.206: query.fastq.206 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.206 > output.fastq.206
+
+output.fastq.207: query.fastq.207 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.207 > output.fastq.207
+
+output.fastq.208: query.fastq.208 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.208 > output.fastq.208
+
+output.fastq.209: query.fastq.209 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.209 > output.fastq.209
+
+output.fastq.210: query.fastq.210 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.210 > output.fastq.210
+
+output.fastq.211: query.fastq.211 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.211 > output.fastq.211
+
+output.fastq.212: query.fastq.212 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.212 > output.fastq.212
+
+output.fastq.213: query.fastq.213 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.213 > output.fastq.213
+
+output.fastq.214: query.fastq.214 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.214 > output.fastq.214
+
+output.fastq.215: query.fastq.215 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.215 > output.fastq.215
+
+output.fastq.216: query.fastq.216 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.216 > output.fastq.216
+
+output.fastq.217: query.fastq.217 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.217 > output.fastq.217
+
+output.fastq.218: query.fastq.218 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.218 > output.fastq.218
+
+output.fastq.219: query.fastq.219 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.219 > output.fastq.219
+
+output.fastq.220: query.fastq.220 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.220 > output.fastq.220
+
+output.fastq.221: query.fastq.221 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.221 > output.fastq.221
+
+output.fastq.222: query.fastq.222 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.222 > output.fastq.222
+
+output.fastq.223: query.fastq.223 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.223 > output.fastq.223
+
+output.fastq.224: query.fastq.224 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.224 > output.fastq.224
+
+output.fastq.225: query.fastq.225 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.225 > output.fastq.225
+
+output.fastq.226: query.fastq.226 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.226 > output.fastq.226
+
+output.fastq.227: query.fastq.227 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.227 > output.fastq.227
+
+output.fastq.228: query.fastq.228 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.228 > output.fastq.228
+
+output.fastq.229: query.fastq.229 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.229 > output.fastq.229
+
+output.fastq.230: query.fastq.230 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.230 > output.fastq.230
+
+output.fastq.231: query.fastq.231 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.231 > output.fastq.231
+
+output.fastq.232: query.fastq.232 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.232 > output.fastq.232
+
+output.fastq.233: query.fastq.233 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.233 > output.fastq.233
+
+output.fastq.234: query.fastq.234 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.234 > output.fastq.234
+
+output.fastq.235: query.fastq.235 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.235 > output.fastq.235
+
+output.fastq.236: query.fastq.236 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.236 > output.fastq.236
+
+output.fastq.237: query.fastq.237 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.237 > output.fastq.237
+
+output.fastq.238: query.fastq.238 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.238 > output.fastq.238
+
+output.fastq.239: query.fastq.239 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.239 > output.fastq.239
+
+output.fastq.240: query.fastq.240 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.240 > output.fastq.240
+
+output.fastq.241: query.fastq.241 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.241 > output.fastq.241
+
+output.fastq.242: query.fastq.242 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.242 > output.fastq.242
+
+output.fastq.243: query.fastq.243 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.243 > output.fastq.243
+
+output.fastq.244: query.fastq.244 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.244 > output.fastq.244
+
+output.fastq.245: query.fastq.245 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.245 > output.fastq.245
+
+output.fastq.246: query.fastq.246 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.246 > output.fastq.246
+
+output.fastq.247: query.fastq.247 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.247 > output.fastq.247
+
+output.fastq.248: query.fastq.248 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.248 > output.fastq.248
+
+output.fastq.249: query.fastq.249 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.249 > output.fastq.249
+
+output.fastq.250: query.fastq.250 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.250 > output.fastq.250
+
+output.fastq.251: query.fastq.251 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.251 > output.fastq.251
+
+output.fastq.252: query.fastq.252 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.252 > output.fastq.252
+
+output.fastq.253: query.fastq.253 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.253 > output.fastq.253
+
+output.fastq.254: query.fastq.254 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.254 > output.fastq.254
+
+output.fastq.255: query.fastq.255 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.255 > output.fastq.255
+
+output.fastq.256: query.fastq.256 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.256 > output.fastq.256
+
+output.fastq.257: query.fastq.257 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.257 > output.fastq.257
+
+output.fastq.258: query.fastq.258 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.258 > output.fastq.258
+
+output.fastq.259: query.fastq.259 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.259 > output.fastq.259
+
+output.fastq.260: query.fastq.260 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.260 > output.fastq.260
+
+output.fastq.261: query.fastq.261 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.261 > output.fastq.261
+
+output.fastq.262: query.fastq.262 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.262 > output.fastq.262
+
+output.fastq.263: query.fastq.263 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.263 > output.fastq.263
+
+output.fastq.264: query.fastq.264 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.264 > output.fastq.264
+
+output.fastq.265: query.fastq.265 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.265 > output.fastq.265
+
+output.fastq.266: query.fastq.266 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.266 > output.fastq.266
+
+output.fastq.267: query.fastq.267 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.267 > output.fastq.267
+
+output.fastq.268: query.fastq.268 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.268 > output.fastq.268
+
+output.fastq.269: query.fastq.269 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.269 > output.fastq.269
+
+output.fastq.270: query.fastq.270 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.270 > output.fastq.270
+
+output.fastq.271: query.fastq.271 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.271 > output.fastq.271
+
+output.fastq.272: query.fastq.272 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.272 > output.fastq.272
+
+output.fastq.273: query.fastq.273 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.273 > output.fastq.273
+
+output.fastq.274: query.fastq.274 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.274 > output.fastq.274
+
+output.fastq.275: query.fastq.275 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.275 > output.fastq.275
+
+output.fastq.276: query.fastq.276 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.276 > output.fastq.276
+
+output.fastq.277: query.fastq.277 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.277 > output.fastq.277
+
+output.fastq.278: query.fastq.278 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.278 > output.fastq.278
+
+output.fastq.279: query.fastq.279 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.279 > output.fastq.279
+
+output.fastq.280: query.fastq.280 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.280 > output.fastq.280
+
+output.fastq.281: query.fastq.281 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.281 > output.fastq.281
+
+output.fastq.282: query.fastq.282 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.282 > output.fastq.282
+
+output.fastq.283: query.fastq.283 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.283 > output.fastq.283
+
+output.fastq.284: query.fastq.284 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.284 > output.fastq.284
+
+output.fastq.285: query.fastq.285 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.285 > output.fastq.285
+
+output.fastq.286: query.fastq.286 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.286 > output.fastq.286
+
+output.fastq.287: query.fastq.287 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.287 > output.fastq.287
+
+output.fastq.288: query.fastq.288 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.288 > output.fastq.288
+
+output.fastq.289: query.fastq.289 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.289 > output.fastq.289
+
+output.fastq.290: query.fastq.290 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.290 > output.fastq.290
+
+output.fastq.291: query.fastq.291 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.291 > output.fastq.291
+
+output.fastq.292: query.fastq.292 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.292 > output.fastq.292
+
+output.fastq.293: query.fastq.293 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.293 > output.fastq.293
+
+output.fastq.294: query.fastq.294 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.294 > output.fastq.294
+
+output.fastq.295: query.fastq.295 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.295 > output.fastq.295
+
+output.fastq.296: query.fastq.296 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.296 > output.fastq.296
+
+output.fastq.297: query.fastq.297 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.297 > output.fastq.297
+
+output.fastq.298: query.fastq.298 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.298 > output.fastq.298
+
+output.fastq.299: query.fastq.299 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.299 > output.fastq.299
+
+output.fastq.300: query.fastq.300 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.300 > output.fastq.300
+
+output.fastq.301: query.fastq.301 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.301 > output.fastq.301
+
+output.fastq.302: query.fastq.302 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.302 > output.fastq.302
+
+output.fastq.303: query.fastq.303 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.303 > output.fastq.303
+
+output.fastq.304: query.fastq.304 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.304 > output.fastq.304
+
+output.fastq.305: query.fastq.305 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.305 > output.fastq.305
+
+output.fastq.306: query.fastq.306 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.306 > output.fastq.306
+
+output.fastq.307: query.fastq.307 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.307 > output.fastq.307
+
+output.fastq.308: query.fastq.308 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.308 > output.fastq.308
+
+output.fastq.309: query.fastq.309 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.309 > output.fastq.309
+
+output.fastq.310: query.fastq.310 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.310 > output.fastq.310
+
+output.fastq.311: query.fastq.311 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.311 > output.fastq.311
+
+output.fastq.312: query.fastq.312 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.312 > output.fastq.312
+
+output.fastq.313: query.fastq.313 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.313 > output.fastq.313
+
+output.fastq.314: query.fastq.314 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.314 > output.fastq.314
+
+output.fastq.315: query.fastq.315 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.315 > output.fastq.315
+
+output.fastq.316: query.fastq.316 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.316 > output.fastq.316
+
+output.fastq.317: query.fastq.317 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.317 > output.fastq.317
+
+output.fastq.318: query.fastq.318 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.318 > output.fastq.318
+
+output.fastq.319: query.fastq.319 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.319 > output.fastq.319
+
+output.fastq.320: query.fastq.320 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.320 > output.fastq.320
+
+output.fastq.321: query.fastq.321 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.321 > output.fastq.321
+
+output.fastq.322: query.fastq.322 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.322 > output.fastq.322
+
+output.fastq.323: query.fastq.323 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.323 > output.fastq.323
+
+output.fastq.324: query.fastq.324 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.324 > output.fastq.324
+
+output.fastq.325: query.fastq.325 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.325 > output.fastq.325
+
+output.fastq.326: query.fastq.326 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.326 > output.fastq.326
+
+output.fastq.327: query.fastq.327 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.327 > output.fastq.327
+
+output.fastq.328: query.fastq.328 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.328 > output.fastq.328
+
+output.fastq.329: query.fastq.329 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.329 > output.fastq.329
+
+output.fastq.330: query.fastq.330 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.330 > output.fastq.330
+
+output.fastq.331: query.fastq.331 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.331 > output.fastq.331
+
+output.fastq.332: query.fastq.332 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.332 > output.fastq.332
+
+output.fastq.333: query.fastq.333 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.333 > output.fastq.333
+
+output.fastq.334: query.fastq.334 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.334 > output.fastq.334
+
+output.fastq.335: query.fastq.335 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.335 > output.fastq.335
+
+output.fastq.336: query.fastq.336 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.336 > output.fastq.336
+
+output.fastq.337: query.fastq.337 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.337 > output.fastq.337
+
+output.fastq.338: query.fastq.338 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.338 > output.fastq.338
+
+output.fastq.339: query.fastq.339 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.339 > output.fastq.339
+
+output.fastq.340: query.fastq.340 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.340 > output.fastq.340
+
+output.fastq.341: query.fastq.341 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.341 > output.fastq.341
+
+output.fastq.342: query.fastq.342 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.342 > output.fastq.342
+
+output.fastq.343: query.fastq.343 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.343 > output.fastq.343
+
+output.fastq.344: query.fastq.344 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.344 > output.fastq.344
+
+output.fastq.345: query.fastq.345 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.345 > output.fastq.345
+
+output.fastq.346: query.fastq.346 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.346 > output.fastq.346
+
+output.fastq.347: query.fastq.347 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.347 > output.fastq.347
+
+output.fastq.348: query.fastq.348 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.348 > output.fastq.348
+
+output.fastq.349: query.fastq.349 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.349 > output.fastq.349
+
+output.fastq.350: query.fastq.350 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.350 > output.fastq.350
+
+output.fastq.351: query.fastq.351 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.351 > output.fastq.351
+
+output.fastq.352: query.fastq.352 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.352 > output.fastq.352
+
+output.fastq.353: query.fastq.353 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.353 > output.fastq.353
+
+output.fastq.354: query.fastq.354 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.354 > output.fastq.354
+
+output.fastq.355: query.fastq.355 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.355 > output.fastq.355
+
+output.fastq.356: query.fastq.356 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.356 > output.fastq.356
+
+output.fastq.357: query.fastq.357 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.357 > output.fastq.357
+
+output.fastq.358: query.fastq.358 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.358 > output.fastq.358
+
+output.fastq.359: query.fastq.359 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.359 > output.fastq.359
+
+output.fastq.360: query.fastq.360 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.360 > output.fastq.360
+
+output.fastq.361: query.fastq.361 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.361 > output.fastq.361
+
+output.fastq.362: query.fastq.362 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.362 > output.fastq.362
+
+output.fastq.363: query.fastq.363 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.363 > output.fastq.363
+
+output.fastq.364: query.fastq.364 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.364 > output.fastq.364
+
+output.fastq.365: query.fastq.365 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.365 > output.fastq.365
+
+output.fastq.366: query.fastq.366 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.366 > output.fastq.366
+
+output.fastq.367: query.fastq.367 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.367 > output.fastq.367
+
+output.fastq.368: query.fastq.368 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.368 > output.fastq.368
+
+output.fastq.369: query.fastq.369 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.369 > output.fastq.369
+
+output.fastq.370: query.fastq.370 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.370 > output.fastq.370
+
+output.fastq.371: query.fastq.371 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.371 > output.fastq.371
+
+output.fastq.372: query.fastq.372 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.372 > output.fastq.372
+
+output.fastq.373: query.fastq.373 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.373 > output.fastq.373
+
+output.fastq.374: query.fastq.374 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.374 > output.fastq.374
+
+output.fastq.375: query.fastq.375 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.375 > output.fastq.375
+
+output.fastq.376: query.fastq.376 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.376 > output.fastq.376
+
+output.fastq.377: query.fastq.377 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.377 > output.fastq.377
+
+output.fastq.378: query.fastq.378 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.378 > output.fastq.378
+
+output.fastq.379: query.fastq.379 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.379 > output.fastq.379
+
+output.fastq.380: query.fastq.380 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.380 > output.fastq.380
+
+output.fastq.381: query.fastq.381 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.381 > output.fastq.381
+
+output.fastq.382: query.fastq.382 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.382 > output.fastq.382
+
+output.fastq.383: query.fastq.383 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.383 > output.fastq.383
+
+output.fastq.384: query.fastq.384 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.384 > output.fastq.384
+
+output.fastq.385: query.fastq.385 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.385 > output.fastq.385
+
+output.fastq.386: query.fastq.386 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.386 > output.fastq.386
+
+output.fastq.387: query.fastq.387 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.387 > output.fastq.387
+
+output.fastq.388: query.fastq.388 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.388 > output.fastq.388
+
+output.fastq.389: query.fastq.389 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.389 > output.fastq.389
+
+output.fastq.390: query.fastq.390 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.390 > output.fastq.390
+
+output.fastq.391: query.fastq.391 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.391 > output.fastq.391
+
+output.fastq.392: query.fastq.392 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.392 > output.fastq.392
+
+output.fastq.393: query.fastq.393 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.393 > output.fastq.393
+
+output.fastq.394: query.fastq.394 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.394 > output.fastq.394
+
+output.fastq.395: query.fastq.395 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.395 > output.fastq.395
+
+output.fastq.396: query.fastq.396 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.396 > output.fastq.396
+
+output.fastq.397: query.fastq.397 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.397 > output.fastq.397
+
+output.fastq.398: query.fastq.398 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.398 > output.fastq.398
+
+output.fastq.399: query.fastq.399 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.399 > output.fastq.399
+
+output.fastq.400: query.fastq.400 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.400 > output.fastq.400
+
+output.fastq.401: query.fastq.401 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.401 > output.fastq.401
+
+output.fastq.402: query.fastq.402 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.402 > output.fastq.402
+
+output.fastq.403: query.fastq.403 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.403 > output.fastq.403
+
+output.fastq.404: query.fastq.404 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.404 > output.fastq.404
+
+output.fastq.405: query.fastq.405 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.405 > output.fastq.405
+
+output.fastq.406: query.fastq.406 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.406 > output.fastq.406
+
+output.fastq.407: query.fastq.407 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.407 > output.fastq.407
+
+output.fastq.408: query.fastq.408 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.408 > output.fastq.408
+
+output.fastq.409: query.fastq.409 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.409 > output.fastq.409
+
+output.fastq.410: query.fastq.410 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.410 > output.fastq.410
+
+output.fastq.411: query.fastq.411 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.411 > output.fastq.411
+
+output.fastq.412: query.fastq.412 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.412 > output.fastq.412
+
+output.fastq.413: query.fastq.413 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.413 > output.fastq.413
+
+output.fastq.414: query.fastq.414 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.414 > output.fastq.414
+
+output.fastq.415: query.fastq.415 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.415 > output.fastq.415
+
+output.fastq.416: query.fastq.416 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.416 > output.fastq.416
+
+output.fastq.417: query.fastq.417 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.417 > output.fastq.417
+
+output.fastq.418: query.fastq.418 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.418 > output.fastq.418
+
+output.fastq.419: query.fastq.419 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.419 > output.fastq.419
+
+output.fastq.420: query.fastq.420 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.420 > output.fastq.420
+
+output.fastq.421: query.fastq.421 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.421 > output.fastq.421
+
+output.fastq.422: query.fastq.422 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.422 > output.fastq.422
+
+output.fastq.423: query.fastq.423 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.423 > output.fastq.423
+
+output.fastq.424: query.fastq.424 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.424 > output.fastq.424
+
+output.fastq.425: query.fastq.425 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.425 > output.fastq.425
+
+output.fastq.426: query.fastq.426 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.426 > output.fastq.426
+
+output.fastq.427: query.fastq.427 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.427 > output.fastq.427
+
+output.fastq.428: query.fastq.428 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.428 > output.fastq.428
+
+output.fastq.429: query.fastq.429 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.429 > output.fastq.429
+
+output.fastq.430: query.fastq.430 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.430 > output.fastq.430
+
+output.fastq.431: query.fastq.431 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.431 > output.fastq.431
+
+output.fastq.432: query.fastq.432 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.432 > output.fastq.432
+
+output.fastq.433: query.fastq.433 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.433 > output.fastq.433
+
+output.fastq.434: query.fastq.434 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.434 > output.fastq.434
+
+output.fastq.435: query.fastq.435 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.435 > output.fastq.435
+
+output.fastq.436: query.fastq.436 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.436 > output.fastq.436
+
+output.fastq.437: query.fastq.437 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.437 > output.fastq.437
+
+output.fastq.438: query.fastq.438 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.438 > output.fastq.438
+
+output.fastq.439: query.fastq.439 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.439 > output.fastq.439
+
+output.fastq.440: query.fastq.440 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.440 > output.fastq.440
+
+output.fastq.441: query.fastq.441 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.441 > output.fastq.441
+
+output.fastq.442: query.fastq.442 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.442 > output.fastq.442
+
+output.fastq.443: query.fastq.443 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.443 > output.fastq.443
+
+output.fastq.444: query.fastq.444 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.444 > output.fastq.444
+
+output.fastq.445: query.fastq.445 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.445 > output.fastq.445
+
+output.fastq.446: query.fastq.446 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.446 > output.fastq.446
+
+output.fastq.447: query.fastq.447 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.447 > output.fastq.447
+
+output.fastq.448: query.fastq.448 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.448 > output.fastq.448
+
+output.fastq.449: query.fastq.449 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.449 > output.fastq.449
+
+output.fastq.450: query.fastq.450 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.450 > output.fastq.450
+
+output.fastq.451: query.fastq.451 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.451 > output.fastq.451
+
+output.fastq.452: query.fastq.452 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.452 > output.fastq.452
+
+output.fastq.453: query.fastq.453 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.453 > output.fastq.453
+
+output.fastq.454: query.fastq.454 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.454 > output.fastq.454
+
+output.fastq.455: query.fastq.455 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.455 > output.fastq.455
+
+output.fastq.456: query.fastq.456 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.456 > output.fastq.456
+
+output.fastq.457: query.fastq.457 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.457 > output.fastq.457
+
+output.fastq.458: query.fastq.458 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.458 > output.fastq.458
+
+output.fastq.459: query.fastq.459 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.459 > output.fastq.459
+
+output.fastq.460: query.fastq.460 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.460 > output.fastq.460
+
+output.fastq.461: query.fastq.461 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.461 > output.fastq.461
+
+output.fastq.462: query.fastq.462 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.462 > output.fastq.462
+
+output.fastq.463: query.fastq.463 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.463 > output.fastq.463
+
+output.fastq.464: query.fastq.464 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.464 > output.fastq.464
+
+output.fastq.465: query.fastq.465 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.465 > output.fastq.465
+
+output.fastq.466: query.fastq.466 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.466 > output.fastq.466
+
+output.fastq.467: query.fastq.467 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.467 > output.fastq.467
+
+output.fastq.468: query.fastq.468 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.468 > output.fastq.468
+
+output.fastq.469: query.fastq.469 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.469 > output.fastq.469
+
+output.fastq.470: query.fastq.470 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.470 > output.fastq.470
+
+output.fastq.471: query.fastq.471 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.471 > output.fastq.471
+
+output.fastq.472: query.fastq.472 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.472 > output.fastq.472
+
+output.fastq.473: query.fastq.473 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.473 > output.fastq.473
+
+output.fastq.474: query.fastq.474 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.474 > output.fastq.474
+
+output.fastq.475: query.fastq.475 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.475 > output.fastq.475
+
+output.fastq.476: query.fastq.476 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.476 > output.fastq.476
+
+output.fastq.477: query.fastq.477 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.477 > output.fastq.477
+
+output.fastq.478: query.fastq.478 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.478 > output.fastq.478
+
+output.fastq.479: query.fastq.479 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.479 > output.fastq.479
+
+output.fastq.480: query.fastq.480 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.480 > output.fastq.480
+
+output.fastq.481: query.fastq.481 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.481 > output.fastq.481
+
+output.fastq.482: query.fastq.482 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.482 > output.fastq.482
+
+output.fastq.483: query.fastq.483 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.483 > output.fastq.483
+
+output.fastq.484: query.fastq.484 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.484 > output.fastq.484
+
+output.fastq.485: query.fastq.485 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.485 > output.fastq.485
+
+output.fastq.486: query.fastq.486 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.486 > output.fastq.486
+
+output.fastq.487: query.fastq.487 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.487 > output.fastq.487
+
+output.fastq.488: query.fastq.488 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.488 > output.fastq.488
+
+output.fastq.489: query.fastq.489 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.489 > output.fastq.489
+
+output.fastq.490: query.fastq.490 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.490 > output.fastq.490
+
+output.fastq.491: query.fastq.491 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.491 > output.fastq.491
+
+output.fastq.492: query.fastq.492 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.492 > output.fastq.492
+
+output.fastq.493: query.fastq.493 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.493 > output.fastq.493
+
+output.fastq.494: query.fastq.494 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.494 > output.fastq.494
+
+output.fastq.495: query.fastq.495 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.495 > output.fastq.495
+
+output.fastq.496: query.fastq.496 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.496 > output.fastq.496
+
+output.fastq.497: query.fastq.497 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.497 > output.fastq.497
+
+output.fastq.498: query.fastq.498 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.498 > output.fastq.498
+
+output.fastq.499: query.fastq.499 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.499 > output.fastq.499
+
+output.fastq.500: query.fastq.500 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.500 > output.fastq.500
+
+output.fastq.501: query.fastq.501 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.501 > output.fastq.501
+
+output.fastq.502: query.fastq.502 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.502 > output.fastq.502
+
+output.fastq.503: query.fastq.503 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.503 > output.fastq.503
+
+output.fastq.504: query.fastq.504 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.504 > output.fastq.504
+
+output.fastq.505: query.fastq.505 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.505 > output.fastq.505
+
+output.fastq.506: query.fastq.506 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.506 > output.fastq.506
+
+output.fastq.507: query.fastq.507 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.507 > output.fastq.507
+
+output.fastq.508: query.fastq.508 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.508 > output.fastq.508
+
+output.fastq.509: query.fastq.509 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.509 > output.fastq.509
+
+output.fastq.510: query.fastq.510 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.510 > output.fastq.510
+
+output.fastq.511: query.fastq.511 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.511 > output.fastq.511
+
+output.fastq.512: query.fastq.512 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.512 > output.fastq.512
+
+output.fastq.513: query.fastq.513 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.513 > output.fastq.513
+
+output.fastq.514: query.fastq.514 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.514 > output.fastq.514
+
+output.fastq.515: query.fastq.515 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.515 > output.fastq.515
+
+output.fastq.516: query.fastq.516 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.516 > output.fastq.516
+
+output.fastq.517: query.fastq.517 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.517 > output.fastq.517
+
+output.fastq.518: query.fastq.518 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.518 > output.fastq.518
+
+output.fastq.519: query.fastq.519 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.519 > output.fastq.519
+
+output.fastq.520: query.fastq.520 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.520 > output.fastq.520
+
+output.fastq.521: query.fastq.521 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.521 > output.fastq.521
+
+output.fastq.522: query.fastq.522 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.522 > output.fastq.522
+
+output.fastq.523: query.fastq.523 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.523 > output.fastq.523
+
+output.fastq.524: query.fastq.524 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.524 > output.fastq.524
+
+output.fastq.525: query.fastq.525 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.525 > output.fastq.525
+
+output.fastq.526: query.fastq.526 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.526 > output.fastq.526
+
+output.fastq.527: query.fastq.527 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.527 > output.fastq.527
+
+output.fastq.528: query.fastq.528 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.528 > output.fastq.528
+
+output.fastq.529: query.fastq.529 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.529 > output.fastq.529
+
+output.fastq.530: query.fastq.530 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.530 > output.fastq.530
+
+output.fastq.531: query.fastq.531 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.531 > output.fastq.531
+
+output.fastq.532: query.fastq.532 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.532 > output.fastq.532
+
+output.fastq.533: query.fastq.533 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.533 > output.fastq.533
+
+output.fastq.534: query.fastq.534 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.534 > output.fastq.534
+
+output.fastq.535: query.fastq.535 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.535 > output.fastq.535
+
+output.fastq.536: query.fastq.536 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.536 > output.fastq.536
+
+output.fastq.537: query.fastq.537 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.537 > output.fastq.537
+
+output.fastq.538: query.fastq.538 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.538 > output.fastq.538
+
+output.fastq.539: query.fastq.539 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.539 > output.fastq.539
+
+output.fastq.540: query.fastq.540 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.540 > output.fastq.540
+
+output.fastq.541: query.fastq.541 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.541 > output.fastq.541
+
+output.fastq.542: query.fastq.542 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.542 > output.fastq.542
+
+output.fastq.543: query.fastq.543 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.543 > output.fastq.543
+
+output.fastq.544: query.fastq.544 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.544 > output.fastq.544
+
+output.fastq.545: query.fastq.545 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.545 > output.fastq.545
+
+output.fastq.546: query.fastq.546 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.546 > output.fastq.546
+
+output.fastq.547: query.fastq.547 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.547 > output.fastq.547
+
+output.fastq.548: query.fastq.548 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.548 > output.fastq.548
+
+output.fastq.549: query.fastq.549 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.549 > output.fastq.549
+
+output.fastq.550: query.fastq.550 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.550 > output.fastq.550
+
+output.fastq.551: query.fastq.551 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.551 > output.fastq.551
+
+output.fastq.552: query.fastq.552 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.552 > output.fastq.552
+
+output.fastq.553: query.fastq.553 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.553 > output.fastq.553
+
+output.fastq.554: query.fastq.554 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.554 > output.fastq.554
+
+output.fastq.555: query.fastq.555 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.555 > output.fastq.555
+
+output.fastq.556: query.fastq.556 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.556 > output.fastq.556
+
+output.fastq.557: query.fastq.557 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.557 > output.fastq.557
+
+output.fastq.558: query.fastq.558 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.558 > output.fastq.558
+
+output.fastq.559: query.fastq.559 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.559 > output.fastq.559
+
+output.fastq.560: query.fastq.560 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.560 > output.fastq.560
+
+output.fastq.561: query.fastq.561 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.561 > output.fastq.561
+
+output.fastq.562: query.fastq.562 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.562 > output.fastq.562
+
+output.fastq.563: query.fastq.563 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.563 > output.fastq.563
+
+output.fastq.564: query.fastq.564 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.564 > output.fastq.564
+
+output.fastq.565: query.fastq.565 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.565 > output.fastq.565
+
+output.fastq.566: query.fastq.566 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.566 > output.fastq.566
+
+output.fastq.567: query.fastq.567 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.567 > output.fastq.567
+
+output.fastq.568: query.fastq.568 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.568 > output.fastq.568
+
+output.fastq.569: query.fastq.569 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.569 > output.fastq.569
+
+output.fastq.570: query.fastq.570 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.570 > output.fastq.570
+
+output.fastq.571: query.fastq.571 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.571 > output.fastq.571
+
+output.fastq.572: query.fastq.572 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.572 > output.fastq.572
+
+output.fastq.573: query.fastq.573 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.573 > output.fastq.573
+
+output.fastq.574: query.fastq.574 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.574 > output.fastq.574
+
+output.fastq.575: query.fastq.575 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.575 > output.fastq.575
+
+output.fastq.576: query.fastq.576 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.576 > output.fastq.576
+
+output.fastq.577: query.fastq.577 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.577 > output.fastq.577
+
+output.fastq.578: query.fastq.578 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.578 > output.fastq.578
+
+output.fastq.579: query.fastq.579 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.579 > output.fastq.579
+
+output.fastq.580: query.fastq.580 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.580 > output.fastq.580
+
+output.fastq.581: query.fastq.581 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.581 > output.fastq.581
+
+output.fastq.582: query.fastq.582 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.582 > output.fastq.582
+
+output.fastq.583: query.fastq.583 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.583 > output.fastq.583
+
+output.fastq.584: query.fastq.584 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.584 > output.fastq.584
+
+output.fastq.585: query.fastq.585 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.585 > output.fastq.585
+
+output.fastq.586: query.fastq.586 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.586 > output.fastq.586
+
+output.fastq.587: query.fastq.587 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.587 > output.fastq.587
+
+output.fastq.588: query.fastq.588 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.588 > output.fastq.588
+
+output.fastq.589: query.fastq.589 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.589 > output.fastq.589
+
+output.fastq.590: query.fastq.590 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.590 > output.fastq.590
+
+output.fastq.591: query.fastq.591 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.591 > output.fastq.591
+
+output.fastq.592: query.fastq.592 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.592 > output.fastq.592
+
+output.fastq.593: query.fastq.593 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.593 > output.fastq.593
+
+output.fastq.594: query.fastq.594 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.594 > output.fastq.594
+
+output.fastq.595: query.fastq.595 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.595 > output.fastq.595
+
+output.fastq.596: query.fastq.596 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.596 > output.fastq.596
+
+output.fastq.597: query.fastq.597 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.597 > output.fastq.597
+
+output.fastq.598: query.fastq.598 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.598 > output.fastq.598
+
+output.fastq.599: query.fastq.599 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.599 > output.fastq.599
+
+output.fastq.600: query.fastq.600 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.600 > output.fastq.600
+
+output.fastq.601: query.fastq.601 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.601 > output.fastq.601
+
+output.fastq.602: query.fastq.602 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.602 > output.fastq.602
+
+output.fastq.603: query.fastq.603 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.603 > output.fastq.603
+
+output.fastq.604: query.fastq.604 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.604 > output.fastq.604
+
+output.fastq.605: query.fastq.605 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.605 > output.fastq.605
+
+output.fastq.606: query.fastq.606 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.606 > output.fastq.606
+
+output.fastq.607: query.fastq.607 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.607 > output.fastq.607
+
+output.fastq.608: query.fastq.608 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.608 > output.fastq.608
+
+output.fastq.609: query.fastq.609 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.609 > output.fastq.609
+
+output.fastq.610: query.fastq.610 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.610 > output.fastq.610
+
+output.fastq.611: query.fastq.611 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.611 > output.fastq.611
+
+output.fastq.612: query.fastq.612 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.612 > output.fastq.612
+
+output.fastq.613: query.fastq.613 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.613 > output.fastq.613
+
+output.fastq.614: query.fastq.614 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.614 > output.fastq.614
+
+output.fastq.615: query.fastq.615 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.615 > output.fastq.615
+
+output.fastq.616: query.fastq.616 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.616 > output.fastq.616
+
+output.fastq.617: query.fastq.617 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.617 > output.fastq.617
+
+output.fastq.618: query.fastq.618 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.618 > output.fastq.618
+
+output.fastq.619: query.fastq.619 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.619 > output.fastq.619
+
+output.fastq.620: query.fastq.620 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.620 > output.fastq.620
+
+output.fastq.621: query.fastq.621 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.621 > output.fastq.621
+
+output.fastq.622: query.fastq.622 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.622 > output.fastq.622
+
+output.fastq.623: query.fastq.623 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.623 > output.fastq.623
+
+output.fastq.624: query.fastq.624 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.624 > output.fastq.624
+
+output.fastq.625: query.fastq.625 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.625 > output.fastq.625
+
+output.fastq.626: query.fastq.626 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.626 > output.fastq.626
+
+output.fastq.627: query.fastq.627 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.627 > output.fastq.627
+
+output.fastq.628: query.fastq.628 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.628 > output.fastq.628
+
+output.fastq.629: query.fastq.629 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.629 > output.fastq.629
+
+output.fastq.630: query.fastq.630 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.630 > output.fastq.630
+
+output.fastq.631: query.fastq.631 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.631 > output.fastq.631
+
+output.fastq.632: query.fastq.632 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.632 > output.fastq.632
+
+output.fastq.633: query.fastq.633 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.633 > output.fastq.633
+
+output.fastq.634: query.fastq.634 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.634 > output.fastq.634
+
+output.fastq.635: query.fastq.635 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.635 > output.fastq.635
+
+output.fastq.636: query.fastq.636 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.636 > output.fastq.636
+
+output.fastq.637: query.fastq.637 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.637 > output.fastq.637
+
+output.fastq.638: query.fastq.638 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.638 > output.fastq.638
+
+output.fastq.639: query.fastq.639 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.639 > output.fastq.639
+
+output.fastq.640: query.fastq.640 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.640 > output.fastq.640
+
+output.fastq.641: query.fastq.641 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.641 > output.fastq.641
+
+output.fastq.642: query.fastq.642 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.642 > output.fastq.642
+
+output.fastq.643: query.fastq.643 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.643 > output.fastq.643
+
+output.fastq.644: query.fastq.644 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.644 > output.fastq.644
+
+output.fastq.645: query.fastq.645 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.645 > output.fastq.645
+
+output.fastq.646: query.fastq.646 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.646 > output.fastq.646
+
+output.fastq.647: query.fastq.647 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.647 > output.fastq.647
+
+output.fastq.648: query.fastq.648 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.648 > output.fastq.648
+
+output.fastq.649: query.fastq.649 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.649 > output.fastq.649
+
+output.fastq.650: query.fastq.650 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.650 > output.fastq.650
+
+output.fastq.651: query.fastq.651 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.651 > output.fastq.651
+
+output.fastq.652: query.fastq.652 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.652 > output.fastq.652
+
+output.fastq.653: query.fastq.653 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.653 > output.fastq.653
+
+output.fastq.654: query.fastq.654 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.654 > output.fastq.654
+
+output.fastq.655: query.fastq.655 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.655 > output.fastq.655
+
+output.fastq.656: query.fastq.656 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.656 > output.fastq.656
+
+output.fastq.657: query.fastq.657 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.657 > output.fastq.657
+
+output.fastq.658: query.fastq.658 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.658 > output.fastq.658
+
+output.fastq.659: query.fastq.659 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.659 > output.fastq.659
+
+output.fastq.660: query.fastq.660 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.660 > output.fastq.660
+
+output.fastq.661: query.fastq.661 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.661 > output.fastq.661
+
+output.fastq.662: query.fastq.662 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.662 > output.fastq.662
+
+output.fastq.663: query.fastq.663 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.663 > output.fastq.663
+
+output.fastq.664: query.fastq.664 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.664 > output.fastq.664
+
+output.fastq.665: query.fastq.665 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.665 > output.fastq.665
+
+output.fastq.666: query.fastq.666 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.666 > output.fastq.666
+
+output.fastq.667: query.fastq.667 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.667 > output.fastq.667
+
+output.fastq.668: query.fastq.668 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.668 > output.fastq.668
+
+output.fastq.669: query.fastq.669 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.669 > output.fastq.669
+
+output.fastq.670: query.fastq.670 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.670 > output.fastq.670
+
+output.fastq.671: query.fastq.671 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.671 > output.fastq.671
+
+output.fastq.672: query.fastq.672 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.672 > output.fastq.672
+
+output.fastq.673: query.fastq.673 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.673 > output.fastq.673
+
+output.fastq.674: query.fastq.674 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.674 > output.fastq.674
+
+output.fastq.675: query.fastq.675 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.675 > output.fastq.675
+
+output.fastq.676: query.fastq.676 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.676 > output.fastq.676
+
+output.fastq.677: query.fastq.677 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.677 > output.fastq.677
+
+output.fastq.678: query.fastq.678 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.678 > output.fastq.678
+
+output.fastq.679: query.fastq.679 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.679 > output.fastq.679
+
+output.fastq.680: query.fastq.680 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.680 > output.fastq.680
+
+output.fastq.681: query.fastq.681 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.681 > output.fastq.681
+
+output.fastq.682: query.fastq.682 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.682 > output.fastq.682
+
+output.fastq.683: query.fastq.683 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.683 > output.fastq.683
+
+output.fastq.684: query.fastq.684 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.684 > output.fastq.684
+
+output.fastq.685: query.fastq.685 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.685 > output.fastq.685
+
+output.fastq.686: query.fastq.686 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.686 > output.fastq.686
+
+output.fastq.687: query.fastq.687 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.687 > output.fastq.687
+
+output.fastq.688: query.fastq.688 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.688 > output.fastq.688
+
+output.fastq.689: query.fastq.689 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.689 > output.fastq.689
+
+output.fastq.690: query.fastq.690 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.690 > output.fastq.690
+
+output.fastq.691: query.fastq.691 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.691 > output.fastq.691
+
+output.fastq.692: query.fastq.692 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.692 > output.fastq.692
+
+output.fastq.693: query.fastq.693 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.693 > output.fastq.693
+
+output.fastq.694: query.fastq.694 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.694 > output.fastq.694
+
+output.fastq.695: query.fastq.695 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.695 > output.fastq.695
+
+output.fastq.696: query.fastq.696 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.696 > output.fastq.696
+
+output.fastq.697: query.fastq.697 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.697 > output.fastq.697
+
+output.fastq.698: query.fastq.698 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.698 > output.fastq.698
+
+output.fastq.699: query.fastq.699 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.699 > output.fastq.699
+
+output.fastq.700: query.fastq.700 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.700 > output.fastq.700
+
+output.fastq.701: query.fastq.701 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.701 > output.fastq.701
+
+output.fastq.702: query.fastq.702 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.702 > output.fastq.702
+
+output.fastq.703: query.fastq.703 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.703 > output.fastq.703
+
+output.fastq.704: query.fastq.704 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.704 > output.fastq.704
+
+output.fastq.705: query.fastq.705 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.705 > output.fastq.705
+
+output.fastq.706: query.fastq.706 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.706 > output.fastq.706
+
+output.fastq.707: query.fastq.707 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.707 > output.fastq.707
+
+output.fastq.708: query.fastq.708 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.708 > output.fastq.708
+
+output.fastq.709: query.fastq.709 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.709 > output.fastq.709
+
+output.fastq.710: query.fastq.710 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.710 > output.fastq.710
+
+output.fastq.711: query.fastq.711 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.711 > output.fastq.711
+
+output.fastq.712: query.fastq.712 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.712 > output.fastq.712
+
+output.fastq.713: query.fastq.713 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.713 > output.fastq.713
+
+output.fastq.714: query.fastq.714 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.714 > output.fastq.714
+
+output.fastq.715: query.fastq.715 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.715 > output.fastq.715
+
+output.fastq.716: query.fastq.716 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.716 > output.fastq.716
+
+output.fastq.717: query.fastq.717 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.717 > output.fastq.717
+
+output.fastq.718: query.fastq.718 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.718 > output.fastq.718
+
+output.fastq.719: query.fastq.719 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.719 > output.fastq.719
+
+output.fastq.720: query.fastq.720 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.720 > output.fastq.720
+
+output.fastq.721: query.fastq.721 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.721 > output.fastq.721
+
+output.fastq.722: query.fastq.722 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.722 > output.fastq.722
+
+output.fastq.723: query.fastq.723 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.723 > output.fastq.723
+
+output.fastq.724: query.fastq.724 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.724 > output.fastq.724
+
+output.fastq.725: query.fastq.725 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.725 > output.fastq.725
+
+output.fastq.726: query.fastq.726 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.726 > output.fastq.726
+
+output.fastq.727: query.fastq.727 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.727 > output.fastq.727
+
+output.fastq.728: query.fastq.728 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.728 > output.fastq.728
+
+output.fastq.729: query.fastq.729 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.729 > output.fastq.729
+
+output.fastq.730: query.fastq.730 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.730 > output.fastq.730
+
+output.fastq.731: query.fastq.731 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.731 > output.fastq.731
+
+output.fastq.732: query.fastq.732 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.732 > output.fastq.732
+
+output.fastq.733: query.fastq.733 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.733 > output.fastq.733
+
+output.fastq.734: query.fastq.734 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.734 > output.fastq.734
+
+output.fastq.735: query.fastq.735 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.735 > output.fastq.735
+
+output.fastq.736: query.fastq.736 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.736 > output.fastq.736
+
+output.fastq.737: query.fastq.737 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.737 > output.fastq.737
+
+output.fastq.738: query.fastq.738 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.738 > output.fastq.738
+
+output.fastq.739: query.fastq.739 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.739 > output.fastq.739
+
+output.fastq.740: query.fastq.740 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.740 > output.fastq.740
+
+output.fastq.741: query.fastq.741 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.741 > output.fastq.741
+
+output.fastq.742: query.fastq.742 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.742 > output.fastq.742
+
+output.fastq.743: query.fastq.743 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.743 > output.fastq.743
+
+output.fastq.744: query.fastq.744 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.744 > output.fastq.744
+
+output.fastq.745: query.fastq.745 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.745 > output.fastq.745
+
+output.fastq.746: query.fastq.746 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.746 > output.fastq.746
+
+output.fastq.747: query.fastq.747 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.747 > output.fastq.747
+
+output.fastq.748: query.fastq.748 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.748 > output.fastq.748
+
+output.fastq.749: query.fastq.749 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.749 > output.fastq.749
+
+output.fastq.750: query.fastq.750 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.750 > output.fastq.750
+
+output.fastq.751: query.fastq.751 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.751 > output.fastq.751
+
+output.fastq.752: query.fastq.752 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.752 > output.fastq.752
+
+output.fastq.753: query.fastq.753 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.753 > output.fastq.753
+
+output.fastq.754: query.fastq.754 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.754 > output.fastq.754
+
+output.fastq.755: query.fastq.755 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.755 > output.fastq.755
+
+output.fastq.756: query.fastq.756 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.756 > output.fastq.756
+
+output.fastq.757: query.fastq.757 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.757 > output.fastq.757
+
+output.fastq.758: query.fastq.758 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.758 > output.fastq.758
+
+output.fastq.759: query.fastq.759 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.759 > output.fastq.759
+
+output.fastq.760: query.fastq.760 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.760 > output.fastq.760
+
+output.fastq.761: query.fastq.761 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.761 > output.fastq.761
+
+output.fastq.762: query.fastq.762 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.762 > output.fastq.762
+
+output.fastq.763: query.fastq.763 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.763 > output.fastq.763
+
+output.fastq.764: query.fastq.764 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.764 > output.fastq.764
+
+output.fastq.765: query.fastq.765 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.765 > output.fastq.765
+
+output.fastq.766: query.fastq.766 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.766 > output.fastq.766
+
+output.fastq.767: query.fastq.767 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.767 > output.fastq.767
+
+output.fastq.768: query.fastq.768 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.768 > output.fastq.768
+
+output.fastq.769: query.fastq.769 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.769 > output.fastq.769
+
+output.fastq.770: query.fastq.770 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.770 > output.fastq.770
+
+output.fastq.771: query.fastq.771 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.771 > output.fastq.771
+
+output.fastq.772: query.fastq.772 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.772 > output.fastq.772
+
+output.fastq.773: query.fastq.773 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.773 > output.fastq.773
+
+output.fastq.774: query.fastq.774 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.774 > output.fastq.774
+
+output.fastq.775: query.fastq.775 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.775 > output.fastq.775
+
+output.fastq.776: query.fastq.776 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.776 > output.fastq.776
+
+output.fastq.777: query.fastq.777 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.777 > output.fastq.777
+
+output.fastq.778: query.fastq.778 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.778 > output.fastq.778
+
+output.fastq.779: query.fastq.779 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.779 > output.fastq.779
+
+output.fastq.780: query.fastq.780 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.780 > output.fastq.780
+
+output.fastq.781: query.fastq.781 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.781 > output.fastq.781
+
+output.fastq.782: query.fastq.782 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.782 > output.fastq.782
+
+output.fastq.783: query.fastq.783 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.783 > output.fastq.783
+
+output.fastq.784: query.fastq.784 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.784 > output.fastq.784
+
+output.fastq.785: query.fastq.785 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.785 > output.fastq.785
+
+output.fastq.786: query.fastq.786 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.786 > output.fastq.786
+
+output.fastq.787: query.fastq.787 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.787 > output.fastq.787
+
+output.fastq.788: query.fastq.788 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.788 > output.fastq.788
+
+output.fastq.789: query.fastq.789 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.789 > output.fastq.789
+
+output.fastq.790: query.fastq.790 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.790 > output.fastq.790
+
+output.fastq.791: query.fastq.791 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.791 > output.fastq.791
+
+output.fastq.792: query.fastq.792 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.792 > output.fastq.792
+
+output.fastq.793: query.fastq.793 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.793 > output.fastq.793
+
+output.fastq.794: query.fastq.794 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.794 > output.fastq.794
+
+output.fastq.795: query.fastq.795 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.795 > output.fastq.795
+
+output.fastq.796: query.fastq.796 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.796 > output.fastq.796
+
+output.fastq.797: query.fastq.797 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.797 > output.fastq.797
+
+output.fastq.798: query.fastq.798 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.798 > output.fastq.798
+
+output.fastq.799: query.fastq.799 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.799 > output.fastq.799
+
+output.fastq.800: query.fastq.800 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.800 > output.fastq.800
+
+output.fastq.801: query.fastq.801 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.801 > output.fastq.801
+
+output.fastq.802: query.fastq.802 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.802 > output.fastq.802
+
+output.fastq.803: query.fastq.803 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.803 > output.fastq.803
+
+output.fastq.804: query.fastq.804 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.804 > output.fastq.804
+
+output.fastq.805: query.fastq.805 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.805 > output.fastq.805
+
+output.fastq.806: query.fastq.806 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.806 > output.fastq.806
+
+output.fastq.807: query.fastq.807 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.807 > output.fastq.807
+
+output.fastq.808: query.fastq.808 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.808 > output.fastq.808
+
+output.fastq.809: query.fastq.809 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.809 > output.fastq.809
+
+output.fastq.810: query.fastq.810 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.810 > output.fastq.810
+
+output.fastq.811: query.fastq.811 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.811 > output.fastq.811
+
+output.fastq.812: query.fastq.812 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.812 > output.fastq.812
+
+output.fastq.813: query.fastq.813 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.813 > output.fastq.813
+
+output.fastq.814: query.fastq.814 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.814 > output.fastq.814
+
+output.fastq.815: query.fastq.815 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.815 > output.fastq.815
+
+output.fastq.816: query.fastq.816 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.816 > output.fastq.816
+
+output.fastq.817: query.fastq.817 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.817 > output.fastq.817
+
+output.fastq.818: query.fastq.818 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.818 > output.fastq.818
+
+output.fastq.819: query.fastq.819 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.819 > output.fastq.819
+
+output.fastq.820: query.fastq.820 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.820 > output.fastq.820
+
+output.fastq.821: query.fastq.821 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.821 > output.fastq.821
+
+output.fastq.822: query.fastq.822 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.822 > output.fastq.822
+
+output.fastq.823: query.fastq.823 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.823 > output.fastq.823
+
+output.fastq.824: query.fastq.824 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.824 > output.fastq.824
+
+output.fastq.825: query.fastq.825 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.825 > output.fastq.825
+
+output.fastq.826: query.fastq.826 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.826 > output.fastq.826
+
+output.fastq.827: query.fastq.827 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.827 > output.fastq.827
+
+output.fastq.828: query.fastq.828 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.828 > output.fastq.828
+
+output.fastq.829: query.fastq.829 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.829 > output.fastq.829
+
+output.fastq.830: query.fastq.830 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.830 > output.fastq.830
+
+output.fastq.831: query.fastq.831 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.831 > output.fastq.831
+
+output.fastq.832: query.fastq.832 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.832 > output.fastq.832
+
+output.fastq.833: query.fastq.833 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.833 > output.fastq.833
+
+output.fastq.834: query.fastq.834 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.834 > output.fastq.834
+
+output.fastq.835: query.fastq.835 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.835 > output.fastq.835
+
+output.fastq.836: query.fastq.836 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.836 > output.fastq.836
+
+output.fastq.837: query.fastq.837 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.837 > output.fastq.837
+
+output.fastq.838: query.fastq.838 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.838 > output.fastq.838
+
+output.fastq.839: query.fastq.839 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.839 > output.fastq.839
+
+output.fastq.840: query.fastq.840 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.840 > output.fastq.840
+
+output.fastq.841: query.fastq.841 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.841 > output.fastq.841
+
+output.fastq.842: query.fastq.842 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.842 > output.fastq.842
+
+output.fastq.843: query.fastq.843 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.843 > output.fastq.843
+
+output.fastq.844: query.fastq.844 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.844 > output.fastq.844
+
+output.fastq.845: query.fastq.845 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.845 > output.fastq.845
+
+output.fastq.846: query.fastq.846 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.846 > output.fastq.846
+
+output.fastq.847: query.fastq.847 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.847 > output.fastq.847
+
+output.fastq.848: query.fastq.848 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.848 > output.fastq.848
+
+output.fastq.849: query.fastq.849 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.849 > output.fastq.849
+
+output.fastq.850: query.fastq.850 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.850 > output.fastq.850
+
+output.fastq.851: query.fastq.851 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.851 > output.fastq.851
+
+output.fastq.852: query.fastq.852 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.852 > output.fastq.852
+
+output.fastq.853: query.fastq.853 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.853 > output.fastq.853
+
+output.fastq.854: query.fastq.854 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.854 > output.fastq.854
+
+output.fastq.855: query.fastq.855 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.855 > output.fastq.855
+
+output.fastq.856: query.fastq.856 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.856 > output.fastq.856
+
+output.fastq.857: query.fastq.857 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.857 > output.fastq.857
+
+output.fastq.858: query.fastq.858 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.858 > output.fastq.858
+
+output.fastq.859: query.fastq.859 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.859 > output.fastq.859
+
+output.fastq.860: query.fastq.860 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.860 > output.fastq.860
+
+output.fastq.861: query.fastq.861 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.861 > output.fastq.861
+
+output.fastq.862: query.fastq.862 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.862 > output.fastq.862
+
+output.fastq.863: query.fastq.863 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.863 > output.fastq.863
+
+output.fastq.864: query.fastq.864 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.864 > output.fastq.864
+
+output.fastq.865: query.fastq.865 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.865 > output.fastq.865
+
+output.fastq.866: query.fastq.866 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.866 > output.fastq.866
+
+output.fastq.867: query.fastq.867 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.867 > output.fastq.867
+
+output.fastq.868: query.fastq.868 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.868 > output.fastq.868
+
+output.fastq.869: query.fastq.869 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.869 > output.fastq.869
+
+output.fastq.870: query.fastq.870 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.870 > output.fastq.870
+
+output.fastq.871: query.fastq.871 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.871 > output.fastq.871
+
+output.fastq.872: query.fastq.872 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.872 > output.fastq.872
+
+output.fastq.873: query.fastq.873 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.873 > output.fastq.873
+
+output.fastq.874: query.fastq.874 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.874 > output.fastq.874
+
+output.fastq.875: query.fastq.875 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.875 > output.fastq.875
+
+output.fastq.876: query.fastq.876 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.876 > output.fastq.876
+
+output.fastq.877: query.fastq.877 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.877 > output.fastq.877
+
+output.fastq.878: query.fastq.878 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.878 > output.fastq.878
+
+output.fastq.879: query.fastq.879 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.879 > output.fastq.879
+
+output.fastq.880: query.fastq.880 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.880 > output.fastq.880
+
+output.fastq.881: query.fastq.881 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.881 > output.fastq.881
+
+output.fastq.882: query.fastq.882 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.882 > output.fastq.882
+
+output.fastq.883: query.fastq.883 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.883 > output.fastq.883
+
+output.fastq.884: query.fastq.884 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.884 > output.fastq.884
+
+output.fastq.885: query.fastq.885 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.885 > output.fastq.885
+
+output.fastq.886: query.fastq.886 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.886 > output.fastq.886
+
+output.fastq.887: query.fastq.887 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.887 > output.fastq.887
+
+output.fastq.888: query.fastq.888 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.888 > output.fastq.888
+
+output.fastq.889: query.fastq.889 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.889 > output.fastq.889
+
+output.fastq.890: query.fastq.890 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.890 > output.fastq.890
+
+output.fastq.891: query.fastq.891 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.891 > output.fastq.891
+
+output.fastq.892: query.fastq.892 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.892 > output.fastq.892
+
+output.fastq.893: query.fastq.893 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.893 > output.fastq.893
+
+output.fastq.894: query.fastq.894 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.894 > output.fastq.894
+
+output.fastq.895: query.fastq.895 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.895 > output.fastq.895
+
+output.fastq.896: query.fastq.896 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.896 > output.fastq.896
+
+output.fastq.897: query.fastq.897 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.897 > output.fastq.897
+
+output.fastq.898: query.fastq.898 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.898 > output.fastq.898
+
+output.fastq.899: query.fastq.899 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.899 > output.fastq.899
+
+output.fastq.900: query.fastq.900 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.900 > output.fastq.900
+
+output.fastq.901: query.fastq.901 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.901 > output.fastq.901
+
+output.fastq.902: query.fastq.902 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.902 > output.fastq.902
+
+output.fastq.903: query.fastq.903 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.903 > output.fastq.903
+
+output.fastq.904: query.fastq.904 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.904 > output.fastq.904
+
+output.fastq.905: query.fastq.905 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.905 > output.fastq.905
+
+output.fastq.906: query.fastq.906 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.906 > output.fastq.906
+
+output.fastq.907: query.fastq.907 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.907 > output.fastq.907
+
+output.fastq.908: query.fastq.908 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.908 > output.fastq.908
+
+output.fastq.909: query.fastq.909 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.909 > output.fastq.909
+
+output.fastq.910: query.fastq.910 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.910 > output.fastq.910
+
+output.fastq.911: query.fastq.911 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.911 > output.fastq.911
+
+output.fastq.912: query.fastq.912 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.912 > output.fastq.912
+
+output.fastq.913: query.fastq.913 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.913 > output.fastq.913
+
+output.fastq.914: query.fastq.914 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.914 > output.fastq.914
+
+output.fastq.915: query.fastq.915 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.915 > output.fastq.915
+
+output.fastq.916: query.fastq.916 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.916 > output.fastq.916
+
+output.fastq.917: query.fastq.917 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.917 > output.fastq.917
+
+output.fastq.918: query.fastq.918 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.918 > output.fastq.918
+
+output.fastq.919: query.fastq.919 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.919 > output.fastq.919
+
+output.fastq.920: query.fastq.920 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.920 > output.fastq.920
+
+output.fastq.921: query.fastq.921 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.921 > output.fastq.921
+
+output.fastq.922: query.fastq.922 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.922 > output.fastq.922
+
+output.fastq.923: query.fastq.923 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.923 > output.fastq.923
+
+output.fastq.924: query.fastq.924 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.924 > output.fastq.924
+
+output.fastq.925: query.fastq.925 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.925 > output.fastq.925
+
+output.fastq.926: query.fastq.926 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.926 > output.fastq.926
+
+output.fastq.927: query.fastq.927 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.927 > output.fastq.927
+
+output.fastq.928: query.fastq.928 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.928 > output.fastq.928
+
+output.fastq.929: query.fastq.929 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.929 > output.fastq.929
+
+output.fastq.930: query.fastq.930 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.930 > output.fastq.930
+
+output.fastq.931: query.fastq.931 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.931 > output.fastq.931
+
+output.fastq.932: query.fastq.932 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.932 > output.fastq.932
+
+output.fastq.933: query.fastq.933 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.933 > output.fastq.933
+
+output.fastq.934: query.fastq.934 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.934 > output.fastq.934
+
+output.fastq.935: query.fastq.935 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.935 > output.fastq.935
+
+output.fastq.936: query.fastq.936 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.936 > output.fastq.936
+
+output.fastq.937: query.fastq.937 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.937 > output.fastq.937
+
+output.fastq.938: query.fastq.938 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.938 > output.fastq.938
+
+output.fastq.939: query.fastq.939 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.939 > output.fastq.939
+
+output.fastq.940: query.fastq.940 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.940 > output.fastq.940
+
+output.fastq.941: query.fastq.941 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.941 > output.fastq.941
+
+output.fastq.942: query.fastq.942 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.942 > output.fastq.942
+
+output.fastq.943: query.fastq.943 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.943 > output.fastq.943
+
+output.fastq.944: query.fastq.944 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.944 > output.fastq.944
+
+output.fastq.945: query.fastq.945 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.945 > output.fastq.945
+
+output.fastq.946: query.fastq.946 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.946 > output.fastq.946
+
+output.fastq.947: query.fastq.947 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.947 > output.fastq.947
+
+output.fastq.948: query.fastq.948 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.948 > output.fastq.948
+
+output.fastq.949: query.fastq.949 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.949 > output.fastq.949
+
+output.fastq.950: query.fastq.950 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.950 > output.fastq.950
+
+output.fastq.951: query.fastq.951 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.951 > output.fastq.951
+
+output.fastq.952: query.fastq.952 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.952 > output.fastq.952
+
+output.fastq.953: query.fastq.953 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.953 > output.fastq.953
+
+output.fastq.954: query.fastq.954 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.954 > output.fastq.954
+
+output.fastq.955: query.fastq.955 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.955 > output.fastq.955
+
+output.fastq.956: query.fastq.956 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.956 > output.fastq.956
+
+output.fastq.957: query.fastq.957 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.957 > output.fastq.957
+
+output.fastq.958: query.fastq.958 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.958 > output.fastq.958
+
+output.fastq.959: query.fastq.959 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.959 > output.fastq.959
+
+output.fastq.960: query.fastq.960 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.960 > output.fastq.960
+
+output.fastq.961: query.fastq.961 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.961 > output.fastq.961
+
+output.fastq.962: query.fastq.962 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.962 > output.fastq.962
+
+output.fastq.963: query.fastq.963 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.963 > output.fastq.963
+
+output.fastq.964: query.fastq.964 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.964 > output.fastq.964
+
+output.fastq.965: query.fastq.965 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.965 > output.fastq.965
+
+output.fastq.966: query.fastq.966 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.966 > output.fastq.966
+
+output.fastq.967: query.fastq.967 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.967 > output.fastq.967
+
+output.fastq.968: query.fastq.968 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.968 > output.fastq.968
+
+output.fastq.969: query.fastq.969 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.969 > output.fastq.969
+
+output.fastq.970: query.fastq.970 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.970 > output.fastq.970
+
+output.fastq.971: query.fastq.971 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.971 > output.fastq.971
+
+output.fastq.972: query.fastq.972 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.972 > output.fastq.972
+
+output.fastq.973: query.fastq.973 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.973 > output.fastq.973
+
+output.fastq.974: query.fastq.974 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.974 > output.fastq.974
+
+output.fastq.975: query.fastq.975 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.975 > output.fastq.975
+
+output.fastq.976: query.fastq.976 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.976 > output.fastq.976
+
+output.fastq.977: query.fastq.977 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.977 > output.fastq.977
+
+output.fastq.978: query.fastq.978 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.978 > output.fastq.978
+
+output.fastq.979: query.fastq.979 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.979 > output.fastq.979
+
+output.fastq.980: query.fastq.980 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.980 > output.fastq.980
+
+output.fastq.981: query.fastq.981 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.981 > output.fastq.981
+
+output.fastq.982: query.fastq.982 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.982 > output.fastq.982
+
+output.fastq.983: query.fastq.983 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.983 > output.fastq.983
+
+output.fastq.984: query.fastq.984 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.984 > output.fastq.984
+
+output.fastq.985: query.fastq.985 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.985 > output.fastq.985
+
+output.fastq.986: query.fastq.986 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.986 > output.fastq.986
+
+output.fastq.987: query.fastq.987 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.987 > output.fastq.987
+
+output.fastq.988: query.fastq.988 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.988 > output.fastq.988
+
+output.fastq.989: query.fastq.989 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.989 > output.fastq.989
+
+output.fastq.990: query.fastq.990 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.990 > output.fastq.990
+
+output.fastq.991: query.fastq.991 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.991 > output.fastq.991
+
+output.fastq.992: query.fastq.992 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.992 > output.fastq.992
+
+output.fastq.993: query.fastq.993 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.993 > output.fastq.993
+
+output.fastq.994: query.fastq.994 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.994 > output.fastq.994
+
+output.fastq.995: query.fastq.995 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.995 > output.fastq.995
+
+output.fastq.996: query.fastq.996 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.996 > output.fastq.996
+
+output.fastq.997: query.fastq.997 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.997 > output.fastq.997
+
+output.fastq.998: query.fastq.998 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.998 > output.fastq.998
+
+output.fastq.999: query.fastq.999 db.fastq ssaha2
+	./ssaha2 $OPTIONS db.fastq query.fastq.999 > output.fastq.999
+
+CATEGORY=analysis
+
+output.fastq: output.fastq.0 output.fastq.1 output.fastq.2 output.fastq.3 output.fastq.4 output.fastq.5 output.fastq.6 output.fastq.7 output.fastq.8 output.fastq.9 output.fastq.10 output.fastq.11 output.fastq.12 output.fastq.13 output.fastq.14 output.fastq.15 output.fastq.16 output.fastq.17 output.fastq.18 output.fastq.19 output.fastq.20 output.fastq.21 output.fastq.22 output.fastq.23 output.fastq.24 output.fastq.25 output.fastq.26 output.fastq.27 output.fastq.28 output.fastq.29 output.fastq.30 output.fastq.31 output.fastq.32 output.fastq.33 output.fastq.34 output.fastq.35 output.fastq.36 output.fastq.37 output.fastq.38 output.fastq.39 output.fastq.40 output.fastq.41 output.fastq.42 output.fastq.43 output.fastq.44 output.fastq.45 output.fastq.46 output.fastq.47 output.fastq.48 output.fastq.49 output.fastq.50 output.fastq.51 output.fastq.52 output.fastq.53 output.fastq.54 output.fastq.55 output.fastq.56 output.fastq.57 output.fastq.58 output.fastq.59 output.fastq.60 output.fastq.61 output.fastq.62 output.fastq.63 output.fastq.64 output.fastq.65 output.fastq.66 output.fastq.67 output.fastq.68 output.fastq.69 output.fastq.70 output.fastq.71 output.fastq.72 output.fastq.73 output.fastq.74 output.fastq.75 output.fastq.76 output.fastq.77 output.fastq.78 output.fastq.79 output.fastq.80 output.fastq.81 output.fastq.82 output.fastq.83 output.fastq.84 output.fastq.85 output.fastq.86 output.fastq.87 output.fastq.88 output.fastq.89 output.fastq.90 output.fastq.91 output.fastq.92 output.fastq.93 output.fastq.94 output.fastq.95 output.fastq.96 output.fastq.97 output.fastq.98 output.fastq.99 output.fastq.100 output.fastq.101 output.fastq.102 output.fastq.103 output.fastq.104 output.fastq.105 output.fastq.106 output.fastq.107 output.fastq.108 output.fastq.109 output.fastq.110 output.fastq.111 output.fastq.112 output.fastq.113 output.fastq.114 output.fastq.115 output.fastq.116 output.fastq.117 output.fastq.118 output.fastq.119 output.fastq.120 output.fastq.121 output.fastq.122 output.fastq.123 output.fastq.124 output.fastq.125 output.fastq.126 output.fastq.127 output.fastq.128 output.fastq.129 output.fastq.130 output.fastq.131 output.fastq.132 output.fastq.133 output.fastq.134 output.fastq.135 output.fastq.136 output.fastq.137 output.fastq.138 output.fastq.139 output.fastq.140 output.fastq.141 output.fastq.142 output.fastq.143 output.fastq.144 output.fastq.145 output.fastq.146 output.fastq.147 output.fastq.148 output.fastq.149 output.fastq.150 output.fastq.151 output.fastq.152 output.fastq.153 output.fastq.154 output.fastq.155 output.fastq.156 output.fastq.157 output.fastq.158 output.fastq.159 output.fastq.160 output.fastq.161 output.fastq.162 output.fastq.163 output.fastq.164 output.fastq.165 output.fastq.166 output.fastq.167 output.fastq.168 output.fastq.169 output.fastq.170 output.fastq.171 output.fastq.172 output.fastq.173 output.fastq.174 output.fastq.175 output.fastq.176 output.fastq.177 output.fastq.178 output.fastq.179 output.fastq.180 output.fastq.181 output.fastq.182 output.fastq.183 output.fastq.184 output.fastq.185 output.fastq.186 output.fastq.187 output.fastq.188 output.fastq.189 output.fastq.190 output.fastq.191 output.fastq.192 output.fastq.193 output.fastq.194 output.fastq.195 output.fastq.196 output.fastq.197 output.fastq.198 output.fastq.199 output.fastq.200 output.fastq.201 output.fastq.202 output.fastq.203 output.fastq.204 output.fastq.205 output.fastq.206 output.fastq.207 output.fastq.208 output.fastq.209 output.fastq.210 output.fastq.211 output.fastq.212 output.fastq.213 output.fastq.214 output.fastq.215 output.fastq.216 output.fastq.217 output.fastq.218 output.fastq.219 output.fastq.220 output.fastq.221 output.fastq.222 output.fastq.223 output.fastq.224 output.fastq.225 output.fastq.226 output.fastq.227 output.fastq.228 output.fastq.229 output.fastq.230 output.fastq.231 output.fastq.232 output.fastq.233 output.fastq.234 output.fastq.235 output.fastq.236 output.fastq.237 output.fastq.238 output.fastq.239 output.fastq.240 output.fastq.241 output.fastq.242 output.fastq.243 output.fastq.244 output.fastq.245 output.fastq.246 output.fastq.247 output.fastq.248 output.fastq.249 output.fastq.250 output.fastq.251 output.fastq.252 output.fastq.253 output.fastq.254 output.fastq.255 output.fastq.256 output.fastq.257 output.fastq.258 output.fastq.259 output.fastq.260 output.fastq.261 output.fastq.262 output.fastq.263 output.fastq.264 output.fastq.265 output.fastq.266 output.fastq.267 output.fastq.268 output.fastq.269 output.fastq.270 output.fastq.271 output.fastq.272 output.fastq.273 output.fastq.274 output.fastq.275 output.fastq.276 output.fastq.277 output.fastq.278 output.fastq.279 output.fastq.280 output.fastq.281 output.fastq.282 output.fastq.283 output.fastq.284 output.fastq.285 output.fastq.286 output.fastq.287 output.fastq.288 output.fastq.289 output.fastq.290 output.fastq.291 output.fastq.292 output.fastq.293 output.fastq.294 output.fastq.295 output.fastq.296 output.fastq.297 output.fastq.298 output.fastq.299 output.fastq.300 output.fastq.301 output.fastq.302 output.fastq.303 output.fastq.304 output.fastq.305 output.fastq.306 output.fastq.307 output.fastq.308 output.fastq.309 output.fastq.310 output.fastq.311 output.fastq.312 output.fastq.313 output.fastq.314 output.fastq.315 output.fastq.316 output.fastq.317 output.fastq.318 output.fastq.319 output.fastq.320 output.fastq.321 output.fastq.322 output.fastq.323 output.fastq.324 output.fastq.325 output.fastq.326 output.fastq.327 output.fastq.328 output.fastq.329 output.fastq.330 output.fastq.331 output.fastq.332 output.fastq.333 output.fastq.334 output.fastq.335 output.fastq.336 output.fastq.337 output.fastq.338 output.fastq.339 output.fastq.340 output.fastq.341 output.fastq.342 output.fastq.343 output.fastq.344 output.fastq.345 output.fastq.346 output.fastq.347 output.fastq.348 output.fastq.349 output.fastq.350 output.fastq.351 output.fastq.352 output.fastq.353 output.fastq.354 output.fastq.355 output.fastq.356 output.fastq.357 output.fastq.358 output.fastq.359 output.fastq.360 output.fastq.361 output.fastq.362 output.fastq.363 output.fastq.364 output.fastq.365 output.fastq.366 output.fastq.367 output.fastq.368 output.fastq.369 output.fastq.370 output.fastq.371 output.fastq.372 output.fastq.373 output.fastq.374 output.fastq.375 output.fastq.376 output.fastq.377 output.fastq.378 output.fastq.379 output.fastq.380 output.fastq.381 output.fastq.382 output.fastq.383 output.fastq.384 output.fastq.385 output.fastq.386 output.fastq.387 output.fastq.388 output.fastq.389 output.fastq.390 output.fastq.391 output.fastq.392 output.fastq.393 output.fastq.394 output.fastq.395 output.fastq.396 output.fastq.397 output.fastq.398 output.fastq.399 output.fastq.400 output.fastq.401 output.fastq.402 output.fastq.403 output.fastq.404 output.fastq.405 output.fastq.406 output.fastq.407 output.fastq.408 output.fastq.409 output.fastq.410 output.fastq.411 output.fastq.412 output.fastq.413 output.fastq.414 output.fastq.415 output.fastq.416 output.fastq.417 output.fastq.418 output.fastq.419 output.fastq.420 output.fastq.421 output.fastq.422 output.fastq.423 output.fastq.424 output.fastq.425 output.fastq.426 output.fastq.427 output.fastq.428 output.fastq.429 output.fastq.430 output.fastq.431 output.fastq.432 output.fastq.433 output.fastq.434 output.fastq.435 output.fastq.436 output.fastq.437 output.fastq.438 output.fastq.439 output.fastq.440 output.fastq.441 output.fastq.442 output.fastq.443 output.fastq.444 output.fastq.445 output.fastq.446 output.fastq.447 output.fastq.448 output.fastq.449 output.fastq.450 output.fastq.451 output.fastq.452 output.fastq.453 output.fastq.454 output.fastq.455 output.fastq.456 output.fastq.457 output.fastq.458 output.fastq.459 output.fastq.460 output.fastq.461 output.fastq.462 output.fastq.463 output.fastq.464 output.fastq.465 output.fastq.466 output.fastq.467 output.fastq.468 output.fastq.469 output.fastq.470 output.fastq.471 output.fastq.472 output.fastq.473 output.fastq.474 output.fastq.475 output.fastq.476 output.fastq.477 output.fastq.478 output.fastq.479 output.fastq.480 output.fastq.481 output.fastq.482 output.fastq.483 output.fastq.484 output.fastq.485 output.fastq.486 output.fastq.487 output.fastq.488 output.fastq.489 output.fastq.490 output.fastq.491 output.fastq.492 output.fastq.493 output.fastq.494 output.fastq.495 output.fastq.496 output.fastq.497 output.fastq.498 output.fastq.499 output.fastq.500 output.fastq.501 output.fastq.502 output.fastq.503 output.fastq.504 output.fastq.505 output.fastq.506 output.fastq.507 output.fastq.508 output.fastq.509 output.fastq.510 output.fastq.511 output.fastq.512 output.fastq.513 output.fastq.514 output.fastq.515 output.fastq.516 output.fastq.517 output.fastq.518 output.fastq.519 output.fastq.520 output.fastq.521 output.fastq.522 output.fastq.523 output.fastq.524 output.fastq.525 output.fastq.526 output.fastq.527 output.fastq.528 output.fastq.529 output.fastq.530 output.fastq.531 output.fastq.532 output.fastq.533 output.fastq.534 output.fastq.535 output.fastq.536 output.fastq.537 output.fastq.538 output.fastq.539 output.fastq.540 output.fastq.541 output.fastq.542 output.fastq.543 output.fastq.544 output.fastq.545 output.fastq.546 output.fastq.547 output.fastq.548 output.fastq.549 output.fastq.550 output.fastq.551 output.fastq.552 output.fastq.553 output.fastq.554 output.fastq.555 output.fastq.556 output.fastq.557 output.fastq.558 output.fastq.559 output.fastq.560 output.fastq.561 output.fastq.562 output.fastq.563 output.fastq.564 output.fastq.565 output.fastq.566 output.fastq.567 output.fastq.568 output.fastq.569 output.fastq.570 output.fastq.571 output.fastq.572 output.fastq.573 output.fastq.574 output.fastq.575 output.fastq.576 output.fastq.577 output.fastq.578 output.fastq.579 output.fastq.580 output.fastq.581 output.fastq.582 output.fastq.583 output.fastq.584 output.fastq.585 output.fastq.586 output.fastq.587 output.fastq.588 output.fastq.589 output.fastq.590 output.fastq.591 output.fastq.592 output.fastq.593 output.fastq.594 output.fastq.595 output.fastq.596 output.fastq.597 output.fastq.598 output.fastq.599 output.fastq.600 output.fastq.601 output.fastq.602 output.fastq.603 output.fastq.604 output.fastq.605 output.fastq.606 output.fastq.607 output.fastq.608 output.fastq.609 output.fastq.610 output.fastq.611 output.fastq.612 output.fastq.613 output.fastq.614 output.fastq.615 output.fastq.616 output.fastq.617 output.fastq.618 output.fastq.619 output.fastq.620 output.fastq.621 output.fastq.622 output.fastq.623 output.fastq.624 output.fastq.625 output.fastq.626 output.fastq.627 output.fastq.628 output.fastq.629 output.fastq.630 output.fastq.631 output.fastq.632 output.fastq.633 output.fastq.634 output.fastq.635 output.fastq.636 output.fastq.637 output.fastq.638 output.fastq.639 output.fastq.640 output.fastq.641 output.fastq.642 output.fastq.643 output.fastq.644 output.fastq.645 output.fastq.646 output.fastq.647 output.fastq.648 output.fastq.649 output.fastq.650 output.fastq.651 output.fastq.652 output.fastq.653 output.fastq.654 output.fastq.655 output.fastq.656 output.fastq.657 output.fastq.658 output.fastq.659 output.fastq.660 output.fastq.661 output.fastq.662 output.fastq.663 output.fastq.664 output.fastq.665 output.fastq.666 output.fastq.667 output.fastq.668 output.fastq.669 output.fastq.670 output.fastq.671 output.fastq.672 output.fastq.673 output.fastq.674 output.fastq.675 output.fastq.676 output.fastq.677 output.fastq.678 output.fastq.679 output.fastq.680 output.fastq.681 output.fastq.682 output.fastq.683 output.fastq.684 output.fastq.685 output.fastq.686 output.fastq.687 output.fastq.688 output.fastq.689 output.fastq.690 output.fastq.691 output.fastq.692 output.fastq.693 output.fastq.694 output.fastq.695 output.fastq.696 output.fastq.697 output.fastq.698 output.fastq.699 output.fastq.700 output.fastq.701 output.fastq.702 output.fastq.703 output.fastq.704 output.fastq.705 output.fastq.706 output.fastq.707 output.fastq.708 output.fastq.709 output.fastq.710 output.fastq.711 output.fastq.712 output.fastq.713 output.fastq.714 output.fastq.715 output.fastq.716 output.fastq.717 output.fastq.718 output.fastq.719 output.fastq.720 output.fastq.721 output.fastq.722 output.fastq.723 output.fastq.724 output.fastq.725 output.fastq.726 output.fastq.727 output.fastq.728 output.fastq.729 output.fastq.730 output.fastq.731 output.fastq.732 output.fastq.733 output.fastq.734 output.fastq.735 output.fastq.736 output.fastq.737 output.fastq.738 output.fastq.739 output.fastq.740 output.fastq.741 output.fastq.742 output.fastq.743 output.fastq.744 output.fastq.745 output.fastq.746 output.fastq.747 output.fastq.748 output.fastq.749 output.fastq.750 output.fastq.751 output.fastq.752 output.fastq.753 output.fastq.754 output.fastq.755 output.fastq.756 output.fastq.757 output.fastq.758 output.fastq.759 output.fastq.760 output.fastq.761 output.fastq.762 output.fastq.763 output.fastq.764 output.fastq.765 output.fastq.766 output.fastq.767 output.fastq.768 output.fastq.769 output.fastq.770 output.fastq.771 output.fastq.772 output.fastq.773 output.fastq.774 output.fastq.775 output.fastq.776 output.fastq.777 output.fastq.778 output.fastq.779 output.fastq.780 output.fastq.781 output.fastq.782 output.fastq.783 output.fastq.784 output.fastq.785 output.fastq.786 output.fastq.787 output.fastq.788 output.fastq.789 output.fastq.790 output.fastq.791 output.fastq.792 output.fastq.793 output.fastq.794 output.fastq.795 output.fastq.796 output.fastq.797 output.fastq.798 output.fastq.799 output.fastq.800 output.fastq.801 output.fastq.802 output.fastq.803 output.fastq.804 output.fastq.805 output.fastq.806 output.fastq.807 output.fastq.808 output.fastq.809 output.fastq.810 output.fastq.811 output.fastq.812 output.fastq.813 output.fastq.814 output.fastq.815 output.fastq.816 output.fastq.817 output.fastq.818 output.fastq.819 output.fastq.820 output.fastq.821 output.fastq.822 output.fastq.823 output.fastq.824 output.fastq.825 output.fastq.826 output.fastq.827 output.fastq.828 output.fastq.829 output.fastq.830 output.fastq.831 output.fastq.832 output.fastq.833 output.fastq.834 output.fastq.835 output.fastq.836 output.fastq.837 output.fastq.838 output.fastq.839 output.fastq.840 output.fastq.841 output.fastq.842 output.fastq.843 output.fastq.844 output.fastq.845 output.fastq.846 output.fastq.847 output.fastq.848 output.fastq.849 output.fastq.850 output.fastq.851 output.fastq.852 output.fastq.853 output.fastq.854 output.fastq.855 output.fastq.856 output.fastq.857 output.fastq.858 output.fastq.859 output.fastq.860 output.fastq.861 output.fastq.862 output.fastq.863 output.fastq.864 output.fastq.865 output.fastq.866 output.fastq.867 output.fastq.868 output.fastq.869 output.fastq.870 output.fastq.871 output.fastq.872 output.fastq.873 output.fastq.874 output.fastq.875 output.fastq.876 output.fastq.877 output.fastq.878 output.fastq.879 output.fastq.880 output.fastq.881 output.fastq.882 output.fastq.883 output.fastq.884 output.fastq.885 output.fastq.886 output.fastq.887 output.fastq.888 output.fastq.889 output.fastq.890 output.fastq.891 output.fastq.892 output.fastq.893 output.fastq.894 output.fastq.895 output.fastq.896 output.fastq.897 output.fastq.898 output.fastq.899 output.fastq.900 output.fastq.901 output.fastq.902 output.fastq.903 output.fastq.904 output.fastq.905 output.fastq.906 output.fastq.907 output.fastq.908 output.fastq.909 output.fastq.910 output.fastq.911 output.fastq.912 output.fastq.913 output.fastq.914 output.fastq.915 output.fastq.916 output.fastq.917 output.fastq.918 output.fastq.919 output.fastq.920 output.fastq.921 output.fastq.922 output.fastq.923 output.fastq.924 output.fastq.925 output.fastq.926 output.fastq.927 output.fastq.928 output.fastq.929 output.fastq.930 output.fastq.931 output.fastq.932 output.fastq.933 output.fastq.934 output.fastq.935 output.fastq.936 output.fastq.937 output.fastq.938 output.fastq.939 output.fastq.940 output.fastq.941 output.fastq.942 output.fastq.943 output.fastq.944 output.fastq.945 output.fastq.946 output.fastq.947 output.fastq.948 output.fastq.949 output.fastq.950 output.fastq.951 output.fastq.952 output.fastq.953 output.fastq.954 output.fastq.955 output.fastq.956 output.fastq.957 output.fastq.958 output.fastq.959 output.fastq.960 output.fastq.961 output.fastq.962 output.fastq.963 output.fastq.964 output.fastq.965 output.fastq.966 output.fastq.967 output.fastq.968 output.fastq.969 output.fastq.970 output.fastq.971 output.fastq.972 output.fastq.973 output.fastq.974 output.fastq.975 output.fastq.976 output.fastq.977 output.fastq.978 output.fastq.979 output.fastq.980 output.fastq.981 output.fastq.982 output.fastq.983 output.fastq.984 output.fastq.985 output.fastq.986 output.fastq.987 output.fastq.988 output.fastq.989 output.fastq.990 output.fastq.991 output.fastq.992 output.fastq.993 output.fastq.994 output.fastq.995 output.fastq.996 output.fastq.997 output.fastq.998 output.fastq.999
+	LOCAL cat output.fastq.0 output.fastq.1 output.fastq.2 output.fastq.3 output.fastq.4 output.fastq.5 output.fastq.6 output.fastq.7 output.fastq.8 output.fastq.9 output.fastq.10 output.fastq.11 output.fastq.12 output.fastq.13 output.fastq.14 output.fastq.15 output.fastq.16 output.fastq.17 output.fastq.18 output.fastq.19 output.fastq.20 output.fastq.21 output.fastq.22 output.fastq.23 output.fastq.24 output.fastq.25 output.fastq.26 output.fastq.27 output.fastq.28 output.fastq.29 output.fastq.30 output.fastq.31 output.fastq.32 output.fastq.33 output.fastq.34 output.fastq.35 output.fastq.36 output.fastq.37 output.fastq.38 output.fastq.39 output.fastq.40 output.fastq.41 output.fastq.42 output.fastq.43 output.fastq.44 output.fastq.45 output.fastq.46 output.fastq.47 output.fastq.48 output.fastq.49 output.fastq.50 output.fastq.51 output.fastq.52 output.fastq.53 output.fastq.54 output.fastq.55 output.fastq.56 output.fastq.57 output.fastq.58 output.fastq.59 output.fastq.60 output.fastq.61 output.fastq.62 output.fastq.63 output.fastq.64 output.fastq.65 output.fastq.66 output.fastq.67 output.fastq.68 output.fastq.69 output.fastq.70 output.fastq.71 output.fastq.72 output.fastq.73 output.fastq.74 output.fastq.75 output.fastq.76 output.fastq.77 output.fastq.78 output.fastq.79 output.fastq.80 output.fastq.81 output.fastq.82 output.fastq.83 output.fastq.84 output.fastq.85 output.fastq.86 output.fastq.87 output.fastq.88 output.fastq.89 output.fastq.90 output.fastq.91 output.fastq.92 output.fastq.93 output.fastq.94 output.fastq.95 output.fastq.96 output.fastq.97 output.fastq.98 output.fastq.99 output.fastq.100 output.fastq.101 output.fastq.102 output.fastq.103 output.fastq.104 output.fastq.105 output.fastq.106 output.fastq.107 output.fastq.108 output.fastq.109 output.fastq.110 output.fastq.111 output.fastq.112 output.fastq.113 output.fastq.114 output.fastq.115 output.fastq.116 output.fastq.117 output.fastq.118 output.fastq.119 output.fastq.120 output.fastq.121 output.fastq.122 output.fastq.123 output.fastq.124 output.fastq.125 output.fastq.126 output.fastq.127 output.fastq.128 output.fastq.129 output.fastq.130 output.fastq.131 output.fastq.132 output.fastq.133 output.fastq.134 output.fastq.135 output.fastq.136 output.fastq.137 output.fastq.138 output.fastq.139 output.fastq.140 output.fastq.141 output.fastq.142 output.fastq.143 output.fastq.144 output.fastq.145 output.fastq.146 output.fastq.147 output.fastq.148 output.fastq.149 output.fastq.150 output.fastq.151 output.fastq.152 output.fastq.153 output.fastq.154 output.fastq.155 output.fastq.156 output.fastq.157 output.fastq.158 output.fastq.159 output.fastq.160 output.fastq.161 output.fastq.162 output.fastq.163 output.fastq.164 output.fastq.165 output.fastq.166 output.fastq.167 output.fastq.168 output.fastq.169 output.fastq.170 output.fastq.171 output.fastq.172 output.fastq.173 output.fastq.174 output.fastq.175 output.fastq.176 output.fastq.177 output.fastq.178 output.fastq.179 output.fastq.180 output.fastq.181 output.fastq.182 output.fastq.183 output.fastq.184 output.fastq.185 output.fastq.186 output.fastq.187 output.fastq.188 output.fastq.189 output.fastq.190 output.fastq.191 output.fastq.192 output.fastq.193 output.fastq.194 output.fastq.195 output.fastq.196 output.fastq.197 output.fastq.198 output.fastq.199 output.fastq.200 output.fastq.201 output.fastq.202 output.fastq.203 output.fastq.204 output.fastq.205 output.fastq.206 output.fastq.207 output.fastq.208 output.fastq.209 output.fastq.210 output.fastq.211 output.fastq.212 output.fastq.213 output.fastq.214 output.fastq.215 output.fastq.216 output.fastq.217 output.fastq.218 output.fastq.219 output.fastq.220 output.fastq.221 output.fastq.222 output.fastq.223 output.fastq.224 output.fastq.225 output.fastq.226 output.fastq.227 output.fastq.228 output.fastq.229 output.fastq.230 output.fastq.231 output.fastq.232 output.fastq.233 output.fastq.234 output.fastq.235 output.fastq.236 output.fastq.237 output.fastq.238 output.fastq.239 output.fastq.240 output.fastq.241 output.fastq.242 output.fastq.243 output.fastq.244 output.fastq.245 output.fastq.246 output.fastq.247 output.fastq.248 output.fastq.249 output.fastq.250 output.fastq.251 output.fastq.252 output.fastq.253 output.fastq.254 output.fastq.255 output.fastq.256 output.fastq.257 output.fastq.258 output.fastq.259 output.fastq.260 output.fastq.261 output.fastq.262 output.fastq.263 output.fastq.264 output.fastq.265 output.fastq.266 output.fastq.267 output.fastq.268 output.fastq.269 output.fastq.270 output.fastq.271 output.fastq.272 output.fastq.273 output.fastq.274 output.fastq.275 output.fastq.276 output.fastq.277 output.fastq.278 output.fastq.279 output.fastq.280 output.fastq.281 output.fastq.282 output.fastq.283 output.fastq.284 output.fastq.285 output.fastq.286 output.fastq.287 output.fastq.288 output.fastq.289 output.fastq.290 output.fastq.291 output.fastq.292 output.fastq.293 output.fastq.294 output.fastq.295 output.fastq.296 output.fastq.297 output.fastq.298 output.fastq.299 output.fastq.300 output.fastq.301 output.fastq.302 output.fastq.303 output.fastq.304 output.fastq.305 output.fastq.306 output.fastq.307 output.fastq.308 output.fastq.309 output.fastq.310 output.fastq.311 output.fastq.312 output.fastq.313 output.fastq.314 output.fastq.315 output.fastq.316 output.fastq.317 output.fastq.318 output.fastq.319 output.fastq.320 output.fastq.321 output.fastq.322 output.fastq.323 output.fastq.324 output.fastq.325 output.fastq.326 output.fastq.327 output.fastq.328 output.fastq.329 output.fastq.330 output.fastq.331 output.fastq.332 output.fastq.333 output.fastq.334 output.fastq.335 output.fastq.336 output.fastq.337 output.fastq.338 output.fastq.339 output.fastq.340 output.fastq.341 output.fastq.342 output.fastq.343 output.fastq.344 output.fastq.345 output.fastq.346 output.fastq.347 output.fastq.348 output.fastq.349 output.fastq.350 output.fastq.351 output.fastq.352 output.fastq.353 output.fastq.354 output.fastq.355 output.fastq.356 output.fastq.357 output.fastq.358 output.fastq.359 output.fastq.360 output.fastq.361 output.fastq.362 output.fastq.363 output.fastq.364 output.fastq.365 output.fastq.366 output.fastq.367 output.fastq.368 output.fastq.369 output.fastq.370 output.fastq.371 output.fastq.372 output.fastq.373 output.fastq.374 output.fastq.375 output.fastq.376 output.fastq.377 output.fastq.378 output.fastq.379 output.fastq.380 output.fastq.381 output.fastq.382 output.fastq.383 output.fastq.384 output.fastq.385 output.fastq.386 output.fastq.387 output.fastq.388 output.fastq.389 output.fastq.390 output.fastq.391 output.fastq.392 output.fastq.393 output.fastq.394 output.fastq.395 output.fastq.396 output.fastq.397 output.fastq.398 output.fastq.399 output.fastq.400 output.fastq.401 output.fastq.402 output.fastq.403 output.fastq.404 output.fastq.405 output.fastq.406 output.fastq.407 output.fastq.408 output.fastq.409 output.fastq.410 output.fastq.411 output.fastq.412 output.fastq.413 output.fastq.414 output.fastq.415 output.fastq.416 output.fastq.417 output.fastq.418 output.fastq.419 output.fastq.420 output.fastq.421 output.fastq.422 output.fastq.423 output.fastq.424 output.fastq.425 output.fastq.426 output.fastq.427 output.fastq.428 output.fastq.429 output.fastq.430 output.fastq.431 output.fastq.432 output.fastq.433 output.fastq.434 output.fastq.435 output.fastq.436 output.fastq.437 output.fastq.438 output.fastq.439 output.fastq.440 output.fastq.441 output.fastq.442 output.fastq.443 output.fastq.444 output.fastq.445 output.fastq.446 output.fastq.447 output.fastq.448 output.fastq.449 output.fastq.450 output.fastq.451 output.fastq.452 output.fastq.453 output.fastq.454 output.fastq.455 output.fastq.456 output.fastq.457 output.fastq.458 output.fastq.459 output.fastq.460 output.fastq.461 output.fastq.462 output.fastq.463 output.fastq.464 output.fastq.465 output.fastq.466 output.fastq.467 output.fastq.468 output.fastq.469 output.fastq.470 output.fastq.471 output.fastq.472 output.fastq.473 output.fastq.474 output.fastq.475 output.fastq.476 output.fastq.477 output.fastq.478 output.fastq.479 output.fastq.480 output.fastq.481 output.fastq.482 output.fastq.483 output.fastq.484 output.fastq.485 output.fastq.486 output.fastq.487 output.fastq.488 output.fastq.489 output.fastq.490 output.fastq.491 output.fastq.492 output.fastq.493 output.fastq.494 output.fastq.495 output.fastq.496 output.fastq.497 output.fastq.498 output.fastq.499 output.fastq.500 output.fastq.501 output.fastq.502 output.fastq.503 output.fastq.504 output.fastq.505 output.fastq.506 output.fastq.507 output.fastq.508 output.fastq.509 output.fastq.510 output.fastq.511 output.fastq.512 output.fastq.513 output.fastq.514 output.fastq.515 output.fastq.516 output.fastq.517 output.fastq.518 output.fastq.519 output.fastq.520 output.fastq.521 output.fastq.522 output.fastq.523 output.fastq.524 output.fastq.525 output.fastq.526 output.fastq.527 output.fastq.528 output.fastq.529 output.fastq.530 output.fastq.531 output.fastq.532 output.fastq.533 output.fastq.534 output.fastq.535 output.fastq.536 output.fastq.537 output.fastq.538 output.fastq.539 output.fastq.540 output.fastq.541 output.fastq.542 output.fastq.543 output.fastq.544 output.fastq.545 output.fastq.546 output.fastq.547 output.fastq.548 output.fastq.549 output.fastq.550 output.fastq.551 output.fastq.552 output.fastq.553 output.fastq.554 output.fastq.555 output.fastq.556 output.fastq.557 output.fastq.558 output.fastq.559 output.fastq.560 output.fastq.561 output.fastq.562 output.fastq.563 output.fastq.564 output.fastq.565 output.fastq.566 output.fastq.567 output.fastq.568 output.fastq.569 output.fastq.570 output.fastq.571 output.fastq.572 output.fastq.573 output.fastq.574 output.fastq.575 output.fastq.576 output.fastq.577 output.fastq.578 output.fastq.579 output.fastq.580 output.fastq.581 output.fastq.582 output.fastq.583 output.fastq.584 output.fastq.585 output.fastq.586 output.fastq.587 output.fastq.588 output.fastq.589 output.fastq.590 output.fastq.591 output.fastq.592 output.fastq.593 output.fastq.594 output.fastq.595 output.fastq.596 output.fastq.597 output.fastq.598 output.fastq.599 output.fastq.600 output.fastq.601 output.fastq.602 output.fastq.603 output.fastq.604 output.fastq.605 output.fastq.606 output.fastq.607 output.fastq.608 output.fastq.609 output.fastq.610 output.fastq.611 output.fastq.612 output.fastq.613 output.fastq.614 output.fastq.615 output.fastq.616 output.fastq.617 output.fastq.618 output.fastq.619 output.fastq.620 output.fastq.621 output.fastq.622 output.fastq.623 output.fastq.624 output.fastq.625 output.fastq.626 output.fastq.627 output.fastq.628 output.fastq.629 output.fastq.630 output.fastq.631 output.fastq.632 output.fastq.633 output.fastq.634 output.fastq.635 output.fastq.636 output.fastq.637 output.fastq.638 output.fastq.639 output.fastq.640 output.fastq.641 output.fastq.642 output.fastq.643 output.fastq.644 output.fastq.645 output.fastq.646 output.fastq.647 output.fastq.648 output.fastq.649 output.fastq.650 output.fastq.651 output.fastq.652 output.fastq.653 output.fastq.654 output.fastq.655 output.fastq.656 output.fastq.657 output.fastq.658 output.fastq.659 output.fastq.660 output.fastq.661 output.fastq.662 output.fastq.663 output.fastq.664 output.fastq.665 output.fastq.666 output.fastq.667 output.fastq.668 output.fastq.669 output.fastq.670 output.fastq.671 output.fastq.672 output.fastq.673 output.fastq.674 output.fastq.675 output.fastq.676 output.fastq.677 output.fastq.678 output.fastq.679 output.fastq.680 output.fastq.681 output.fastq.682 output.fastq.683 output.fastq.684 output.fastq.685 output.fastq.686 output.fastq.687 output.fastq.688 output.fastq.689 output.fastq.690 output.fastq.691 output.fastq.692 output.fastq.693 output.fastq.694 output.fastq.695 output.fastq.696 output.fastq.697 output.fastq.698 output.fastq.699 output.fastq.700 output.fastq.701 output.fastq.702 output.fastq.703 output.fastq.704 output.fastq.705 output.fastq.706 output.fastq.707 output.fastq.708 output.fastq.709 output.fastq.710 output.fastq.711 output.fastq.712 output.fastq.713 output.fastq.714 output.fastq.715 output.fastq.716 output.fastq.717 output.fastq.718 output.fastq.719 output.fastq.720 output.fastq.721 output.fastq.722 output.fastq.723 output.fastq.724 output.fastq.725 output.fastq.726 output.fastq.727 output.fastq.728 output.fastq.729 output.fastq.730 output.fastq.731 output.fastq.732 output.fastq.733 output.fastq.734 output.fastq.735 output.fastq.736 output.fastq.737 output.fastq.738 output.fastq.739 output.fastq.740 output.fastq.741 output.fastq.742 output.fastq.743 output.fastq.744 output.fastq.745 output.fastq.746 output.fastq.747 output.fastq.748 output.fastq.749 output.fastq.750 output.fastq.751 output.fastq.752 output.fastq.753 output.fastq.754 output.fastq.755 output.fastq.756 output.fastq.757 output.fastq.758 output.fastq.759 output.fastq.760 output.fastq.761 output.fastq.762 output.fastq.763 output.fastq.764 output.fastq.765 output.fastq.766 output.fastq.767 output.fastq.768 output.fastq.769 output.fastq.770 output.fastq.771 output.fastq.772 output.fastq.773 output.fastq.774 output.fastq.775 output.fastq.776 output.fastq.777 output.fastq.778 output.fastq.779 output.fastq.780 output.fastq.781 output.fastq.782 output.fastq.783 output.fastq.784 output.fastq.785 output.fastq.786 output.fastq.787 output.fastq.788 output.fastq.789 output.fastq.790 output.fastq.791 output.fastq.792 output.fastq.793 output.fastq.794 output.fastq.795 output.fastq.796 output.fastq.797 output.fastq.798 output.fastq.799 output.fastq.800 output.fastq.801 output.fastq.802 output.fastq.803 output.fastq.804 output.fastq.805 output.fastq.806 output.fastq.807 output.fastq.808 output.fastq.809 output.fastq.810 output.fastq.811 output.fastq.812 output.fastq.813 output.fastq.814 output.fastq.815 output.fastq.816 output.fastq.817 output.fastq.818 output.fastq.819 output.fastq.820 output.fastq.821 output.fastq.822 output.fastq.823 output.fastq.824 output.fastq.825 output.fastq.826 output.fastq.827 output.fastq.828 output.fastq.829 output.fastq.830 output.fastq.831 output.fastq.832 output.fastq.833 output.fastq.834 output.fastq.835 output.fastq.836 output.fastq.837 output.fastq.838 output.fastq.839 output.fastq.840 output.fastq.841 output.fastq.842 output.fastq.843 output.fastq.844 output.fastq.845 output.fastq.846 output.fastq.847 output.fastq.848 output.fastq.849 output.fastq.850 output.fastq.851 output.fastq.852 output.fastq.853 output.fastq.854 output.fastq.855 output.fastq.856 output.fastq.857 output.fastq.858 output.fastq.859 output.fastq.860 output.fastq.861 output.fastq.862 output.fastq.863 output.fastq.864 output.fastq.865 output.fastq.866 output.fastq.867 output.fastq.868 output.fastq.869 output.fastq.870 output.fastq.871 output.fastq.872 output.fastq.873 output.fastq.874 output.fastq.875 output.fastq.876 output.fastq.877 output.fastq.878 output.fastq.879 output.fastq.880 output.fastq.881 output.fastq.882 output.fastq.883 output.fastq.884 output.fastq.885 output.fastq.886 output.fastq.887 output.fastq.888 output.fastq.889 output.fastq.890 output.fastq.891 output.fastq.892 output.fastq.893 output.fastq.894 output.fastq.895 output.fastq.896 output.fastq.897 output.fastq.898 output.fastq.899 output.fastq.900 output.fastq.901 output.fastq.902 output.fastq.903 output.fastq.904 output.fastq.905 output.fastq.906 output.fastq.907 output.fastq.908 output.fastq.909 output.fastq.910 output.fastq.911 output.fastq.912 output.fastq.913 output.fastq.914 output.fastq.915 output.fastq.916 output.fastq.917 output.fastq.918 output.fastq.919 output.fastq.920 output.fastq.921 output.fastq.922 output.fastq.923 output.fastq.924 output.fastq.925 output.fastq.926 output.fastq.927 output.fastq.928 output.fastq.929 output.fastq.930 output.fastq.931 output.fastq.932 output.fastq.933 output.fastq.934 output.fastq.935 output.fastq.936 output.fastq.937 output.fastq.938 output.fastq.939 output.fastq.940 output.fastq.941 output.fastq.942 output.fastq.943 output.fastq.944 output.fastq.945 output.fastq.946 output.fastq.947 output.fastq.948 output.fastq.949 output.fastq.950 output.fastq.951 output.fastq.952 output.fastq.953 output.fastq.954 output.fastq.955 output.fastq.956 output.fastq.957 output.fastq.958 output.fastq.959 output.fastq.960 output.fastq.961 output.fastq.962 output.fastq.963 output.fastq.964 output.fastq.965 output.fastq.966 output.fastq.967 output.fastq.968 output.fastq.969 output.fastq.970 output.fastq.971 output.fastq.972 output.fastq.973 output.fastq.974 output.fastq.975 output.fastq.976 output.fastq.977 output.fastq.978 output.fastq.979 output.fastq.980 output.fastq.981 output.fastq.982 output.fastq.983 output.fastq.984 output.fastq.985 output.fastq.986 output.fastq.987 output.fastq.988 output.fastq.989 output.fastq.990 output.fastq.991 output.fastq.992 output.fastq.993 output.fastq.994 output.fastq.995 output.fastq.996 output.fastq.997 output.fastq.998 output.fastq.999  > output.fastq

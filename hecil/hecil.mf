@@ -1,12 +1,18 @@
 MAKEFLOW_INPUTS=bwa Correction.py Create_Corrected_AllLRReads.py fastq_reduce ref.fasta sam_cat.sh samtools query.fastq
 MAKEFLOW_OUTPUTS=corr.out corr.err Corrected_ref.fasta index.err LowConf.txt ref.fasta.fai mem.err pileup.err sort.err create.err
 
-
+CATEGORY = bwa_preprocessing
 index.err ref.fasta.sa ref.fasta.pac ref.fasta.bwt ref.fasta.ann ref.fasta.amb : bwa ref.fasta
 	LOCAL ./bwa index ref.fasta 2> index.err
 
 query.fastq.0 query.fastq.1 query.fastq.2 query.fastq.3 query.fastq.4 query.fastq.5 query.fastq.6 query.fastq.7 query.fastq.8 query.fastq.9 query.fastq.10 query.fastq.11 query.fastq.12 query.fastq.13 query.fastq.14 query.fastq.15 query.fastq.16 query.fastq.17 query.fastq.18 query.fastq.19 query.fastq.20 query.fastq.21 query.fastq.22 query.fastq.23 query.fastq.24 query.fastq.25 query.fastq.26 query.fastq.27 query.fastq.28 query.fastq.29 query.fastq.30 query.fastq.31 query.fastq.32 query.fastq.33 query.fastq.34 query.fastq.35 query.fastq.36 query.fastq.37 query.fastq.38 query.fastq.39 query.fastq.40 query.fastq.41 query.fastq.42 query.fastq.43 query.fastq.44 query.fastq.45 query.fastq.46 query.fastq.47 query.fastq.48 query.fastq.49 query.fastq.50 query.fastq.51 query.fastq.52 query.fastq.53 query.fastq.54 query.fastq.55 query.fastq.56 query.fastq.57 query.fastq.58 query.fastq.59 query.fastq.60 query.fastq.61 query.fastq.62 query.fastq.63 query.fastq.64 query.fastq.65 query.fastq.66 query.fastq.67 query.fastq.68 query.fastq.69 query.fastq.70 query.fastq.71 query.fastq.72 query.fastq.73 query.fastq.74 query.fastq.75 query.fastq.76 query.fastq.77 query.fastq.78 query.fastq.79 query.fastq.80 query.fastq.81 query.fastq.82 query.fastq.83 query.fastq.84 query.fastq.85 query.fastq.86 query.fastq.87 query.fastq.88 query.fastq.89 query.fastq.90 query.fastq.91 query.fastq.92 query.fastq.93 query.fastq.94 query.fastq.95 query.fastq.96 query.fastq.97 query.fastq.98 query.fastq.99 : fastq_reduce query.fastq
 	LOCAL perl fastq_reduce query.fastq 100
+
+CATEGORY = bwa_simulation
+CORES=1
+MEMORY=100
+DISK=1100
+WALLTIME=10
 
 Out.0.sam mem.0.err : bwa ref.fasta ref.fasta.bwt ref.fasta.pac ref.fasta.amb ref.fasta.ann ref.fasta.sa query.fastq.0
 	./bwa mem ref.fasta query.fastq.0 > Out.0.sam 2> mem.0.err
@@ -308,17 +314,23 @@ Out.98.sam mem.98.err : bwa ref.fasta ref.fasta.bwt ref.fasta.pac ref.fasta.amb 
 Out.99.sam mem.99.err : bwa ref.fasta ref.fasta.bwt ref.fasta.pac ref.fasta.amb ref.fasta.ann ref.fasta.sa query.fastq.99
 	./bwa mem ref.fasta query.fastq.99 > Out.99.sam 2> mem.99.err
 
+CATEGORY=bwa_output
+
 Out.sam : sam_cat.sh Out.0.sam Out.1.sam Out.2.sam Out.3.sam Out.4.sam Out.5.sam Out.6.sam Out.7.sam Out.8.sam Out.9.sam Out.10.sam Out.11.sam Out.12.sam Out.13.sam Out.14.sam Out.15.sam Out.16.sam Out.17.sam Out.18.sam Out.19.sam Out.20.sam Out.21.sam Out.22.sam Out.23.sam Out.24.sam Out.25.sam Out.26.sam Out.27.sam Out.28.sam Out.29.sam Out.30.sam Out.31.sam Out.32.sam Out.33.sam Out.34.sam Out.35.sam Out.36.sam Out.37.sam Out.38.sam Out.39.sam Out.40.sam Out.41.sam Out.42.sam Out.43.sam Out.44.sam Out.45.sam Out.46.sam Out.47.sam Out.48.sam Out.49.sam Out.50.sam Out.51.sam Out.52.sam Out.53.sam Out.54.sam Out.55.sam Out.56.sam Out.57.sam Out.58.sam Out.59.sam Out.60.sam Out.61.sam Out.62.sam Out.63.sam Out.64.sam Out.65.sam Out.66.sam Out.67.sam Out.68.sam Out.69.sam Out.70.sam Out.71.sam Out.72.sam Out.73.sam Out.74.sam Out.75.sam Out.76.sam Out.77.sam Out.78.sam Out.79.sam Out.80.sam Out.81.sam Out.82.sam Out.83.sam Out.84.sam Out.85.sam Out.86.sam Out.87.sam Out.88.sam Out.89.sam Out.90.sam Out.91.sam Out.92.sam Out.93.sam Out.94.sam Out.95.sam Out.96.sam Out.97.sam Out.98.sam Out.99.sam
 	LOCAL ./sam_cat.sh Out.*.sam > Out.sam
 
 mem.err : mem.0.err mem.1.err mem.2.err mem.3.err mem.4.err mem.5.err mem.6.err mem.7.err mem.8.err mem.9.err mem.10.err mem.11.err mem.12.err mem.13.err mem.14.err mem.15.err mem.16.err mem.17.err mem.18.err mem.19.err mem.20.err mem.21.err mem.22.err mem.23.err mem.24.err mem.25.err mem.26.err mem.27.err mem.28.err mem.29.err mem.30.err mem.31.err mem.32.err mem.33.err mem.34.err mem.35.err mem.36.err mem.37.err mem.38.err mem.39.err mem.40.err mem.41.err mem.42.err mem.43.err mem.44.err mem.45.err mem.46.err mem.47.err mem.48.err mem.49.err mem.50.err mem.51.err mem.52.err mem.53.err mem.54.err mem.55.err mem.56.err mem.57.err mem.58.err mem.59.err mem.60.err mem.61.err mem.62.err mem.63.err mem.64.err mem.65.err mem.66.err mem.67.err mem.68.err mem.69.err mem.70.err mem.71.err mem.72.err mem.73.err mem.74.err mem.75.err mem.76.err mem.77.err mem.78.err mem.79.err mem.80.err mem.81.err mem.82.err mem.83.err mem.84.err mem.85.err mem.86.err mem.87.err mem.88.err mem.89.err mem.90.err mem.91.err mem.92.err mem.93.err mem.94.err mem.95.err mem.96.err mem.97.err mem.98.err mem.99.err
 	LOCAL cat mem.*.err > mem.err
 
+CATEGORY=pileup
+
 Out.bam sort.err : samtools Out.sam
 	./samtools view -bS Out.sam | ./samtools sort - Out 2> sort.err
 
 pileup.txt ref.fasta.fai pileup.err : samtools ref.fasta Out.bam
 	./samtools mpileup -s -f ref.fasta Out.bam > pileup.txt 2> pileup.err
+
+CATEGORY=hecil_preprocessing
 
 List_RefHeader.txt Pileup_Set1.txt Pileup_Set2.txt : Split_Pileup.sh Create_SubsetPileup.sh pileup.txt
 	LOCAL ./Split_Pileup.sh pileup.txt 2 2> Split_Pileup.err
@@ -340,6 +352,12 @@ LowConf.txt : lc.0.out lc.1.out
 
 ref.fasta.0 ref.fasta.1 ref.fasta.2 ref.fasta.3 ref.fasta.4 ref.fasta.5 ref.fasta.6 ref.fasta.7 ref.fasta.8 ref.fasta.9 ref.fasta.10 ref.fasta.11 ref.fasta.12 ref.fasta.13 ref.fasta.14 ref.fasta.15 ref.fasta.16 ref.fasta.17 ref.fasta.18 ref.fasta.19 ref.fasta.20 ref.fasta.21 ref.fasta.22 ref.fasta.23 ref.fasta.24 ref.fasta.25 ref.fasta.26 ref.fasta.27 ref.fasta.28 ref.fasta.29 ref.fasta.30 ref.fasta.31 ref.fasta.32 ref.fasta.33 ref.fasta.34 ref.fasta.35 ref.fasta.36 ref.fasta.37 ref.fasta.38 ref.fasta.39 ref.fasta.40 ref.fasta.41 ref.fasta.42 ref.fasta.43 ref.fasta.44 ref.fasta.45 ref.fasta.46 ref.fasta.47 ref.fasta.48 ref.fasta.49 ref.fasta.50 ref.fasta.51 ref.fasta.52 ref.fasta.53 ref.fasta.54 ref.fasta.55 ref.fasta.56 ref.fasta.57 ref.fasta.58 ref.fasta.59 ref.fasta.60 ref.fasta.61 ref.fasta.62 ref.fasta.63 ref.fasta.64 ref.fasta.65 ref.fasta.66 ref.fasta.67 ref.fasta.68 ref.fasta.69 ref.fasta.70 ref.fasta.71 ref.fasta.72 ref.fasta.73 ref.fasta.74 ref.fasta.75 ref.fasta.76 ref.fasta.77 ref.fasta.78 ref.fasta.79 ref.fasta.80 ref.fasta.81 ref.fasta.82 ref.fasta.83 ref.fasta.84 ref.fasta.85 ref.fasta.86 ref.fasta.87 ref.fasta.88 ref.fasta.89 ref.fasta.90 ref.fasta.91 ref.fasta.92 ref.fasta.93 ref.fasta.94 ref.fasta.95 ref.fasta.96 ref.fasta.97 ref.fasta.98 ref.fasta.99 : fasta_reduce ref.fasta
 	LOCAL ./fasta_reduce ref.fasta 1000
+
+CATEGORY=hecil_simulation
+CORES=1
+MEMORY=100
+DISK=1300
+WALLTIME=10
 
 Corrected_ref.fasta.0 create.err.0 : Create_Corrected_AllLRReads.py ref.fasta.0 corr.out
 	python Create_Corrected_AllLRReads.py ref.fasta.0 corr.out 2> create.err.0
@@ -641,6 +659,7 @@ Corrected_ref.fasta.98 create.err.98 : Create_Corrected_AllLRReads.py ref.fasta.
 Corrected_ref.fasta.99 create.err.99 : Create_Corrected_AllLRReads.py ref.fasta.99 corr.out
 	python Create_Corrected_AllLRReads.py ref.fasta.99 corr.out 2> create.err.99
 
+CATEGORY=hecil_analysis
+
 Corrected_ref.fasta : Corrected_ref.fasta.0 Corrected_ref.fasta.1 Corrected_ref.fasta.2 Corrected_ref.fasta.3 Corrected_ref.fasta.4 Corrected_ref.fasta.5 Corrected_ref.fasta.6 Corrected_ref.fasta.7 Corrected_ref.fasta.8 Corrected_ref.fasta.9 Corrected_ref.fasta.10 Corrected_ref.fasta.11 Corrected_ref.fasta.12 Corrected_ref.fasta.13 Corrected_ref.fasta.14 Corrected_ref.fasta.15 Corrected_ref.fasta.16 Corrected_ref.fasta.17 Corrected_ref.fasta.18 Corrected_ref.fasta.19 Corrected_ref.fasta.20 Corrected_ref.fasta.21 Corrected_ref.fasta.22 Corrected_ref.fasta.23 Corrected_ref.fasta.24 Corrected_ref.fasta.25 Corrected_ref.fasta.26 Corrected_ref.fasta.27 Corrected_ref.fasta.28 Corrected_ref.fasta.29 Corrected_ref.fasta.30 Corrected_ref.fasta.31 Corrected_ref.fasta.32 Corrected_ref.fasta.33 Corrected_ref.fasta.34 Corrected_ref.fasta.35 Corrected_ref.fasta.36 Corrected_ref.fasta.37 Corrected_ref.fasta.38 Corrected_ref.fasta.39 Corrected_ref.fasta.40 Corrected_ref.fasta.41 Corrected_ref.fasta.42 Corrected_ref.fasta.43 Corrected_ref.fasta.44 Corrected_ref.fasta.45 Corrected_ref.fasta.46 Corrected_ref.fasta.47 Corrected_ref.fasta.48 Corrected_ref.fasta.49 Corrected_ref.fasta.50 Corrected_ref.fasta.51 Corrected_ref.fasta.52 Corrected_ref.fasta.53 Corrected_ref.fasta.54 Corrected_ref.fasta.55 Corrected_ref.fasta.56 Corrected_ref.fasta.57 Corrected_ref.fasta.58 Corrected_ref.fasta.59 Corrected_ref.fasta.60 Corrected_ref.fasta.61 Corrected_ref.fasta.62 Corrected_ref.fasta.63 Corrected_ref.fasta.64 Corrected_ref.fasta.65 Corrected_ref.fasta.66 Corrected_ref.fasta.67 Corrected_ref.fasta.68 Corrected_ref.fasta.69 Corrected_ref.fasta.70 Corrected_ref.fasta.71 Corrected_ref.fasta.72 Corrected_ref.fasta.73 Corrected_ref.fasta.74 Corrected_ref.fasta.75 Corrected_ref.fasta.76 Corrected_ref.fasta.77 Corrected_ref.fasta.78 Corrected_ref.fasta.79 Corrected_ref.fasta.80 Corrected_ref.fasta.81 Corrected_ref.fasta.82 Corrected_ref.fasta.83 Corrected_ref.fasta.84 Corrected_ref.fasta.85 Corrected_ref.fasta.86 Corrected_ref.fasta.87 Corrected_ref.fasta.88 Corrected_ref.fasta.89 Corrected_ref.fasta.90 Corrected_ref.fasta.91 Corrected_ref.fasta.92 Corrected_ref.fasta.93 Corrected_ref.fasta.94 Corrected_ref.fasta.95 Corrected_ref.fasta.96 Corrected_ref.fasta.97 Corrected_ref.fasta.98 Corrected_ref.fasta.99
 	LOCAL cat Corrected_ref.fasta.* > Corrected_ref.fasta
-

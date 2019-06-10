@@ -24,7 +24,7 @@
     },
   "rules":
     [
-      
+
       {
         "command":format("%s index %s 2> index.err",BWA,REF),
         "inputs":
@@ -37,9 +37,10 @@
             "index.err",
             x for x in REF_INDEX
           ],
-        "local_job":true
+        "local_job":true,
+        "category":"bwa_preprocessing"
       },
-      
+
       {
         "command":format("%s %s %d",SPLIT,INPUT_PRE,SEQ_PER_SPLIT),
         "inputs":
@@ -51,9 +52,10 @@
           [
             format("%s.%d",INPUT_PRE,x) for x in range(ceil(TOTAL_SEQ/SEQ_PER_SPLIT))
           ],
-        "local_job":true
+        "local_job":true,
+        "category":"bwa_preprocessing"
       },
-      
+
       {
         "command":format("%s %s %s %s.%d > Out.%d.sam 2> mem.%d.err",BWA,ARGS,REF,INPUT_PRE,i,i,i),
         "inputs":
@@ -66,9 +68,16 @@
           [
             format("Out.%d.sam",i),
             format("mem.%d.err",i)
-          ]
+          ],
+      		"resources" : {
+      			"cores":1,
+      			"memory":100,
+      			"disk":1100,
+      			"wall-time":10
+      		},
+      		"category": "bwa_simulation"
       } for i in range(ceil(TOTAL_SEQ/SEQ_PER_SPLIT)),
-      
+
       {
         "command":format("%s %s > Out.sam",CONCAT,join([format("Out.%d.sam",x) for x in range(ceil(TOTAL_SEQ/SEQ_PER_SPLIT))])),
         "inputs":
@@ -80,9 +89,10 @@
           [
             "Out.sam"
           ],
-        "local_job":true
+        "local_job":true,
+        "category": "bwa_output"
       },
-      
+
       {
         "command":format("cat mem.*.err > mem.err"),
         "inputs":
@@ -93,9 +103,10 @@
           [
             "mem.err"
           ],
-        "local_job":true
+        "local_job":true,
+        "category": "bwa_output"
       },
-      
+
       {
         "command":format("%s view -bS Out.sam | %s sort - Out 2> sort.err",TOOLS,TOOLS),
         "inputs":
@@ -107,9 +118,10 @@
           [
             "Out.bam",
             "sort.err"
-          ]
+          ],
+          "category": "pileup"
       },
-      
+
       {
         "command":format("%s mpileup -s -f %s Out.bam > pileup.txt 2> pileup.err",TOOLS,REF),
         "inputs":
@@ -123,9 +135,10 @@
             "pileup.txt",
             "ref.fasta.fai",
             "pileup.err"
-          ]
+          ],
+          "category": "pileup"
       },
-      
+
       {
         "command":format("%s pileup.txt 2 2> Split_Pileup.err",PILEUP),
         "inputs":
@@ -139,9 +152,9 @@
             format("Pileup_Set%d.txt",x) for x in range(1,3),
             "List_RefHeader.txt"
           ],
-        "local_job":true
+          "category": "hecil_preprocessing"
       },
-      
+
       {
         "command":format("%s %s Pileup_Set%d.txt %s lc.%d.out Out.sam %d > corr.%d.out 2> corr.%d.err ; echo \"\" >> lc.%d.out ; echo \"\" >> corr.%d.out",PYTHON,CORRECTION,x,REF,x,ceil(TOTAL_SEQ/SEQ_PER_SPLIT),x,x,x,x),
         "inputs":
@@ -157,9 +170,10 @@
             format("lc.%d.out",x),
             format("corr.%d.err",x)
           ],
-        "local_job":true
+        "local_job":true,
+        "category": "hecil_preprocessing"
       } for x in range(2),
-      
+
       {
         "command":format("cat %s > corr.out",join([format("corr.%d.out",x) for x in range(2)])),
         "inputs":
@@ -170,9 +184,10 @@
           [
             "corr.out"
           ],
-        "local_job":true
+        "local_job":true,
+        "category": "hecil_preprocessing"
       },
-      
+
       {
         "command":format("cat %s > corr.err",join([format("corr.%d.err",x) for x in range(2)])),
         "inputs":
@@ -183,9 +198,10 @@
           [
             "corr.err"
           ],
-        "local_job":true
+        "local_job":true,
+        "category": "hecil_preprocessing"
       },
-      
+
       {
         "command":format("cat %s > LowConf.txt",join([format("lc.%d.out",x) for x in range(2)])),
         "inputs":
@@ -196,9 +212,10 @@
           [
             "LowConf.txt"
           ],
-        "local_job":true
+        "local_job":true,
+        "category": "hecil_preprocessing"
       },
-      
+
       {
         "command":format("%s %s 1000",SPLITA,REF),
         "inputs":
@@ -210,9 +227,10 @@
           [
             format("%s.%d",REF,x) for x in range(ceil(TOTAL_SEQ/SEQ_PER_SPLIT))
           ],
-        "local_job":true
+        "local_job":true,
+        "category": "hecil_preprocessing"
       },
-      
+
       {
         "command":format("%s %s %s.%d corr.out 2> create.err.%d",PYTHON,CORRECT_ALLLR,REF,x,x),
         "inputs":
@@ -224,9 +242,16 @@
         "outputs":
           [
             format("Corrected_ref.fasta.%d",x)
-          ]
+          ],
+      		"resources" : {
+      			"cores":1,
+      			"memory":100,
+      			"disk":1300,
+      			"wall-time":10
+      		},
+      		"category": "hecil_simulation"
       } for x in range(ceil(TOTAL_SEQ/SEQ_PER_SPLIT)),
-      
+
       {
         "command":format("cat %s > Corrected_ref.fasta",join([format("Corrected_ref.fasta.%d",x) for x in range(ceil(TOTAL_SEQ/SEQ_PER_SPLIT))])),
         "inputs":
@@ -237,7 +262,8 @@
           [
             "Corrected_ref.fasta"
           ],
-        "local_job":true
+        "local_job":true,
+        "category": "hecil_analysis"
       }
     ]
 }

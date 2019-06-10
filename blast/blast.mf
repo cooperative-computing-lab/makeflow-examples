@@ -1,7 +1,13 @@
-
+CATEGORY=preprocessing
 
 small.fasta.0 small.fasta.1 small.fasta.2 small.fasta.3 small.fasta.4 small.fasta.5 small.fasta.6 small.fasta.7 small.fasta.8 small.fasta.9 small.fasta.10 small.fasta.11 small.fasta.12 small.fasta.13 small.fasta.14 small.fasta.15 small.fasta.16 small.fasta.17 small.fasta.18 small.fasta.19 : small.fasta split_fasta
 	LOCAL ./split_fasta 10 small.fasta
+
+CATEGORY=simulation
+CORES=1
+MEMORY=1000
+DISK=1400
+WALLTIME=40
 
 small.fasta.0.out small.fasta.0.err : blastall small.fasta.0 nt
 	./blastall -p blastn -d nt/nt -i small.fasta.0 -o small.fasta.0.out 2> small.fasta.0.err
@@ -62,6 +68,8 @@ small.fasta.18.out small.fasta.18.err : blastall small.fasta.18 nt
 
 small.fasta.19.out small.fasta.19.err : blastall small.fasta.19 nt
 	./blastall -p blastn -d nt/nt -i small.fasta.19 -o small.fasta.19.out 2> small.fasta.19.err
+
+CATEGORY=analysis
 
 output.fasta : cat_blast small.fasta.0.out small.fasta.1.out small.fasta.2.out small.fasta.3.out small.fasta.4.out small.fasta.5.out small.fasta.6.out small.fasta.7.out small.fasta.8.out small.fasta.9.out small.fasta.10.out small.fasta.11.out small.fasta.12.out small.fasta.13.out small.fasta.14.out small.fasta.15.out small.fasta.16.out small.fasta.17.out small.fasta.18.out small.fasta.19.out
 	LOCAL ./cat_blast output.fasta small.fasta.0.out small.fasta.1.out small.fasta.2.out small.fasta.3.out small.fasta.4.out small.fasta.5.out small.fasta.6.out small.fasta.7.out small.fasta.8.out small.fasta.9.out small.fasta.10.out small.fasta.11.out small.fasta.12.out small.fasta.13.out small.fasta.14.out small.fasta.15.out small.fasta.16.out small.fasta.17.out small.fasta.18.out small.fasta.19.out
