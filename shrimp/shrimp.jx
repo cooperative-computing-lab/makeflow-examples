@@ -14,7 +14,7 @@
     [
       
       {
-        "command":format("%s %d %s",SPLIT,SEQ_PER_SPLIT,QUERY),
+        "command":template("{SPLIT} {SEQ_PER_SPLIT} {QUERY}"),
         "inputs":
           [
             QUERY,
@@ -22,30 +22,30 @@
           ],
         "outputs":
           [
-            format("%s.%d",QUERY,x) for x in range(ceil(TOTAL_SEQ/SEQ_PER_SPLIT))
+            template("{QUERY}.{x}") for x in range(ceil(TOTAL_SEQ/SEQ_PER_SPLIT))
           ],
         "local_job":true
       },
       
       {
-        "command":format("%s %s %s.%d %s > output.%d",MAPPER,MOPTIONS,QUERY,x,GENOME,x),
+        "command":template("{MAPPER} {MOPTIONS} {QUERY}.{x} {GENOME} > output.{x}"),
         "inputs":
           [
             MAPPER,
             GENOME,
-            format("%s.%d",QUERY,x)
+            template("{QUERY}.{x}")
           ],
         "outputs":
           [
-            format("output.%d",x)
+            template("output.{x}")
           ]
       } for x in range(ceil(TOTAL_SEQ/SEQ_PER_SPLIT)),
       
       {
-        "command":format("cat %s > output.txt",join([format("output.%d",x) for x in range(ceil(TOTAL_SEQ/SEQ_PER_SPLIT))])),
+        "command":format("cat %s > output.txt",join([template("output.{x}") for x in range(ceil(TOTAL_SEQ/SEQ_PER_SPLIT))])),
         "inputs":
           [
-            format("output.%d",x) for x in range(ceil(TOTAL_SEQ/SEQ_PER_SPLIT))
+            template("output.{x}") for x in range(ceil(TOTAL_SEQ/SEQ_PER_SPLIT))
           ],
         "outputs":
           [
