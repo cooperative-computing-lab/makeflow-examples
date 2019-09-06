@@ -14,7 +14,7 @@
     [
       
       {
-        "command":format("%s %s %d",SPLIT,QUERY,SEQ_PER_SPLIT),
+        "command":template("{SPLIT} {QUERY} {SEQ_PER_SPLIT}"),
         "inputs":
           [
             SPLIT,
@@ -22,30 +22,30 @@
           ],
         "outputs":
           [
-            format("%s.%d",QUERY,x) for x in range(ceil(TOTAL_SEQ/SEQ_PER_SPLIT))
+            template("{QUERY}.{x}") for x in range(ceil(TOTAL_SEQ/SEQ_PER_SPLIT))
           ],
         "local_job":true
       },
       
       {
-        "command":format("%s %s %s %s.%d > output.fastq.%d",SSAHA,OPTIONS,DB,QUERY,x,x),
+        "command":template("{SSAHA} {OPTIONS} {DB} {QUERY}.{x} > output.fastq.{x}"),
         "inputs":
           [
             SSAHA,
             DB,
-            format("%s.%d",QUERY,x)
+            template("{QUERY}.{x}")
           ],
         "outputs":
           [
-            format("output.fastq.%d",x)
+            template("output.fastq.{x}")
           ]
       } for x in range(ceil(TOTAL_SEQ/SEQ_PER_SPLIT)),
       
       {
-        "command":format("cat %s > output.fastq",join([format("output.fastq.%d",x) for x in range(ceil(TOTAL_SEQ/SEQ_PER_SPLIT))])),
+        "command":format("cat %s > output.fastq",join([template("output.fastq.{x}") for x in range(ceil(TOTAL_SEQ/SEQ_PER_SPLIT))])),
         "inputs":
           [
-            format("output.fastq.%d",x) for x in range(ceil(TOTAL_SEQ/SEQ_PER_SPLIT))
+            template("output.fastq.{x}") for x in range(ceil(TOTAL_SEQ/SEQ_PER_SPLIT))
           ],
         "outputs":
           [

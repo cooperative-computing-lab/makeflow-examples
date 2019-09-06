@@ -26,7 +26,7 @@
 #This is the final task in the workflow. Notice that the order we write rules does not matter, Makeflow will figure it out for us.
 {
 	"command": "perl count_characters.pl",
-	"inputs": [format("characters_%s.txt", p) for p in PLAYS,
+	"inputs": [template("characters_{p}.txt") for p in PLAYS,
 			   "count_characters.pl"
 	],
 	"outputs": ["top_character.txt"]
@@ -36,9 +36,9 @@
 #In the rule below, we tell Makeflow to get all the plays listed in our context.jx file.
 #Look at example in shakespeare.mf to see the expanded version using the Make syntax.
 {
-	"command": format("curl -s -o %s.txt http://ccl.cse.nd.edu/workflows/shakespeare/%s.txt", p, p),
+	"command": template("curl -s -o {p}.txt http://ccl.cse.nd.edu/workflows/shakespeare/{p}.txt"),
 	"inputs": [],
-	"outputs": [format("%s.txt", p)],
+	"outputs": [template("{p}.txt")],
 	"local_job": true
 } for p in PLAYS,
 

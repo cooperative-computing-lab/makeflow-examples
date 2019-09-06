@@ -73,152 +73,152 @@
     [
       
       {
-        "command":format("%s aln %s SM%s.fq > SM%s.sai 2> SM%s.sai.err",BWA,REF,x,x,x),
+        "command":template("{BWA} aln {REF} SM{x}.fq > SM{x}.sai 2> SM{x}.sai.err"),
         "inputs":
           [
             BWA,
             REF,
             y for y in REF_INDEX,
-            format("SM%s.fq",x)
+            template("SM{x}.fq")
           ],
         "outputs":
           [
-            format("SM%s.sai",x),
-            format("SM%s.sai.err",x)
+            template("SM{x}.sai"),
+            template("SM{x}.sai.err")
           ]
       } for x in ORGANISMS[:SPLITS],
       
       {
-        "command":format("%s samse %s SM%s.sai SM%s.fq > SM%s.sam 2> SM%s.sam.err",BWA,REF,x,x,x,x),
+        "command":template("{BWA} samse {REF} SM{x}.sai SM{x}.fq > SM{x}.sam 2> SM{x}.sam.err"),
         "inputs":
           [
             BWA,
             REF,
             y for y in REF_INDEX,
-            format("SM%s.fq",x),
-            format("SM%s.sai",x)
+            template("SM{x}.fq"),
+            template("SM{x}.sai")
           ],
         "outputs":
           [
-            format("SM%s.sam",x),
-            format("SM%s.sam.err",x)
+            template("SM{x}.sam"),
+            template("SM{x}.sam.err")
           ]
       } for x in ORGANISMS[:SPLITS],
       
       {
-        "command":format("perl %s %d %s SM%s.sam 2> SM%s_split.sam.err",SPLIT_ALIGN,GRANULARITY,REF,x,x),
+        "command":template("perl {SPLIT_ALIGN} {GRANULARITY} {REF} SM{x}.sam 2> SM{x}_split.sam.err"),
         "inputs":
           [
             SPLIT_ALIGN,
             REF,
-            format("SM%s.sam",x)
+            template("SM{x}.sam")
           ],
         "outputs":
           [
-            format("SM%s_split.sam.err",x),
-            format("SM%s.%d.sam",x,i) for i in range(SLICES)
+            template("SM{x}_split.sam.err"),
+            template("SM{x}.{i}.sam") for i in range(SLICES)
           ]
       } for x in ORGANISMS[:SPLITS],
       
       {
-        "command":format("%s view -bS SM%s.%d.sam > SM%s.%d.bam 2> SM%s.%d.bam.err",SAMTOOLS,x,n,x,n,x,n),
+        "command":template("{SAMTOOLS} view -bS SM{x}.{n}.sam > SM{x}.{n}.bam 2> SM{x}.{n}.bam.err"),
         "inputs":
           [
             SAMTOOLS,
-            format("SM%s.%d.sam",x,n)
+            template("SM{x}.{n}.sam")
           ],
         "outputs":
           [
-            format("SM%s.%d.bam",x,n),
-            format("SM%s.%d.bam.err",x,n)
+            template("SM{x}.{n}.bam"),
+            template("SM{x}.{n}.bam.err")
           ]
       } for x in ORGANISMS[:SPLITS] for n in range(SLICES),
       
       {
-        "command":format("java -Xmx8g -jar %s SortSam INPUT=SM%s.%d.bam OUTPUT=SM%s.%d.sort.bam SORT_ORDER=coordinate VALIDATION_STRINGENCY=LENIENT 2> SM%s.%d.sort.bam.err",PICARD,x,n,x,n,x,n),
+        "command":template("java -Xmx8g -jar {PICARD} SortSam INPUT=SM{x}.{n}.bam OUTPUT=SM{x}.{n}.sort.bam SORT_ORDER=coordinate VALIDATION_STRINGENCY=LENIENT 2> SM{x}.{n}.sort.bam.err"),
         "inputs":
           [
             PICARD,
-            format("SM%s.%d.bam",x,n)
+            template("SM{x}.{n}.bam")
           ],
         "outputs":
           [
-            format("SM%s.%d.sort.bam",x,n),
-            format("SM%s.%d.sort.bam.err",x,n)
+            template("SM{x}.{n}.sort.bam"),
+            template("SM{x}.{n}.sort.bam.err")
           ]
       } for x in ORGANISMS[:SPLITS] for n in range(SLICES),
       
       {
-        "command":format("java -Xmx8g -jar %s AddOrReplaceReadGroups INPUT=SM%s.%d.sort.bam OUTPUT=SM%s.%d_RG.sort.bam RGID=RG1 RGLB=lib1 RGPL=illumina RGPU=unit1 RGSM=SM%s VALIDATION_STRINGENCY=LENIENT 2> SM%s.%d_RG.sort.bam.err",PICARD,x,n,x,n,x,x,n),
+        "command":template("java -Xmx8g -jar {PICARD} AddOrReplaceReadGroups INPUT=SM{x}.{n}.sort.bam OUTPUT=SM{x}.{n}_RG.sort.bam RGID=RG1 RGLB=lib1 RGPL=illumina RGPU=unit1 RGSM=SM{x} VALIDATION_STRINGENCY=LENIENT 2> SM{x}.{n}_RG.sort.bam.err"),
         "inputs":
           [
             PICARD,
-            format("SM%s.%d.sort.bam",x,n)
+            template("SM{x}.{n}.sort.bam")
           ],
         "outputs":
           [
-            format("SM%s.%d_RG.sort.bam",x,n),
-            format("SM%s.%d_RG.sort.bam.err",x,n)
+            template("SM{x}.{n}_RG.sort.bam"),
+            template("SM{x}.{n}_RG.sort.bam.err")
           ]
       } for x in ORGANISMS[:SPLITS] for n in range(SLICES),
       
       {
-        "command":format("java -Xmx8g -jar %s BuildBamIndex INPUT=SM%s.%d_RG.sort.bam VALIDATION_STRINGENCY=LENIENT 2> SM%s.%d_RG.sort.bai.err",PICARD,x,n,x,n),
+        "command":template("java -Xmx8g -jar {PICARD} BuildBamIndex INPUT=SM{x}.{n}_RG.sort.bam VALIDATION_STRINGENCY=LENIENT 2> SM{x}.{n}_RG.sort.bai.err"),
         "inputs":
           [
             PICARD,
-            format("SM%s.%d_RG.sort.bam",x,n)
+            template("SM{x}.{n}_RG.sort.bam")
           ],
         "outputs":
           [
-            format("SM%s.%d_RG.sort.bai",x,n),
-            format("SM%s.%d_RG.sort.bai.err",x,n)
+            template("SM{x}.{n}_RG.sort.bai"),
+            template("SM{x}.{n}_RG.sort.bai.err")
           ]
       } for x in ORGANISMS[:SPLITS] for n in range(SLICES),
       
       {
-        "command":format("java -jar %s CreateSequenceDictionary R=oak2.%d.fa O=oak2.%d.dict 2> oak2.%d.dict.err",PICARD,n,n,n),
+        "command":template("java -jar {PICARD} CreateSequenceDictionary R=oak2.{n}.fa O=oak2.{n}.dict 2> oak2.{n}.dict.err"),
         "inputs":
           [
             PICARD,
-            format("oak2.%d.fa",n)
+            template("oak2.{n}.fa")
           ],
         "outputs":
           [
-            format("oak2.%d.dict",n),
-            format("oak2.%d.dict.err",n)
+            template("oak2.{n}.dict"),
+            template("oak2.{n}.dict.err")
           ]
       } for n in range(SLICES),
       
       {
-        "command":format("%s faidx oak2.%d.fa 2> oak2.%d.fa.fai.err",SAMTOOLS,n,n),
+        "command":template("{SAMTOOLS} faidx oak2.{n}.fa 2> oak2.{n}.fa.fai.err"),
         "inputs":
           [
             SAMTOOLS,
-            format("oak2.%d.fa",n)
+            template("oak2.{n}.fa")
           ],
         "outputs":
           [
-            format("oak2.%d.fa.fai",n),
-            format("oak2.%d.fa.fai.err",n)
+            template("oak2.{n}.fa.fai"),
+            template("oak2.{n}.fa.fai.err")
           ]
       } for n in range(SLICES),
       
       {
-        "command":format("java -Xmx8g -jar %s -T HaplotypeCaller -R oak2.%d.fa -I SM%s.%d_RG.sort.bam -o SM%s.%d.vcf --fix_misencoded_quality_scores 2> SM%s.%d.vcf.err",GATK,n,x,n,x,n,x,n),
+        "command":template("java -Xmx8g -jar {GATK} -T HaplotypeCaller -R oak2.{n}.fa -I SM{x}.{n}_RG.sort.bam -o SM{x}.{n}.vcf --fix_misencoded_quality_scores 2> SM{x}.{n}.vcf.err"),
         "inputs":
           [
             GATK,
-            format("oak2.%d.fa",n),
-            format("oak2.%d.fa.fai",n),
-            format("oak2.%d.dict",n),
-            format("SM%s.%d_RG.sort.bai",x,n),
-            format("SM%s.%d_RG.sort.bam",x,n)
+            template("oak2.{n}.fa"),
+            template("oak2.{n}.fa.fai"),
+            template("oak2.{n}.dict"),
+            template("SM{x}.{n}_RG.sort.bai"),
+            template("SM{x}.{n}_RG.sort.bam")
           ],
         "outputs":
           [
-            format("SM%s.%d.vcf",x,n),
-            format("SM%s.%d.vcf.err",x,n)
+            template("SM{x}.{n}.vcf"),
+            template("SM{x}.{n}.vcf.err")
           ]
       } for x in ORGANISMS[:SPLITS] for n in range(SLICES)
     ]

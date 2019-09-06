@@ -9,61 +9,50 @@
     },
     "rules": [
         {
-            "command": format(
-                "mkdir -p outputs && %s points/%s.csv outputs/%s.csv",
-                PROCESS_POINTS, t, t
+            "command": template(
+                "mkdir -p outputs && {PROCESS_POINTS} points/{t}.csv outputs/{t}.csv"
             ),
             "outputs": [
-                format("outputs/%s.csv", t),
+                template("outputs/{t}.csv"),
             ],
             "inputs": [
-                format("points/%s.csv", t),
+                template("points/{t}.csv"),
                 PROCESS_POINTS,
             ],
         } for t in TAXA, {
-            "command": format(
-                "mkdir -p outputs/%s && %s -cp %s density.MaxEnt -s outputs/%s.csv -e %s -o outputs/%s nowarnings nocache autorun -z",
-                t,
-                JAVA,
-                MAXENT,
-                t,
-                MODEL,
-                t
+            "command": template(
+                "mkdir -p outputs/{t} && {JAVA} -cp {MAXENT} density.MaxEnt -s outputs/{t}.csv -e {MODEL} -o outputs/{t} nowarnings nocache autorun -z"
             ),
             "inputs": [
                 MAXENT,
                 #JAVA,
                 MODEL,
-                format("outputs/%s.csv", t)
+                template("outputs/{t}.csv")
             ],
             "outputs": [
-                format("outputs/%s", t),
+                template("outputs/{t}"),
             ],
         } for t in TAXA, {
-            "command": format(
-                "%s -cp %s density.Project outputs/%s/%s.lambdas %s outputs/%s_%s.asc nowarnings nocache autorun -z; touch outputs/%s_%s.asc; touch outputs/%s_%s_clamping.asc",
-                JAVA,
-                MAXENT,
-                t,
-                t,
-                p,
-                t,
-                basename(p),
-                t,
-                basename(p),
-                t,
-                basename(p)
+            "command": template(
+                "{JAVA} -cp {MAXENT} density.Project outputs/{t}/{t}.lambdas {p} outputs/{t}_{base}.asc nowarnings nocache autorun -z; touch outputs/{t}_{base}.asc; touch outputs/{t}_{base}_clamping.asc",
+                {"base": basename(p)}
             ),
             "outputs": [
-                format("outputs/%s_%s.asc", t, basename(p)),
-                format("outputs/%s_%s_clamping.asc", t, basename(p))
+                template(
+                    "outputs/{t}_{base}.asc",
+                    {"base": basename(p)}
+                ),
+                template(
+                    "outputs/{t}_{base}_clamping.asc",
+                    {"base": basename(p)}
+                )
             ],
             "inputs": [
                 MAXENT,
                 #JAVA,
                 MODEL,
                 p,
-                format("outputs/%s", t),
+                template("outputs/{t}"),
             ]
         } for t in TAXA for p in PROJECTIONS,
     ],

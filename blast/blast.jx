@@ -11,47 +11,37 @@
 
 	"rules": [
 	{
-		"command": format(
-			"%s %d small.fasta",
-			SPLIT_BLAST,
-			SEQ_PER_SPLIT
-		),
+		"command": template("{SPLIT_BLAST} {SEQ_PER_SPLIT} small.fasta"),
 		"inputs": [
 			"small.fasta",
 			SPLIT_BLAST
 		],
-		"outputs": [format("small.fasta.%d", x) for x in range(ceil(TOTAL_SEQ/SEQ_PER_SPLIT))],
+		"outputs": [template("small.fasta.{x}") for x in range(ceil(TOTAL_SEQ/SEQ_PER_SPLIT))],
 		"local_job": true,
 	},
 	{
-		"command": format(
-			"%s -p %s -d %s/nt -i small.fasta.%d -o small.fasta.%d.out 2> small.fasta.%d.err",
-			BLAST_EXE,
-			BLAST_ALGO,
-			BLAST_DB,
-			x,
-			x,
-			x,
+		"command": template(
+			"{BLAST_EXE} -p {BLAST_ALGO} -d {BLAST_DB}/nt -i small.fasta.{x} -o small.fasta.{x}.out 2> small.fasta.{x}.err"
 		),
 		"inputs": [
 			BLAST_EXE,
 			BLAST_DB,
-			format("small.fasta.%d", x)
+			template("small.fasta.{x}")
 		],
 		"outputs": [
-			format("small.fasta.%d.out", x),
-			format("small.fasta.%d.err", x),
+			template("small.fasta.{x}.out"),
+			template("small.fasta.{x}.err"),
 		]
 	} for x in range(ceil(TOTAL_SEQ/SEQ_PER_SPLIT)),
 	{
 		"command": format(
 			"%s output.fasta %s",
 			CAT_BLAST,
-			join([format("small.fasta.%d.out", x) for x in range(ceil(TOTAL_SEQ/SEQ_PER_SPLIT))]),
-		),	
+			join([template("small.fasta.{x}.out") for x in range(ceil(TOTAL_SEQ/SEQ_PER_SPLIT))]),
+		),
 		"inputs": [
 			CAT_BLAST,
-			format("small.fasta.%d.out", x) for x in range(ceil(TOTAL_SEQ/SEQ_PER_SPLIT)),
+			template("small.fasta.{x}.out") for x in range(ceil(TOTAL_SEQ/SEQ_PER_SPLIT)),
 		],
 		"output": [
 			"output.fasta"
@@ -61,10 +51,10 @@
 	{
 		"command": format(
 			"cat %s > output.fasta.err",
-			join([format("small.fasta.%d.err", x) for x in range(ceil(TOTAL_SEQ/SEQ_PER_SPLIT))]),
-		),	
+			join([template("small.fasta.{x}.err") for x in range(ceil(TOTAL_SEQ/SEQ_PER_SPLIT))]),
+		),
 		"inputs": [
-			format("small.fasta.%d.err", x) for x in range(ceil(TOTAL_SEQ/SEQ_PER_SPLIT)),
+			template("small.fasta.{x}.err") for x in range(ceil(TOTAL_SEQ/SEQ_PER_SPLIT)),
 		],
 		"output": [
 			"output.fasta.err"

@@ -19,10 +19,10 @@
     [
       
       {
-        "command":format("%s %s %d",SPLIT,INPUT_PRE,SEQ_PER_SPLIT),
+        "command":template("{SPLIT} {INPUT_PRE} {SEQ_PER_SPLIT}"),
         "outputs":
           [
-            format("%s.%d",INPUT_PRE,i) for i in range(ceil(TOTAL_SEQ/SEQ_PER_SPLIT))
+            template("{INPUT_PRE}.{i}") for i in range(ceil(TOTAL_SEQ/SEQ_PER_SPLIT))
           ],
         "inputs":
           [
@@ -33,7 +33,7 @@
       },
       
       {
-        "command":format("%s index %s",BWA,REF),
+        "command":template("{BWA} index {REF}"),
         "inputs":
           [
             BWA,
@@ -47,31 +47,31 @@
       },
       
       {
-        "command":format("%s %s %s %s.%d > %s.%d.sam 2> %s.%d.err",BWA,ARGS,REF,INPUT_PRE,i,INPUT_PRE,i,INPUT_PRE,i),
+        "command":template("{BWA} {ARGS} {REF} {INPUT_PRE}.{i} > {INPUT_PRE}.{i}.sam 2> {INPUT_PRE}.{i}.err"),
         "outputs":
           [
-            format("%s.%d.sam",INPUT_PRE,i),
-            format("%s.%d.err",INPUT_PRE,i)
+            template("{INPUT_PRE}.{i}.sam"),
+            template("{INPUT_PRE}.{i}.err")
           ],
         "inputs":
           [
             BWA,
             REF,
             x for x in REF_INDEX,
-            format("%s.%d",INPUT_PRE,i)
+            template("{INPUT_PRE}.{i}")
           ]
       } for i in range(ceil(TOTAL_SEQ/SEQ_PER_SPLIT)),
       
       {
-        "command":format("%s %s.sam %s*.sam",CONCAT,INPUT_PRE,INPUT_PRE),
+        "command":template("{CONCAT} {INPUT_PRE}.sam {INPUT_PRE}*.sam"),
         "outputs":
           [
-            format("%s.sam",INPUT_PRE)
+            template("{INPUT_PRE}.sam")
           ],
         "inputs":
           [
             CONCAT,
-            format("%s.%d.sam",INPUT_PRE,i) for i in range(ceil(TOTAL_SEQ/SEQ_PER_SPLIT))
+            template("{INPUT_PRE}.{i}.sam") for i in range(ceil(TOTAL_SEQ/SEQ_PER_SPLIT))
           ]
       }
     ]
