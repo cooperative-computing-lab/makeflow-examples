@@ -1,4 +1,4 @@
-<img align=right src=lifemapper.png width=256></img>
+<img align=right src=image.png width=256></img>
 
 # Lifemapper
 

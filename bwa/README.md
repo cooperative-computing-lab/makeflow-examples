@@ -1,4 +1,4 @@
-<img align=right src=bwa.png width=256></img>
+<img align=right src=image.png width=256></img>
 
 BWA Workflow Example
 --------------------

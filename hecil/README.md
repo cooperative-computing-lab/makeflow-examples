@@ -1,4 +1,4 @@
-<img align=left src=hecil.png width=256></img>
+<img align=left src=image.png width=256></img>
 HECIL Workflow Example
 ----------------------
 

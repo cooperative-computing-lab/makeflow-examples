@@ -1,11 +1,13 @@
 #!/bin/sh
 
-for name in blast ssaha bwa shrimp lifemapper snpexp bwa-gatk hecil shakespeare
+EXAMPLES="blast ssaha bwa shrimp lifemapper snpexp bwa-gatk hecil shakespeare"
+
+for name in $EXAMPLES
 do
 	echo "generating $name..."
-        makeflow_viz $name/$name.mf --display dot --dot-no-labels > $name/$name.dot
-	dot -Tpng -Gsize=10,10\! -Gdpi=100 -Gratio=fill $name/$name.dot > $name/$name.png
-	dot -Tpdf -Gsize=10,10\! -Gdpi=100 -Gratio=fill $name/$name.dot > $name/$name.pdf
+        makeflow_viz $name/image.mf --display dot --dot-no-labels > $name/image.dot
+	dot -Tpng -Gsize=10,10\! -Gdpi=100 -Gratio=fill $name/image.dot > $name/image.png
+	dot -Tpdf -Gsize=10,10\! -Gdpi=100 -Gratio=fill $name/image.dot > $name/image.pdf
 done
 
-montage -geometry 256x256 -tile 9x1 */*.png banner.png
+montage -geometry 256x256 -tile $(echo $EXAMPLES | wc -w)x1 */image.png banner.png
