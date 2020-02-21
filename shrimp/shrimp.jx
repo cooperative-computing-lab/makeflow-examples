@@ -12,7 +12,7 @@
     },
   "rules":
     [
-      
+
       {
         "command":format("%s %d %s",SPLIT,SEQ_PER_SPLIT,QUERY),
         "inputs":
@@ -24,9 +24,10 @@
           [
             format("%s.%d",QUERY,x) for x in range(ceil(TOTAL_SEQ/SEQ_PER_SPLIT))
           ],
-        "local_job":true
+        "local_job":true,
+    		"category": "preprocessing"
       },
-      
+
       {
         "command":format("%s %s %s.%d %s > output.%d",MAPPER,MOPTIONS,QUERY,x,GENOME,x),
         "inputs":
@@ -38,9 +39,17 @@
         "outputs":
           [
             format("output.%d",x)
-          ]
+          ],
+      		"resources" : {
+      			"cores":1,
+      			"memory":800,
+      			"disk":400,
+      			"wall-time":300
+      		},
+      		"category": "simulation"
+
       } for x in range(ceil(TOTAL_SEQ/SEQ_PER_SPLIT)),
-      
+
       {
         "command":format("cat %s > output.txt",join([format("output.%d",x) for x in range(ceil(TOTAL_SEQ/SEQ_PER_SPLIT))])),
         "inputs":
@@ -51,7 +60,8 @@
           [
             "output.txt"
           ],
-        "local_job":true
+        "local_job":true,
+    		"category": "analysis"
       }
     ]
 }

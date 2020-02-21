@@ -17,7 +17,7 @@
     },
   "rules":
     [
-      
+
       {
         "command":format("%s %s %d",SPLIT,INPUT_PRE,SEQ_PER_SPLIT),
         "outputs":
@@ -29,9 +29,10 @@
             SPLIT,
             INPUT_PRE
           ],
-        "local_job":true
+        "local_job":true,
+    		"category": "preprocessing"
       },
-      
+
       {
         "command":format("%s index %s",BWA,REF),
         "inputs":
@@ -43,9 +44,10 @@
           [
             x for x in REF_INDEX
           ],
-        "local job":true
+        "local job":true,
+    		"category": "preprocessing"
       },
-      
+
       {
         "command":format("%s %s %s %s.%d > %s.%d.sam 2> %s.%d.err",BWA,ARGS,REF,INPUT_PRE,i,INPUT_PRE,i,INPUT_PRE,i),
         "outputs":
@@ -59,9 +61,17 @@
             REF,
             x for x in REF_INDEX,
             format("%s.%d",INPUT_PRE,i)
-          ]
+          ],
+      		"resources" : {
+      			"cores":1,
+      			"memory":100,
+      			"disk":3800,
+      			"wall-time":5
+      		},
+      		"category": "simulation"
+
       } for i in range(ceil(TOTAL_SEQ/SEQ_PER_SPLIT)),
-      
+
       {
         "command":format("%s %s.sam %s*.sam",CONCAT,INPUT_PRE,INPUT_PRE),
         "outputs":
@@ -72,7 +82,8 @@
           [
             CONCAT,
             format("%s.%d.sam",INPUT_PRE,i) for i in range(ceil(TOTAL_SEQ/SEQ_PER_SPLIT))
-          ]
+          ],
+          "category": "analysis"
       }
     ]
 }

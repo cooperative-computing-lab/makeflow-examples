@@ -1,4 +1,3 @@
-
 {
   "define":
     {
@@ -12,7 +11,7 @@
     },
   "rules":
     [
-      
+
       {
         "command":"./split_fasta 10 small.fasta",
         "inputs":
@@ -43,9 +42,10 @@
             "small.fasta.18",
             "small.fasta.19"
           ],
-        "local_job":true
+        "local_job":true,
+        "category": "preprocessing"
       },
-      
+
       {
         "command":"./blastall -p blastn -d nt/nt -i small.fasta.0 -o small.fasta.0.out 2> small.fasta.0.err",
         "inputs":
@@ -58,9 +58,16 @@
           [
             "small.fasta.0.out",
             "small.fasta.0.err"
-          ]
+          ],
+        "resources" : {
+          "cores":1,
+          "memory":1000,
+          "disk":1400,
+          "wall-time":40
+        },
+        "category": "simulation"
       },
-      
+
       {
         "command":"./blastall -p blastn -d nt/nt -i small.fasta.1 -o small.fasta.1.out 2> small.fasta.1.err",
         "inputs":
@@ -73,9 +80,16 @@
           [
             "small.fasta.1.out",
             "small.fasta.1.err"
-          ]
+          ],
+        "resources" : {
+          "cores":1,
+          "memory":1000,
+          "disk":1400,
+          "wall-time":40
+        },
+        "category": "simulation"
       },
-      
+
       {
         "command":"./blastall -p blastn -d nt/nt -i small.fasta.2 -o small.fasta.2.out 2> small.fasta.2.err",
         "inputs":
@@ -88,9 +102,16 @@
           [
             "small.fasta.2.out",
             "small.fasta.2.err"
-          ]
+          ],
+        "resources" : {
+          "cores":1,
+          "memory":1000,
+          "disk":1400,
+          "wall-time":40
+        },
+        "category": "simulation"
       },
-      
+
       {
         "command":"./blastall -p blastn -d nt/nt -i small.fasta.3 -o small.fasta.3.out 2> small.fasta.3.err",
         "inputs":
@@ -103,9 +124,16 @@
           [
             "small.fasta.3.out",
             "small.fasta.3.err"
-          ]
+          ],
+        "resources" : {
+          "cores":1,
+          "memory":1000,
+          "disk":1400,
+          "wall-time":40
+        },
+        "category": "simulation"
       },
-      
+
       {
         "command":"./blastall -p blastn -d nt/nt -i small.fasta.4 -o small.fasta.4.out 2> small.fasta.4.err",
         "inputs":
@@ -118,9 +146,16 @@
           [
             "small.fasta.4.out",
             "small.fasta.4.err"
-          ]
+          ],
+        "resources" : {
+          "cores":1,
+          "memory":1000,
+          "disk":1400,
+          "wall-time":40
+        },
+        "category": "simulation"
       },
-      
+
       {
         "command":"./blastall -p blastn -d nt/nt -i small.fasta.5 -o small.fasta.5.out 2> small.fasta.5.err",
         "inputs":
@@ -133,9 +168,16 @@
           [
             "small.fasta.5.out",
             "small.fasta.5.err"
-          ]
+          ],
+        "resources" : {
+          "cores":1,
+          "memory":1000,
+          "disk":1400,
+          "wall-time":40
+        },
+        "category": "simulation"
       },
-      
+
       {
         "command":"./blastall -p blastn -d nt/nt -i small.fasta.6 -o small.fasta.6.out 2> small.fasta.6.err",
         "inputs":
@@ -148,9 +190,16 @@
           [
             "small.fasta.6.out",
             "small.fasta.6.err"
-          ]
+          ],
+        "resources" : {
+          "cores":1,
+          "memory":1000,
+          "disk":1400,
+          "wall-time":40
+        },
+        "category": "simulation"
       },
-      
+
       {
         "command":"./blastall -p blastn -d nt/nt -i small.fasta.7 -o small.fasta.7.out 2> small.fasta.7.err",
         "inputs":
@@ -163,9 +212,16 @@
           [
             "small.fasta.7.out",
             "small.fasta.7.err"
-          ]
+          ],
+        "resources" : {
+          "cores":1,
+          "memory":1000,
+          "disk":1400,
+          "wall-time":40
+        },
+        "category": "simulation"
       },
-      
+
       {
         "command":"./blastall -p blastn -d nt/nt -i small.fasta.8 -o small.fasta.8.out 2> small.fasta.8.err",
         "inputs":
@@ -178,9 +234,16 @@
           [
             "small.fasta.8.out",
             "small.fasta.8.err"
-          ]
+          ],
+        "resources" : {
+          "cores":1,
+          "memory":1000,
+          "disk":1400,
+          "wall-time":40
+        },
+        "category": "simulation"
       },
-      
+
       {
         "command":"./blastall -p blastn -d nt/nt -i small.fasta.9 -o small.fasta.9.out 2> small.fasta.9.err",
         "inputs":
@@ -193,9 +256,16 @@
           [
             "small.fasta.9.out",
             "small.fasta.9.err"
-          ]
+          ],
+        "resources" : {
+          "cores":1,
+          "memory":1000,
+          "disk":1400,
+          "wall-time":40
+        },
+        "category": "simulation"
       },
-      
+
       {
         "command":"./blastall -p blastn -d nt/nt -i small.fasta.10 -o small.fasta.10.out 2> small.fasta.10.err",
         "inputs":
@@ -208,9 +278,16 @@
           [
             "small.fasta.10.out",
             "small.fasta.10.err"
-          ]
+          ],
+        "resources" : {
+          "cores":1,
+          "memory":1000,
+          "disk":1400,
+          "wall-time":40
+        },
+        "category": "simulation"
       },
-      
+
       {
         "command":"./blastall -p blastn -d nt/nt -i small.fasta.11 -o small.fasta.11.out 2> small.fasta.11.err",
         "inputs":
@@ -223,9 +300,16 @@
           [
             "small.fasta.11.out",
             "small.fasta.11.err"
-          ]
+          ],
+        "resources" : {
+          "cores":1,
+          "memory":1000,
+          "disk":1400,
+          "wall-time":40
+        },
+        "category": "simulation"
       },
-      
+
       {
         "command":"./blastall -p blastn -d nt/nt -i small.fasta.12 -o small.fasta.12.out 2> small.fasta.12.err",
         "inputs":
@@ -238,9 +322,16 @@
           [
             "small.fasta.12.out",
             "small.fasta.12.err"
-          ]
+          ],
+        "resources" : {
+          "cores":1,
+          "memory":1000,
+          "disk":1400,
+          "wall-time":40
+        },
+        "category": "simulation"
       },
-      
+
       {
         "command":"./blastall -p blastn -d nt/nt -i small.fasta.13 -o small.fasta.13.out 2> small.fasta.13.err",
         "inputs":
@@ -253,9 +344,16 @@
           [
             "small.fasta.13.out",
             "small.fasta.13.err"
-          ]
+          ],
+        "resources" : {
+          "cores":1,
+          "memory":1000,
+          "disk":1400,
+          "wall-time":40
+        },
+        "category": "simulation"
       },
-      
+
       {
         "command":"./blastall -p blastn -d nt/nt -i small.fasta.14 -o small.fasta.14.out 2> small.fasta.14.err",
         "inputs":
@@ -268,9 +366,16 @@
           [
             "small.fasta.14.out",
             "small.fasta.14.err"
-          ]
+          ],
+        "resources" : {
+          "cores":1,
+          "memory":1000,
+          "disk":1400,
+          "wall-time":40
+        },
+        "category": "simulation"
       },
-      
+
       {
         "command":"./blastall -p blastn -d nt/nt -i small.fasta.15 -o small.fasta.15.out 2> small.fasta.15.err",
         "inputs":
@@ -283,9 +388,16 @@
           [
             "small.fasta.15.out",
             "small.fasta.15.err"
-          ]
+          ],
+        "resources" : {
+          "cores":1,
+          "memory":1000,
+          "disk":1400,
+          "wall-time":40
+        },
+        "category": "simulation"
       },
-      
+
       {
         "command":"./blastall -p blastn -d nt/nt -i small.fasta.16 -o small.fasta.16.out 2> small.fasta.16.err",
         "inputs":
@@ -298,9 +410,16 @@
           [
             "small.fasta.16.out",
             "small.fasta.16.err"
-          ]
+          ],
+        "resources" : {
+          "cores":1,
+          "memory":1000,
+          "disk":1400,
+          "wall-time":40
+        },
+        "category": "simulation"
       },
-      
+
       {
         "command":"./blastall -p blastn -d nt/nt -i small.fasta.17 -o small.fasta.17.out 2> small.fasta.17.err",
         "inputs":
@@ -313,9 +432,16 @@
           [
             "small.fasta.17.out",
             "small.fasta.17.err"
-          ]
+          ],
+        "resources" : {
+          "cores":1,
+          "memory":1000,
+          "disk":1400,
+          "wall-time":40
+        },
+        "category": "simulation"
       },
-      
+
       {
         "command":"./blastall -p blastn -d nt/nt -i small.fasta.18 -o small.fasta.18.out 2> small.fasta.18.err",
         "inputs":
@@ -328,9 +454,16 @@
           [
             "small.fasta.18.out",
             "small.fasta.18.err"
-          ]
+          ],
+        "resources" : {
+          "cores":1,
+          "memory":1000,
+          "disk":1400,
+          "wall-time":40
+        },
+        "category": "simulation"
       },
-      
+
       {
         "command":"./blastall -p blastn -d nt/nt -i small.fasta.19 -o small.fasta.19.out 2> small.fasta.19.err",
         "inputs":
@@ -343,9 +476,16 @@
           [
             "small.fasta.19.out",
             "small.fasta.19.err"
-          ]
+          ],
+        "resources" : {
+          "cores":1,
+          "memory":1000,
+          "disk":1400,
+          "wall-time":40
+        },
+        "category": "simulation"
       },
-      
+
       {
         "command":"./cat_blast output.fasta small.fasta.0.out small.fasta.1.out small.fasta.2.out small.fasta.3.out small.fasta.4.out small.fasta.5.out small.fasta.6.out small.fasta.7.out small.fasta.8.out small.fasta.9.out small.fasta.10.out small.fasta.11.out small.fasta.12.out small.fasta.13.out small.fasta.14.out small.fasta.15.out small.fasta.16.out small.fasta.17.out small.fasta.18.out small.fasta.19.out",
         "inputs":
@@ -376,9 +516,10 @@
           [
             "output.fasta"
           ],
-        "local_job":true
+        "local_job":true,
+        "category":"analysis"
       },
-      
+
       {
         "command":"cat small.fasta.0.err small.fasta.1.err small.fasta.2.err small.fasta.3.err small.fasta.4.err small.fasta.5.err small.fasta.6.err small.fasta.7.err small.fasta.8.err small.fasta.9.err small.fasta.10.err small.fasta.11.err small.fasta.12.err small.fasta.13.err small.fasta.14.err small.fasta.15.err small.fasta.16.err small.fasta.17.err small.fasta.18.err small.fasta.19.err > output.fasta.err",
         "inputs":
@@ -408,7 +549,8 @@
           [
             "output.fasta.err"
           ],
-        "local_job":true
+        "local_job":true,
+        "category":"analysis"
       }
     ]
 }

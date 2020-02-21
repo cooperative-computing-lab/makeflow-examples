@@ -22,6 +22,7 @@
 		],
 		"outputs": [format("small.fasta.%d", x) for x in range(ceil(TOTAL_SEQ/SEQ_PER_SPLIT))],
 		"local_job": true,
+		"category": "preprocessing"
 	},
 	{
 		"command": format(
@@ -41,14 +42,21 @@
 		"outputs": [
 			format("small.fasta.%d.out", x),
 			format("small.fasta.%d.err", x),
-		]
+		],
+		"resources" : {
+			"cores":1,
+			"memory":1000,
+			"disk":1400,
+			"wall-time":40
+		},
+		"category": "simulation"
 	} for x in range(ceil(TOTAL_SEQ/SEQ_PER_SPLIT)),
 	{
 		"command": format(
 			"%s output.fasta %s",
 			CAT_BLAST,
 			join([format("small.fasta.%d.out", x) for x in range(ceil(TOTAL_SEQ/SEQ_PER_SPLIT))]),
-		),	
+		),
 		"inputs": [
 			CAT_BLAST,
 			format("small.fasta.%d.out", x) for x in range(ceil(TOTAL_SEQ/SEQ_PER_SPLIT)),
@@ -57,12 +65,13 @@
 			"output.fasta"
 		],
 		"local_job": true,
+		"category": "analysis",
 	},
 	{
 		"command": format(
 			"cat %s > output.fasta.err",
 			join([format("small.fasta.%d.err", x) for x in range(ceil(TOTAL_SEQ/SEQ_PER_SPLIT))]),
-		),	
+		),
 		"inputs": [
 			format("small.fasta.%d.err", x) for x in range(ceil(TOTAL_SEQ/SEQ_PER_SPLIT)),
 		],
@@ -70,6 +79,7 @@
 			"output.fasta.err"
 		],
 		"local_job": true,
+		"category": "analysis"
 	},
 	],
 }
