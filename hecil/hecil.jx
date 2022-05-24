@@ -97,11 +97,24 @@
       },
       
       {
-        "command":format("%s view -bS Out.sam | %s sort - Out 2> sort.err",TOOLS,TOOLS),
+        "command":format("%s view -o View.bam -bS Out.sam",TOOLS),
         "inputs":
           [
             TOOLS,
             "Out.sam"
+          ],
+        "outputs":
+          [
+            "View.bam",
+          ]
+      },
+
+      {
+        "command":format("%s sort -o Out.bam View.bam 2> sort.err",TOOLS),
+        "inputs":
+          [
+            TOOLS,
+            "View.bam"
           ],
         "outputs":
           [
