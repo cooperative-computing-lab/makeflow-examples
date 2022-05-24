@@ -26,8 +26,8 @@ make
 cp bwa ..
 cd ..
 
-git clone https://github.com/samtools/htslib htslib-src --branch 1.15.1
-cd htslib-src
+git clone https://github.com/samtools/htslib htslib --branch 1.15.1
+cd htslib
 git submodule update --init --recursive
 autoreconf
 make

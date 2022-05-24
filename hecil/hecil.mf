@@ -321,7 +321,7 @@ Out.bam sort.err : samtools View.bam
 	./samtools sort -o Out.bam View.bam 2> sort.err
 
 pileup.txt ref.fasta.fai pileup.err : samtools ref.fasta Out.bam
-	./samtools mpileup -s -f ref.fasta Out.bam > pileup.txt 2> pileup.err
+	./samtools mpileup -aa -s -f ref.fasta Out.bam -o pileup.txt 2> pileup.err
 
 List_RefHeader.txt Pileup_Set1.txt Pileup_Set2.txt : Split_Pileup.sh Create_SubsetPileup.sh pileup.txt
 	LOCAL ./Split_Pileup.sh pileup.txt 2 2> Split_Pileup.err
