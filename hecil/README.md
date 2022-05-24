@@ -25,6 +25,20 @@ cd bwa-src
 make
 cp bwa ..
 cd ..
+
+git clone https://github.com/samtools/htslib htslib-src --branch 1.15.1
+cd htslib-src
+git submodule update --init --recursive
+autoreconf
+make
+cd ..
+
+git clone https://github.com/samtools/samtools samtools-src --branch 1.15.1
+cd samtools-src
+autoreconf
+make
+cp samtools ..
+cd ..
 ```
 
 If you do not have real data to work with, then generate
