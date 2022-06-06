@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#! /usr/bin/env python3
 
 # -----------------------------------
 # Creates a Makeflow file for HECIL
@@ -139,8 +139,11 @@ def write_makeflow(path):
 	makeflow.write('\tLOCAL cat mem.*.err > mem.err\n\n')
 
 	# Write the samtools view and sort rule
-	makeflow.write('Out.bam sort.err : samtools Out.sam\n')
-	makeflow.write('\t./samtools view -bS Out.sam | ./samtools sort - Out 2> sort.err\n\n')
+	makeflow.write('View.bam: samtools Out.sam\n')
+	makeflow.write('\t./samtools view -o View.bam -bS Out.sam\n\n')
+
+	makeflow.write('Out.bam sort.err : samtools View.bam\n')
+	makeflow.write('\t./samtools sort -o Out.bam View.bam 2> sort.err\n\n')
 
 	# Write the samtools mpileup rule
 	makeflow.write('pileup.txt {0}.fai pileup.err : samtools {0} Out.bam\n'.format(args.long_reads))	
@@ -156,7 +159,7 @@ def write_makeflow(path):
 	# Write the Correction.py rules
 	for i in range(args.pileup_splits):
 		makeflow.write('corr.{0}.out lc.{0}.out corr.{0}.err : Correction.py Pileup_Set{1}.txt {2} Out.sam\n'.format(i, i+1, args.long_reads))
-		makeflow.write('\tLOCAL python Correction.py Pileup_Set{0}.txt {2} lc.{1}.out Out.sam {3} > corr.{1}.out 2> corr.{1}.err ; echo "" >> lc.{1}.out ; echo "" >> corr.{1}.err\n\n'.format(i+1, i, args.long_reads, args.length_SR, args.output))
+		makeflow.write('\tLOCAL python3 Correction.py Pileup_Set{0}.txt {2} lc.{1}.out Out.sam {3} > corr.{1}.out 2> corr.{1}.err ; echo "" >> lc.{1}.out ; echo "" >> corr.{1}.err\n\n'.format(i+1, i, args.long_reads, args.length_SR, args.output))
 
 	# Write the corr.out cat rule
 	iterated_string = ''
@@ -195,7 +198,7 @@ def write_makeflow(path):
 	# Write the Create_Corrected_AllLRReads.py rules
 	for i in range(replacement_splits):
 		makeflow.write('Corrected_{0}.{2} create.err.{2} : Create_Corrected_AllLRReads.py {0}.{2} {1}\n'.format(args.long_reads, args.output, i))
-		makeflow.write('\tpython Create_Corrected_AllLRReads.py {0}.{2} {1} 2> create.err.{2}\n\n'.format(args.long_reads, args.output, i))
+		makeflow.write('\tpython3 Create_Corrected_AllLRReads.py {0}.{2} {1} 2> create.err.{2}\n\n'.format(args.long_reads, args.output, i))
 
 	# Write the Corrected_long_reads cat rule
 	iterated_string = ''

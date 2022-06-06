@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#! /usr/bin/env python3
 
 ############################################
 #
@@ -9,7 +9,7 @@
 # Author: Connor Howington
 # Date: 7/19/17
 #
-# Python 2.6.6
+# Python 3
 #
 ############################################
 
@@ -18,7 +18,7 @@ import argparse
 def parse_args():
 	parser = argparse.ArgumentParser(description='Converts a FASTQ file to FASTA format.  Sends to stdout.')
 	parser.add_argument('fastq')
-	
+
 	return parser.parse_args()
 
 def convert_fastq(fastq_path):
@@ -35,7 +35,7 @@ def convert_fastq(fastq_path):
 
 			for i in range(2): fastq.readline()   # Skip the next two lines
 			line = fastq.readline().rstrip()
-		
+
 # Main flow
 args = parse_args()
 convert_fastq(args.fastq)

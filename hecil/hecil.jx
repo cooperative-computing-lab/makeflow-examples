@@ -97,11 +97,24 @@
       },
       
       {
-        "command":template("{TOOLS} view -bS Out.sam | {TOOLS} sort - Out 2> sort.err"),
+        "command":template("{TOOLS} view -o View.bam -bS Out.sam"),
         "inputs":
           [
             TOOLS,
             "Out.sam"
+          ],
+        "outputs":
+          [
+            "View.bam",
+          ]
+      },
+
+      {
+        "command":template("{TOOLS} sort -o Out.bam View.bam 2>sort.err"),
+        "inputs":
+          [
+            TOOLS,
+            "View.bam"
           ],
         "outputs":
           [

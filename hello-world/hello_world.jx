@@ -4,5 +4,6 @@
 		"command": "echo hello world >hello.out",
 		"outputs": [ "hello.out" ],
 		"inputs": []
+        }
 	]
 }

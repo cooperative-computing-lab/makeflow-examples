@@ -10,13 +10,12 @@ size_partition=$4
 #echo $1, $2, $3, $4
 
 # Create subset pileup files, each containing $size_partition number of reference contig/header
-for ((i=$size_partition; i<=$num_ref; i+=$size_partition))
+for (( i=$size_partition; i<=$num_ref; i+=$size_partition ))
 do
-	#echo $i
-	c=$(($c+1))
-	beg=$(($i-$size_partition-1))
-	beg_ref="$(sed -n "$beg"p "$f_reflist")"
-	end_ref="$(sed -n "$i"p "$f_reflist")"
+	c=$(( c + 1 ))
+	beg=$(( i - size_partition + 1 ))
+	beg_ref="$(sed -n ${beg}p "$f_reflist")"
+	end_ref="$(sed -n ${i}p "$f_reflist")"
 
 	# Get line number of the line where the beg_ref starts (head -1)	
 	pileup_linenum_beg="$(grep -n "$beg_ref" "$f_pileup" | head -1 | awk -F ':' '{print $1}')"

@@ -314,11 +314,14 @@ Out.sam : sam_cat.sh Out.0.sam Out.1.sam Out.2.sam Out.3.sam Out.4.sam Out.5.sam
 mem.err : mem.0.err mem.1.err mem.2.err mem.3.err mem.4.err mem.5.err mem.6.err mem.7.err mem.8.err mem.9.err mem.10.err mem.11.err mem.12.err mem.13.err mem.14.err mem.15.err mem.16.err mem.17.err mem.18.err mem.19.err mem.20.err mem.21.err mem.22.err mem.23.err mem.24.err mem.25.err mem.26.err mem.27.err mem.28.err mem.29.err mem.30.err mem.31.err mem.32.err mem.33.err mem.34.err mem.35.err mem.36.err mem.37.err mem.38.err mem.39.err mem.40.err mem.41.err mem.42.err mem.43.err mem.44.err mem.45.err mem.46.err mem.47.err mem.48.err mem.49.err mem.50.err mem.51.err mem.52.err mem.53.err mem.54.err mem.55.err mem.56.err mem.57.err mem.58.err mem.59.err mem.60.err mem.61.err mem.62.err mem.63.err mem.64.err mem.65.err mem.66.err mem.67.err mem.68.err mem.69.err mem.70.err mem.71.err mem.72.err mem.73.err mem.74.err mem.75.err mem.76.err mem.77.err mem.78.err mem.79.err mem.80.err mem.81.err mem.82.err mem.83.err mem.84.err mem.85.err mem.86.err mem.87.err mem.88.err mem.89.err mem.90.err mem.91.err mem.92.err mem.93.err mem.94.err mem.95.err mem.96.err mem.97.err mem.98.err mem.99.err
 	LOCAL cat mem.*.err > mem.err
 
-Out.bam sort.err : samtools Out.sam
-	./samtools view -bS Out.sam | ./samtools sort - Out 2> sort.err
+View.bam: samtools Out.sam
+	./samtools view -o View.bam -bS Out.sam
+
+Out.bam sort.err : samtools View.bam
+	./samtools sort -o Out.bam View.bam 2> sort.err
 
 pileup.txt ref.fasta.fai pileup.err : samtools ref.fasta Out.bam
-	./samtools mpileup -s -f ref.fasta Out.bam > pileup.txt 2> pileup.err
+	./samtools mpileup -aa -s -f ref.fasta Out.bam -o pileup.txt 2> pileup.err
 
 List_RefHeader.txt Pileup_Set1.txt Pileup_Set2.txt : Split_Pileup.sh Create_SubsetPileup.sh pileup.txt
 	LOCAL ./Split_Pileup.sh pileup.txt 2 2> Split_Pileup.err
