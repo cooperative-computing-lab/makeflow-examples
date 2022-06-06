@@ -26,7 +26,7 @@
     [
       
       {
-        "command":format("%s index %s 2> index.err",BWA,REF),
+        "command":template("{BWA} index {REF} 2> index.err"),
         "inputs":
           [
             BWA,
@@ -41,7 +41,7 @@
       },
       
       {
-        "command":format("%s %s %d",SPLIT,INPUT_PRE,SEQ_PER_SPLIT),
+        "command":template("{SPLIT} {INPUT_PRE} {SEQ_PER_SPLIT}"),
         "inputs":
           [
             SPLIT,
@@ -49,32 +49,32 @@
           ],
         "outputs":
           [
-            format("%s.%d",INPUT_PRE,x) for x in range(ceil(TOTAL_SEQ/SEQ_PER_SPLIT))
+            template("{INPUT_PRE}.{x}") for x in range(ceil(TOTAL_SEQ/SEQ_PER_SPLIT))
           ],
         "local_job":true
       },
       
       {
-        "command":format("%s %s %s %s.%d > Out.%d.sam 2> mem.%d.err",BWA,ARGS,REF,INPUT_PRE,i,i,i),
+        "command":template("{BWA} {ARGS} {REF} {INPUT_PRE}.{i} > Out.{i}.sam 2> mem.{i}.err"),
         "inputs":
           [
             BWA,
             x for x in REF_INDEX,
-            format("%s.%d",INPUT_PRE,i)
+            template("{INPUT_PRE}.{i}")
           ],
         "outputs":
           [
-            format("Out.%d.sam",i),
-            format("mem.%d.err",i)
+            template("Out.{i}.sam"),
+            template("mem.{i}.err")
           ]
       } for i in range(ceil(TOTAL_SEQ/SEQ_PER_SPLIT)),
       
       {
-        "command":format("%s %s > Out.sam",CONCAT,join([format("Out.%d.sam",x) for x in range(ceil(TOTAL_SEQ/SEQ_PER_SPLIT))])),
+        "command":format("%s %s > Out.sam",CONCAT,join([template("Out.{x}.sam") for x in range(ceil(TOTAL_SEQ/SEQ_PER_SPLIT))])),
         "inputs":
           [
             CONCAT,
-            format("Out.%d.sam",x) for x in range(ceil(TOTAL_SEQ/SEQ_PER_SPLIT))
+            template("Out.{x}.sam") for x in range(ceil(TOTAL_SEQ/SEQ_PER_SPLIT))
           ],
         "outputs":
           [
@@ -84,10 +84,10 @@
       },
       
       {
-        "command":format("cat mem.*.err > mem.err"),
+        "command": "cat mem.*.err > mem.err",
         "inputs":
           [
-            format("mem.%d.err",x) for x in range(ceil(TOTAL_SEQ/SEQ_PER_SPLIT))
+            template("mem.{x}.err") for x in range(ceil(TOTAL_SEQ/SEQ_PER_SPLIT))
           ],
         "outputs":
           [
@@ -97,7 +97,7 @@
       },
       
       {
-        "command":format("%s view -o View.bam -bS Out.sam",TOOLS),
+        "command":template("{TOOLS} view -o View.bam -bS Out.sam"),
         "inputs":
           [
             TOOLS,
@@ -110,7 +110,7 @@
       },
 
       {
-        "command":format("%s sort -o Out.bam View.bam 2> sort.err",TOOLS),
+        "command":template("{TOOLS} sort -o Out.bam View.bam 2>sort.err"),
         "inputs":
           [
             TOOLS,
@@ -124,7 +124,7 @@
       },
       
       {
-        "command":format("%s mpileup -s -f %s Out.bam > pileup.txt 2> pileup.err",TOOLS,REF),
+        "command":template("{TOOLS} mpileup -s -f {REF} Out.bam > pileup.txt 2> pileup.err"),
         "inputs":
           [
             TOOLS,
@@ -140,7 +140,7 @@
       },
       
       {
-        "command":format("%s pileup.txt 2 2> Split_Pileup.err",PILEUP),
+        "command":template("{PILEUP} pileup.txt 2 2> Split_Pileup.err"),
         "inputs":
           [
             PILEUP,
@@ -149,14 +149,14 @@
           ],
         "outputs":
           [
-            format("Pileup_Set%d.txt",x) for x in range(1,3),
+            template("Pileup_Set{x}.txt") for x in range(1,3),
             "List_RefHeader.txt"
           ],
         "local_job":true
       },
       
       {
-        "command":format("%s %s Pileup_Set%d.txt %s lc.%d.out Out.sam %d > corr.%d.out 2> corr.%d.err ; echo \"\" >> lc.%d.out ; echo \"\" >> corr.%d.out",PYTHON,CORRECTION,x,REF,x,ceil(TOTAL_SEQ/SEQ_PER_SPLIT),x,x,x,x),
+        "command":template("{PYTHON} {CORRECTION} Pileup_Set{x}.txt {REF} lc.{x}.out Out.sam {CEIL} > corr.{x}.out 2> corr.{x}.err ; echo \"\" >> lc.{x}.out ; echo \"\" >> corr.{x}.out",{"CEIL": ceil(TOTAL_SEQ/SEQ_PER_SPLIT)}),
         "inputs":
           [
             CORRECTION,
@@ -166,18 +166,18 @@
           ],
         "outputs":
           [
-            format("corr.%d.out",x),
-            format("lc.%d.out",x),
-            format("corr.%d.err",x)
+            template("corr.{x}.out"),
+            template("lc.{x}.out"),
+            template("corr.{x}.err")
           ],
         "local_job":true
       } for x in range(2),
       
       {
-        "command":format("cat %s > corr.out",join([format("corr.%d.out",x) for x in range(2)])),
+        "command":format("cat %s > corr.out",join([template("corr.{x}.out") for x in range(2)])),
         "inputs":
           [
-            format("corr.%d.out",x) for x in range(2)
+            template("corr.{x}.out") for x in range(2)
           ],
         "outputs":
           [
@@ -187,10 +187,10 @@
       },
       
       {
-        "command":format("cat %s > corr.err",join([format("corr.%d.err",x) for x in range(2)])),
+        "command":format("cat %s > corr.err",join([template("corr.{x}.err") for x in range(2)])),
         "inputs":
           [
-            format("corr.%d.err",x) for x in range(2)
+            template("corr.{x}.err") for x in range(2)
           ],
         "outputs":
           [
@@ -200,10 +200,10 @@
       },
       
       {
-        "command":format("cat %s > LowConf.txt",join([format("lc.%d.out",x) for x in range(2)])),
+        "command":format("cat %s > LowConf.txt",join([template("lc.{x}.out") for x in range(2)])),
         "inputs":
           [
-            format("lc.%d.out",x) for x in range(2)
+            template("lc.{x}.out") for x in range(2)
           ],
         "outputs":
           [
@@ -213,7 +213,7 @@
       },
       
       {
-        "command":format("%s %s 1000",SPLITA,REF),
+        "command":template("{SPLITA} {REF} 1000"),
         "inputs":
           [
             SPLITA,
@@ -221,30 +221,30 @@
           ],
         "outputs":
           [
-            format("%s.%d",REF,x) for x in range(ceil(TOTAL_SEQ/SEQ_PER_SPLIT))
+            template("{REF}.{x}") for x in range(ceil(TOTAL_SEQ/SEQ_PER_SPLIT))
           ],
         "local_job":true
       },
       
       {
-        "command":format("%s %s %s.%d corr.out 2> create.err.%d",PYTHON,CORRECT_ALLLR,REF,x,x),
+        "command":template("{PYTHON} {CORRECT_ALLLR} {REF}.{x} corr.out 2> create.err.{x}"),
         "inputs":
           [
             CORRECT_ALLLR,
             "corr.out",
-            format("%s.%d",REF,x)
+            template("{REF}.{x}")
           ],
         "outputs":
           [
-            format("Corrected_ref.fasta.%d",x)
+            template("Corrected_ref.fasta.{x}")
           ]
       } for x in range(ceil(TOTAL_SEQ/SEQ_PER_SPLIT)),
       
       {
-        "command":format("cat %s > Corrected_ref.fasta",join([format("Corrected_ref.fasta.%d",x) for x in range(ceil(TOTAL_SEQ/SEQ_PER_SPLIT))])),
+        "command":format("cat %s > Corrected_ref.fasta",join([template("Corrected_ref.fasta.{x}") for x in range(ceil(TOTAL_SEQ/SEQ_PER_SPLIT))])),
         "inputs":
           [
-            format("Corrected_ref.fasta.%d",x) for x in range(ceil(TOTAL_SEQ/SEQ_PER_SPLIT))
+            template("Corrected_ref.fasta.{x}") for x in range(ceil(TOTAL_SEQ/SEQ_PER_SPLIT))
           ],
         "outputs":
           [
