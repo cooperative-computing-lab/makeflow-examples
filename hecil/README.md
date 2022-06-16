@@ -42,11 +42,12 @@ cd ..
 ```
 
 If you do not have real data to work with, then generate
-some simulated data (~10 second workflow):
+some simulated data, which will result in a ~15 minute workflow
+on a single machine:
 
 ```
 ./fastq_generate.pl 100000 1000 > ref.fastq
-./fastq_generate.pl 10000 100 ref.fastq > query.fastq
+./fastq_generate.pl 100000 100 ref.fastq > query.fastq
 ```
 
 The long read file needs to be in fasta format, so you'll need to convert it:
