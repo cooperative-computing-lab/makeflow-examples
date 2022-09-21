@@ -17,6 +17,13 @@ by Connor Howington as part of a summer REU project at Notre Dame.
 Installation and Use
 --------------------
 
+Before beginning, make sure you have already cloned the makeflow-examples repository and are in the hecil directory:
+
+```
+git clone https://github.com/cooperative-computing-lab/makeflow-examples
+cd makeflow-examples/hecil
+```
+
 First, build the bwa binary for your architecture:
 
 ```
