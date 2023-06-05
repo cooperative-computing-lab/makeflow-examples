@@ -307,7 +307,7 @@
       },
       
       {
-        "command":"./samtools view -bS Out.sam | ./samtools sort - Out 2> sort.err",
+        "command":"./samtools view -bS Out.sam | ./samtools sort -o Out.bam 2> sort.err",
         "inputs":
           [
             "./samtools",

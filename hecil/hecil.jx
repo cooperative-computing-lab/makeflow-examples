@@ -97,7 +97,7 @@
       },
       
       {
-        "command":format("%s view -bS Out.sam | %s sort - Out 2> sort.err",TOOLS,TOOLS),
+        "command":format("%s view -bS Out.sam | %s sort -o Out.bam 2> sort.err",TOOLS,TOOLS),
         "inputs":
           [
             TOOLS,
