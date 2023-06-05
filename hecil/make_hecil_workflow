@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
 # -----------------------------------
 # Creates a Makeflow file for HECIL
@@ -140,7 +140,7 @@ def write_makeflow(path):
 
 	# Write the samtools view and sort rule
 	makeflow.write('Out.bam sort.err : samtools Out.sam\n')
-	makeflow.write('\t./samtools view -bS Out.sam | ./samtools sort - Out 2> sort.err\n\n')
+	makeflow.write('\t./samtools view -bS Out.sam | ./samtools sort -o Out.bam 2> sort.err\n\n')
 
 	# Write the samtools mpileup rule
 	makeflow.write('pileup.txt {0}.fai pileup.err : samtools {0} Out.bam\n'.format(args.long_reads))	
