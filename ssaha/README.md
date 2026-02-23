@@ -4,7 +4,7 @@ SSAHA Workflow Example
 ----------------------
 
 This example workflow demonstrates how to parallelize the
-SSAHA2 (Sequence Search and Alignment by Hasing Algorithm)
+SSAHA2 (Sequence Search and Alignment by Hashing Algorithm)
 tool published by the Sanger institute.
 
 If you have not done so already, please clone this example repository like so:
@@ -17,7 +17,7 @@ First, download and install a suitable binary for SSAHA2:
 
 ```
 export SSAHA_BINARY=ssaha2_v2.5.5_x86_64
-wget ftp://ftp.sanger.ac.uk/pub/resources/software/ssaha2/${SSAHA_BINARY}.tgz
+wget https://ftp.sanger.ac.uk/pub/resources/software/ssaha2/${SSAHA_BINARY}.tgz 
 tar xvzf ${SSAHA_BINARY}.tgz
 cp ${SSAHA_BINARY}/ssaha2 .
 ```

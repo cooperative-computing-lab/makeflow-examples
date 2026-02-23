@@ -15,7 +15,7 @@ cd ./makeflow-examples/blast
 
 First, obtain a blast binary suitable for your architecture. (about 30MB)
 ```
-wget ftp://ftp.ncbi.nlm.nih.gov/blast/executables/legacy.NOTSUPPORTED/2.2.26/blast-2.2.26-x64-linux.tar.gz
+wget https://ftp.ncbi.nlm.nih.gov/blast/executables/legacy.NOTSUPPORTED/2.2.26/blast-2.2.26-x64-linux.tar.gz
 tar xvzf blast-2.2.26-x64-linux.tar.gz
 ```
 
@@ -24,9 +24,9 @@ Next, copy the main executable into the working directory.
 cp blast-2.2.26/bin/blastall .
 ```
 
-Obtain a nucleotide database suitable for searching. (about 400MB)
+Obtain a nucleotide database suitable for searching. (about 1.5GB)
 ```
-wget ftp://ftp.ncbi.nlm.nih.gov/blast/db/nt.44.tar.gz
+wget https://ftp.ncbi.nlm.nih.gov/blast/db/nt.044.tar.gz
 mkdir nt
 tar -C nt -xvzf nt.44.tar.gz
 ```
@@ -42,8 +42,8 @@ If everything is working correctly, you should see output that starts like this:
 ```
 BLASTN 2.2.26 [Sep-21-2011]
 
-Reference: Altschul, Stephen F., Thomas L. Madden, Alejandro A. Schaffer, 
-Jinghui Zhang, Zheng Zhang, Webb Miller, and David J. Lipman (1997), 
+Reference: Altschul, Stephen F., Thomas L. Madden, Alejandro A. Schaffer,
+Jinghui Zhang, Zheng Zhang, Webb Miller, and David J. Lipman (1997),
 "Gapped BLAST and PSI-BLAST: a new generation of protein database search
 programs",  Nucleic Acids Res. 25:3389-3402.
 
@@ -94,7 +94,7 @@ makeflow --jx blast.jx
 makeflow --json blast.json
 ```
 
-The number and length of sequences can be adjusted for your needs, with the first number 
+The number and length of sequences can be adjusted for your needs, with the first number
 adjusting the number of contigs and the second adjusting the length of these contigs.
 `fasta_generator` produces contigs containing random AGCT sequences.
 
